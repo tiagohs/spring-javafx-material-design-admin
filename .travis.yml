@@ -7,3 +7,7 @@ jdk:
 install:
 - mvn -N io.takari:maven:wrapper
 - ./mvnw install -Dmaven.javadoc.skip=true -B -V
+
+branches:
+  only:
+  - admin-java
