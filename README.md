@@ -8,9 +8,9 @@ Aplicação WEB relativamente simples utilizando as boas práticas de programaç
 
 &nbsp; | &nbsp; | &nbsp; | &nbsp;
 | --- | --- | --- | --- |
-| *Spring Boot* | *Spring Data JPA* | *Spring Web MVC* | *Spring Security* |
-| *Spring Social* | *Hibernate* | *Maven* | *Thymeleaf* |
-| *Bootstrap3* | --- | --- | --- |
+| <a href="https://github.com/spring-projects/spring-boot">Spring Boot</a> | <a href="https://github.com/spring-projects/spring-data-jpa">Spring Data JPA</a> | <a href="https://github.com/spring-projects/spring-framework">Spring Web MVC</a> | <a href="https://github.com/spring-projects/spring-security">Spring Security</a> |
+| <a href="https://github.com/spring-projects/spring-social">Spring Social</a> | <a href="https://github.com/hibernate">Hibernate</a> | <a href="https://github.com/apache/maven">Maven</a> | <a href="https://github.com/thymeleaf/thymeleaf">Thymeleaf</a> |
+| <a href="https://github.com/twbs/bootstrap">Bootstrap3</a> | --- | --- | --- |
 
 ### Desenvolvido por:
 
