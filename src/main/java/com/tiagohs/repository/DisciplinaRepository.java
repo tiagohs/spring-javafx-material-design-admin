@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.tiagohs.model.Disciplina;
 
 @Repository("disciplinaRepository")
-public class DisciplinaRepository extends JpaRepository<Disciplina, Long> {
+public interface DisciplinaRepository extends JpaRepository<Disciplina, Long> {
 
 }

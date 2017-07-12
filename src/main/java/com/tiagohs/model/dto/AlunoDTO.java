@@ -1,6 +1,6 @@
 package com.tiagohs.model.dto;
 
-import java.util.Date;
+import org.hibernate.validator.constraints.NotEmpty;
 
 public class AlunoDTO {
 	

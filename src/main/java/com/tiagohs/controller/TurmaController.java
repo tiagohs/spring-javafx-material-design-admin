@@ -5,11 +5,10 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -64,7 +63,13 @@ public class TurmaController {
 	@RequestMapping(value = TURMA_EDIT, method = RequestMethod.GET)
 	public ModelAndView edit(@PathVariable("id") long id) {
 		ModelAndView modelAndView = new ModelAndView();
-		TurmaDTO turma = dtoConverter.entityToDto(turmaService.find(id));
+		TurmaDTO turma = null;
+		
+		try {
+			turma = dtoConverter.entityToDto(turmaService.find(id));
+		} catch (Exception e) {
+			return new ModelAndView("redirect:" + TURMA_HOME);
+		}
 		
 		if (null != turma) {
 			modelAndView.addObject("turma", turma);
@@ -85,7 +90,13 @@ public class TurmaController {
 	@RequestMapping(value = TURMA_DELETE, method = RequestMethod.GET)
 	public ModelAndView delete(@PathVariable("id") long id) {
 		ModelAndView modelAndView = new ModelAndView();
-		TurmaDTO turma = dtoConverter.entityToDto(turmaService.find(id));
+		TurmaDTO turma = null;
+		
+		try {
+			turma = dtoConverter.entityToDto(turmaService.find(id));
+		} catch (Exception e) {
+			modelAndView.addObject("turma", turma);
+		}
 		
 		if (null != turma) {
 			modelAndView.addObject("turma", turma);

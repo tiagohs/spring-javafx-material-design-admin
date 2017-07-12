@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.tiagohs.model.Turma;
 
 @Repository("turmaRepository")
-public class TurmaRepository extends JpaRepository<Turma, Long> {
+public interface TurmaRepository extends JpaRepository<Turma, Long> {
 
 }
