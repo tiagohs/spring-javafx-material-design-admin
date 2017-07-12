@@ -19,11 +19,7 @@ public class PasswordValidatorImpl implements ConstraintValidator<PasswordValida
 			return false;
 		}
 		
-		if (usuario.getPassword().equals(usuario.getConfirmPassword())) {
-			return true;
-		}
-		
-		return false;
+		return usuario.getPassword().equals(usuario.getConfirmPassword());
 	}
 
 	

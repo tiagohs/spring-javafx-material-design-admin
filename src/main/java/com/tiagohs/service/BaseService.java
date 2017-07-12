@@ -12,10 +12,10 @@ public abstract class BaseService<T, R extends JpaRepository<T, Long>> {
 		this.repository = repository;
 	}
 	
-	public T save(T obj) throws NullPointerException {
+	public T save(T obj) throws Exception {
 		
 		if (obj == null) {
-			throw new NullPointerException();
+			throw new Exception();
 		}
 		
 		repository.save(obj);
