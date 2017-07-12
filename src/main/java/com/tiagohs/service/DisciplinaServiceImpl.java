@@ -13,7 +13,7 @@ public class DisciplinaServiceImpl extends BaseService<Disciplina, JpaRepository
 	private DisciplinaRepository disciplinaRepository;
 	
 	@Autowired
-	public AlunoServiceImpl(DisciplinaRepository disciplinaRepository) {
+	public DisciplinaServiceImpl(DisciplinaRepository disciplinaRepository) {
 		super(disciplinaRepository);
 		
 		this.disciplinaRepository = disciplinaRepository;

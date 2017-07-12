@@ -13,7 +13,7 @@ public class ProfessorServiceImpl extends BaseService<Professor, JpaRepository<P
 	private ProfessorRepository professorRepository;
 	
 	@Autowired
-	public AlunoServiceImpl(ProfessorRepository professorRepository) {
+	public ProfessorServiceImpl(ProfessorRepository professorRepository) {
 		super(professorRepository);
 		
 		this.professorRepository = professorRepository;
