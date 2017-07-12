@@ -3,13 +3,24 @@ package com.tiagohs.model.dto;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.tiagohs.model.Aluno;
+import com.tiagohs.model.Disciplina;
+import com.tiagohs.model.Professor;
 import com.tiagohs.model.Role;
+import com.tiagohs.model.Turma;
 import com.tiagohs.model.Usuario;
 
 public class DtoConverter {
 	
+	public void listDtoToListEntity() {
+		
+	}
 	
-	public Usuario convertDtoToUsuario(UsuarioDTO usuarioDto) {
+	public void listEntityToListDto() {
+		
+	}
+	
+	public Usuario dtoToEntity(UsuarioDTO usuarioDto) {
 		Usuario usuario = new Usuario();
 		
 		usuario.setId(usuarioDto.getId());
@@ -20,7 +31,14 @@ public class DtoConverter {
 		
 	}
 	
-	public Role convertDtoToRole(RoleDTO roleDTO) {
+	public UsuarioDTO entityToDto(Usuario usuario) {
+		UsuarioDTO roleDTO = new UsuarioDTO();
+		
+		
+		return roleDTO;
+	}
+	
+	public Role dtoToEntity(RoleDTO roleDTO) {
 		Role role = new Role();
 		
 		role.setId(roleDTO.getId());
@@ -30,7 +48,7 @@ public class DtoConverter {
 		return role;
 	}
 	
-	public RoleDTO convertRoleToDto(Role role) {
+	public RoleDTO entityToDto(Role role) {
 		RoleDTO roleDTO = new RoleDTO();
 		
 		roleDTO.setId(role.getId());
@@ -40,11 +58,83 @@ public class DtoConverter {
 		return roleDTO;
 	}
 	
+	public Aluno dtoToEntity(AlunoDTO alunoDTO) {
+		Aluno aluno = new Aluno();
+		
+		
+		return aluno;
+	}
+	
+	public AlunoDTO entityToDto(Aluno aluno) {
+		AlunoDTO alunoDTO = new AlunoDTO();
+		
+		return alunoDTO;
+	}
+	
+	public Disciplina dtoToEntity(DisciplinaDTO disciplinaDTO) {
+		Disciplina disciplina = new Disciplina();
+		
+		
+		return disciplina;
+	}
+	
+	public DisciplinaDTO entityToDto(Disciplina disciplina) {
+		DisciplinaDTO disciplinaDTO = new DisciplinaDTO();
+		
+		return disciplinaDTO;
+	}
+	
+	public Professor dtoToEntity(ProfessorDTO professorDTO) {
+		Professor professor = new Professor();
+		
+		
+		return professor;
+	}
+	
+	public ProfessorDTO entityToDto(Professor professor) {
+		ProfessorDTO professorDTO = new ProfessorDTO();
+		
+		return professorDTO;
+	}
+	
+	public Turma dtoToEntity(TurmaDTO turmaDTO) {
+		Turma turma = new Turma();
+		
+		
+		return turma;
+	}
+	
+	public TurmaDTO entityToDto(Turma turma) {
+		TurmaDTO turmaDTO = new TurmaDTO();
+		
+		return turmaDTO;
+	}
+	
+	public List<Usuario> convertListDtoToListUsuarios(List<UsuarioDTO> listUsuariosDTO) {
+		List<Usuario> listUsuarios = new ArrayList<>();
+		
+		for (UsuarioDTO usuarioDTO : listUsuariosDTO) {
+			listUsuarios.add(dtoToEntity(usuarioDTO));
+		}
+		
+		return listUsuarios;
+	}
+	
+	public List<UsuarioDTO> convertListToListDtoUsuarios(List<Usuario> listUsuarios) {
+		List<UsuarioDTO> listUsuariosDTO = new ArrayList<>();
+		
+		for (Usuario usuario : listUsuarios) {
+			listUsuariosDTO.add(entityToDto(usuario));
+		}
+		
+		return listUsuariosDTO;
+	}
+	
 	public List<Role> convertListDtoToListRoles(List<RoleDTO> listRolesDTO) {
 		List<Role> listRoles = new ArrayList<>();
 		
 		for (RoleDTO roleDTO : listRolesDTO) {
-			listRoles.add(convertDtoToRole(roleDTO));
+			listRoles.add(dtoToEntity(roleDTO));
 		}
 		
 		return listRoles;
@@ -54,9 +144,91 @@ public class DtoConverter {
 		List<RoleDTO> listRolesDTO = new ArrayList<>();
 		
 		for (Role role : listRoles) {
-			listRolesDTO.add(convertRoleToDto(role));
+			listRolesDTO.add(entityToDto(role));
 		}
 		
 		return listRolesDTO;
 	}
+	
+	public List<Aluno> convertListDtoToListAlunos(List<AlunoDTO> listAlunosDTO) {
+		List<Aluno> listAlunos = new ArrayList<>();
+		
+		for (AlunoDTO alunoDTO : listAlunosDTO) {
+			listAlunos.add(dtoToEntity(alunoDTO));
+		}
+		
+		return listAlunos;
+	}
+	
+	public List<AlunoDTO> convertListToListDtoAlunos(List<Aluno> listAlunos) {
+		List<AlunoDTO> listAlunosDTO = new ArrayList<>();
+		
+		for (Aluno aluno : listAlunos) {
+			listAlunosDTO.add(entityToDto(aluno));
+		}
+		
+		return listAlunosDTO;
+	}
+	
+	public List<Disciplina> convertListDtoToListDisciplinas(List<DisciplinaDTO> listDisciplinasDTO) {
+		List<Disciplina> listDisciplinas = new ArrayList<>();
+		
+		for (DisciplinaDTO disciplinaDTO : listDisciplinasDTO) {
+			listDisciplinas.add(dtoToEntity(disciplinaDTO));
+		}
+		
+		return listDisciplinas;
+	}
+	
+	public List<DisciplinaDTO> convertListToListDtoDisciplinas(List<Disciplina> listDisciplinas) {
+		List<DisciplinaDTO> listDisciplinasDTO = new ArrayList<>();
+		
+		for (Disciplina disciplina : listDisciplinas) {
+			listDisciplinasDTO.add(entityToDto(disciplina));
+		}
+		
+		return listDisciplinasDTO;
+	}
+	
+	public List<Professor> convertListDtoToListProfessores(List<ProfessorDTO> listProfessoresDTO) {
+		List<Professor> listProfessores = new ArrayList<>();
+		
+		for (ProfessorDTO professorDTO : listProfessoresDTO) {
+			listProfessores.add(dtoToEntity(professorDTO));
+		}
+		
+		return listProfessores;
+	}
+	
+	public List<ProfessorDTO> convertListToListDtoProfessores(List<Professor> listProfessores) {
+		List<ProfessorDTO> listProfessoresDTO = new ArrayList<>();
+		
+		for (Professor professor : listProfessores) {
+			listProfessoresDTO.add(entityToDto(professor));
+		}
+		
+		return listProfessoresDTO;
+	}
+
+	public List<Turma> convertListDtoToListTurmas(List<TurmaDTO> listTurmasDTO) {
+		List<Turma> listTurmas = new ArrayList<>();
+		
+		for (TurmaDTO turmaDTO : listTurmasDTO) {
+			listTurmas.add(dtoToEntity(turmaDTO));
+		}
+		
+		return listTurmas;
+	}
+	
+	public List<TurmaDTO> convertListToListDtoTurmas(List<Turma> listTurmas) {
+		List<TurmaDTO> listTurmasDTO = new ArrayList<>();
+		
+		for (Turma turma : listTurmas) {
+			listTurmasDTO.add(entityToDto(turma));
+		}
+		
+		return listTurmasDTO;
+	}
+	
+	
 }

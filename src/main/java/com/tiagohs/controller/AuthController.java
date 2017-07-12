@@ -24,6 +24,9 @@ import com.tiagohs.service.UsuarioService;
 @Controller
 public class AuthController {
 	
+	public static final String LOGIN_HOME = "/auth/login";
+	public static final String LOGIN_REGISTER = "/auth/registration";
+	
 	@Autowired
 	private UsuarioService userService;
 	
@@ -33,14 +36,14 @@ public class AuthController {
 	@Autowired
 	private DtoConverter dtoConverter;
 	
-	@RequestMapping(value={"/", "/auth/login"}, method = RequestMethod.GET)
+	@RequestMapping(value={"/", LOGIN_HOME}, method = RequestMethod.GET)
 	public ModelAndView login(){
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("/auth/login");
+		modelAndView.setViewName(LOGIN_HOME);
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/auth/registration", method = RequestMethod.GET)
+	@RequestMapping(value=LOGIN_REGISTER, method = RequestMethod.GET)
 	public ModelAndView registration(){
 		List<RoleDTO> roles = dtoConverter.convertListToListDtoRoles(roleService.findAll());
 		
@@ -48,12 +51,12 @@ public class AuthController {
 		UsuarioDTO user = new UsuarioDTO();
 		modelAndView.addObject("user", user);
 		modelAndView.addObject("rolesList", roles);
-		modelAndView.setViewName("/auth/registration");
+		modelAndView.setViewName(LOGIN_REGISTER);
 		
 		return modelAndView;
 	}
 	
-	@RequestMapping(value = "/auth/registration", method = RequestMethod.POST)
+	@RequestMapping(value = LOGIN_REGISTER, method = RequestMethod.POST)
 	public ModelAndView createNewUser(@Valid @ModelAttribute("user") UsuarioDTO user, BindingResult bindingResult) {
 		List<RoleDTO> roles = dtoConverter.convertListToListDtoRoles(roleService.findAll());
 		
@@ -66,13 +69,13 @@ public class AuthController {
 		}
 		if (bindingResult.hasErrors()) {
 			modelAndView.addObject("rolesList", roles);
-			modelAndView.setViewName("/auth/registration");
+			modelAndView.setViewName(LOGIN_REGISTER);
 		} else {
-			userService.saveUser(dtoConverter.convertDtoToUsuario(user));
+			userService.saveUser(dtoConverter.dtoToEntity(user));
 			modelAndView.addObject("successMessage", "User has been registered successfully");
 			modelAndView.addObject("rolesList", roles);
 			modelAndView.addObject("user", new UsuarioDTO());
-			modelAndView.setViewName("/auth/registration");
+			modelAndView.setViewName(LOGIN_REGISTER);
 		}
 		
 		return modelAndView;

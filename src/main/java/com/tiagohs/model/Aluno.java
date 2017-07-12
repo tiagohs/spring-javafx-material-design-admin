@@ -1,5 +1,6 @@
 package com.tiagohs.model;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -31,6 +32,13 @@ public class Aluno {
 	
 	@Column(name = "nome")
 	private String nome;
+	
+	@Column(name = "sexo")
+	private String sexo;
+	
+	@Column(name = "dataNascimento")
+	@Type(type="date")
+	private Date dataNascimento;
 	
 	@OneToMany(mappedBy = "aluno", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Endereco> endereco;
