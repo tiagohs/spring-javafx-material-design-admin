@@ -1,16 +1,47 @@
 package com.tiagohs.model;
 
-public class Endereco {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "endereco")
+public class Endereco {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "endereco_id")
 	private long id;
+	
+	@Column(name = "rua")
 	private String rua;
+	
+	@Column(name = "numero")
 	private int numero;
+	
+	@Column(name = "complemento")
 	private String complemento;
+	
+	@Column(name = "bairro")
 	private String bairro;
+	
+	@Column(name = "cidade")
 	private String cidade;
+	
+	@Column(name = "estado")
 	private String estado;
+	
+	@Column(name = "pais")
 	private String pais;
+	
+	@ManyToOne
 	private Aluno aluno;
+	
+	@ManyToOne
 	private Professor professor;
 	
 	public long getId() {
@@ -73,6 +104,5 @@ public class Endereco {
 	public void setProfessor(Professor professor) {
 		this.professor = professor;
 	}
-	
 	
 }

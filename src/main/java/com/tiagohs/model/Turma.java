@@ -2,16 +2,49 @@ package com.tiagohs.model;
 
 import java.util.List;
 
-public class Turma {
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "turma")
+public class Turma {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "turma_id")
 	private long id;
+	
+	@Column(name = "ano")
 	private int ano;
+	
+	@Column(name = "semestre")
 	private String semestre;
+
+	@Column(name = "dia_semana")
 	private int diaSemana;
+
+	@Column(name = "horario_realizacao")
 	private int horarioRealizacao;
+	
+	@OneToMany(mappedBy = "turma", targetEntity = Disciplina.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Disciplina> disciplina;
+	
+	@ManyToMany(mappedBy = "turma")
 	private List<Professor> professor;
+	
+	@OneToMany(mappedBy = "turma", targetEntity = Disciplina.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Aluno> aluno;
+	
+	@OneToOne(mappedBy = "turma", optional = true, fetch = FetchType.LAZY)
 	private Avaliacao avaliacao;
 	
 	public long getId() {

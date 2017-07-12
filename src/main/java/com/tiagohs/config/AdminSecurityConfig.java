@@ -23,6 +23,9 @@ public class AdminSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private DataSource dataSource;
 	
+	@Autowired
+    private AuthSuccessHandler authHandler;
+	
 	@Value("${spring.queries.users}")
 	private String usersQuery;
 	
@@ -34,7 +37,6 @@ public class AdminSecurityConfig extends WebSecurityConfigurerAdapter {
 		
 		http
 			.authorizeRequests()
-				.antMatchers("/", "/home", "/about").permitAll()
 				.antMatchers("/auth/registration").permitAll()
 				.antMatchers("/admin/**").hasAuthority("ADMIN").anyRequest().authenticated()
 				.antMatchers("/user/**").hasAuthority("USER")
@@ -42,7 +44,7 @@ public class AdminSecurityConfig extends WebSecurityConfigurerAdapter {
 				.and().csrf().disable()
 			.formLogin()
 				.loginPage("/auth/login").failureUrl("/auth/login?error=true")
-				.defaultSuccessUrl("/admin/home")
+				.successHandler(authHandler)
 				.usernameParameter("email")
 				.passwordParameter("password")
 				.permitAll()
@@ -50,7 +52,9 @@ public class AdminSecurityConfig extends WebSecurityConfigurerAdapter {
 			.logout()
 				.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
 				.logoutSuccessUrl("/").and().exceptionHandling()
-				.accessDeniedPage("/access-denied");
+				.accessDeniedPage("/access-denied")
+			.and()
+				.csrf().disable();
 						
 	}
 	
@@ -69,6 +73,6 @@ public class AdminSecurityConfig extends WebSecurityConfigurerAdapter {
 	    web
 	       .ignoring()
 	       .antMatchers("/resources/**", "/static/**", "/css/**", "/js/**", "/images/**", "/fonts/**");
-}
+	}
 
 }

@@ -2,15 +2,53 @@ package com.tiagohs.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "aluno")
 public class Aluno {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "aluno_id")
+	private int id;
+	
+	@Column(name = "matricula", nullable = false, unique = true)
 	private String matricula;
+	
+	@Column(name = "nome")
 	private String nome;
+	
+	@OneToMany(mappedBy = "aluno", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Endereco> endereco;
+	
+	@OneToMany(mappedBy = "aluno", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Telefone> telefone;
-	private List<Turma> turma;
-	private Avaliacao avaliacao;
+	
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "aluno_curso", 
+	   joinColumns = @JoinColumn(name = "aluno_id"), 
+	   inverseJoinColumns = @JoinColumn(name = "curso_id"))
 	private List<Curso> curso;
+	
+	@OneToOne(mappedBy = "aluno", optional = true, fetch = FetchType.LAZY)
+	private Avaliacao avaliacao;
+	
+	@ManyToOne
+	private Turma turma;
 	
 	public String getMatricula() {
 		return matricula;
@@ -36,12 +74,6 @@ public class Aluno {
 	public void setTelefone(List<Telefone> telefone) {
 		this.telefone = telefone;
 	}
-	public List<Turma> getTurma() {
-		return turma;
-	}
-	public void setTurma(List<Turma> turma) {
-		this.turma = turma;
-	}
 	public Avaliacao getAvaliacao() {
 		return avaliacao;
 	}
@@ -53,6 +85,18 @@ public class Aluno {
 	}
 	public void setCurso(List<Curso> curso) {
 		this.curso = curso;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public Turma getTurma() {
+		return turma;
+	}
+	public void setTurma(Turma turma) {
+		this.turma = turma;
 	}
 	
 }

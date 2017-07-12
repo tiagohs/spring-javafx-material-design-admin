@@ -1,15 +1,44 @@
 package com.tiagohs.model;
 
-public class Disciplina {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "disciplina")
+public class Disciplina {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "disciplina_id")
 	private long id;
+	
+	@Column(name = "descricao")
 	private String descricao;
-	private String carga_horaria;
+
+	@Column(name = "ementa")
 	private String ementa;
+
+	@Column(name = "bibliografia")
 	private String bibliografia;
+
+	@Column(name = "pre_requisitos")
 	private String preRequisitos;
+	
+	@OneToOne(mappedBy = "disciplina", optional = true, fetch = FetchType.LAZY)
 	private CargaHoraria cargaHoraria;
+	
+	@OneToOne
 	private Curso curso;
+	
+	@ManyToOne
 	private Turma turma;
 	
 	public long getId() {
@@ -23,12 +52,6 @@ public class Disciplina {
 	}
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
-	}
-	public String getCarga_horaria() {
-		return carga_horaria;
-	}
-	public void setCarga_horaria(String carga_horaria) {
-		this.carga_horaria = carga_horaria;
 	}
 	public String getEmenta() {
 		return ementa;

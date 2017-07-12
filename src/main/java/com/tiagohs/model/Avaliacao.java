@@ -1,12 +1,38 @@
 package com.tiagohs.model;
 
-public class Avaliacao {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "avaliacao")
+public class Avaliacao {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "avaliacao_id")
+	private int id;
+	
+	@Column(name = "nota_av1")
 	private int notaAv1;
+	
+	@Column(name = "nota_av2")
 	private int notaAv2;
+	
+	@Column(name = "nota_final")
 	private int notaFinal;
+	
+	@Column(name = "frequencia")
 	private int frequencia;
+	
+	@OneToOne
 	private Aluno aluno;
+	
+	@OneToOne
 	private Turma turma;
 	
 	public int getNotaAv1() {

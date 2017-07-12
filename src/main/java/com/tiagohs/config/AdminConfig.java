@@ -26,8 +26,6 @@ public class AdminConfig extends WebMvcConfigurerAdapter {
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {
 		
-		registry.addViewController("/home").setViewName("home");
-		registry.addViewController("/").setViewName("home");
 		registry.addViewController("/admin/home").setViewName("/admin/home");
 		registry.addViewController("/auth/login").setViewName("/auth/login");
 	}

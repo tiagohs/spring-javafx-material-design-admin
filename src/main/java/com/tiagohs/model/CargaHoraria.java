@@ -1,11 +1,32 @@
 package com.tiagohs.model;
 
-public class CargaHoraria {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "carga_horaria")
+public class CargaHoraria {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "carga_horaria_id")
 	private long id;
+	
+	@Column(name = "teorica")
 	private int teorica;
+
+	@Column(name = "pratica")
 	private int pratica;
+
+	@Column(name = "estagio")
 	private int estagio;
+	
+	@OneToOne
 	private Disciplina disciplina;
 	
 	public long getId() {
