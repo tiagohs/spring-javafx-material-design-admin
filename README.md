@@ -7,7 +7,8 @@ Aplicação desktop para Gerenciamento de estoque e vendas, nesse projeto utiliz
 
 &nbsp; | &nbsp; | &nbsp; | &nbsp;
 | --- | --- | --- | --- |
-| <a href="http://docs.oracle.com/javase/8/javase-clienttechnologies.htm">JavaFx</a> | <a href="https://github.com/apache/maven">Maven</a> | --- | --- |
+| <a href="http://docs.oracle.com/javase/8/javase-clienttechnologies.htm">JavaFx</a> | <a href="https://github.com/apache/maven">Maven</a> | <a href="https://github.com/spring-projects/spring-boot">Spring Boot</a> | <a href="https://github.com/spring-projects/spring-data-jpa">Spring Data JPA</a> |
+| <a href="https://github.com/hibernate">Hibernate</a> | <a href="https://www.sqlite.org/">SQLite</a> | <a href="https://github.com/gwenn/sqlite-dialect/">SQLite Dialect</a> | <a href="https://github.com/xerial/sqlite-jdbc">SQLite JDBC</a> |
 
 ### Desenvolvido por: 
 
