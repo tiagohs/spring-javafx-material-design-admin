@@ -9,4 +9,4 @@ install:
 
 branches:
   only:
-  - admin-java
+  - admin-javafx
