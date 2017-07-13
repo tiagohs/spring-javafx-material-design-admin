@@ -1,7 +1,7 @@
 # stuffs-admin JavaFX Descktop: Gerenciamento de Estoque e Vendas
 
 [![Apache License 2](https://img.shields.io/badge/license-ASF2-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0.txt)
-[![Build Status](https://travis-ci.org/tiagohs/stuffs-admin.svg?branch=admin-java)](https://travis-ci.org/tiagohs/stuffs-admin)
+[![Build Status](https://travis-ci.org/tiagohs/stuffs-admin.svg?branch=admin-javafx)](https://travis-ci.org/tiagohs/stuffs-admin)
 
 Aplicação desktop para Gerenciamento de estoque e vendas, nesse projeto utilizo as seguintes técnologias:
 
