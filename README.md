@@ -1,13 +1,14 @@
 # stuffs-admin
 
 [![Apache License 2](https://img.shields.io/badge/license-ASF2-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0.txt)
-[![Build Status](https://travis-ci.org/tiagohs/stuffs-admin.svg?branch=admin-java)](https://travis-ci.org/tiagohs/stuffs-admin)
+
 
 Pequenos projetos de Admins em diversas linguagens.
 
 ##### Os projetos estarão dividos em branchs, logo basta selecionar o branch desejado acima ou clique nos links indicados abaixo:
 
 ## stuffs-admin em Java: Sistema de Controle Acadêmico
+[![Build Status](https://travis-ci.org/tiagohs/stuffs-admin.svg?branch=admin-java)](https://travis-ci.org/tiagohs/stuffs-admin)
 ##### <i>Em desenvolvimento..</i>
 
 <b>Branch com o código</b>: <a href="https://github.com/tiagohs/stuffs-admin/tree/admin-java">Clique Aqui</a>
@@ -20,6 +21,21 @@ Pequenos projetos de Admins em diversas linguagens.
   <li>Hibernate</li>
   <li>MySQL</li>
   <li>Thymeleaf</li>
+</ul>
+
+## stuffs-admin JavaFX Desktop: Gerenciamento de Estoque e Vendas
+[![Build Status](https://travis-ci.org/tiagohs/stuffs-admin.svg?branch=admin-javafx)](https://travis-ci.org/tiagohs/stuffs-admin)
+##### <i>Em desenvolvimento..</i>
+
+<b>Branch com o código</b>: <a href="https://github.com/tiagohs/stuffs-admin/tree/admin-javafx">Clique Aqui</a>
+
+<b>Principais técnologias utilizadas:</b>
+
+<ul>
+  <li>JavaFX</li>
+  <li>Spring Boot</li>
+  <li>Hibernate</li>
+  <li>SQLite</li>
 </ul>
 
 ### Desenvolvido por:
