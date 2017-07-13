@@ -5,6 +5,8 @@
 
 Pequenos projetos de Admins em diversas linguagens.
 
+##### Os projetos estarão dividos em branchs, logo basta selecionar o branch desejado acima ou clique nos links indicados abaixo:
+
 ## stuffs-admin em Java: Sistema de Controle Acadêmico
 ##### <i>Em desenvolvimento..</i>
 
