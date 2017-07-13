@@ -1,16 +1,13 @@
-# stuffs-admin Java: Sistema de Controle Acadêmico com Spring Boot
+# stuffs-admin JavaFX Descktop: Gerenciamento de Estoque e Vendas
 
 [![Apache License 2](https://img.shields.io/badge/license-ASF2-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0.txt)
 [![Build Status](https://travis-ci.org/tiagohs/stuffs-admin.svg?branch=admin-java)](https://travis-ci.org/tiagohs/stuffs-admin)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/d113af0da84b4ab9b17b8ffc29c58ecf)](https://www.codacy.com/app/tiagohs/stuffs-admin?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=tiagohs/stuffs-admin&amp;utm_campaign=Badge_Grade)
 
-Aplicação WEB relativamente simples utilizando as boas práticas de programação em Java com Spring Boot, nesse projeto utilizo as seguintes técnologias:
+Aplicação desktop para Gerenciamento de estoque e vendas, nesse projeto utilizo as seguintes técnologias:
 
 &nbsp; | &nbsp; | &nbsp; | &nbsp;
 | --- | --- | --- | --- |
-| <a href="https://github.com/spring-projects/spring-boot">Spring Boot</a> | <a href="https://github.com/spring-projects/spring-data-jpa">Spring Data JPA</a> | <a href="https://github.com/spring-projects/spring-framework">Spring Web MVC</a> | <a href="https://github.com/spring-projects/spring-security">Spring Security</a> |
-| <a href="https://github.com/spring-projects/spring-social">Spring Social</a> | <a href="https://github.com/hibernate">Hibernate</a> | <a href="https://github.com/apache/maven">Maven</a> | <a href="https://github.com/thymeleaf/thymeleaf">Thymeleaf</a> |
-| <a href="https://github.com/twbs/bootstrap">Bootstrap3</a> | --- | --- | --- |
+| <a href="http://docs.oracle.com/javase/8/javase-clienttechnologies.htm">JavaFx</a> | <a href="https://github.com/apache/maven">Maven</a> | --- | --- |
 
 ### Desenvolvido por:
 
