@@ -9,7 +9,7 @@ Aplicação desktop para Gerenciamento de estoque e vendas, nesse projeto utiliz
 | --- | --- | --- | --- |
 | <a href="http://docs.oracle.com/javase/8/javase-clienttechnologies.htm">JavaFx</a> | <a href="https://github.com/apache/maven">Maven</a> | --- | --- |
 
-### Desenvolvido por:
+### Desenvolvido por: 
 
 Tiago Henrique da Silva - tiago.hsilva@al.infnet.edu.br / tiago.silva.93@hotmail.com
 
