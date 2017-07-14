@@ -34,7 +34,7 @@ public class MainApplication extends Application  {
         /*FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/sample.fxml"));
         fxmlLoader.setControllerFactory(springContext::getBean);
         root = fxmlLoader.load();*/
-        
+         
     }
 	
     @Override

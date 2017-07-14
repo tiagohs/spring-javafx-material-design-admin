@@ -17,4 +17,5 @@
 *.zip
 *.tar.gz
 *.rar
-/target/
+target/
+bin/
