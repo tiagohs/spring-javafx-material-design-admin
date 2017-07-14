@@ -21,6 +21,7 @@ Pequenos projetos de Admins em diversas linguagens.
   <li>Hibernate</li>
   <li>MySQL</li>
   <li>Thymeleaf</li>
+  <li>Bootstrap 3</li>
 </ul>
 
 ## stuffs-admin JavaFX Desktop: Gerenciamento de Estoque e Vendas
@@ -36,6 +37,7 @@ Pequenos projetos de Admins em diversas linguagens.
   <li>Spring Boot</li>
   <li>Hibernate</li>
   <li>SQLite</li>
+  <li>Material Design com JFoenix</li>
 </ul>
 
 ### Desenvolvido por:
