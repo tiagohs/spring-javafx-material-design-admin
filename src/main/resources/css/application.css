@@ -1,0 +1,50 @@
+
+/* 
+	Primary Color: #3F51B5
+	Dark Primary Color: #303F9F 
+	Light Primary Color: #7986CB
+	
+	Secondary Color: #009688
+	Dark Primary Color: #00796B
+	Light Primary Color: #4DB6AC
+	
+	Text Size Small: 12
+	Text Size Medium: 14 
+	Text Size Regular: 16
+	Text Size Large: 20
+	Text Size xLarge: 34
+	
+	Color-Black Primary: #212121
+	Color-Black Secondary: #616161
+	
+	Color-White Primary: #FAFAFA
+	Color-White Secondary: #E0E0E0
+	
+	Color-Error: #D34336
+	
+	Divider Color: #EEEEEE
+*/
+
+.product-detail-header {
+	-fx-background-color: -fx-primary-color;
+}
+
+.jfx-text-field:error {
+    -jfx-focus-color: #D34336;
+    -jfx-unfocus-color: #D34336;
+}
+
+.jfx-text-field .error-label {
+    -fx-text-fill: #D34336;
+    -fx-font-size: 0.75em;
+}
+
+.jfx-text-field .error-icon {
+    -fx-text-fill: #D34336;
+    -fx-font-size: 1em;
+}
+
+.jfx-text-field .error-label {
+    -fx-text-fill: #D34336;
+    -fx-font-size: 0.75em;
+}

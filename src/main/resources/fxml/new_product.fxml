@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.validation.RequiredFieldValidator?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="689.0" prefWidth="709.0" stylesheets="@../css/application.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane layoutX="-10.0" layoutY="-9.0" prefHeight="61.0" prefWidth="728.0" style="-fx-background-color: #3F51B5;" styleClass="product-detail-header">
+         <children>
+            <Label layoutX="102.0" layoutY="20.0" text="New Product" textFill="#fafafa">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="23.0" layoutY="23.0" text="Products /" textFill="#e0e0e0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <JFXButton layoutX="505.0" layoutY="20.0" prefHeight="27.0" prefWidth="90.0" ripplerFill="#7986cb" text="Cancel" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </JFXButton>
+            <JFXButton layoutX="597.0" layoutY="20.0" prefHeight="27.0" prefWidth="90.0" ripplerFill="#7986cb" text="Help" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </JFXButton>
+            <JFXButton layoutX="408.0" layoutY="20.0" prefHeight="27.0" prefWidth="90.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Save" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </Pane>
+      <Label layoutX="24.0" layoutY="75.0" text="Product Details" textFill="#212121">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="168.0" layoutY="79.0" text="Product Details" textFill="#616161">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Pane layoutX="24.0" layoutY="113.0" prefHeight="1.0" prefWidth="672.0" style="-fx-background-color: #EEEEEE;" />
+      
+      <JFXTextField fx:id="productNameTextField" focusColor="#009688" labelFloat="true" layoutX="247.0" layoutY="143.0" prefHeight="25.0" prefWidth="427.0" promptText="Product Name">
+      	<validators>
+      		<RequiredFieldValidator message="Input Required!">
+              
+        	</RequiredFieldValidator>
+      	</validators>
+      </JFXTextField>
+      <JFXTextField fx:id="productNameLabel" accessibleHelp="Auto" focusColor="#009688" labelFloat="true" layoutX="25.0" layoutY="143.0" prefHeight="25.0" prefWidth="208.0" promptText="SKU">
+         <validators>
+            <RequiredFieldValidator message="Input Required!" />
+         </validators>
+      </JFXTextField>
+      <JFXComboBox focusColor="#009688" labelFloat="true" layoutX="25.0" layoutY="411.0" prefHeight="25.0" prefWidth="152.0" promptText="Select a Supplier" />
+      <JFXTextArea focusColor="#009688" labelFloat="true" layoutX="24.0" layoutY="203.0" prefHeight="175.0" prefWidth="658.0" promptText="Product Description" />
+      <JFXComboBox focusColor="#009688" labelFloat="true" layoutX="254.0" layoutY="410.0" prefHeight="25.0" prefWidth="152.0" promptText="Select the Product Type" />
+      <JFXComboBox focusColor="#009688" labelFloat="true" layoutX="482.0" layoutY="411.0" prefHeight="25.0" prefWidth="152.0" promptText="Select a Brand" />
+      <Label layoutX="24.0" layoutY="499.0" text="Additional Information" textFill="#212121">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="239.0" layoutY="503.0" text="Product Details" textFill="#616161">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Pane layoutX="24.0" layoutY="537.0" prefHeight="1.0" prefWidth="672.0" style="-fx-background-color: #EEEEEE;" />
+      <JFXTextField focusColor="#009688" layoutX="24.0" layoutY="460.0" prefHeight="25.0" prefWidth="658.0" promptText="Tags" />
+      <JFXTextField focusColor="#009688" layoutX="25.0" layoutY="557.0" prefHeight="25.0" prefWidth="189.0" promptText="Initial Cost Price" />
+      <JFXTextField focusColor="#009688" layoutX="239.0" layoutY="557.0" prefHeight="25.0" prefWidth="189.0" promptText="Buy Price" />
+      <JFXTextField focusColor="#009688" layoutX="458.0" layoutY="557.0" prefHeight="25.0" prefWidth="189.0" promptText="Wholesale Price" />
+      <JFXTextField focusColor="#009688" layoutX="25.0" layoutY="600.0" prefHeight="25.0" prefWidth="189.0" promptText="Retail Price" />
+      <JFXTextField focusColor="#009688" layoutX="239.0" layoutY="600.0" prefHeight="25.0" prefWidth="189.0" promptText="Weight" />
+      <JFXComboBox focusColor="#009688" layoutX="435.0" layoutY="600.0" prefHeight="25.0" prefWidth="63.0" />
+      <JFXButton layoutX="185.0" layoutY="410.0" prefHeight="25.0" prefWidth="42.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Add" textFill="#fffefe" />
+      <JFXButton layoutX="414.0" layoutY="411.0" prefHeight="25.0" prefWidth="42.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Add" textFill="#fffefe" />
+      <JFXButton layoutX="640.0" layoutY="410.0" prefHeight="25.0" prefWidth="42.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Add" textFill="#fffefe" />
+   </children>
+</AnchorPane>
