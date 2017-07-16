@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="689.0" prefWidth="709.0" stylesheets="@../css/application.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="689.0" prefWidth="709.0" stylesheets="@../css/application.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Pane layoutX="-10.0" layoutY="-9.0" prefHeight="61.0" prefWidth="728.0" style="-fx-background-color: #3F51B5;" styleClass="product-detail-header">
          <children>
@@ -80,12 +80,12 @@
          </font>
       </Label>
       <Pane layoutX="24.0" layoutY="537.0" prefHeight="1.0" prefWidth="672.0" style="-fx-background-color: #EEEEEE;" />
-      <JFXTextField focusColor="#009688" layoutX="24.0" layoutY="460.0" prefHeight="25.0" prefWidth="658.0" promptText="Tags" />
-      <JFXTextField focusColor="#009688" layoutX="25.0" layoutY="557.0" prefHeight="25.0" prefWidth="189.0" promptText="Initial Cost Price" />
-      <JFXTextField focusColor="#009688" layoutX="239.0" layoutY="557.0" prefHeight="25.0" prefWidth="189.0" promptText="Buy Price" />
-      <JFXTextField focusColor="#009688" layoutX="458.0" layoutY="557.0" prefHeight="25.0" prefWidth="189.0" promptText="Wholesale Price" />
-      <JFXTextField focusColor="#009688" layoutX="25.0" layoutY="600.0" prefHeight="25.0" prefWidth="189.0" promptText="Retail Price" />
-      <JFXTextField focusColor="#009688" layoutX="239.0" layoutY="600.0" prefHeight="25.0" prefWidth="189.0" promptText="Weight" />
+      <JFXTextField focusColor="#009688" labelFloat="true" layoutX="24.0" layoutY="460.0" prefHeight="25.0" prefWidth="658.0" promptText="Tags" />
+      <JFXTextField focusColor="#009688" labelFloat="true" layoutX="25.0" layoutY="557.0" prefHeight="25.0" prefWidth="189.0" promptText="Initial Cost Price" />
+      <JFXTextField focusColor="#009688" labelFloat="true" layoutX="239.0" layoutY="557.0" prefHeight="25.0" prefWidth="189.0" promptText="Buy Price" />
+      <JFXTextField focusColor="#009688" labelFloat="true" layoutX="458.0" layoutY="557.0" prefHeight="25.0" prefWidth="189.0" promptText="Wholesale Price" />
+      <JFXTextField focusColor="#009688" labelFloat="true" layoutX="25.0" layoutY="600.0" prefHeight="25.0" prefWidth="189.0" promptText="Retail Price" />
+      <JFXTextField focusColor="#009688" labelFloat="true" layoutX="239.0" layoutY="600.0" prefHeight="25.0" prefWidth="189.0" promptText="Weight" />
       <JFXComboBox focusColor="#009688" layoutX="435.0" layoutY="600.0" prefHeight="25.0" prefWidth="63.0" />
       <JFXButton layoutX="185.0" layoutY="410.0" prefHeight="25.0" prefWidth="42.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Add" textFill="#fffefe" />
       <JFXButton layoutX="414.0" layoutY="411.0" prefHeight="25.0" prefWidth="42.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Add" textFill="#fffefe" />
