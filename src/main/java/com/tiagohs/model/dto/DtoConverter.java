@@ -1,5 +1,7 @@
 package com.tiagohs.model.dto;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,6 +14,12 @@ import com.tiagohs.model.Usuario;
 
 public class DtoConverter {
 	
+	private SimpleDateFormat dateFormat;
+	
+	public DtoConverter() {
+		dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+	}
+
 	public void listDtoToListEntity() {
 		
 	}
@@ -61,12 +69,31 @@ public class DtoConverter {
 	public Aluno dtoToEntity(AlunoDTO alunoDTO) {
 		Aluno aluno = new Aluno();
 		
+		try {
+			aluno.setId(alunoDTO.getId());
+			aluno.setMatricula(alunoDTO.getMatricula());
+			aluno.setNome(alunoDTO.getNome());
+			aluno.setSexo(alunoDTO.getSexo());
+			aluno.setDataNascimento(dateFormat.parse(alunoDTO.getDataNascimento()));
+		} catch (ParseException e) {
+			
+		}
 		
 		return aluno;
 	}
 	
 	public AlunoDTO entityToDto(Aluno aluno) {
 		AlunoDTO alunoDTO = new AlunoDTO();
+		
+		try {
+			alunoDTO.setId(aluno.getId());
+			alunoDTO.setMatricula(aluno.getMatricula());
+			alunoDTO.setNome(aluno.getNome());
+			alunoDTO.setSexo(aluno.getSexo());
+			alunoDTO.setDataNascimento(dateFormat.format(aluno.getDataNascimento()));
+		} catch (Exception e) {
+			
+		}
 		
 		return alunoDTO;
 	}

@@ -8,16 +8,53 @@
 	display: block; 
 }
 
-.container {
+.admin-home-container {
 	float: none;
 	margin: 0 auto;
 	margin-top: 50px;
+	margin-left: 50px;
+}
+
+.auth-container {
+	float: none;
+	margin: 0 auto;
+	margin-top: 50px;
+}
+
+.container {
+	margin: 10px;
+}
+
+.labels {
+  display: inline-block;
+  text-align: right;
+}
+
+.forms-page-title {
+	padding: 5px;
+	background-color: white;
+	padding-left: 30px;
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+
+.forms-page-container {
+	background-color: white;
+	padding: 20px;
+	margin: 0 auto;
+	float: none;
 }
 
 .login-titulo {
 	color: white;
 	text-align: center;
 } 
+
+.divider-line {
+	background-color: #EAEAEB; 
+	height: 1px; 
+	width: 100%;
+}
 
 .validation-message {
 	font-size: 12px;
@@ -192,5 +229,9 @@
 }
 
 .sidebar-nav li:nth-child(5) a {
+    color: #fff !important;
+}
+
+.sidebar-nav li:nth-child(6) a {
     color: #fff !important;
 }

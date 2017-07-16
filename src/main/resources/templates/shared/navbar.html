@@ -2,47 +2,58 @@
 xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 
 <div th:fragment="navbar">
-	<div id="wrapper">
+	
 	      <div id="sidebar-wrapper">
 	          <aside id="sidebar">
-	              <ul id="sidemenu" class="sidebar-nav">
+	              <ul id="sidemenu" class="sidebar-nav sidebar-st">
 	                  <li>
-	                      <a href="#">
-	                          <span class="sidebar-icon"><i class="fa fa-dashboard"></i></span>
+	                      <a th:href="@{/admin/home}">
+	                          <span class="sidebar-icon"><i class="fa fa-home"></i></span>
 	                          <span class="sidebar-title">Home</span>
 	                      </a>
 	                  </li>
 	                  <li>
 	                      <a class="accordion-toggle collapsed toggle-switch" data-toggle="collapse" href="#submenu-1">
-	                          <span class="sidebar-icon"><i class="fa fa-users"></i></span>
+	                          <span class="sidebar-icon"><i class="fa fa-user"></i></span>
 	                          <span class="sidebar-title">Usuários</span>
 	                          <b class="caret"></b>
 	                      </a>
 	                      <ul id="submenu-1" class="panel-collapse collapse panel-switch" role="menu">
-	                          <li><a href="#"><i class="fa fa-caret-right"></i>Listar</a></li>
-	                          <li><a href="#"><i class="fa fa-caret-right"></i>Cadastrar</a></li>
+	                          <li><a href="#"><i class="fa fa-list"></i>Listar</a></li>
+	                          <li><a href="#"><i class="fa fa-user-plus"></i>Cadastrar</a></li>
+	                      </ul>
+	                  </li>
+	                  <li>
+	                      <a class="accordion-toggle collapsed toggle-switch" data-toggle="collapse" href="#submenu-5">
+	                          <span class="sidebar-icon"><i class="fa fa-user"></i></span>
+	                          <span class="sidebar-title">Alunos</span>
+	                          <b class="caret"></b>
+	                      </a>
+	                      <ul id="submenu-5" class="panel-collapse collapse panel-switch" role="menu">
+	                          <li><a th:href="@{/admin/aluno/home}"><i class="fa fa-list"></i>Listar</a></li>
+	                          <li><a th:href="@{/admin/aluno/create}"><i class="fa fa-user-plus"></i>Cadastrar</a></li>
 	                      </ul>
 	                  </li>
 	                  <li>
 	                      <a class="accordion-toggle collapsed toggle-switch" data-toggle="collapse" href="#submenu-2">
-	                          <span class="sidebar-icon"><i class="fa fa-users"></i></span>
+	                          <span class="sidebar-icon"><i class="fa fa-graduation-cap"></i></span>
 	                          <span class="sidebar-title">Professores</span>
 	                          <b class="caret"></b>
 	                      </a>
 	                      <ul id="submenu-2" class="panel-collapse collapse panel-switch" role="menu">
-	                          <li><a href="#"><i class="fa fa-caret-right"></i>Listar</a></li>
-	                          <li><a href="#"><i class="fa fa-caret-right"></i>Cadastrar</a></li>
+	                          <li><a href="#"><i class="fa fa-list"></i>Listar</a></li>
+	                          <li><a href="#"><i class="fa fa-user-plus"></i>Cadastrar</a></li>
 	                      </ul>
 	                  </li>
 	                  <li>
 	                      <a class="accordion-toggle collapsed toggle-switch" data-toggle="collapse" href="#submenu-3">
-	                          <span class="sidebar-icon"><i class="fa fa-users"></i></span>
+	                          <span class="sidebar-icon"><i class="fa fa-file-text-o"></i></span>
 	                          <span class="sidebar-title">Disciplinas</span>
 	                          <b class="caret"></b>
 	                      </a>
 	                      <ul id="submenu-3" class="panel-collapse collapse panel-switch" role="menu">
-	                          <li><a href="#"><i class="fa fa-caret-right"></i>Listar</a></li>
-	                          <li><a href="#"><i class="fa fa-caret-right"></i>Cadastrar</a></li>
+	                          <li><a href="#"><i class="fa fa-list"></i>Listar</a></li>
+	                          <li><a href="#"><i class="fa fa-user-plus"></i>Cadastrar</a></li>
 	                      </ul>
 	                  </li>
 	                  <li>
@@ -52,13 +63,13 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 	                          <b class="caret"></b>
 	                      </a>
 	                      <ul id="submenu-4" class="panel-collapse collapse panel-switch" role="menu">
-	                          <li><a href="#"><i class="fa fa-caret-right"></i>Listar</a></li>
-	                          <li><a href="#"><i class="fa fa-caret-right"></i>Cadastrar</a></li>
+	                          <li><a href="#"><i class="fa fa-list"></i>Listar</a></li>
+	                          <li><a href="#"><i class="fa fa-user-plus"></i>Cadastrar</a></li>
 	                      </ul>
 	                  </li>
 	              </ul>
 	          </aside>            
 	      </div>
-	</div> 
+	
 </div>
 </html>

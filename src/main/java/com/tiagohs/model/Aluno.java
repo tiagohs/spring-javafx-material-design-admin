@@ -27,7 +27,7 @@ public class Aluno {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "aluno_id")
-	private int id;
+	private long id;
 	
 	@Column(name = "matricula", nullable = false, unique = true)
 	private String matricula;
@@ -96,10 +96,10 @@ public class Aluno {
 	public void setCurso(List<Curso> curso) {
 		this.curso = curso;
 	}
-	public int getId() {
+	public long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 	public Turma getTurma() {
@@ -108,5 +108,18 @@ public class Aluno {
 	public void setTurma(Turma turma) {
 		this.turma = turma;
 	}
+	public String getSexo() {
+		return sexo;
+	}
+	public void setSexo(String sexo) {
+		this.sexo = sexo;
+	}
+	public Date getDataNascimento() {
+		return dataNascimento;
+	}
+	public void setDataNascimento(Date dataNascimento) {
+		this.dataNascimento = dataNascimento;
+	}
+	
 	
 }

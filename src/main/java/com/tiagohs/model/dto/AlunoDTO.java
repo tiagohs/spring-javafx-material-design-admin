@@ -4,25 +4,33 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 public class AlunoDTO {
 	
+	private long id;
+	
 	private String matricula;
 	
 	@NotEmpty(message = "Campo Obrigatório")
 	private String nome;
 	
-	@NotEmpty(message = "Campo Obrigatório")
 	private String sexo;
 	
 	@NotEmpty(message = "Campo Obrigatório")
 	private String dataNascimento;
 	
 	private String rua;
-	private int numero;
+	private String numero;
 	private String complemento;
 	private String bairro;
 	private String cidade;
 	private String estado;
 	private String pais;
 	
+	
+	public long getId() {
+		return id;
+	}
+	public void setId(long id) {
+		this.id = id;
+	}
 	public String getMatricula() {
 		return matricula;
 	}
@@ -53,10 +61,10 @@ public class AlunoDTO {
 	public void setRua(String rua) {
 		this.rua = rua;
 	}
-	public int getNumero() {
+	public String getNumero() {
 		return numero;
 	}
-	public void setNumero(int numero) {
+	public void setNumero(String numero) {
 		this.numero = numero;
 	}
 	public String getComplemento() {
