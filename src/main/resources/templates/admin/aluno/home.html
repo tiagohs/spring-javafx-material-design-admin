@@ -34,14 +34,14 @@
     	
     		<a type="button" th:href="@{/admin/aluno/create}" class="btn btn-primary" style="margin-bottom: 5px;">Novo Aluno</a>
     		
-			<div class="alert alert-success alert-dismissable" th:if="${success}">
+			<div class="alert alert-success alert-dismissable" th:if="${(param.success != null)}">
 			  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-			  <p th:utext="${success}" />
+			  Aluno <strong>salvo</strong> com sucesso!
 			</div>
 			
-			<div class="alert alert-danger alert-dismissable" th:if="${error}">
+			<div class="alert alert-danger alert-dismissable" th:if="${(param.error != null)}">
 			  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-			  <p th:utext="${error}" />
+			  Aconteceu algum erro, tente novamente!
 			</div>
     		
     		<table class="table table-striped table-responsive">
@@ -116,7 +116,10 @@
 	        var delid = $('#RowId').val();
 	        //Do what ever you like to do
 	        $.post('/admin/aluno/delete', { id : delid },
-	                function() {window.location.reload();} );
+	                function() {
+	        	window.location = window.location.pathname;
+	        	window.location.reload();
+	        	} );
 		});
   	
   	</script>
