@@ -25,6 +25,11 @@
 	Divider Color: #EEEEEE
 */
 
+@font-face {
+    font-family: Roboto-Regular;
+    src: url('fonts/Roboto-Regular.ttf');
+}
+
 .product-detail-header {
 	-fx-background-color: -fx-primary-color;
 }
@@ -45,6 +50,8 @@
 }
 
 .jfx-text-field .error-label {
+	
     -fx-text-fill: #D34336;
     -fx-font-size: 0.75em;
 }
+

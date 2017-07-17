@@ -7,7 +7,7 @@ import com.jfoenix.controls.JFXTextField;
 import io.datafx.controller.FXMLController;
 import javafx.fxml.FXML;
 
-@FXMLController(value = "/fxml/new_product.fxml", title = "New Product")
+@FXMLController(value = "/fxml/new_product.fxml", title = "New Product", iconPath = "/images/icon.png")
 public class ProductNewController {
 	
 	@FXML
