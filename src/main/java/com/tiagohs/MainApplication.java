@@ -28,7 +28,7 @@ public class MainApplication extends Application  {
     	
     	Scene scene = new Scene(new Flow(RootController.class).start());
         scene.getStylesheets().add(MainApplication.class.getResource("/css/application.css").toExternalForm());
-        scene.getStylesheets().add(MainApplication.class.getResource("/css/jfoenix.css").toExternalForm());
+        //scene.getStylesheets().add(MainApplication.class.getResource("/css/jfoenix.css").toExternalForm());
         primaryStage.setScene(scene);
         primaryStage.show();
 	}
