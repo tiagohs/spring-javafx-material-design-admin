@@ -4,7 +4,7 @@ import javax.annotation.PostConstruct;
 
 import io.datafx.controller.FXMLController;
 
-@FXMLController(value = "/fxml/dashboard.fxml", title = "Controle de Estoque - Dashboard")
+@FXMLController(value = "/fxml/dashboard.fxml", title = "Dashboard - Inventory Management")
 public class DashboardController {
 	
 	
