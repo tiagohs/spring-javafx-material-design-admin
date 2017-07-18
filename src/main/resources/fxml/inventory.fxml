@@ -6,16 +6,18 @@
 <?import com.jfoenix.controls.JFXTreeTableView?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Pagination?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="689.0" prefWidth="709.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="689.0" prefWidth="709.0" stylesheets="@../css/application.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Pane layoutX="-6.0" layoutY="-6.0" prefHeight="61.0" prefWidth="728.0" style="-fx-background-color: #3F51B5;" styleClass="product-detail-header">
+      <Pane layoutX="-6.0" layoutY="-6.0" prefHeight="182.0" prefWidth="728.0" style="-fx-background-color: #3F51B5;" styleClass="product-detail-header">
          <children>
             <Label layoutX="85.0" layoutY="20.0" text="Inventory" textFill="#fafafa">
                <font>
@@ -27,36 +29,83 @@
                   <Font size="16.0" />
                </font>
             </Label>
+            <JFXButton alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="184.0" layoutY="56.0" onAction="#onNewProduct" prefHeight="75.0" prefWidth="106.0" ripplerFill="#fcfcfc" text="New Product" textAlignment="CENTER" textFill="#fffdfd">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="41.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/plus.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="305.0" layoutY="56.0" prefHeight="75.0" prefWidth="114.0" ripplerFill="#7986cb" text="New Employee" textAlignment="CENTER" textFill="#fffdfd">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="41.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/person-plus.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="430.0" layoutY="56.0" prefHeight="75.0" prefWidth="114.0" ripplerFill="#7986cb" text="New Supplier" textAlignment="CENTER" textFill="#fffdfd">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="41.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/supplier.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
          </children>
       </Pane>
-      <JFXTreeTableView fx:id="productsTable" layoutX="12.0" layoutY="117.0" prefHeight="420.0" prefWidth="683.0">
-         <columns>
-            <JFXTreeTableColumn fx:id="skuColumn" minWidth="77.0" prefWidth="77.0" resizable="false" text="SKU" />
-            <JFXTreeTableColumn fx:id="supplierColumn" minWidth="133" prefWidth="149.0" resizable="false" text="Supplier" />
-            <JFXTreeTableColumn fx:id="buyPriceColumn" minWidth="80.0" resizable="false" text="Buy Price" />
-            <JFXTreeTableColumn fx:id="productTypeColumn" minWidth="115.0" prefWidth="115.0" resizable="false" text="Product Type" />
-            <JFXTreeTableColumn fx:id="descriptionColumn" minWidth="101.0" prefWidth="261.0" resizable="false" text="Description" />
-         </columns>
-      </JFXTreeTableView>
-      <Label layoutX="10.0" layoutY="83.0" text="Products">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <JFXTextField layoutX="466.0" layoutY="79.0" prefHeight="30.0" prefWidth="136.0" promptText="Search..." />
-      <JFXButton layoutX="606.0" layoutY="79.0" prefHeight="30.0" prefWidth="88.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Search" textFill="WHITE" />
-      <JFXButton alignment="BOTTOM_CENTER" contentDisplay="GRAPHIC_ONLY" layoutX="91.0" layoutY="76.0" prefHeight="30.0" prefWidth="45.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" textAlignment="CENTER" textFill="#fffdfd">
-         <font>
-            <Font size="14.0" />
-         </font>
-         <graphic>
-            <ImageView fitHeight="25.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/plus.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </JFXButton>
-      <Pagination fx:id="pagination" layoutX="541.0" layoutY="543.0" maxPageIndicatorCount="5" pageCount="7" prefHeight="45.0" prefWidth="166.0" />
+      <TabPane layoutY="127.0" prefHeight="570.0" prefWidth="717.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="PRODUCTS">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="288.0" prefWidth="558.0">
+                     <children>
+                        <Pagination fx:id="pagination" layoutX="446.0" layoutY="427.0" maxPageIndicatorCount="5" pageCount="7" prefHeight="65.0" prefWidth="253.0" />
+                        <JFXTreeTableView fx:id="productsTable" layoutX="17.0" layoutY="47.0" prefHeight="373.0" prefWidth="683.0">
+                           <columns>
+                              <JFXTreeTableColumn fx:id="skuColumn" minWidth="77.0" prefWidth="77.0" resizable="false" text="SKU" />
+                              <JFXTreeTableColumn fx:id="supplierColumn" minWidth="133" prefWidth="149.0" resizable="false" text="Supplier" />
+                              <JFXTreeTableColumn fx:id="buyPriceColumn" minWidth="80.0" resizable="false" text="Buy Price" />
+                              <JFXTreeTableColumn fx:id="productTypeColumn" minWidth="115.0" prefWidth="115.0" resizable="false" text="Product Type" />
+                              <JFXTreeTableColumn fx:id="descriptionColumn" minWidth="101.0" prefWidth="261.0" resizable="false" text="Description" />
+                           </columns>
+                        </JFXTreeTableView>
+                        <Label layoutX="25.0" layoutY="18.0" text="Products">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="30.0" layoutX="540.0" layoutY="466.0" stroke="TRANSPARENT" strokeType="INSIDE" width="65.0" />
+                        <JFXTextField layoutX="471.0" layoutY="11.0" prefHeight="30.0" prefWidth="136.0" promptText="Search..." />
+                        <JFXButton layoutX="611.0" layoutY="11.0" prefHeight="30.0" prefWidth="88.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Search" textFill="WHITE" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="EMPLOYEES">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+            </content>
+          </Tab>
+            <Tab text="SUPPLIERS">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+            </Tab>
+        </tabs>
+      </TabPane>
    </children>
 </AnchorPane>
