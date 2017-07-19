@@ -5,22 +5,22 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "tag")
-public class Tag {
+@Table(name = "brand")
+public class Brand {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "tag_id")
+	@Column(name = "brand_id")
 	private long id;
 	
 	@Column(name = "name")
 	private String name;
 	
-	@ManyToOne
+	@OneToOne
 	private Product product;
 
 	public long getId() {
@@ -46,6 +46,7 @@ public class Tag {
 	public void setProduct(Product product) {
 		this.product = product;
 	}
+	
 	
 	
 }

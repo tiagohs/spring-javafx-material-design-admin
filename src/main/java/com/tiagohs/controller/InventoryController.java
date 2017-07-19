@@ -1,30 +1,28 @@
 package com.tiagohs.controller;
 
-import javax.annotation.PostConstruct;
+import org.springframework.stereotype.Controller;
 
 import com.jfoenix.controls.JFXTreeTableView;
-import com.tiagohs.model.ProductTableDTO;
+import com.tiagohs.model.dto.ProductTableDTO;
 import com.tiagohs.util.WindowsUtils;
 
-import io.datafx.controller.FXMLController;
-import io.datafx.controller.flow.FlowException;
 import javafx.fxml.FXML;
+import javafx.stage.Stage;
 
-@FXMLController(value = "/fxml/inventory.fxml", title = "Inventory - Inventory Management")
-public class InventoryController {
+
+@Controller
+public class InventoryController implements BaseController {
 	
 	@FXML
 	private JFXTreeTableView<ProductTableDTO> productsTable;
 	
 	
-	
-	@PostConstruct
-	private void init() {
+	public void init(Stage stage) {
 		
 	}
 	
 	@FXML
-	public void onNewProduct() throws FlowException {
-		WindowsUtils.openNewWindow(ProductNewController.class);
+	public void onNewProduct() throws Exception {
+		WindowsUtils.openNewWindow("/fxml/inventory.fxml", "Inventory - Inventory Management");
 	}
 }

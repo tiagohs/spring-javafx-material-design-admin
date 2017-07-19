@@ -1,33 +1,36 @@
 package com.tiagohs.controller;
 
-import javax.annotation.PostConstruct;
+import org.springframework.stereotype.Controller;
 
 import com.tiagohs.util.WindowsUtils;
 
-import io.datafx.controller.FXMLController;
-import io.datafx.controller.flow.FlowException;
 import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
-@FXMLController(value = "/fxml/root.fxml", title = "stuffs-Admin: Inventory Management")
-public class RootController {
+
+@Controller
+public class RootController implements BaseController {
 	
 	@FXML
 	private AnchorPane rootPane;
 	
-	@PostConstruct
-	public void init() throws FlowException {
-		WindowsUtils.replaceFxmlOnWindow(rootPane, DashboardController.class);
+	public void init(Stage stage) {
+		try {
+			WindowsUtils.replaceFxmlOnWindow(rootPane, "/fxml/dashboard.fxml");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	@FXML
-	private void onInvetoryAction() throws FlowException {
-		WindowsUtils.replaceFxmlOnWindow(rootPane, InventoryController.class);
+	private void onInvetoryAction() throws Exception {
+		WindowsUtils.replaceFxmlOnWindow(rootPane, "/fxml/inventory.fxml");
 	}
 	
 	@FXML
-	private void onDashboardAction() throws FlowException {
-		WindowsUtils.replaceFxmlOnWindow(rootPane, DashboardController.class);
+	private void onDashboardAction() throws Exception {
+		WindowsUtils.replaceFxmlOnWindow(rootPane, "/fxml/dashboard.fxml");
 	}
 	
 }

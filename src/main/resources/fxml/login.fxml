@@ -10,8 +10,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="409.0" prefWidth="381.0" style="-fx-background-color: #FFFFFF;" stylesheets="@../css/application.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="409.0" prefWidth="381.0" style="-fx-background-color: #FFFFFF;" stylesheets="@../css/application.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tiagohs.controller.LoginController">
    <children>
       <Pane layoutX="-7.0" layoutY="-8.0" prefHeight="72.0" prefWidth="395.0" style="-fx-background-color: #3F51B5;">
          <children>
@@ -70,7 +69,7 @@
             <Image url="@../images/pass.png" />
          </image>
       </ImageView>
-      <JFXButton layoutX="67.0" layoutY="343.0" prefHeight="36.0" prefWidth="278.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="LOGIN" textFill="WHITE">
+      <JFXButton layoutX="67.0" layoutY="343.0" onAction="#onLogin" prefHeight="36.0" prefWidth="278.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="LOGIN" textFill="WHITE">
          <font>
             <Font size="14.0" />
          </font>

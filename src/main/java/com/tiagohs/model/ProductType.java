@@ -9,12 +9,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "tag")
-public class Tag {
+@Table(name = "Product_type")
+public class ProductType {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "tag_id")
+	@Column(name = "addres_id")
 	private long id;
 	
 	@Column(name = "name")

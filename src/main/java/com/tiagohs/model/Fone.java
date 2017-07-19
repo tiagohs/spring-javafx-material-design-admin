@@ -5,23 +5,22 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "tag")
-public class Tag {
+@Table(name = "fone")
+public class Fone {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "tag_id")
+	@Column(name = "fone_id")
 	private long id;
 	
-	@Column(name = "name")
-	private String name;
+	@Column(name = "code")
+	private int code;
 	
-	@ManyToOne
-	private Product product;
+	@Column(name = "number")
+	private int number;
 
 	public long getId() {
 		return id;
@@ -31,20 +30,20 @@ public class Tag {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public int getCode() {
+		return code;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setCode(int code) {
+		this.code = code;
 	}
 
-	public Product getProduct() {
-		return product;
+	public int getNumber() {
+		return number;
 	}
 
-	public void setProduct(Product product) {
-		this.product = product;
+	public void setNumber(int number) {
+		this.number = number;
 	}
 	
 	

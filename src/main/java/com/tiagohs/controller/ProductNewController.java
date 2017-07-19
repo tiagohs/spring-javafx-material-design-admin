@@ -1,20 +1,19 @@
 package com.tiagohs.controller;
 
-import javax.annotation.PostConstruct;
+import org.springframework.stereotype.Controller;
 
 import com.jfoenix.controls.JFXTextField;
 
-import io.datafx.controller.FXMLController;
 import javafx.fxml.FXML;
+import javafx.stage.Stage;
 
-@FXMLController(value = "/fxml/new_product.fxml", title = "New Product - Inventory Management", iconPath = "/images/icon.png")
-public class ProductNewController {
+@Controller
+public class ProductNewController implements BaseController {
 	
 	@FXML
 	private JFXTextField productNameTextField;
 	
-	@PostConstruct
-	public void init() {
+	public void init(Stage stage) {
 		
 		productNameTextField.focusedProperty().addListener((o, oldValue, newValue) -> {
 			if (!newValue) {

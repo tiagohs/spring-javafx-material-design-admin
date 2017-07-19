@@ -1,15 +1,14 @@
 package com.tiagohs.controller;
 
-import javax.annotation.PostConstruct;
+import org.springframework.stereotype.Controller;
 
-import io.datafx.controller.FXMLController;
+import javafx.stage.Stage;
 
-@FXMLController(value = "/fxml/dashboard.fxml", title = "Dashboard - Inventory Management")
-public class DashboardController {
+@Controller
+public class DashboardController implements BaseController {
 	
 	
-	@PostConstruct
-	public void init() {
+	public void init(Stage stage) {
 		
 	}
 	

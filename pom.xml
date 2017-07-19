@@ -27,7 +27,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-validation</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
@@ -41,6 +40,11 @@
 		  <groupId>com.enigmabridge</groupId>
 		  <artifactId>hibernate4-sqlite-dialect</artifactId>
 		  <version>0.1.2</version>
+		</dependency>
+		<dependency>
+		    <groupId>io.datafx</groupId>
+		    <artifactId>injection</artifactId>
+		    <version>8.0</version>
 		</dependency>
 		<dependency>
 		    <groupId>org.xerial</groupId>
@@ -67,7 +71,17 @@
 		    <artifactId>datafx</artifactId>
 		    <version>8.0.7</version> 
 		</dependency>
-					    
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>
+				spring-boot-starter-cloud-connectors
+			</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>javax.inject</groupId>
+			<artifactId>javax.inject</artifactId>
+			<version>1</version>
+		</dependency>
 	</dependencies>
 
 	<build>

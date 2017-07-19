@@ -1,4 +1,4 @@
-package com.tiagohs.model;
+package com.tiagohs.model.dto;
 
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 

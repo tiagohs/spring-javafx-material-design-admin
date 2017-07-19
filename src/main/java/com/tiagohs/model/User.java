@@ -2,29 +2,59 @@ package com.tiagohs.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+
+import org.hibernate.validator.constraints.Length;
+
+@Entity
+@Table(name = "user")
 public class User {
 	
-	private long id;
-	private String username;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "user_id")
+	private int id;
+	
+	@Column(name = "email")
 	private String email;
+	
+	@Column(name = "username")
+	private String username;
+	
+	@Column(name = "name")
+	private String name;
+	
+	@Column(name = "photo_path")
+	private String photoPath;
+	
+	@Column(name = "password")
+	@Length(min = 5, message = "Sua senha tem que ter pelo menos 5 caracteres")
 	private String password;
 	
+	@Column(name = "active")
+	private int active;
+	
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "user_role", 
+			   joinColumns = @JoinColumn(name = "user_id"), 
+			   inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private List<Role> roles;
 
-	public long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
-	}
-
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
 	}
 
 	public String getEmail() {
@@ -50,7 +80,37 @@ public class User {
 	public void setRoles(List<Role> roles) {
 		this.roles = roles;
 	}
-	
-	
+
+	public int getActive() {
+		return active;
+	}
+
+	public void setActive(int active) {
+		this.active = active;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getPhotoPath() {
+		return photoPath;
+	}
+
+	public void setPhotoPath(String photoPath) {
+		this.photoPath = photoPath;
+	}
 	
 }
