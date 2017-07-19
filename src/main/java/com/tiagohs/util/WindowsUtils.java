@@ -12,7 +12,6 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.util.Callback;
 
 public class WindowsUtils {
 	
@@ -55,13 +54,7 @@ public class WindowsUtils {
 		 try (InputStream fxmlStream = WindowsUtils.class.getResourceAsStream(url)) {
 			 FXMLLoader loader = new FXMLLoader();
 			 loader.setLocation(WindowsUtils.class.getResource(url));
-			   
-			 loader.setControllerFactory(new Callback<Class<?>, Object>() {
-				  @Override
-				  public Object call(Class<?> clazz) {
-				     return MainApplication.springContext.getBean(clazz);
-				  }
-			 });
+			 loader.setControllerFactory( clazz -> { return MainApplication.springContext.getBean(clazz);});
 			   
 			 return loader;
 		 } catch (IOException ioException) {
