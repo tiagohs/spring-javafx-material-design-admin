@@ -16,6 +16,7 @@ public class RootController implements BaseController {
 	private AnchorPane rootPane;
 	
 	public void init(Stage stage) {
+		
 		try {
 			WindowsUtils.replaceFxmlOnWindow(rootPane, "/fxml/dashboard.fxml");
 		} catch (Exception e) {

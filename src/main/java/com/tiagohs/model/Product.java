@@ -46,6 +46,9 @@ public class Product {
 	@Column(name = "weight")
 	private double weight;
 	
+	@Column(name = "initial_stock")
+	private double initialStock;
+	
 	@Column(name = "created_at")
 	@Type(type="date")
 	private Date createdAt;
@@ -187,6 +190,14 @@ public class Product {
 
 	public void setTags(List<Tag> tags) {
 		this.tags = tags;
+	}
+
+	public double getInitialStock() {
+		return initialStock;
+	}
+
+	public void setInitialStock(double initialStock) {
+		this.initialStock = initialStock;
 	}
 	
 	

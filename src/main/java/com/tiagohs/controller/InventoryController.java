@@ -23,6 +23,6 @@ public class InventoryController implements BaseController {
 	
 	@FXML
 	public void onNewProduct() throws Exception {
-		WindowsUtils.openNewWindow("/fxml/inventory.fxml", "Inventory - Inventory Management");
+		WindowsUtils.openNewWindow("/fxml/new_product.fxml", "New Product - Inventory Management");
 	}
 }

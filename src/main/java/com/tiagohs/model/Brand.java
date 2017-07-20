@@ -47,6 +47,9 @@ public class Brand {
 		this.product = product;
 	}
 	
-	
+	@Override
+	public String toString() {
+		return getName();
+	}
 	
 }
