@@ -33,10 +33,10 @@ public class WindowsUtils {
         root.getChildren().add(loadFxml(path).load());
 	}
 	
-	public static Stage openNewWindow(String fxmlPath, String title) throws Exception {
+	public static Stage openNewWindow(String fxmlPath, String title, Modality windowModality) throws Exception {
 		
 		Stage stage = new Stage();
-        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.initModality(windowModality);
         
         return openNewWindow(stage, fxmlPath, title);
 	}

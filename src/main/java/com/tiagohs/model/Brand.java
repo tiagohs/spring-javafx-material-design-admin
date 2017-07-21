@@ -1,11 +1,15 @@
 package com.tiagohs.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -19,9 +23,9 @@ public class Brand {
 	
 	@Column(name = "name")
 	private String name;
-	
-	@OneToOne
-	private Product product;
+
+	@OneToMany(mappedBy = "brand", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<Product> products;
 
 	public long getId() {
 		return id;
@@ -38,15 +42,15 @@ public class Brand {
 	public void setName(String name) {
 		this.name = name;
 	}
-
-	public Product getProduct() {
-		return product;
-	}
-
-	public void setProduct(Product product) {
-		this.product = product;
-	}
 	
+	public List<Product> getProducts() {
+		return products;
+	}
+
+	public void setProducts(List<Product> products) {
+		this.products = products;
+	}
+
 	@Override
 	public String toString() {
 		return getName();

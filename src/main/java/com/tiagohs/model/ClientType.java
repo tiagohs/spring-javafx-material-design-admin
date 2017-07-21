@@ -12,19 +12,18 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "product_type")
-public class ProductType {
-	
+@Table(name = "client_type")
+public class ClientType {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "addres_id")
+	@Column(name = "client_type_id")
 	private long id;
 	
 	@Column(name = "name")
 	private String name;
 	
-	@OneToMany(mappedBy = "productType", fetch = FetchType.LAZY)
-	private List<Product> product;
+	@OneToMany(mappedBy = "clientType", fetch = FetchType.LAZY)
+	private List<Client> clients;
 
 	public long getId() {
 		return id;
@@ -42,15 +41,13 @@ public class ProductType {
 		this.name = name;
 	}
 
-	public List<Product> getProduct() {
-		return product;
+	public List<Client> getClients() {
+		return clients;
 	}
 
-	public void setProduct(List<Product> product) {
-		this.product = product;
+	public void setClients(List<Client> clients) {
+		this.clients = clients;
 	}
-	
-	
 	
 	
 }

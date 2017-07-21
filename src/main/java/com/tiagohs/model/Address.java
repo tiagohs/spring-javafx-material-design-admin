@@ -5,16 +5,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "addres")
-public class Addres {
+@Table(name = "address")
+public class Address {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "addres_id")
+	@Column(name = "address_id")
 	private long id;
 	
 	@Column(name = "rua")
@@ -38,9 +37,9 @@ public class Addres {
 	@Column(name = "country")
 	private String country;
 	
-	@OneToOne
-	private Supplier supplier;
-
+	@Column(name = "cep")
+	private String cep;
+	
 	public long getId() {
 		return id;
 	}
@@ -105,12 +104,4 @@ public class Addres {
 		this.country = country;
 	}
 
-	public Supplier getSupplier() {
-		return supplier;
-	}
-
-	public void setSupplier(Supplier supplier) {
-		this.supplier = supplier;
-	}
-	
 }

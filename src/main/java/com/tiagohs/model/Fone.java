@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -21,6 +22,9 @@ public class Fone {
 	
 	@Column(name = "number")
 	private int number;
+	
+	@ManyToOne
+	private Employee employee;
 
 	public long getId() {
 		return id;
@@ -45,6 +49,15 @@ public class Fone {
 	public void setNumber(int number) {
 		this.number = number;
 	}
+
+	public Employee getEmployee() {
+		return employee;
+	}
+
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
+	}
+	
 	
 	
 }

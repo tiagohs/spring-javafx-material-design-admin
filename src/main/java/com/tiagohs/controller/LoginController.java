@@ -8,6 +8,7 @@ import com.tiagohs.service.UserService;
 import com.tiagohs.util.WindowsUtils;
 
 import javafx.fxml.FXML;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 @Controller
@@ -27,7 +28,7 @@ public class LoginController implements BaseController {
 	
 	@FXML
 	public void onLogin() throws Exception {
-		WindowsUtils.openNewWindow("/fxml/root.fxml", "stuffs-Admin: Inventory Management");
+		WindowsUtils.openNewWindow("/fxml/root.fxml", "stuffs-Admin: Inventory Management", Modality.WINDOW_MODAL);
 		loginStage.close();
 	}
 }

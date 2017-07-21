@@ -34,4 +34,9 @@ public class RootController implements BaseController {
 		WindowsUtils.replaceFxmlOnWindow(rootPane, "/fxml/dashboard.fxml");
 	}
 	
+	@FXML
+	private void onSalesAction() throws Exception {
+		WindowsUtils.replaceFxmlOnWindow(rootPane, "/fxml/sales.fxml");
+	}
+	
 }

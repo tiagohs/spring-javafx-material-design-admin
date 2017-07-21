@@ -1,11 +1,13 @@
 package com.tiagohs.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -20,8 +22,11 @@ public class Tag {
 	@Column(name = "name")
 	private String name;
 	
-	@ManyToOne
-	private Product product;
+	@ManyToMany(mappedBy = "tags")
+	private List<Product> products;
+	
+	@ManyToMany(mappedBy = "tags")
+	private List<Sale> sales;
 
 	public long getId() {
 		return id;
@@ -39,13 +44,21 @@ public class Tag {
 		this.name = name;
 	}
 
-	public Product getProduct() {
-		return product;
+	public List<Product> getProducts() {
+		return products;
 	}
 
-	public void setProduct(Product product) {
-		this.product = product;
+	public void setProducts(List<Product> products) {
+		this.products = products;
 	}
-	
+
+	public List<Sale> getSales() {
+		return sales;
+	}
+
+	public void setSales(List<Sale> sales) {
+		this.sales = sales;
+	}
+
 	
 }

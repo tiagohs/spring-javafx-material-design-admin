@@ -1,11 +1,15 @@
 package com.tiagohs.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -24,11 +28,11 @@ public class Supplier {
 	@Column(name = "email")
 	private String email;
 	
-	@OneToOne(mappedBy = "supplier", optional = true, fetch = FetchType.LAZY)
-	private Addres addres;
+	@OneToOne(optional = true, fetch = FetchType.LAZY)
+	private Address addres;
 	
-	@OneToOne
-	private Product product;
+	@OneToMany(mappedBy = "supplier", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<Product> products;
 
 	public long getId() {
 		return id;
@@ -54,13 +58,22 @@ public class Supplier {
 		this.email = email;
 	}
 
-	public Addres getAddres() {
+	public Address getAddres() {
 		return addres;
 	}
 
-	public void setAddres(Addres addres) {
+	public void setAddres(Address addres) {
 		this.addres = addres;
 	}
+
+	public List<Product> getProducts() {
+		return products;
+	}
+
+	public void setProducts(List<Product> products) {
+		this.products = products;
+	}
+	
 	
 	
 }

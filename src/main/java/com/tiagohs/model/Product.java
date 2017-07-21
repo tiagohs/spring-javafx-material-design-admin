@@ -4,14 +4,18 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Type;
@@ -57,21 +61,24 @@ public class Product {
 	@Type(type="date")
 	private Calendar updatedAt;
 	
-	@OneToOne(mappedBy = "product", optional = true, fetch = FetchType.LAZY)
+	@ManyToOne
 	private Supplier supplier; 
 	
-	@OneToOne(mappedBy = "product", optional = true, fetch = FetchType.LAZY)
+	@ManyToOne
 	private Brand brand;
 	
-	@OneToOne(mappedBy = "product", optional = true, fetch = FetchType.LAZY)
+	@ManyToOne
 	private ProductType productType;
 	
-	@ManyToMany(mappedBy = "product")
+	@OneToMany(mappedBy = "product", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Image> images;
 	
-	@ManyToMany(mappedBy = "product")
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "product_tag", 
+	   joinColumns = @JoinColumn(name = "product_id"), 
+	   inverseJoinColumns = @JoinColumn(name = "tag_id"))
 	private List<Tag> tags;
-
+	
 	public long getId() {
 		return id;
 	}

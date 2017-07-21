@@ -41,6 +41,7 @@ import org.hibernate.type.StandardBasicTypes;
 /**
  * An SQL dialect for SQLite 3.
  */
+@SuppressWarnings("unused")
 public class SQLiteDialect extends Dialect {
 	private final UniqueDelegate uniqueDelegate;
 
