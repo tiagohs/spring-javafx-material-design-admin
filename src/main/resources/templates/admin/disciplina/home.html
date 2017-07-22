@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:dt="http://www.thymeleaf.org/dandelion/datatables">
 
 <head>
 	<title>stuffs-Admin - Disciplinas</title>
@@ -10,18 +11,83 @@
 	<link rel="stylesheet" type="text/css" th:href="@{/../css/bootstrap-social.css}" />
 	<link rel="stylesheet" type="text/css" th:href="@{/../css/style.css}" />
 	
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.15/fc-3.2.2/fh-3.1.2/r-2.1.1/sc-1.4.2/datatables.min.css"/>
 </head>
 
-<body>
-
+<body style="background-color: #EAEAEB;">
+	
 	<div th:include="shared/header :: header">Global Header</div>
-    <div th:include="shared/navbar :: navbar">Global Navbar</div>
     
     <div id="wrapper">
-	    <div id="page-content-wrapper" role="main" class="container">
+	    <div th:include="shared/navbar :: navbar">Global Navbar</div>
 	    
-	    </div>
+	    <div id="page-content-wrapper" role="main">
+    	
+    	<div class="forms-page-title">
+    		
+    		<h2>Disciplinas</h2>
+    		<p>Disciplinas cadastrados no sistema.</p>
+    		
+    	</div>
+    	
+    	<div class="col-md-11 forms-page-container">
+    	
+    		<a type="button" th:href="@{/admin/disciplina/create}" class="btn btn-primary" style="margin-bottom: 5px;">Novo Aluno</a>
+    		
+			<div class="alert alert-success alert-dismissable" th:if="${(param.success != null)}">
+			  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+			  Disciplina <strong>salvo</strong> com sucesso!
+			</div>
+			
+			<div class="alert alert-danger alert-dismissable" th:if="${(param.error != null)}">
+			  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+			  Aconteceu algum erro, tente novamente!
+			</div>
+    		
+    		<table class="table table-striped table-responsive">
+			    <thead>
+			      <tr>
+			        <th>Id</th>
+	                <th>Descrição</th>
+			      </tr>
+			    </thead>
+			    <tbody>
+			      <tr th:each="disciplina : ${disciplinas}">
+	                <td th:text="${disciplina?.id}"></td>
+	                <td th:text="${disciplina?.descricao}"></td>
+	                <td >
+	                	<a type="button" th:href="@{/admin/disciplina/edit(id=${disciplina?.id})}" class="btn btn-success">Editar</a>
+	                	<a type="button" class="btn btn-danger" th:attr="data-id=${disciplina?.id}" data-toggle="modal" data-target="#deleteConfirm">Excluir</a>
+	                </td>
+	            </tr>
+			    </tbody>
+			  </table>
+			  
+    	  </div>
+    	  
+			<!-- Modal Excluir -->
+			<div class="modal fade" id="deleteConfirm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			  <div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			        <h4 class="modal-title" id="myModalLabel" aria-label="Close">Confirmar</h4>
+			      </div>
+			      <div class="modal-body">
+			        Tem Certeza que você deseja excluir essa Disciplina ?
+			        <input type="hidden" id="RowId" value="" />
+			      </div>
+			      <div class="modal-footer">
+			      <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+			      <button id="remove-button" type="button" class="btn btn-danger" data-dismiss="modal">Confirmar</button>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+    	
     </div>
+    </div>
+    
     
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
@@ -30,5 +96,26 @@
 	<script th:href="@{/../js/bootstrap.min.js}" type="text/javascript"></script>
   	<script th:href="@{/../js/jquery-3.2.1.min.js}" type="text/javascript"></script>
   	<script th:href="@{/../js/scripts.js}" type="text/javascript"></script>
+  	
+  	<script type="text/javascript">
+  	
+	  	$(document).ready(function(){
+	  	    $('#deleteConfirm').on('show.bs.modal', function (e) {
+	  	        var id = $(e.relatedTarget).data('id');
+	  	        $('#RowId').val(id);
+	  	     });
+	  	});	
+	  	
+	  	$('#remove-button').click(function() {
+	        var delid = $('#RowId').val();
+	        //Do what ever you like to do
+	        $.post('/admin/disciplina/delete', { id : delid },
+	                function() {
+	        	window.location = window.location.pathname;
+	        	window.location.reload();
+	        	} );
+		});
+  	
+  	</script>
 </body>
 </html>

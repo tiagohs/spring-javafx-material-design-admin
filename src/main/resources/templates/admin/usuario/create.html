@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+	
+<head>
+	<title th:text="${pageTitle}"></title>
+	<link rel="stylesheet" type="text/css" th:href="@{/../css/bootstrap.min.css}" />
+	<link rel="stylesheet" type="text/css" th:href="@{/../css/font-awesome.css}" />
+	<link rel="stylesheet" type="text/css" th:href="@{/../css/bootstrap-social.css}" />
+	<link rel="stylesheet" type="text/css" th:href="@{/../css/style.css}" />
+	<link rel="stylesheet" type="text/css" th:href="@{/../css/datepicker.css}" />
+	
+	<meta charset="utf-8" />
+</head>
+
+<body style="background-color: #EAEAEB;">
+	
+	<div th:include="shared/header :: header">Global Header</div>
+    
+    <div id="wrapper">
+	    <div th:include="shared/navbar :: navbar">Global Navbar</div>
+	    
+	    <div id="page-content-wrapper" role="main">
+    	
+    	<div class="forms-page-title">
+    		<h2 th:text="${pageFormTitle}"></h2>
+    		<p th:text="${pageSubTitle}"></p>
+    	</div>
+    	
+    	<div class="col-md-11 forms-page-container">
+    		<form autocomplete="off" action="#" th:action="@{${pageAction}}"
+				method="post" role="form" th:object="${usuario}">
+			
+			<fieldset>
+			
+			<div class="alert alert-success alert-dismissable fade in" th:if="${error}">
+			  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+			  <p>Erro ao salvar usuário, tente novamente - <p th:utext="${errorDescription}" /></p>
+			</div>
+			
+			<div class="form-group col-md-12">	
+				<h3>Informações básicas</h3>
+				<div class="divider-line"></div>
+			</div>
+			
+			<input id="id" th:field="*{id}" name="id" type="text" hidden="true"/>
+			
+			<div class="alert alert-danger" th:if="${param.error}">
+				<p>Alguns dados estão incorretos, tente novamente</p>
+			</div>
+			
+			<div class="form-group col-md-12" th:classappend="${#fields.hasErrors('email')} ? 'has-error'">
+			  <label class="col-md-2 control-label labels" for="email">Email</label>  
+			  <div class="col-md-2">
+			  	<input id="email" th:field="*{email}" name="email" type="text" placeholder="Email do usuário" class="form-control input-md" required="required" />
+			  	<label th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="control-label" for="matricula"></label>
+			  </div>
+			</div>
+			
+			<div class="form-group col-md-12" th:classappend="${#fields.hasErrors('password')} ? 'has-error'">
+			  <label class="col-md-2 control-label labels" for="nome">Senha</label>  
+			  <div class="col-md-3">
+			  	<input id="password" name="password" th:field="*{password}" type="password" placeholder="Senha do Usuário" class="form-control input-md" />
+			  	<label th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="control-label" for="password"></label>
+			  </div>
+			</div>
+			
+			<!-- Text input-->
+			<div class="form-group col-md-12" th:classappend="${#fields.hasErrors('confirmPassword')} ? 'has-error'">
+			  <label class="col-md-2 control-label labels" for="dataNascimento">Confirmar Senha</label>  
+			  <div class="col-md-3">
+			  	<input id="confirmPassword" th:field="*{confirmPassword}" name="confirmPassword" type="password" placeholder="Confirmar Senha do Usuário" class="form-control input-md" />
+			    <label th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}" class="control-label" for="confirmPassword"></label>
+			  </div>
+			</div>
+			
+			<!-- Select Basic -->
+			<div class="form-group col-md-12">
+			  <label class="col-md-2 control-label labels" for="role">Role</label>
+			  <div class="col-md-4">
+			    <select id="role" name="role" th:field="*{role}" class="form-control">
+			      <option value="ADMIN">Administrador</option>
+			      <option value="USER">Usuário</option>
+			    </select>
+			  </div>
+			</div>
+			
+			<div class="form-group col-md-12">
+			    <div class="col-sm-offset-5 col-sm-7">
+			      <button type="submit" class="btn btn-primary">Salvar</button>
+			      <a type="button" th:href="@{/admin/usuario/home}" class="btn btn-danger">Cancelar</a>
+			    	
+			    </div>
+			</div>
+			
+			</fieldset>
+			</form>
+    	</div>
+    	
+    </div>
+    </div>
+    
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+	
+	<script src="https://buttons.github.io/buttons.js"></script>
+  	<script th:href="@{/../js/bootstrap-datepicker.js}" type="text/javascript"></script>
+  	<script th:href="@{/../js/scripts.js}" type="text/javascript"></script>
+  	
+  	<script>
+  		
+	  	$(document).ready(function () {
+			
+	  		$.getJSON('../../estados_cidades.json', function (data) {
+	  			var items = [];
+	  			var options = '<option value="">Escolha um estado</option>';	
+	  			$.each(data, function (key, val) {
+	  				options += '<option value="' + val.nome + '">' + val.nome + '</option>';
+	  			});					
+	  			$("#estado").html(options);				
+	  			
+	  			$("#estado").change(function () {		
+	  				var options_cidades = '';
+	  				var str = "";					
+	  				
+	  				$("#estado option:selected").each(function () {
+	  					str += $(this).text();
+	  				});
+	  				
+	  				$.each(data, function (key, val) {
+	  					if(val.nome == str) {							
+	  						$.each(val.cidades, function (key_city, val_city) {
+	  							options_cidades += '<option value="' + val_city + '">' + val_city + '</option>';
+	  						});							
+	  					}
+	  				});
+	  				$("#cidade").html(options_cidades);
+	  				
+	  			}).change();		
+	  		
+	  		});
+	  		
+	  		
+	  	});
+  	
+  	</script>
+  	
+</body>
+</html>

@@ -1,99 +1,106 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org">
-
+	
 <head>
-	<title>stuffs-Admin - Adicionar nova Disciplina</title>
+	<title th:text="${pageTitle}"></title>
 	<link rel="stylesheet" type="text/css" th:href="@{/../css/bootstrap.min.css}" />
-	<link rel="stylesheet" type="text/css" th:href="@{/../css/bootstrap-social.less}" />
 	<link rel="stylesheet" type="text/css" th:href="@{/../css/font-awesome.css}" />
 	<link rel="stylesheet" type="text/css" th:href="@{/../css/bootstrap-social.css}" />
 	<link rel="stylesheet" type="text/css" th:href="@{/../css/style.css}" />
+	<link rel="stylesheet" type="text/css" th:href="@{/../css/datepicker.css}" />
 	
+	<meta charset="utf-8" />
 </head>
 
-<body>
-
+<body style="background-color: #EAEAEB;">
+	
 	<div th:include="shared/header :: header">Global Header</div>
-    <div th:include="shared/navbar :: navbar">Global Navbar</div>
     
     <div id="wrapper">
+	    <div th:include="shared/navbar :: navbar">Global Navbar</div>
 	    
-	    <div id="page-content-wrapper" role="main" class="container">
-	    	<form class="form-horizontal">
-				<fieldset>
-				
-				<!-- Text input-->
-				<div class="form-group">
-				  <label class="col-md-4 control-label" for="nome">Nome</label>  
-				  <div class="col-md-6">
-				  <input id="nome" name="nome" type="text" placeholder="Nome" class="form-control input-md">
-				    
-				  </div>
-				</div>
-				
-				<!-- Textarea -->
-				<div class="form-group">
-				  <label class="col-md-4 control-label" for="descricao">Descrição</label>
-				  <div class="col-md-4">                     
-				    <textarea class="form-control" id="descricao" name="descricao">Descrição da disciplina</textarea>
-				  </div>
-				</div>
-				
-				<!-- Text input-->
-				<div class="form-group">
-				  <label class="col-md-4 control-label" for="pratica">Prática</label>  
-				  <div class="col-md-1">
-				  <input id="pratica" name="pratica" type="text" placeholder="" class="form-control input-md">
-				    
-				  </div>
-				</div>
-				
-				<!-- Text input-->
-				<div class="form-group">
-				  <label class="col-md-4 control-label" for="teorica">Teórica</label>  
-				  <div class="col-md-1">
-				  <input id="teorica" name="teorica" type="text" placeholder="" class="form-control input-md">
-				    
-				  </div>
-				</div>
-				
-				<!-- Text input-->
-				<div class="form-group">
-				  <label class="col-md-4 control-label" for="estagio">Estágio</label>  
-				  <div class="col-md-1">
-				  <input id="estagio" name="estagio" type="text" placeholder="" class="form-control input-md">
-				    
-				  </div>
-				</div>
-				
-				<!-- Textarea -->
-				<div class="form-group">
-				  <label class="col-md-4 control-label" for="ementa">Ementa</label>
-				  <div class="col-md-4">                     
-				    <textarea class="form-control" id="ementa" name="ementa"></textarea>
-				  </div>
-				</div>
-				
-				<!-- Textarea -->
-				<div class="form-group">
-				  <label class="col-md-4 control-label" for="bibliografia">Bibliografia</label>
-				  <div class="col-md-4">                     
-				    <textarea class="form-control" id="bibliografia" name="bibliografia"></textarea>
-				  </div>
-				</div>
-				
-				</fieldset>
-				</form>
-	    	</div>
+	    <div id="page-content-wrapper" role="main">
+    	
+    	<div class="forms-page-title">
+    		<h2 th:text="${pageFormTitle}"></h2>
+    		<p th:text="${pageSubTitle}"></p>
     	</div>
     	
+    	<div class="col-md-11 forms-page-container">
+    		<form autocomplete="off" action="#" th:action="@{${pageAction}}"
+				method="post" role="form" th:object="${disciplina}">
+			
+			<fieldset>
+			
+			<div class="alert alert-success alert-dismissable fade in" th:if="${error}">
+			  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+			  <p>Erro ao salvar disciplina, tente novamente - <p th:utext="${errorDescription}" /></p>
+			</div>
+			
+			<div class="form-group col-md-12">	
+				<h3>Informações básicas</h3>
+				<div class="divider-line"></div>
+			</div>
+			
+			<input id="id" th:field="*{id}" name="id" type="text" hidden="true"/>
+			
+			<div class="alert alert-danger" th:if="${param.error}">
+				<p>Alguns dados estão incorretos, tente novamente</p>
+			</div>
+			
+			<div class="form-group col-md-12" th:classappend="${#fields.hasErrors('descricao')} ? 'has-error'">
+			  <label class="col-md-2 control-label labels" for="descricao">Descrição</label>  
+			  <div class="col-md-8">
+			  	<textarea id="matricula" th:field="*{descricao}" placeholder="Entre com a Descrição da Disciplina" name="descricao" class="form-control input-md" rows="5"></textarea>
+			  	<label th:if="${#fields.hasErrors('descricao')}" th:errors="*{descricao}" class="control-label" for="descricao"></label>
+			  </div>
+			</div>
+			
+			<div class="form-group col-md-12" th:classappend="${#fields.hasErrors('bibliografia')} ? 'has-error'">
+			  <label class="col-md-2 control-label labels" for="descricao">Bibliografia</label>  
+			  <div class="col-md-8">
+			  	<textarea id="matricula" th:field="*{bibliografia}" placeholder="Entre com a Bibliografia da Disciplina" name="bibliografia" class="form-control input-md" rows="8"></textarea>
+			  	<label th:if="${#fields.hasErrors('bibliografia')}" th:errors="*{bibliografia}" class="control-label" for="bibliografia"></label>
+			  </div>
+			</div>
+			
+			<div class="form-group col-md-12" th:classappend="${#fields.hasErrors('ementa')} ? 'has-error'">
+			  <label class="col-md-2 control-label labels" for="ementa">Ementa</label>  
+			  <div class="col-md-8">
+			  	<textarea id="matricula" th:field="*{ementa}" name="ementa" placeholder="Descreva a Emeta da Disciplina" class="form-control input-md" rows="8"></textarea>
+			  	<label th:if="${#fields.hasErrors('ementa')}" th:errors="*{ementa}" class="control-label" for="ementa"></label>
+			  </div>
+			</div>
+			
+			<div class="form-group col-md-12" th:classappend="${#fields.hasErrors('preRequisitos')} ? 'has-error'">
+			  <label class="col-md-2 control-label labels" for="descricao">Pré Requisitos</label>  
+			  <div class="col-md-8">
+			  	<textarea id="matricula" th:field="*{preRequisitos}" placeholder="Descreva os Pré Requisitos da Disciplina" name="preRequisitos" class="form-control input-md" rows="8"></textarea>
+			  	<label th:if="${#fields.hasErrors('preRequisitos')}" th:errors="*{preRequisitos}" class="control-label" for="preRequisitos"></label>
+			  </div>
+			</div>
+			
+			<div class="form-group col-md-12">
+			    <div class="col-sm-offset-5 col-sm-7">
+			      <button type="submit" class="btn btn-primary">Salvar</button>
+			      <a type="button" th:href="@{/admin/disciplina/home}" class="btn btn-danger">Cancelar</a>
+			    </div>
+			</div>
+			
+			</fieldset>
+			</form>
+    	</div>
+    	
+    </div>
+    </div>
+    
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 	
 	<script src="https://buttons.github.io/buttons.js"></script>
-	<script th:href="@{/../js/bootstrap.min.js}" type="text/javascript"></script>
-  	<script th:href="@{/../js/jquery-3.2.1.min.js}" type="text/javascript"></script>
+  	<script th:href="@{/../js/bootstrap-datepicker.js}" type="text/javascript"></script>
   	<script th:href="@{/../js/scripts.js}" type="text/javascript"></script>
+  	
 </body>
 </html>

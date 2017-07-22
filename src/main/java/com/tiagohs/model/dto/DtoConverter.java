@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.tiagohs.model.Aluno;
+import com.tiagohs.model.CargaHoraria;
 import com.tiagohs.model.Disciplina;
 import com.tiagohs.model.Professor;
 import com.tiagohs.model.Role;
@@ -40,10 +41,13 @@ public class DtoConverter {
 	}
 	
 	public UsuarioDTO entityToDto(Usuario usuario) {
-		UsuarioDTO roleDTO = new UsuarioDTO();
+		UsuarioDTO usuarioDTO = new UsuarioDTO();
 		
+		usuarioDTO.setId(usuario.getId());
+		usuarioDTO.setEmail(usuario.getEmail());
+		usuarioDTO.setPassword(usuario.getPassword());
 		
-		return roleDTO;
+		return usuarioDTO;
 	}
 	
 	public Role dtoToEntity(RoleDTO roleDTO) {
@@ -101,12 +105,40 @@ public class DtoConverter {
 	public Disciplina dtoToEntity(DisciplinaDTO disciplinaDTO) {
 		Disciplina disciplina = new Disciplina();
 		
+		disciplina.setId(disciplinaDTO.getId());
+		disciplina.setDescricao(disciplinaDTO.getDescricao());
+		disciplina.setBibliografia(disciplinaDTO.getBibliografia());
+		disciplina.setEmenta(disciplinaDTO.getEmenta());
+		disciplina.setPreRequisitos(disciplinaDTO.getPreRequisitos());
+		
+		if (disciplinaDTO.getTeorica() != 0 && disciplinaDTO.getEstagio() != 0 && disciplinaDTO.getPratica() != 0) {
+			CargaHoraria cargaHoraria = new CargaHoraria();
+			
+			cargaHoraria.setEstagio(disciplinaDTO.getEstagio());
+			cargaHoraria.setPratica(disciplinaDTO.getPratica());
+			cargaHoraria.setTeorica(disciplinaDTO.getTeorica());
+			
+			disciplina.setCargaHoraria(cargaHoraria);
+			cargaHoraria.setDisciplina(disciplina);
+		}
 		
 		return disciplina;
 	}
 	
 	public DisciplinaDTO entityToDto(Disciplina disciplina) {
 		DisciplinaDTO disciplinaDTO = new DisciplinaDTO();
+		
+		disciplinaDTO.setId(disciplina.getId());
+		disciplinaDTO.setDescricao(disciplina.getDescricao());
+		disciplinaDTO.setBibliografia(disciplina.getBibliografia());
+		disciplinaDTO.setEmenta(disciplina.getEmenta());
+		disciplinaDTO.setPreRequisitos(disciplina.getPreRequisitos());
+		
+		if (disciplina.getCargaHoraria() != null) {
+			disciplinaDTO.setEstagio(disciplina.getCargaHoraria().getEstagio());
+			disciplinaDTO.setPratica(disciplina.getCargaHoraria().getPratica());
+			disciplinaDTO.setTeorica(disciplina.getCargaHoraria().getTeorica());
+		}
 		
 		return disciplinaDTO;
 	}

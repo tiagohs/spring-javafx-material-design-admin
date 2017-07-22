@@ -9,7 +9,7 @@ import com.tiagohs.util.PasswordValidator;
 @PasswordValidator(message = "Senha e confirmar senha devem ser iguais, tente novamente.")
 public class UsuarioDTO {
 	
-	private int id;
+	private long id;
 	
 	@Email(message = "Email inválido, tente novamente")
 	@NotEmpty(message = "Campo Obrigatório")
@@ -24,11 +24,11 @@ public class UsuarioDTO {
 	
 	private String role;
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

@@ -21,8 +21,25 @@
     
 	    <div id="page-content-wrapper" role="main" class="container">
 	    	
-	    	<form class="form-horizontal">
+	    	<form autocomplete="off" action="#" th:action="@{${pageAction}}"
+				method="post" role="form" th:object="${aluno}">
 				<fieldset>
+				
+				<div class="alert alert-success alert-dismissable fade in" th:if="${error}">
+				  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+				  <p>Erro ao salvar aluno, tente novamente - <p th:utext="${errorDescription}" /></p>
+				</div>
+				
+				<div class="form-group col-md-12">	
+					<h3>Informações básicas</h3>
+					<div class="divider-line"></div>
+				</div>
+				
+				<input id="id" th:field="*{id}" name="id" type="text" hidden="true"/>
+				
+				<div class="alert alert-danger" th:if="${param.error}">
+					<p>Alguns dados estão incorretos, tente novamente</p>
+				</div>
 				
 				<!-- Text input-->
 				<div class="form-group">

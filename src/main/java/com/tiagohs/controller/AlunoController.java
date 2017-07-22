@@ -8,7 +8,6 @@ import org.apache.commons.lang.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -40,7 +39,6 @@ public class AlunoController {
 		List<AlunoDTO> alunos = dtoConverter.convertListToListDtoAlunos(alunoService.findAll());
 		
 		modelAndView.addObject("alunos", alunos);
-		
 		modelAndView.setViewName(ALUNO_HOME);
 		
 		return modelAndView;
@@ -53,6 +51,10 @@ public class AlunoController {
 		
 		aluno.setMatricula(RandomStringUtils.randomNumeric(10));
 		
+		modelAndView.addObject("pageTitle", "stuffs-Admin - Adicionar novo Aluno");
+		modelAndView.addObject("pageFormTitle", "Novo Aluno");
+		modelAndView.addObject("pageSubTitle", "Cadastrar um novo aluno no sistema.");
+		modelAndView.addObject("pageAction", "/admin/aluno/create");
 		modelAndView.addObject("aluno", aluno);
 		modelAndView.setViewName(ALUNO_CREATE);
 		
@@ -64,26 +66,19 @@ public class AlunoController {
 		ModelAndView modelAndView = new ModelAndView();
 		
 		if (bindingResult.hasErrors()) {
-			String errors = "";
-			for (ObjectError e : bindingResult.getAllErrors()) {
-				errors += " // " + e.getDefaultMessage();
-			}
-			
-			modelAndView.setViewName("forward:" + ALUNO_CREATE);
+			modelAndView.setViewName("redirect:" + ALUNO_CREATE);
 			
 			AlunoDTO aluno = new AlunoDTO();
 			aluno.setMatricula(RandomStringUtils.randomNumeric(10));
 			modelAndView.addObject("aluno", aluno);
 			modelAndView.addObject("error", true);
-			modelAndView.addObject("errorDescription", errors);
+			modelAndView.addObject("errorDescription", "Houve algum erro no registro, tente novamente.");
 			
 			return modelAndView;
 		}
 		
 		if (null != alunoDTO) {
 			try {
-				
-				System.out.println("Matricula: " + alunoDTO.getMatricula());
 				
 				alunoService.save(dtoConverter.dtoToEntity(alunoDTO));
 				
@@ -92,24 +87,20 @@ public class AlunoController {
 				
 				modelAndView.addObject("success", "Aluno salvo com sucesso.");
 				modelAndView.setViewName("redirect:" + ALUNO_HOME);
-				
-				return modelAndView;
 			} catch (Exception e) {
 				modelAndView.setViewName("redirect:" + ALUNO_CREATE);
 				modelAndView.addObject("error", true);
-				
-				return modelAndView;
 			}
 		}
 		
-		
-		return new ModelAndView();
+		return modelAndView;
 	}
 	
 	@RequestMapping(value = ALUNO_EDIT, method = RequestMethod.GET)
 	public ModelAndView edit(@RequestParam("id") long id) {
 		ModelAndView modelAndView = new ModelAndView();
 		AlunoDTO aluno = null;
+		
 		try {
 			aluno = dtoConverter.entityToDto(alunoService.find(id));
 		} catch (Exception e) {
@@ -117,8 +108,14 @@ public class AlunoController {
 		}
 		
 		if (null != aluno) {
+			aluno.setId(id);
+			
+			modelAndView.addObject("pageTitle", "stuffs-Admin - Editar Aluno " + aluno.getNome());
+			modelAndView.addObject("pageFormTitle", "Editar Aluno " + aluno.getNome());
+			modelAndView.addObject("pageSubTitle", "Editar dados cadastrais do aluno " + aluno.getNome());
+			modelAndView.addObject("pageAction", "/admin/aluno/edit");
 			modelAndView.addObject("aluno", aluno);
-			modelAndView.setViewName(ALUNO_EDIT);
+			modelAndView.setViewName(ALUNO_CREATE);
 		} else {
 			return new ModelAndView("redirect:" + ALUNO_HOME);
 		}
@@ -128,26 +125,27 @@ public class AlunoController {
 	
 	@RequestMapping(value = ALUNO_EDIT, method = RequestMethod.POST)
 	public ModelAndView edit(@Valid @ModelAttribute("aluno") AlunoDTO alunoDTO, BindingResult bindingResult) {
-		
-		return new ModelAndView();
-	}
-	
-	@RequestMapping(value = ALUNO_DELETE, method = RequestMethod.GET)
-	public ModelAndView delete(@RequestParam("id") long id) {
 		ModelAndView modelAndView = new ModelAndView();
-		AlunoDTO aluno;
 		
-		try {
-			aluno = dtoConverter.entityToDto(alunoService.find(id));
-		} catch (Exception e) {
-			return new ModelAndView("redirect:" + ALUNO_HOME);
+		if (bindingResult.hasErrors()) {
+			modelAndView.setViewName("redirect:" + ALUNO_EDIT);
+			modelAndView.addObject("id", alunoDTO.getId());
+			
+			return modelAndView;
 		}
 		
-		if (null != aluno) {
-			modelAndView.addObject("aluno", aluno);
-			modelAndView.setViewName(ALUNO_DELETE);
-		} else {
-			return new ModelAndView("redirect:" + ALUNO_HOME);
+		try {
+			System.out.println(alunoDTO.getId());
+			alunoService.save(dtoConverter.dtoToEntity(alunoDTO));
+			
+			List<AlunoDTO> alunos = dtoConverter.convertListToListDtoAlunos(alunoService.findAll());
+			modelAndView.addObject("alunos", alunos);
+			
+			modelAndView.addObject("success", "Atualizações feitas com sucesso.");
+			modelAndView.setViewName("redirect:" + ALUNO_HOME);
+		} catch (Exception e) {
+			modelAndView.setViewName("redirect:" + ALUNO_CREATE);
+			modelAndView.addObject("error", true);
 		}
 		
 		return modelAndView;

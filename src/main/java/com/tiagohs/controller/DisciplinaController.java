@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -41,7 +40,7 @@ public class DisciplinaController {
 		modelAndView.addObject("disciplinas", disciplinas);
 		modelAndView.setViewName(DISCIPLINA_HOME);
 		
-		return modelAndView;
+		return modelAndView; 
 	}
 	
 	@RequestMapping(value = DISCIPLINA_CREATE, method = RequestMethod.GET)
@@ -49,6 +48,10 @@ public class DisciplinaController {
 		ModelAndView modelAndView = new ModelAndView();
 		DisciplinaDTO disciplina = new DisciplinaDTO();
 		
+		modelAndView.addObject("pageTitle", "stuffs-Admin - Adicionar novo Disciplina");
+		modelAndView.addObject("pageFormTitle", "Nova Disciplina");
+		modelAndView.addObject("pageSubTitle", "Cadastrar uma nova disciplinas no sistema.");
+		modelAndView.addObject("pageAction", "/admin/disciplina/create");
 		modelAndView.addObject("disciplina", disciplina);
 		modelAndView.setViewName(DISCIPLINA_CREATE);
 		
@@ -57,8 +60,36 @@ public class DisciplinaController {
 	
 	@RequestMapping(value = DISCIPLINA_CREATE, method = RequestMethod.POST)
 	public ModelAndView create(@Valid @ModelAttribute("disciplina") DisciplinaDTO disciplinaDTO, BindingResult bindingResult) {
+		ModelAndView modelAndView = new ModelAndView();
 		
-		return new ModelAndView();
+		if (bindingResult.hasErrors()) {
+			modelAndView.setViewName("redirect:" + DISCIPLINA_CREATE);
+			
+			DisciplinaDTO disciplina = new DisciplinaDTO();
+			modelAndView.addObject("disciplina", disciplina);
+			modelAndView.addObject("error", true);
+			modelAndView.addObject("errorDescription", "Houve algum erro no registro, tente novamente.");
+			
+			return modelAndView;
+		}
+		
+		if (null != disciplinaDTO) {
+			try {
+				
+				disciplinaService.save(dtoConverter.dtoToEntity(disciplinaDTO));
+				
+				List<DisciplinaDTO> disciplinas = dtoConverter.convertListToListDtoDisciplinas(disciplinaService.findAll());
+				modelAndView.addObject("disciplinas", disciplinas);
+				
+				modelAndView.addObject("success", "Disciplina salva com sucesso.");
+				modelAndView.setViewName("redirect:" + DISCIPLINA_HOME);
+			} catch (Exception e) {
+				modelAndView.setViewName("redirect:" + DISCIPLINA_CREATE);
+				modelAndView.addObject("error", true);
+			}
+		}
+		
+		return modelAndView;
 	}
 	
 	@RequestMapping(value = DISCIPLINA_EDIT, method = RequestMethod.GET)
@@ -72,8 +103,14 @@ public class DisciplinaController {
 		}
 		
 		if (null != disciplina) {
+			disciplina.setId(id);
+			
+			modelAndView.addObject("pageTitle", "stuffs-Admin - Adicionar novo Disciplina");
+			modelAndView.addObject("pageFormTitle", "Nova Disciplina");
+			modelAndView.addObject("pageSubTitle", "Cadastrar uma nova disciplinas no sistema.");
+			modelAndView.addObject("pageAction", "/admin/disciplina/create");
 			modelAndView.addObject("disciplina", disciplina);
-			modelAndView.setViewName(DISCIPLINA_EDIT);
+			modelAndView.setViewName(DISCIPLINA_CREATE);
 		} else {
 			return new ModelAndView("redirect:" + DISCIPLINA_HOME);
 		}
@@ -83,34 +120,50 @@ public class DisciplinaController {
 	
 	@RequestMapping(value = DISCIPLINA_EDIT, method = RequestMethod.POST)
 	public ModelAndView edit(@Valid @ModelAttribute("disciplina") DisciplinaDTO disciplinaDTO, BindingResult bindingResult) {
-		
-		return new ModelAndView();
-	}
-	
-	@RequestMapping(value = DISCIPLINA_DELETE, method = RequestMethod.GET)
-	public ModelAndView delete(@RequestParam("id") long id) {
 		ModelAndView modelAndView = new ModelAndView();
-		DisciplinaDTO disciplina = null;
 		
-		try {
-			disciplina = dtoConverter.entityToDto(disciplinaService.find(id));
-		} catch (Exception e) {
-			return new ModelAndView("redirect:" + DISCIPLINA_HOME);
+		if (bindingResult.hasErrors()) {
+			modelAndView.setViewName("redirect:" + DISCIPLINA_EDIT);
+			modelAndView.addObject("id", disciplinaDTO.getId());
+			
+			return modelAndView;
 		}
 		
-		if (null != disciplina) {
-			modelAndView.addObject("disciplina", disciplina);
-			modelAndView.setViewName(DISCIPLINA_DELETE);
-		} else {
-			return new ModelAndView("redirect:" + DISCIPLINA_HOME);
+		try {
+			disciplinaService.save(dtoConverter.dtoToEntity(disciplinaDTO));
+			
+			List<DisciplinaDTO> disciplinas = dtoConverter.convertListToListDtoDisciplinas(disciplinaService.findAll());
+			modelAndView.addObject("alunos", disciplinas);
+			
+			modelAndView.addObject("success", "Atualizações feitas com sucesso.");
+			modelAndView.setViewName("redirect:" + DISCIPLINA_HOME);
+		} catch (Exception e) {
+			modelAndView.setViewName("redirect:" + DISCIPLINA_CREATE);
+			modelAndView.addObject("error", true);
 		}
 		
 		return modelAndView;
 	}
 	
 	@RequestMapping(value = DISCIPLINA_DELETE, method = RequestMethod.POST)
-	public ModelAndView delete(@ModelAttribute("disciplina") DisciplinaDTO disciplinaDTO) {
+	public ModelAndView delete(@RequestParam("id") String id) {
+		ModelAndView modelAndView = new ModelAndView();
 		
-		return new ModelAndView();
+		if (null != id) {
+			
+			try {
+				disciplinaService.delete(Long.parseLong(id));
+				
+				modelAndView.addObject("success", "Aluno excluido com sucesso.");
+			} catch (Exception e) {
+				modelAndView.addObject("error", "Erro ao excluir o aluno, tente novamente.");
+			}
+		}
+		
+		List<DisciplinaDTO> disciplinas = dtoConverter.convertListToListDtoDisciplinas(disciplinaService.findAll());
+		modelAndView.addObject("disciplinas", disciplinas);
+		modelAndView.setViewName(DISCIPLINA_HOME);
+		
+		return modelAndView;
 	}
 }
