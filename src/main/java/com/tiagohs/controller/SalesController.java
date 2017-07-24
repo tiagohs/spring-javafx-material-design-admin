@@ -11,6 +11,10 @@ import javafx.stage.Stage;
 @Controller
 public class SalesController implements BaseController {
 
+	public static final String PATH_FXML = "/fxml/sales.fxml";
+	public static final String TITLE = "Sales - Inventory Management";
+	public static final String PATH_ICON = WindowsUtils.ICON_APP_PATH;
+	
 	@Override
 	public void init(Stage stage) {
 		
@@ -18,6 +22,6 @@ public class SalesController implements BaseController {
 	
 	@FXML
 	public void onNewSale() throws Exception {
-		WindowsUtils.openNewWindow("/fxml/new_sale_order.fxml", "New Sales Order - Inventory Management", Modality.APPLICATION_MODAL);
+		WindowsUtils.openNewWindow(SalesNewController.PATH_FXML, SalesNewController.TITLE, SalesNewController.PATH_ICON, Modality.APPLICATION_MODAL);
 	}
 }

@@ -8,13 +8,12 @@ import javafx.fxml.FXML;
 import javafx.stage.Stage;
 
 @Controller
-public class EmployeeNewController implements BaseController {
-
-	public static final String PATH_FXML = "/fxml/new_employee.fxml";
-	public static final String TITLE = "New Employee - Inventory Management";
+public class AboutController implements BaseController {
+	
+	public static final String PATH_FXML = "/fxml/about.fxml";
+	public static final String TITLE = "About Inventory Management";
 	public static final String PATH_ICON = WindowsUtils.ICON_APP_PATH;
 	
-	@Override
 	public void init(Stage stage) {
 		
 	}
@@ -33,5 +32,4 @@ public class EmployeeNewController implements BaseController {
 	public void onHelp() {
 		
 	}
-
 }

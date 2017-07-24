@@ -4,6 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
+import com.tiagohs.controller.LoginController;
 import com.tiagohs.util.WindowsUtils;
 
 import javafx.application.Application;
@@ -21,7 +22,7 @@ public class MainApplication extends Application  {
 	
     @Override
 	public void start(Stage primaryStage) throws Exception {
-    	WindowsUtils.openNewWindow(primaryStage, "/fxml/login.fxml", "stuffs-Admin: Login");
+    	WindowsUtils.openNewWindow(primaryStage, LoginController.PATH_FXML, LoginController.TITLE, LoginController.PATH_ICON);
 	}
     
 	public static void main(String[] args) {

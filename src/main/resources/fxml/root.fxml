@@ -55,7 +55,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="4.0" layoutY="424.0" prefHeight="95.0" prefWidth="131.0" ripplerFill="#7986cb" text="Clients" textAlignment="CENTER" textFill="#fffdfd">
+            <JFXButton alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="4.0" layoutY="424.0" onAction="#onClientsAction" prefHeight="95.0" prefWidth="131.0" ripplerFill="#7986cb" text="Clients" textAlignment="CENTER" textFill="#fffdfd">
                <font>
                   <Font size="14.0" />
                </font>
@@ -68,7 +68,7 @@
                </graphic>
             </JFXButton>
             <Pane layoutX="9.0" layoutY="634.0" prefHeight="1.0" prefWidth="123.0" style="-fx-background-color: #303F9F;" />
-            <JFXButton alignment="BOTTOM_CENTER" contentDisplay="GRAPHIC_ONLY" layoutX="4.0" layoutY="649.0" prefHeight="35.0" prefWidth="45.0" ripplerFill="#7986cb" textAlignment="CENTER" textFill="#fffdfd">
+            <JFXButton alignment="BOTTOM_CENTER" contentDisplay="GRAPHIC_ONLY" layoutX="4.0" layoutY="649.0" onAction="#onAbout" prefHeight="35.0" prefWidth="45.0" ripplerFill="#7986cb" textAlignment="CENTER" textFill="#fffdfd">
                <font>
                   <Font size="14.0" />
                </font>
@@ -80,7 +80,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton alignment="BOTTOM_CENTER" contentDisplay="GRAPHIC_ONLY" layoutX="48.0" layoutY="649.0" prefHeight="35.0" prefWidth="45.0" ripplerFill="#7986cb" textAlignment="CENTER" textFill="#fffdfd">
+            <JFXButton alignment="BOTTOM_CENTER" contentDisplay="GRAPHIC_ONLY" layoutX="48.0" layoutY="649.0" onAction="#onSettings" prefHeight="35.0" prefWidth="45.0" ripplerFill="#7986cb" textAlignment="CENTER" textFill="#fffdfd">
                <font>
                   <Font size="14.0" />
                </font>
@@ -92,7 +92,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton alignment="BOTTOM_CENTER" contentDisplay="GRAPHIC_ONLY" layoutX="90.0" layoutY="649.0" prefHeight="35.0" prefWidth="45.0" ripplerFill="#7986cb" textAlignment="CENTER" textFill="#fffdfd">
+            <JFXButton alignment="BOTTOM_CENTER" contentDisplay="GRAPHIC_ONLY" layoutX="90.0" layoutY="649.0" onAction="#onLogout" prefHeight="35.0" prefWidth="45.0" ripplerFill="#7986cb" textAlignment="CENTER" textFill="#fffdfd">
                <font>
                   <Font size="14.0" />
                </font>
@@ -104,7 +104,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="4.0" layoutY="519.0" prefHeight="95.0" prefWidth="131.0" ripplerFill="#7986cb" text="Reports" textAlignment="CENTER" textFill="#fffdfd">
+            <JFXButton alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="4.0" layoutY="519.0" onAction="#onReportsAction" prefHeight="95.0" prefWidth="131.0" ripplerFill="#7986cb" text="Reports" textAlignment="CENTER" textFill="#fffdfd">
                <font>
                   <Font size="14.0" />
                </font>

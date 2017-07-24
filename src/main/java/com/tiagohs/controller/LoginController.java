@@ -13,6 +13,10 @@ import javafx.stage.Stage;
 
 @Controller
 public class LoginController implements BaseController {
+
+	public static final String PATH_FXML = "/fxml/login.fxml";
+	public static final String TITLE = "Login - stuffs-Admin: Inventory Management";
+	public static final String PATH_ICON = WindowsUtils.ICON_APP_PATH;
 	
 	@FXML
 	private JFXButton loginButton;
@@ -28,7 +32,7 @@ public class LoginController implements BaseController {
 	
 	@FXML
 	public void onLogin() throws Exception {
-		WindowsUtils.openNewWindow("/fxml/root.fxml", "stuffs-Admin: Inventory Management", Modality.WINDOW_MODAL);
+		WindowsUtils.openNewWindow(RootController.PATH_FXML, RootController.TITLE, RootController.PATH_ICON, Modality.WINDOW_MODAL);
 		loginStage.close();
 	}
 }

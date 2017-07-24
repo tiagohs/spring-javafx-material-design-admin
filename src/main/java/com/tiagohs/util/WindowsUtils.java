@@ -33,15 +33,15 @@ public class WindowsUtils {
         root.getChildren().add(loadFxml(path).load());
 	}
 	
-	public static Stage openNewWindow(String fxmlPath, String title, Modality windowModality) throws Exception {
+	public static Stage openNewWindow(String fxmlPath, String title, String iconPath, Modality windowModality) throws Exception {
 		
 		Stage stage = new Stage();
         stage.initModality(windowModality);
         
-        return openNewWindow(stage, fxmlPath, title);
+        return openNewWindow(stage, fxmlPath, title, iconPath);
 	}
 	
-	public static Stage openNewWindow(Stage stage, String fxmlPath, String title) throws Exception {
+	public static Stage openNewWindow(Stage stage, String fxmlPath, String title, String iconPath) throws Exception {
 		
         stage.getIcons().add(new Image(WindowsUtils.ICON_APP_PATH));
         stage.setTitle(title);

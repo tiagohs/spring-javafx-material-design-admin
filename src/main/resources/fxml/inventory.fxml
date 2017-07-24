@@ -29,7 +29,7 @@
                   <Font size="16.0" />
                </font>
             </Label>
-            <JFXButton alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="184.0" layoutY="56.0" onAction="#onNewProduct" prefHeight="75.0" prefWidth="106.0" ripplerFill="#fcfcfc" text="New Product" textAlignment="CENTER" textFill="#fffdfd">
+            <JFXButton alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="123.0" layoutY="54.0" onAction="#onNewProduct" prefHeight="75.0" prefWidth="106.0" ripplerFill="#fcfcfc" text="New Product" textAlignment="CENTER" textFill="#fffdfd">
                <font>
                   <Font size="14.0" />
                </font>
@@ -41,7 +41,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="305.0" layoutY="56.0" onAction="#onNewEmployee" prefHeight="75.0" prefWidth="114.0" ripplerFill="#7986cb" text="New Employee" textAlignment="CENTER" textFill="#fffdfd">
+            <JFXButton alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="244.0" layoutY="54.0" onAction="#onNewEmployee" prefHeight="75.0" prefWidth="114.0" ripplerFill="#7986cb" text="New Employee" textAlignment="CENTER" textFill="#fffdfd">
                <font>
                   <Font size="14.0" />
                </font>
@@ -53,7 +53,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="430.0" layoutY="56.0" onAction="#onNewSupplier" prefHeight="75.0" prefWidth="114.0" ripplerFill="#7986cb" text="New Supplier" textAlignment="CENTER" textFill="#fffdfd">
+            <JFXButton alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="369.0" layoutY="54.0" onAction="#onNewSupplier" prefHeight="75.0" prefWidth="114.0" ripplerFill="#7986cb" text="New Supplier" textAlignment="CENTER" textFill="#fffdfd">
                <font>
                   <Font size="14.0" />
                </font>
@@ -61,6 +61,18 @@
                   <ImageView fitHeight="41.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/supplier.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="492.0" layoutY="54.0" onAction="#onNewSupplier" prefHeight="75.0" prefWidth="114.0" ripplerFill="#7986cb" text="New Brand" textAlignment="CENTER" textFill="#fffdfd">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="41.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/tag-plus.png" />
                      </image>
                   </ImageView>
                </graphic>

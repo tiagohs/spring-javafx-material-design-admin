@@ -7,16 +7,15 @@ import com.tiagohs.util.WindowsUtils;
 import javafx.stage.Stage;
 
 @Controller
-public class DashboardController implements BaseController {
-	
-	public static final String PATH_FXML = "/fxml/dashboard.fxml";
-	public static final String TITLE = "Dashboard - Inventory Management";
+public class BrandNewController implements BaseController {
+
+	public static final String PATH_FXML = "/fxml/new_brand.fxml";
+	public static final String TITLE = "New Brand - Inventory Management";
 	public static final String PATH_ICON = WindowsUtils.ICON_APP_PATH;
 	
+	@Override
 	public void init(Stage stage) {
 		
 	}
-	
-	
-	
+
 }

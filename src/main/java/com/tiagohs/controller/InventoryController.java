@@ -14,6 +14,10 @@ import javafx.stage.Stage;
 @Controller
 public class InventoryController implements BaseController {
 	
+	public static final String PATH_FXML = "/fxml/inventory.fxml";
+	public static final String TITLE = "Inventory - Inventory Management";
+	public static final String PATH_ICON = WindowsUtils.ICON_APP_PATH;
+	
 	@FXML
 	private JFXTreeTableView<ProductTableDTO> productsTable;
 	
@@ -24,16 +28,21 @@ public class InventoryController implements BaseController {
 	
 	@FXML
 	public void onNewProduct() throws Exception {
-		WindowsUtils.openNewWindow("/fxml/new_product.fxml", "New Product - Inventory Management", Modality.APPLICATION_MODAL);
+		WindowsUtils.openNewWindow(ProductNewController.PATH_FXML, ProductNewController.TITLE, ProductNewController.PATH_ICON, Modality.APPLICATION_MODAL);
 	}
 	
 	@FXML
 	public void onNewEmployee() throws Exception {
-		WindowsUtils.openNewWindow("/fxml/new_employee.fxml", "New Employee - Inventory Management", Modality.APPLICATION_MODAL);
+		WindowsUtils.openNewWindow(EmployeeNewController.PATH_FXML, EmployeeNewController.TITLE, EmployeeNewController.PATH_ICON, Modality.APPLICATION_MODAL);
 	}
 	
 	@FXML
 	public void onNewSupplier() throws Exception {
-		WindowsUtils.openNewWindow("/fxml/new_supplier.fxml", "New Supplier - Inventory Management", Modality.APPLICATION_MODAL);
+		WindowsUtils.openNewWindow(SupplierNewController.PATH_FXML, SupplierNewController.TITLE, SupplierNewController.PATH_ICON, Modality.APPLICATION_MODAL);
+	}
+	
+	@FXML
+	public void onNewBrand() throws Exception {
+		WindowsUtils.openNewWindow(BrandNewController.PATH_FXML, BrandNewController.TITLE, BrandNewController.PATH_ICON, Modality.APPLICATION_MODAL);
 	}
 }

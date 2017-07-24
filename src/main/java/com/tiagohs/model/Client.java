@@ -28,6 +28,9 @@ public class Client {
 	@Column(name = "email")
 	private String email;
 	
+	@Column(name = "cpf")
+	private String cpf;
+	
 	@ManyToOne
 	private ClientType clientType;
 	
@@ -36,6 +39,9 @@ public class Client {
 	
 	@OneToOne(optional = true, fetch = FetchType.LAZY)
 	private Fone fone;
+	
+	@OneToOne(fetch = FetchType.LAZY)
+	private User user;
 
 	public long getId() {
 		return id;
@@ -83,6 +89,22 @@ public class Client {
 
 	public void setFone(Fone fone) {
 		this.fone = fone;
+	}
+
+	public String getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 	
 	

@@ -23,6 +23,10 @@ import javafx.stage.Stage;
 
 @Controller
 public class ProductNewController implements BaseController {
+
+	public static final String PATH_FXML = "/fxml/new_product.fxml";
+	public static final String TITLE = "New Product - Inventory Management";
+	public static final String PATH_ICON = WindowsUtils.ICON_APP_PATH;
 	
 	@FXML
 	private StackPane container;

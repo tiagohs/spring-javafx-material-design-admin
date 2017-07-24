@@ -47,11 +47,17 @@ public class Sale {
 	@Column(name = "message")
 	private String message;
 	
+	@Column(name = "state")
+	private String state;
+	
 	@OneToOne(optional = true, fetch = FetchType.LAZY)
 	private Fone fone;
 	
 	@OneToOne(optional = true, fetch = FetchType.LAZY)
 	private Client cliente;
+	
+	@OneToOne(optional = true, fetch = FetchType.LAZY)
+	private User assignTo;
 	
 	@OneToMany(fetch = FetchType.LAZY)
 	private List<Item> items;
@@ -148,6 +154,22 @@ public class Sale {
 
 	public void setTags(List<Tag> tags) {
 		this.tags = tags;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	public User getAssignTo() {
+		return assignTo;
+	}
+
+	public void setAssignTo(User assignTo) {
+		this.assignTo = assignTo;
 	}
 	
 	

@@ -23,6 +23,12 @@ public class Brand {
 	
 	@Column(name = "name")
 	private String name;
+	
+	@Column(name = "email")
+	private String email;
+	
+	@Column(name = "additional_information")
+	private String additionalInformation;
 
 	@OneToMany(mappedBy = "brand", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Product> products;
@@ -49,6 +55,22 @@ public class Brand {
 
 	public void setProducts(List<Product> products) {
 		this.products = products;
+	}
+	
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getAdditionalInformation() {
+		return additionalInformation;
+	}
+
+	public void setAdditionalInformation(String additionalInformation) {
+		this.additionalInformation = additionalInformation;
 	}
 
 	@Override
