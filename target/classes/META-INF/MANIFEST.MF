@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Implementation-Title: Controle de Estoque
 Implementation-Version: 0.0.1-SNAPSHOT
-Built-By: TISIL
+Built-By: Tiago
 Implementation-Vendor-Id: ControleEstoque
-Build-Jdk: 1.8.0_45
+Build-Jdk: 1.8.0_131
 Implementation-URL: http://projects.spring.io/spring-boot/ControleEsto
  que/
 Created-By: Maven Integration for Eclipse
