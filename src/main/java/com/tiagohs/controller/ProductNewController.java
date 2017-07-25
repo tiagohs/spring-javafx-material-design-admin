@@ -15,6 +15,7 @@ import com.tiagohs.service.BrandService;
 import com.tiagohs.service.ProductService;
 import com.tiagohs.service.ProductTypeService;
 import com.tiagohs.service.SupplierService;
+import com.tiagohs.util.ValidatorUtils;
 import com.tiagohs.util.WindowsUtils;
 
 import javafx.fxml.FXML;
@@ -103,16 +104,22 @@ public class ProductNewController implements BaseController {
 	}
 	
 	private void validateTextFields() {
-		WindowsUtils.validateTextField(productNameTextField);
-		WindowsUtils.validateTextField(initialCostPriceTextField);
-		WindowsUtils.validateTextField(initialStockTextField);
+		ValidatorUtils.addRequiredValidator(productNameTextField, "Product Name is Required!");
+		ValidatorUtils.addRequiredValidator(skuTextField, "SKU is Required!");
+		ValidatorUtils.addRequiredValidator(initialCostPriceTextField, "Initial Cost Price is Required!");
+		ValidatorUtils.addRequiredValidator(initialStockTextField, "Initial Stock On Hand is Required!");
 		
-		WindowsUtils.textFieldNumberValidator(initialCostPriceTextField);
-		WindowsUtils.textFieldNumberValidator(buyPriceTextField);
-		WindowsUtils.textFieldNumberValidator(wholesalePriceTextField);
-		WindowsUtils.textFieldNumberValidator(retailPriceTextField);
-		WindowsUtils.textFieldNumberValidator(weightTextField);
-		WindowsUtils.textFieldNumberValidator(initialStockTextField);
+		ValidatorUtils.addNumberOnlyValidator(initialCostPriceTextField);
+		ValidatorUtils.addNumberOnlyValidator(buyPriceTextField);
+		ValidatorUtils.addNumberOnlyValidator(wholesalePriceTextField);
+		ValidatorUtils.addNumberOnlyValidator(retailPriceTextField);
+		ValidatorUtils.addNumberOnlyValidator(weightTextField);
+		ValidatorUtils.addNumberOnlyValidator(initialStockTextField);
+
+		WindowsUtils.validateTextField(productNameTextField);
+		WindowsUtils.validateTextField(skuTextField);
+		WindowsUtils.validateTextField(initialStockTextField);
+		WindowsUtils.validateTextField(initialStockTextField);
 	}
 	
 	private void watchEvents() {
@@ -143,6 +150,7 @@ public class ProductNewController implements BaseController {
 		Product product = new Product();
 		
 		product.setSku(WindowsUtils.getTextFromTextField(skuTextField));
+		product.setName(WindowsUtils.getTextFromTextField(productNameTextField));
 		product.setDescription(WindowsUtils.getTextFromTextArea(descriptionTextArea));
 		product.setInitialCostPrice(WindowsUtils.getDoubleFromTextField(initialCostPriceTextField));
 		product.setBuyPrice(WindowsUtils.getDoubleFromTextField(buyPriceTextField));
@@ -164,7 +172,7 @@ public class ProductNewController implements BaseController {
 	
 	@FXML
 	public void onCancel() {
-		
+		productNewStage.close();
 	}
 	
 	@FXML

@@ -1,5 +1,6 @@
 package com.tiagohs.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +12,7 @@ public class ProductTypeServiceImpl extends BaseService<ProductType, JpaReposito
 	
 	private ProductTypeRepository productTypeRepository;
 	
+	@Autowired
 	public ProductTypeServiceImpl(ProductTypeRepository repository) {
 		super(repository);
 		

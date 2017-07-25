@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane fx:id="container" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tiagohs.controller.EmployeeNewController">
+<StackPane fx:id="container" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tiagohs.controller.EmployeeNewController">
    <children>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="608.0" prefWidth="709.0" stylesheets="@../css/application.css">
          <children>
@@ -56,31 +56,11 @@
                </font>
             </Label>
             <Pane layoutX="24.0" layoutY="113.0" prefHeight="1.0" prefWidth="672.0" style="-fx-background-color: #EEEEEE;" />
-            <JFXTextField fx:id="nameTextField" accessibleHelp="Auto" focusColor="#009688" labelFloat="true" layoutX="24.0" layoutY="132.0" prefHeight="25.0" prefWidth="352.0" promptText="Name">
-               <validators>
-                  <RequiredFieldValidator message="Input Required!" />
-               </validators>
-            </JFXTextField>
-            <JFXTextField fx:id="emailTextField" accessibleHelp="Auto" focusColor="#009688" labelFloat="true" layoutX="394.0" layoutY="132.0" prefHeight="25.0" prefWidth="301.0" promptText="Email">
-               <validators>
-                  <RequiredFieldValidator message="Input Required!" />
-               </validators>
-            </JFXTextField>
-            <JFXTextField fx:id="cpfTextField" accessibleHelp="Auto" focusColor="#009688" labelFloat="true" layoutX="24.0" layoutY="185.0" prefHeight="25.0" prefWidth="217.0" promptText="CPF">
-               <validators>
-                  <RequiredFieldValidator message="Input Required!" />
-               </validators>
-            </JFXTextField>
-            <JFXTextField fx:id="residentialPhoneTextField" accessibleHelp="Auto" focusColor="#009688" labelFloat="true" layoutX="287.0" layoutY="185.0" prefHeight="25.0" prefWidth="199.0" promptText="Residential Phone">
-               <validators>
-                  <RequiredFieldValidator message="Input Required!" />
-               </validators>
-            </JFXTextField>
-            <JFXTextField fx:id="CellPhoneTextField" accessibleHelp="Auto" focusColor="#009688" labelFloat="true" layoutX="496.0" layoutY="185.0" prefHeight="25.0" prefWidth="199.0" promptText="Cell Phone">
-               <validators>
-                  <RequiredFieldValidator message="Input Required!" />
-               </validators>
-            </JFXTextField>
+            <JFXTextField fx:id="nameTextField" accessibleHelp="Auto" focusColor="#009688" labelFloat="true" layoutX="24.0" layoutY="132.0" prefHeight="25.0" prefWidth="352.0" promptText="Name" />
+            <JFXTextField fx:id="emailTextField" accessibleHelp="Auto" focusColor="#009688" labelFloat="true" layoutX="394.0" layoutY="132.0" prefHeight="25.0" prefWidth="301.0" promptText="Email"/>
+            <JFXTextField fx:id="cpfTextField" accessibleHelp="Auto" focusColor="#009688" labelFloat="true" layoutX="24.0" layoutY="185.0" prefHeight="25.0" prefWidth="217.0" promptText="CPF"/>
+            <JFXTextField fx:id="residentialPhoneTextField" accessibleHelp="Auto" focusColor="#009688" labelFloat="true" layoutX="287.0" layoutY="185.0" prefHeight="25.0" prefWidth="199.0" promptText="Residential Phone"/>
+            <JFXTextField fx:id="CellPhoneTextField" accessibleHelp="Auto" focusColor="#009688" labelFloat="true" layoutX="496.0" layoutY="185.0" prefHeight="25.0" prefWidth="199.0" promptText="Cell Phone"/>
             <Label layoutX="19.0" layoutY="239.0" text="Employee Address" textFill="#212121">
                <font>
                   <Font size="20.0" />
@@ -92,26 +72,10 @@
                </font>
             </Label>
             <Pane layoutX="19.0" layoutY="277.0" prefHeight="1.0" prefWidth="672.0" style="-fx-background-color: #EEEEEE;" />
-            <JFXTextField fx:id="cepTextField" accessibleHelp="Auto" focusColor="#009688" labelFloat="true" layoutX="24.0" layoutY="311.0" prefHeight="25.0" prefWidth="155.0" promptText="Zip Code">
-               <validators>
-                  <RequiredFieldValidator message="Input Required!" />
-               </validators>
-            </JFXTextField>
-            <JFXTextField fx:id="streetTextField" accessibleHelp="Auto" focusColor="#009688" labelFloat="true" layoutX="190.0" layoutY="311.0" prefHeight="25.0" prefWidth="430.0" promptText="Street">
-               <validators>
-                  <RequiredFieldValidator message="Input Required!" />
-               </validators>
-            </JFXTextField>
-            <JFXTextField fx:id="numberTextField" accessibleHelp="Auto" focusColor="#009688" labelFloat="true" layoutX="631.0" layoutY="311.0" prefHeight="25.0" prefWidth="60.0" promptText="Number">
-               <validators>
-                  <RequiredFieldValidator message="Input Required!" />
-               </validators>
-            </JFXTextField>
-            <JFXTextField fx:id="complementTextField" accessibleHelp="Auto" focusColor="#009688" labelFloat="true" layoutX="190.0" layoutY="363.0" prefHeight="25.0" prefWidth="502.0" promptText="Complement">
-               <validators>
-                  <RequiredFieldValidator message="Input Required!" />
-               </validators>
-            </JFXTextField>
+            <JFXTextField fx:id="cepTextField" accessibleHelp="Auto" focusColor="#009688" labelFloat="true" layoutX="24.0" layoutY="311.0" prefHeight="25.0" prefWidth="155.0" promptText="Zip Code"/>
+            <JFXTextField fx:id="streetTextField" accessibleHelp="Auto" focusColor="#009688" labelFloat="true" layoutX="190.0" layoutY="311.0" prefHeight="25.0" prefWidth="430.0" promptText="Street"/>
+            <JFXTextField fx:id="numberTextField" accessibleHelp="Auto" focusColor="#009688" labelFloat="true" layoutX="631.0" layoutY="311.0" prefHeight="25.0" prefWidth="60.0" promptText="Number"/>
+            <JFXTextField fx:id="complementTextField" accessibleHelp="Auto" focusColor="#009688" labelFloat="true" layoutX="190.0" layoutY="363.0" prefHeight="25.0" prefWidth="502.0" promptText="Complement"/>
             <JFXComboBox fx:id="countryComboBox" focusColor="#009688" labelFloat="true" layoutX="494.0" layoutY="424.0" prefHeight="25.0" prefWidth="199.0" promptText="Select the Country">
             	<items>
       	        <FXCollections fx:factory="observableArrayList">
@@ -373,27 +337,15 @@
                </font>
             </Label>
             <Pane layoutX="24.0" layoutY="523.0" prefHeight="1.0" prefWidth="672.0" style="-fx-background-color: #EEEEEE;" />
-            <JFXTextField fx:id="cepTextField1" accessibleHelp="Auto" focusColor="#009688" labelFloat="true" layoutX="24.0" layoutY="546.0" prefHeight="25.0" prefWidth="199.0" promptText="Password">
+            <JFXTextField fx:id="passwordTextField" accessibleHelp="Auto" focusColor="#009688" labelFloat="true" layoutX="24.0" layoutY="546.0" prefHeight="25.0" prefWidth="199.0" promptText="Password">
                <validators>
                   <RequiredFieldValidator message="Input Required!" />
                </validators>
             </JFXTextField>
-            <JFXTextField fx:id="cepTextField11" accessibleHelp="Auto" focusColor="#009688" labelFloat="true" layoutX="245.0" layoutY="546.0" prefHeight="25.0" prefWidth="199.0" promptText="Confirm Password">
-               <validators>
-                  <RequiredFieldValidator message="Input Required!" />
-               </validators>
-            </JFXTextField>
-            <JFXComboBox fx:id="stateComboBox1" focusColor="#009688" labelFloat="true" layoutX="476.0" layoutY="546.0" prefHeight="25.0" prefWidth="217.0" promptText="Select the Role " />
-            <JFXTextField fx:id="districtTextField1" accessibleHelp="Auto" focusColor="#009688" labelFloat="true" layoutX="24.0" layoutY="424.0" prefHeight="25.0" prefWidth="199.0" promptText="City">
-               <validators>
-                  <RequiredFieldValidator message="Input Required!" />
-               </validators>
-            </JFXTextField>
-            <JFXTextField fx:id="districtTextField11" accessibleHelp="Auto" focusColor="#009688" labelFloat="true" layoutX="256.0" layoutY="424.0" prefHeight="25.0" prefWidth="199.0" promptText="State">
-               <validators>
-                  <RequiredFieldValidator message="Input Required!" />
-               </validators>
-            </JFXTextField>
+            <JFXTextField fx:id="confirmPasswordTextField" accessibleHelp="Auto" focusColor="#009688" labelFloat="true" layoutX="245.0" layoutY="546.0" prefHeight="25.0" prefWidth="199.0" promptText="Confirm Password"/>
+            <JFXComboBox fx:id="roleComboBox" focusColor="#009688" labelFloat="true" layoutX="476.0" layoutY="546.0" prefHeight="25.0" prefWidth="217.0" promptText="Select the Role " />
+            <JFXTextField fx:id="cityTextField" accessibleHelp="Auto" focusColor="#009688" labelFloat="true" layoutX="24.0" layoutY="424.0" prefHeight="25.0" prefWidth="199.0" promptText="City"/>
+            <JFXTextField fx:id="stateTextField" accessibleHelp="Auto" focusColor="#009688" labelFloat="true" layoutX="256.0" layoutY="424.0" prefHeight="25.0" prefWidth="199.0" promptText="State"/>
          </children>
       </AnchorPane>
    </children>

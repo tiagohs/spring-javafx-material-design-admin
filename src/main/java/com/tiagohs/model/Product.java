@@ -32,6 +32,9 @@ public class Product {
 	@Column(name = "sku")
 	private String sku;
 	
+	@Column(name = "name")
+	private String name;
+	
 	@Column(name = "description")
 	private String description;
 	
@@ -206,6 +209,13 @@ public class Product {
 	public void setInitialStock(double initialStock) {
 		this.initialStock = initialStock;
 	}
-	
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
 	
 }

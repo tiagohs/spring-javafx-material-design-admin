@@ -110,12 +110,20 @@ public class WindowsUtils {
 		return textArea.getText().trim().isEmpty();
 	}
 	
+	public static boolean isComboBoxSelected(ComboBox comboBox) {
+		return comboBox.getSelectionModel().isEmpty();
+	}
+	
 	public static String getTextFromTextField(TextField textField) {
 		return isTextFieldEmpty(textField) ? null : textField.getText();
 	}
 	
 	public static double getDoubleFromTextField(TextField textField) {
 		return isTextFieldEmpty(textField) ? 0.0 : Double.parseDouble(textField.getText());
+	}
+	
+	public static int getIntegerFromTextField(TextField textField) {
+		return isTextFieldEmpty(textField) ? 0 : Integer.parseInt(textField.getText());
 	}
 
 	public static String getTextFromTextArea(TextArea textArea) {
@@ -132,14 +140,5 @@ public class WindowsUtils {
 		return comboBox.getValue() != null ? comboBox.getValue() : null;
 	}
 	
-	public static void textFieldNumberValidator(TextField textField) {
-		textField.textProperty().addListener((observable, oldValue, newValue) -> {
-		    
-			if (!newValue.matches("[0-9]*")) {
-				textField.setText("");
-			}
-			
-		});
-	}
 	
 }
