@@ -5,7 +5,9 @@ import java.util.Arrays;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import com.tiagohs.model.Address;
 import com.tiagohs.model.Employee;
@@ -68,16 +70,19 @@ public class EmployeeNewController implements BaseController {
 	private JFXTextField stateTextField;
 
 	@FXML
-	private JFXTextField passwordTextField;
+	private JFXPasswordField passwordTextField;
 
 	@FXML
-	private JFXTextField confirmPasswordTextField;
+	private JFXPasswordField confirmPasswordTextField;
 
 	@FXML
 	private JFXComboBox<String> countryComboBox;
 
 	@FXML
 	private JFXComboBox<Role> roleComboBox;
+	
+	@FXML
+	private JFXButton saveButton;
 	
 	private Stage employeeNewStage;
 	
@@ -93,6 +98,7 @@ public class EmployeeNewController implements BaseController {
 		
 		validateTextFields();
 		fillComboBoxes();
+		watchEvents();
 	}
 	
 	private void validateTextFields() {
@@ -105,7 +111,16 @@ public class EmployeeNewController implements BaseController {
 		
 		ValidatorUtils.addNumberOnlyValidator(numberTextField);
 		ValidatorUtils.addNumberOnlyValidator(cpfTextField);
+		ValidatorUtils.addNumberOnlyValidator(residentialPhoneTextField);
+		ValidatorUtils.addNumberOnlyValidator(cellPhoneTextField);
 		
+		ValidatorUtils.addMaxLengthValidator(cpfTextField, 11);
+		
+		ValidatorUtils.addEmailValidator(emailTextField, "Email does not match");
+		
+		WindowsUtils.validateTextField(numberTextField);
+		WindowsUtils.validateTextField(residentialPhoneTextField);
+		WindowsUtils.validateTextField(cellPhoneTextField);
 		WindowsUtils.validateTextField(nameTextField);
 		WindowsUtils.validateTextField(emailTextField);
 		WindowsUtils.validateTextField(cpfTextField);
@@ -117,6 +132,23 @@ public class EmployeeNewController implements BaseController {
 		WindowsUtils.addComboBoxItens(roleComboBox, roleService.findAll());
 	}
 	
+	private void watchEvents() {
+		WindowsUtils.watchEvents(nameTextField, () -> watch());
+		WindowsUtils.watchEvents(emailTextField, () -> watch());
+		WindowsUtils.watchEvents(cpfTextField, () -> watch());
+		WindowsUtils.watchEvents(passwordTextField, () -> watch());
+		WindowsUtils.watchEvents(confirmPasswordTextField, () -> watch());
+	}
+	
+	private void watch() {
+		if (isRequiredTextFieldsFilled() && (passwordTextField.validate() && confirmPasswordTextField.validate())) {
+			saveButton.setDisable(false);
+		} else {
+			saveButton.setDisable(true);
+		}
+		
+	}
+	
 	@FXML
 	public void onSave() {
 		Employee employee = new Employee();
@@ -125,7 +157,10 @@ public class EmployeeNewController implements BaseController {
 		user.setName(WindowsUtils.getTextFromTextField(nameTextField));
 		user.setEmail(WindowsUtils.getTextFromTextField(emailTextField));
 		user.setPassword(WindowsUtils.getTextFromTextField(passwordTextField));
-		user.setRoles(Arrays.asList((Role) WindowsUtils.getSelectedComboBoxItem(roleComboBox)));
+		
+		Role roleSelected = (Role) WindowsUtils.getSelectedComboBoxItem(roleComboBox);
+		Role role = roleService.findByRole(roleSelected.getRole());
+		user.setRoles(Arrays.asList(role));
 		
 		Address adress = null;
 		
@@ -137,7 +172,7 @@ public class EmployeeNewController implements BaseController {
 			adress.setComplement(WindowsUtils.getTextFromTextField(complementTextField));
 			adress.setCity(WindowsUtils.getTextFromTextField(cityTextField));
 			adress.setState(WindowsUtils.getTextFromTextField(stateTextField));
-			adress.setCountry((String) WindowsUtils.getSelectedComboBoxItem(roleComboBox));
+			adress.setCountry((String) WindowsUtils.getSelectedComboBoxItem(countryComboBox));
 		}
 		
 		Fone fone = new Fone();
@@ -153,24 +188,33 @@ public class EmployeeNewController implements BaseController {
 			employeeService.save(employee);
 			WindowsUtils.createDefaultDialog(container, "Sucess", "Employee save with sucess.", () -> { employeeNewStage.close(); });
 		} catch (Exception e) {
+			e.printStackTrace();
 			WindowsUtils.createDefaultDialog(container, "Error", "Error saving employee, try again.", () -> {});
 		}
 		
 	}
 	
 	private boolean isAddressFilled() {
-		return  WindowsUtils.isTextFieldEmpty(streetTextField) ||
-				WindowsUtils.isTextFieldEmpty(numberTextField) ||
-				WindowsUtils.isTextFieldEmpty(districtTextField) ||
-				WindowsUtils.isTextFieldEmpty(complementTextField) ||
-				WindowsUtils.isTextFieldEmpty(cityTextField) ||
-				WindowsUtils.isTextFieldEmpty(stateTextField) ||
+		return  !WindowsUtils.isTextFieldEmpty(streetTextField) ||
+				!WindowsUtils.isTextFieldEmpty(numberTextField) ||
+				!WindowsUtils.isTextFieldEmpty(districtTextField) ||
+				!WindowsUtils.isTextFieldEmpty(complementTextField) ||
+				!WindowsUtils.isTextFieldEmpty(cityTextField) ||
+				!WindowsUtils.isTextFieldEmpty(stateTextField) ||
 				WindowsUtils.isComboBoxSelected(roleComboBox);
+	}
+	
+	private boolean isRequiredTextFieldsFilled() {
+		return  !(WindowsUtils.isTextFieldEmpty(nameTextField)) &&
+				!(WindowsUtils.isTextFieldEmpty(emailTextField)) &&
+				!(WindowsUtils.isTextFieldEmpty(cpfTextField)) &&
+				!(WindowsUtils.isTextFieldEmpty(passwordTextField)) &&
+				!(WindowsUtils.isTextFieldEmpty(confirmPasswordTextField));
 	}
 	
 	@FXML
 	public void onCancel() {
-		
+		employeeNewStage.close();
 	}
 	
 	@FXML

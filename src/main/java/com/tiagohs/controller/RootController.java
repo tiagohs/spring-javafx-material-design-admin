@@ -20,10 +20,13 @@ public class RootController implements BaseController {
 	@FXML
 	private AnchorPane rootPane;
 	
+	private Stage rootStage;
+	
 	public void init(Stage stage) {
+		this.rootStage = stage;
 		
 		try {
-			WindowsUtils.replaceFxmlOnWindow(rootPane, DashboardController.PATH_FXML);
+			WindowsUtils.replaceFxmlOnWindow(rootPane, DashboardController.PATH_FXML, rootStage);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -31,27 +34,27 @@ public class RootController implements BaseController {
 	
 	@FXML
 	private void onInvetoryAction() throws Exception {
-		WindowsUtils.replaceFxmlOnWindow(rootPane, InventoryController.PATH_FXML);
+		WindowsUtils.replaceFxmlOnWindow(rootPane, InventoryController.PATH_FXML, rootStage);
 	}
 	
 	@FXML
 	private void onDashboardAction() throws Exception {
-		WindowsUtils.replaceFxmlOnWindow(rootPane, DashboardController.PATH_FXML);
+		WindowsUtils.replaceFxmlOnWindow(rootPane, DashboardController.PATH_FXML, rootStage);
 	}
 	
 	@FXML
 	private void onSalesAction() throws Exception {
-		WindowsUtils.replaceFxmlOnWindow(rootPane, SalesController.PATH_FXML);
+		WindowsUtils.replaceFxmlOnWindow(rootPane, SalesController.PATH_FXML, rootStage);
 	}
 	
 	@FXML
 	private void onClientsAction() throws Exception {
-		WindowsUtils.replaceFxmlOnWindow(rootPane, ClientsController.PATH_FXML);
+		WindowsUtils.replaceFxmlOnWindow(rootPane, ClientsController.PATH_FXML, rootStage);
 	}
 	
 	@FXML
 	private void onReportsAction() throws Exception {
-		WindowsUtils.replaceFxmlOnWindow(rootPane, ReportsController.PATH_FXML);
+		WindowsUtils.replaceFxmlOnWindow(rootPane, ReportsController.PATH_FXML, rootStage);
 	}
 	
 	@FXML

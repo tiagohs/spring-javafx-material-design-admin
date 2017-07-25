@@ -26,6 +26,11 @@ public class RoleServiceImpl extends BaseService<Role, JpaRepository<Role,Long>>
 	public void setRoleRepository(RoleRepository roleRepository) {
 		this.roleRepository = roleRepository;
 	}
+
+	@Override
+	public Role findByRole(String role) {
+		return roleRepository.findByRole(role);
+	}
 	
 	
 }

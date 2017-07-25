@@ -3,10 +3,13 @@ package com.tiagohs.util;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXDialogLayout;
+import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import com.tiagohs.MainApplication;
 import com.tiagohs.controller.BaseController;
@@ -28,9 +31,14 @@ public class WindowsUtils {
 	public static final String BASE_APPLICATION_CSS_PATH = MainApplication.class.getResource("/css/application.css").toExternalForm();
 	public static final String ICON_APP_PATH = MainApplication.class.getResource("/images/icon.png").toExternalForm();
 	
-	public static void replaceFxmlOnWindow(Pane root, String path) throws Exception {
-        root.getChildren().clear();
-        root.getChildren().add(loadFxml(path).load());
+	public static void replaceFxmlOnWindow(Pane root, String path, Stage stage) throws Exception {
+		FXMLLoader loader = loadFxml(path);
+		
+		root.getChildren().clear();
+        root.getChildren().add(loader.load());
+        
+        BaseController baseController = loader.getController();
+        baseController.init(stage);
 	}
 	
 	public static Stage openNewWindow(String fxmlPath, String title, String iconPath, Modality windowModality) throws Exception {
@@ -95,6 +103,15 @@ public class WindowsUtils {
 			}
 		});
 	}
+	
+	public static void validateTextField(JFXPasswordField textField) {
+		
+		textField.focusedProperty().addListener((o, oldValue, newValue) -> {
+			if (!newValue) {
+				textField.validate();
+			}
+		});
+	}
 
 	public static void watchEvents(TextField textField, WatchListener listener) {
 		textField.focusedProperty().addListener((o, oldValue, newValue) -> {
@@ -110,6 +127,7 @@ public class WindowsUtils {
 		return textArea.getText().trim().isEmpty();
 	}
 	
+	@SuppressWarnings("rawtypes") 
 	public static boolean isComboBoxSelected(ComboBox comboBox) {
 		return comboBox.getSelectionModel().isEmpty();
 	}
@@ -138,6 +156,14 @@ public class WindowsUtils {
 	@SuppressWarnings("rawtypes")
 	public static Object getSelectedComboBoxItem(ComboBox comboBox) {
 		return comboBox.getValue() != null ? comboBox.getValue() : null;
+	}
+	
+	public static String formatCPF(String cpf) {
+		Pattern pattern = Pattern.compile("(\\d{3})(\\d{3})(\\d{3})(\\d{2})");
+		Matcher matcher = pattern.matcher(cpf);
+		if (matcher.matches()) 
+			cpf = matcher.replaceAll("$1.$2.$3-$4");
+		return cpf;		
 	}
 	
 	

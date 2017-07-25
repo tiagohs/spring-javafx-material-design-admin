@@ -16,7 +16,7 @@ public class Role {
 	@Column(name="role_id")
 	private long id;
 	
-	@Column(name="role")
+	@Column(name="role", unique = true)
 	private String role;
 	
 	@Column(name="name")
@@ -39,5 +39,10 @@ public class Role {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	@Override
+	public String toString() {
+		return getName();
 	}
 }

@@ -117,7 +117,7 @@
                               <JFXTreeTableColumn fx:id="employeeNameColumn" minWidth="77.0" prefWidth="147.0" resizable="false" text="Name" />
                               <JFXTreeTableColumn fx:id="employeeEmailColumn" minWidth="79.0" prefWidth="174.0" resizable="false" text="Email" />
                               <JFXTreeTableColumn fx:id="employeeCpfColumn" minWidth="0.0" prefWidth="122.0" resizable="false" text="CPF" />
-                              <JFXTreeTableColumn fx:id="productTypeColumn" minWidth="115.0" prefWidth="239.0" resizable="false" text="Tasks" />
+                              <JFXTreeTableColumn fx:id="employeeAdressColumn" minWidth="115.0" prefWidth="239.0" resizable="false" text="Address" />
                            </columns>
                         </JFXTreeTableView>
                         <Label layoutX="25.0" layoutY="18.0" text="Employees">
