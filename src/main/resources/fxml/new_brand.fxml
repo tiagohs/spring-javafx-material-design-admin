@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane fx:id="container" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tiagohs.controller.BrandNewController">
+<StackPane fx:id="container" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tiagohs.controller.BrandNewController">
    <children>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="328.0" prefWidth="709.0" stylesheets="@../css/application.css">
          <children>
@@ -64,7 +64,7 @@
                   <RequiredFieldValidator message="Input Required!" />
                </validators>
             </JFXTextField>
-            <JFXTextArea labelFloat="true" layoutX="24.0" layoutY="181.0" prefHeight="125.0" prefWidth="672.0" promptText="Additional information" />
+            <JFXTextArea fx:id="additionalInfoTextArea" labelFloat="true" layoutX="24.0" layoutY="181.0" prefHeight="125.0" prefWidth="672.0" promptText="Additional information" />
          </children>
       </AnchorPane>
    </children>

@@ -18,11 +18,17 @@ public class SupplierTableDTO extends RecursiveTreeObject<SupplierTableDTO> {
 		this.adress = new SimpleStringProperty(adress.getStreet() + " " + adress.getNumber());
 	}
 	
+	public SupplierTableDTO() {
+	}
+	
 	public StringProperty getCompanyName() {
 		return companyName;
 	}
 	public void setCompanyName(StringProperty companyName) {
 		this.companyName = companyName;
+	}
+	public void setCompanyName(String companyName) {
+		this.companyName = new SimpleStringProperty(companyName);
 	}
 	public StringProperty getEmail() {
 		return email;
@@ -30,12 +36,20 @@ public class SupplierTableDTO extends RecursiveTreeObject<SupplierTableDTO> {
 	public void setEmail(StringProperty email) {
 		this.email = email;
 	}
+	public void setEmail(String email) {
+		this.email = new SimpleStringProperty(email);
+	}
 	public StringProperty getAdress() {
 		return adress;
 	}
 	public void setAdress(StringProperty adress) {
 		this.adress = adress;
 	}
-	
+	public void setAdress(String adress) {
+		this.adress = new SimpleStringProperty(adress);
+	}
+	public void setAdress(Address adress) {
+		this.adress = new SimpleStringProperty(adress.getStreet() + " " + adress.getNumber());
+	}
 	
 }

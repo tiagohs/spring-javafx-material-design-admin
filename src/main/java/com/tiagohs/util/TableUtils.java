@@ -13,7 +13,7 @@ import javafx.scene.control.TreeTableColumn;
 
 public class TableUtils {
 	
-	public static <P, T> void setupCellValueFactory(JFXTreeTableColumn<P, T> column, Function<P, ObservableValue<T>> mapper) {
+	public static <P, T> void setupColumn(JFXTreeTableColumn<P, T> column, Function<P, ObservableValue<T>> mapper) {
 
 		column.setCellValueFactory((TreeTableColumn.CellDataFeatures<P, T> param) -> {
             if (column.validateValue(param)) {

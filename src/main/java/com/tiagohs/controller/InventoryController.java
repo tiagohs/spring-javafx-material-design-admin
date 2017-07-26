@@ -1,5 +1,6 @@
 package com.tiagohs.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,18 +11,18 @@ import com.jfoenix.controls.JFXTreeTableView;
 import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import com.tiagohs.model.Employee;
+import com.tiagohs.model.Product;
+import com.tiagohs.model.Supplier;
 import com.tiagohs.model.dto.EmployeeTableDTO;
 import com.tiagohs.model.dto.ProductTableDTO;
 import com.tiagohs.model.dto.SupplierTableDTO;
 import com.tiagohs.service.EmployeeService;
 import com.tiagohs.service.ProductService;
 import com.tiagohs.service.SupplierService;
-import com.tiagohs.util.ITableDataCreator;
+import com.tiagohs.util.TableService;
 import com.tiagohs.util.TableUtils;
 import com.tiagohs.util.WindowsUtils;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -41,6 +42,9 @@ public class InventoryController implements BaseController {
 	private JFXTreeTableView<EmployeeTableDTO> employeeTable;
 	
 	@FXML
+	private JFXTreeTableView<SupplierTableDTO> supplierTable;
+	
+	@FXML
     private JFXTreeTableColumn<EmployeeTableDTO, String> employeeNameColumn;
 	
 	@FXML
@@ -53,7 +57,28 @@ public class InventoryController implements BaseController {
     private JFXTreeTableColumn<EmployeeTableDTO, String> employeeAdressColumn;
 	
 	@FXML
-	private JFXTreeTableView<SupplierTableDTO> supplierTable;
+    private JFXTreeTableColumn<ProductTableDTO, String> productSkuColumn;
+	
+	@FXML
+    private JFXTreeTableColumn<ProductTableDTO, String> productSupplierColumn;
+	
+	@FXML
+    private JFXTreeTableColumn<ProductTableDTO, String> productBuyPriceColumn;
+	
+	@FXML
+    private JFXTreeTableColumn<ProductTableDTO, String> productProductTypeColumn;
+	
+	@FXML
+    private JFXTreeTableColumn<ProductTableDTO, String> productDescriptionColumn;
+	
+	@FXML
+    private JFXTreeTableColumn<SupplierTableDTO, String> supplierNameColumn;
+	
+	@FXML
+    private JFXTreeTableColumn<SupplierTableDTO, String> supplierEmailColumn;
+	
+	@FXML
+    private JFXTreeTableColumn<SupplierTableDTO, String> supplierAddresColumn;
 	
 	@Autowired
 	private ProductService productService;
@@ -64,26 +89,55 @@ public class InventoryController implements BaseController {
 	@Autowired
 	private SupplierService supplierService;
 	
+	private List<TableService> tableService;
+	
 	public void init(Stage stage) {
 		
-		configureEmployeeTable();
+		configureTables();
+	}
+	
+	private void configureTables() {
+		tableService = new ArrayList<TableService>();
+		
+		tableService.add(new TableService(() -> configureProductTable()));
+		tableService.add(new TableService(() -> configureEmployeeTable()));
+		tableService.add(new TableService(() -> configureSupplierTable()));
+		
+		tableService.forEach(s -> { s.start(); });
 	}
 	
 	private void configureProductTable() {
+		TableUtils.setupColumn(productSkuColumn, ProductTableDTO::getSku);
+		TableUtils.setupColumn(productSupplierColumn, ProductTableDTO::getSupplier);
+		TableUtils.setupColumn(productBuyPriceColumn, ProductTableDTO::getBuyPrice);
+		TableUtils.setupColumn(productProductTypeColumn, ProductTableDTO::getProductType);
+		TableUtils.setupColumn(productDescriptionColumn, ProductTableDTO::getDescription);
 		
+		productsTable.setRoot(new RecursiveTreeItem<>(TableUtils.filledDataOnTable(productService.findAll(), e -> createProductData(e)), 
+							  						  RecursiveTreeObject::getChildren));
+		productsTable.setShowRoot(false);
 	}
 	
 	private void configureEmployeeTable() {
 		
-		TableUtils.setupCellValueFactory(employeeNameColumn, EmployeeTableDTO::getName);
-		TableUtils.setupCellValueFactory(employeeEmailColumn, EmployeeTableDTO::getEmail);
-		TableUtils.setupCellValueFactory(employeeCpfColumn, EmployeeTableDTO::getCpf);
-		TableUtils.setupCellValueFactory(employeeAdressColumn, EmployeeTableDTO::getAdress);
+		TableUtils.setupColumn(employeeNameColumn, EmployeeTableDTO::getName);
+		TableUtils.setupColumn(employeeEmailColumn, EmployeeTableDTO::getEmail);
+		TableUtils.setupColumn(employeeCpfColumn, EmployeeTableDTO::getCpf);
+		TableUtils.setupColumn(employeeAdressColumn, EmployeeTableDTO::getAdress);
 		
-		ObservableList<EmployeeTableDTO> dummyData = TableUtils.filledDataOnTable(employeeService.findAll(), e -> createEmplyeeData(e));
-		
-		employeeTable.setRoot(new RecursiveTreeItem<>(dummyData, RecursiveTreeObject::getChildren));
+		employeeTable.setRoot(new RecursiveTreeItem<>(TableUtils.filledDataOnTable(employeeService.findAll(), e -> createEmplyeeData(e)), 
+							  						  RecursiveTreeObject::getChildren));
 		employeeTable.setShowRoot(false);
+	}
+	
+	private void configureSupplierTable() {
+		TableUtils.setupColumn(supplierNameColumn, SupplierTableDTO::getCompanyName);
+		TableUtils.setupColumn(supplierEmailColumn, SupplierTableDTO::getEmail);
+		TableUtils.setupColumn(supplierAddresColumn, SupplierTableDTO::getAdress);
+		
+		supplierTable.setRoot(new RecursiveTreeItem<>(TableUtils.filledDataOnTable(supplierService.findAll(), e -> createSupplierData(e)), 
+							  						  RecursiveTreeObject::getChildren));
+		supplierTable.setShowRoot(false);
 	}
 	
 	private EmployeeTableDTO createEmplyeeData(Employee e) {
@@ -102,7 +156,23 @@ public class InventoryController implements BaseController {
 		return em;
 	}
 	
-	private void configureSupplierTable() {
+	private ProductTableDTO createProductData(Product product) {
+		return new ProductTableDTO(product.getSku(), product.getSupplier().getCompanyName(), product.getBuyPrice(), product.getProductType().getName(), product.getDescription());
+	}
+	
+	private SupplierTableDTO createSupplierData(Supplier supplier) {
+		SupplierTableDTO supplierTableDTO = new SupplierTableDTO();
+		
+		supplierTableDTO.setCompanyName(supplier.getCompanyName());
+		supplierTableDTO.setEmail(supplier.getEmail());
+		
+		if (supplier.getAddres() != null) {
+			supplierTableDTO.setAdress(supplier.getAddres());
+		} else {
+			supplierTableDTO.setAdress("--");
+		}
+		
+		return supplierTableDTO;
 		
 	}
 	

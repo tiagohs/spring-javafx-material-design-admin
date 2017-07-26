@@ -21,6 +21,10 @@ public class ProductTableDTO extends RecursiveTreeObject<ProductTableDTO> {
 		this.productType = new SimpleStringProperty(productType);
 		this.description = new SimpleStringProperty(description);
 	}
+	
+	public ProductTableDTO() {
+		
+	}
 
 	public StringProperty getSku() {
 		return sku;

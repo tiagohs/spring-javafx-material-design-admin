@@ -15,7 +15,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="689.0" prefWidth="709.0" stylesheets="@../css/application.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tiagohs.controller.InventoryController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="689.0" prefWidth="709.0" stylesheets="@../css/application.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tiagohs.controller.InventoryController">
    <children>
       <Pane layoutX="-6.0" layoutY="-6.0" prefHeight="182.0" prefWidth="728.0" style="-fx-background-color: #3F51B5;" styleClass="product-detail-header">
          <children>
@@ -86,9 +86,9 @@
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="288.0" prefWidth="558.0">
                      <children>
                         <Pagination fx:id="pagination1" layoutX="446.0" layoutY="427.0" maxPageIndicatorCount="5" pageCount="7" prefHeight="65.0" prefWidth="253.0" />
-                        <JFXTreeTableView fx:id="productsTable1" layoutX="17.0" layoutY="47.0" prefHeight="373.0" prefWidth="683.0">
+                        <JFXTreeTableView fx:id="productsTable" layoutX="17.0" layoutY="47.0" prefHeight="373.0" prefWidth="683.0">
                            <columns>
-                              <JFXTreeTableColumn fx:id="productSkuColumn1" minWidth="77.0" prefWidth="77.0" resizable="false" text="SKU" />
+                              <JFXTreeTableColumn fx:id="productSkuColumn" minWidth="77.0" prefWidth="77.0" resizable="false" text="SKU" />
                               <JFXTreeTableColumn fx:id="productSupplierColumn" minWidth="133" prefWidth="149.0" resizable="false" text="Supplier" />
                               <JFXTreeTableColumn fx:id="productBuyPriceColumn" minWidth="80.0" resizable="false" text="Buy Price" />
                               <JFXTreeTableColumn fx:id="productProductTypeColumn" minWidth="115.0" prefWidth="115.0" resizable="false" text="Product Type" />
