@@ -1,5 +1,7 @@
 package com.tiagohs.controller;
 
+import java.util.HashMap;
+
 import org.springframework.stereotype.Controller;
 
 import com.tiagohs.util.WindowsUtils;
@@ -16,12 +18,12 @@ public class SalesController implements BaseController {
 	public static final String PATH_ICON = WindowsUtils.ICON_APP_PATH;
 	
 	@Override
-	public void init(Stage stage) {
+	public <T> void init(Stage stage, HashMap<String, T> parameters) {
 		
 	}
 	
 	@FXML
 	public void onNewSale() throws Exception {
-		WindowsUtils.openNewWindow(SalesNewController.PATH_FXML, SalesNewController.TITLE, SalesNewController.PATH_ICON, Modality.APPLICATION_MODAL);
+		WindowsUtils.openNewWindow(SalesNewController.PATH_FXML, SalesNewController.TITLE, SalesNewController.PATH_ICON, null, Modality.APPLICATION_MODAL);
 	}
 }

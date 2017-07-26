@@ -2,6 +2,7 @@ package com.tiagohs.util;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.HashMap;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -31,25 +32,25 @@ public class WindowsUtils {
 	public static final String BASE_APPLICATION_CSS_PATH = MainApplication.class.getResource("/css/application.css").toExternalForm();
 	public static final String ICON_APP_PATH = MainApplication.class.getResource("/images/icon.png").toExternalForm();
 	
-	public static void replaceFxmlOnWindow(Pane root, String path, Stage stage) throws Exception {
+	public static <T> void replaceFxmlOnWindow(Pane root, String path, Stage stage, HashMap<String, T> parameters) throws Exception {
 		FXMLLoader loader = loadFxml(path);
 		
 		root.getChildren().clear();
         root.getChildren().add(loader.load());
         
         BaseController baseController = loader.getController();
-        baseController.init(stage);
+        baseController.init(stage, parameters);
 	}
 	
-	public static Stage openNewWindow(String fxmlPath, String title, String iconPath, Modality windowModality) throws Exception {
+	public static <T> Stage openNewWindow(String fxmlPath, String title, String iconPath, HashMap<String, T> parameters, Modality windowModality) throws Exception {
 		
 		Stage stage = new Stage();
         stage.initModality(windowModality);
         
-        return openNewWindow(stage, fxmlPath, title, iconPath);
+        return openNewWindow(stage, fxmlPath, title, iconPath, parameters);
 	}
 	
-	public static Stage openNewWindow(Stage stage, String fxmlPath, String title, String iconPath) throws Exception {
+	public static <T> Stage openNewWindow(Stage stage, String fxmlPath, String title, String iconPath, HashMap<String, T> parameters) throws Exception {
 		
         stage.getIcons().add(new Image(WindowsUtils.ICON_APP_PATH));
         stage.setTitle(title);
@@ -62,7 +63,7 @@ public class WindowsUtils {
         stage.show();
         
         BaseController baseController = loader.getController();
-        baseController.init(stage);
+        baseController.init(stage, parameters);
         
         return stage;
 	}
@@ -91,6 +92,25 @@ public class WindowsUtils {
 		JFXButton okButton = new JFXButton("Ok");
 		okButton.setOnAction(event -> { dialog.close(); action.onAction(); });
 		content.setActions(okButton);
+		
+		dialog.show();
+	}
+	
+	public static void createQuestionDialog(StackPane root, String title, String body, DialogAction action) {
+		
+		JFXDialogLayout content = new JFXDialogLayout();
+		content.setHeading(new Text(title));
+		content.setBody(new Text(body));
+		
+		JFXDialog dialog = new JFXDialog(root, content, JFXDialog.DialogTransition.CENTER);
+		
+		JFXButton yesButton = new JFXButton("Yes");
+		yesButton.setOnAction(event -> { dialog.close(); action.onAction(); });
+		content.setActions(yesButton);
+		
+		JFXButton noButton = new JFXButton("No");
+		noButton.setOnAction(event -> { dialog.close(); });
+		content.setActions(noButton);
 		
 		dialog.show();
 	}
@@ -136,6 +156,18 @@ public class WindowsUtils {
 		return isTextFieldEmpty(textField) ? null : textField.getText();
 	}
 	
+	public static void setTextInTextField(TextField textField, String text) {
+		if (text != null) {
+			textField.setText(text);
+		}
+	}
+	
+	public static void setTextInTextField(TextField textField, double number) {
+		if (number != 0.0) {
+			textField.setText(Double.toString(number));
+		}
+	}
+	
 	public static double getDoubleFromTextField(TextField textField) {
 		return isTextFieldEmpty(textField) ? 0.0 : Double.parseDouble(textField.getText());
 	}
@@ -148,6 +180,13 @@ public class WindowsUtils {
 		return isTextAreaEmpty(textArea) ? null : textArea.getText();
 	}
 	
+	public static void setTextInTextArea(TextArea textArea, String text) {
+		if (text != null) {
+			textArea.setText(text);
+		}
+		
+	}
+	
 	@SuppressWarnings({ "rawtypes", "unchecked" }) 
 	public static void addComboBoxItens(ComboBox comboBox, List items) {
 		comboBox.getItems().addAll(items);
@@ -156,6 +195,12 @@ public class WindowsUtils {
 	@SuppressWarnings("rawtypes")
 	public static Object getSelectedComboBoxItem(ComboBox comboBox) {
 		return comboBox.getValue() != null ? comboBox.getValue() : null;
+	}
+	
+	public static <T> void setSelectedComboBoxItem(ComboBox<T> comboBox, T item) {
+		if (item != null) {
+			comboBox.getSelectionModel().select(item);
+		}
 	}
 	
 	public static String formatCPF(String cpf) {

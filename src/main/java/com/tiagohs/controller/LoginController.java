@@ -1,5 +1,7 @@
 package com.tiagohs.controller;
 
+import java.util.HashMap;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -26,13 +28,13 @@ public class LoginController implements BaseController {
 	
 	private Stage loginStage;
 	
-	public void init(Stage stage) {
+	public <T> void init(Stage stage, HashMap<String, T> parameters) {
 		this.loginStage = stage;
 	}
 	
 	@FXML
 	public void onLogin() throws Exception {
-		WindowsUtils.openNewWindow(RootController.PATH_FXML, RootController.TITLE, RootController.PATH_ICON, Modality.WINDOW_MODAL);
+		WindowsUtils.openNewWindow(RootController.PATH_FXML, RootController.TITLE, RootController.PATH_ICON, null, Modality.WINDOW_MODAL);
 		loginStage.close();
 	}
 }

@@ -22,7 +22,7 @@ public class MainApplication extends Application  {
 	
     @Override
 	public void start(Stage primaryStage) throws Exception {
-    	WindowsUtils.openNewWindow(primaryStage, LoginController.PATH_FXML, LoginController.TITLE, LoginController.PATH_ICON);
+    	WindowsUtils.openNewWindow(primaryStage, LoginController.PATH_FXML, LoginController.TITLE, LoginController.PATH_ICON, null);
 	}
     
 	public static void main(String[] args) {

@@ -1,5 +1,7 @@
 package com.tiagohs.controller;
 
+import java.util.HashMap;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -24,7 +26,9 @@ import javafx.stage.Stage;
 
 @Controller
 public class ProductNewController implements BaseController {
-
+	
+	public static final String PRODUCT_KEY = "product_key";
+	
 	public static final String PATH_FXML = "/fxml/new_product.fxml";
 	public static final String TITLE = "New Product - Inventory Management";
 	public static final String PATH_ICON = WindowsUtils.ICON_APP_PATH;
@@ -93,14 +97,38 @@ public class ProductNewController implements BaseController {
 	private ProductTypeService productTypeService;
 	
 	private Stage productNewStage;
+	private Product product;
 	
-	public void init(Stage stage) {
+	public <T> void init(Stage stage, HashMap<String, T> parameters) {
 		this.productNewStage = stage;
+		
+		if (parameters != null) {
+			System.out.println(parameters.get(PRODUCT_KEY).toString());
+			this.product = (Product) parameters.get(PRODUCT_KEY);
+			updateTextFields();
+		}
 		
 		validateTextFields();
 		watchEvents();
 		fillComboBoxes();
 		
+	}
+	
+	private void updateTextFields() {
+		
+		WindowsUtils.setTextInTextField(skuTextField, product.getSku());
+		WindowsUtils.setTextInTextField(productNameTextField, product.getName());
+		WindowsUtils.setTextInTextArea(descriptionTextArea, product.getDescription());
+		WindowsUtils.setTextInTextField(initialCostPriceTextField, product.getInitialCostPrice());
+		WindowsUtils.setTextInTextField(buyPriceTextField, product.getBuyPrice());
+		WindowsUtils.setTextInTextField(wholesalePriceTextField, product.getWholesalePrice());
+		WindowsUtils.setTextInTextField(retailPriceTextField, product.getRetailPrice());
+		WindowsUtils.setTextInTextField(weightTextField, product.getWeight());
+		WindowsUtils.setTextInTextField(initialStockTextField, product.getInitialStock());
+		
+		WindowsUtils.setSelectedComboBoxItem(brandComboBox, product.getBrand());
+		WindowsUtils.setSelectedComboBoxItem(productTypeComboBox, product.getProductType());
+		WindowsUtils.setSelectedComboBoxItem(supplierComboBox, product.getSupplier());
 	}
 	
 	private void validateTextFields() {
@@ -147,7 +175,9 @@ public class ProductNewController implements BaseController {
 	
 	@FXML
 	public void onSave() {
-		Product product = new Product();
+		
+		if (product == null)
+			product = new Product();
 		
 		product.setSku(WindowsUtils.getTextFromTextField(skuTextField));
 		product.setName(WindowsUtils.getTextFromTextField(productNameTextField));
@@ -157,6 +187,7 @@ public class ProductNewController implements BaseController {
 		product.setWholesalePrice(WindowsUtils.getDoubleFromTextField(wholesalePriceTextField));
 		product.setRetailPrice(WindowsUtils.getDoubleFromTextField(retailPriceTextField));
 		product.setWeight(WindowsUtils.getDoubleFromTextField(weightTextField));
+		product.setInitialStock(WindowsUtils.getDoubleFromTextField(initialStockTextField));
 		
 		product.setBrand((Brand) WindowsUtils.getSelectedComboBoxItem(brandComboBox));
 		product.setProductType((ProductType) WindowsUtils.getSelectedComboBoxItem(productTypeComboBox));

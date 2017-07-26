@@ -1,5 +1,7 @@
 package com.tiagohs.controller;
 
+import java.util.HashMap;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -43,7 +45,7 @@ public class BrandNewController implements BaseController {
 	private Stage brandNewStage;
 	
 	@Override
-	public void init(Stage stage) {
+	public <T> void init(Stage stage, HashMap<String, T> parameters) {
 		this.brandNewStage = stage;
 		
 		validateTextFields();

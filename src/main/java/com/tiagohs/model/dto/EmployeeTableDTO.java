@@ -2,6 +2,7 @@ package com.tiagohs.model.dto;
 
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import com.tiagohs.model.Address;
+import com.tiagohs.model.Employee;
 import com.tiagohs.util.WindowsUtils;
 
 import javafx.beans.property.SimpleStringProperty;
@@ -13,6 +14,7 @@ public class EmployeeTableDTO extends RecursiveTreeObject<EmployeeTableDTO> {
 	private StringProperty email;
 	private StringProperty cpf;
 	private StringProperty adress;
+	private Employee originalEmployee;
 	
 	public StringProperty getName() {
 		return name;
@@ -65,5 +67,14 @@ public class EmployeeTableDTO extends RecursiveTreeObject<EmployeeTableDTO> {
 	public void setAdress(Address adress) {
 		this.adress = new SimpleStringProperty(adress.getStreet() + " " + adress.getNumber());
 	}
+
+	public Employee getOriginalEmployee() {
+		return originalEmployee;
+	}
+
+	public void setOriginalEmployee(Employee originalEmployee) {
+		this.originalEmployee = originalEmployee;
+	}
+	
 	
 }
