@@ -10,6 +10,7 @@ import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import com.tiagohs.model.Brand;
 import com.tiagohs.service.BrandService;
+import com.tiagohs.util.EntityFactory;
 import com.tiagohs.util.ValidatorUtils;
 import com.tiagohs.util.WindowsUtils;
 
@@ -19,7 +20,9 @@ import javafx.stage.Stage;
 
 @Controller
 public class BrandNewController implements BaseController {
-
+	
+	public static final String BRAND_KEY = "brand_key";
+	
 	public static final String PATH_FXML = "/fxml/new_brand.fxml";
 	public static final String TITLE = "New Brand - Inventory Management";
 	public static final String PATH_ICON = WindowsUtils.ICON_APP_PATH;
@@ -44,12 +47,29 @@ public class BrandNewController implements BaseController {
 	
 	private Stage brandNewStage;
 	
+	private Brand brand;
+	
 	@Override
 	public <T> void init(Stage stage, HashMap<String, T> parameters) {
 		this.brandNewStage = stage;
 		
+		checkParameters(parameters);
 		validateTextFields();
 		watchEvents();
+	}
+	
+	private <T> void checkParameters( HashMap<String, T> parameters) {
+		if (parameters != null) {
+			this.brand = (Brand) parameters.get(BRAND_KEY);
+			updateTextFields();
+		}
+	}
+
+	private void updateTextFields() {
+		
+		WindowsUtils.setTextInTextField(nameTextField, brand.getName());
+		WindowsUtils.setTextInTextField(emailTextField, brand.getEmail());
+		WindowsUtils.setTextInTextArea(additionalInfoTextArea, brand.getAdditionalInformation());
 	}
 
 	private void watchEvents() {
@@ -83,14 +103,11 @@ public class BrandNewController implements BaseController {
 	
 	@FXML
 	public void onSave() {
-		Brand brand = new Brand();
-		
-		brand.setName(WindowsUtils.getTextFromTextField(nameTextField));
-		brand.setEmail(WindowsUtils.getTextFromTextField(emailTextField));
-		brand.setAdditionalInformation(WindowsUtils.getTextFromTextArea(additionalInfoTextArea));
 		
 		try {
-			brandService.save(brand);
+			brandService.save(EntityFactory.createBrand(brand, WindowsUtils.getTextFromTextField(nameTextField), 
+														WindowsUtils.getTextFromTextField(emailTextField), 
+														WindowsUtils.getTextFromTextArea(additionalInfoTextArea)));
 			WindowsUtils.createDefaultDialog(container, "Sucess", "Brand save with sucess.", () -> { brandNewStage.close(); });
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -2,6 +2,7 @@ package com.tiagohs.controller;
 
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,6 +18,7 @@ import com.tiagohs.model.Role;
 import com.tiagohs.model.User;
 import com.tiagohs.service.EmployeeService;
 import com.tiagohs.service.RoleService;
+import com.tiagohs.util.EntityFactory;
 import com.tiagohs.util.ValidatorUtils;
 import com.tiagohs.util.WindowsUtils;
 
@@ -87,23 +89,63 @@ public class EmployeeNewController implements BaseController {
 	@FXML
 	private JFXButton saveButton;
 	
-	private Stage employeeNewStage;
-	
 	@Autowired
 	private EmployeeService employeeService;
 	
 	@Autowired
 	private RoleService roleService;
 	
+	private Stage employeeNewStage;
+	private Employee employee;
+	
 	@Override
 	public <T> void init(Stage stage, HashMap<String, T> parameters) {
 		this.employeeNewStage = stage;
 		
+		checkParameters(parameters);
 		validateTextFields();
 		fillComboBoxes();
 		watchEvents();
 	}
 	
+	private <T> void checkParameters(HashMap<String, T> parameters) {
+		if (parameters != null) {
+			this.employee = (Employee) parameters.get(EMPLOYEE_KEY);
+			updateTextFields();
+		}
+	}
+
+	private void updateTextFields() {
+		
+		
+		WindowsUtils.setTextInTextField(cpfTextField, employee.getCpf());
+		
+		if (employee.getFones() != null) {
+			WindowsUtils.setTextInTextField(residentialPhoneTextField, employee.getFones().get(0).getNumber());
+			WindowsUtils.setTextInTextField(cellPhoneTextField, employee.getFones().get(1).getNumber());
+		}
+		
+		if (employee.getAddres() != null) {
+			WindowsUtils.setTextInTextField(cepTextField, employee.getAddres().getCep());
+			WindowsUtils.setTextInTextField(streetTextField, employee.getAddres().getStreet());
+			WindowsUtils.setTextInTextField(numberTextField, employee.getAddres().getNumber());
+			WindowsUtils.setTextInTextField(districtTextField, employee.getAddres().getSuburb());
+			WindowsUtils.setTextInTextField(complementTextField, employee.getAddres().getComplement());
+			WindowsUtils.setTextInTextField(cityTextField, employee.getAddres().getCity());
+			WindowsUtils.setTextInTextField(stateTextField, employee.getAddres().getState());
+			
+			WindowsUtils.setSelectedComboBoxItem(countryComboBox, employee.getAddres().getCountry());
+			WindowsUtils.setSelectedComboBoxItem(roleComboBox, employee.getUser().getRoles().get(0));
+		}
+		
+		if (employee.getUser() != null) {
+			WindowsUtils.setTextInTextField(nameTextField, employee.getUser().getName());
+			WindowsUtils.setTextInTextField(emailTextField, employee.getUser().getEmail());
+			WindowsUtils.setTextInTextField(passwordTextField, employee.getUser().getPassword());
+		}
+		
+	}
+
 	private void validateTextFields() {
 		ValidatorUtils.addRequiredValidator(nameTextField, "Employee Name is Required!");
 		ValidatorUtils.addRequiredValidator(emailTextField, "E-mail is Required!");
@@ -118,6 +160,7 @@ public class EmployeeNewController implements BaseController {
 		ValidatorUtils.addNumberOnlyValidator(cellPhoneTextField);
 		
 		ValidatorUtils.addMaxLengthValidator(cpfTextField, 11);
+		ValidatorUtils.addMaxLengthValidator(cepTextField, 8);
 		
 		ValidatorUtils.addEmailValidator(emailTextField, "Email does not match");
 		
@@ -154,41 +197,35 @@ public class EmployeeNewController implements BaseController {
 	
 	@FXML
 	public void onSave() {
-		Employee employee = new Employee();
-		
-		User user = new User();
-		user.setName(WindowsUtils.getTextFromTextField(nameTextField));
-		user.setEmail(WindowsUtils.getTextFromTextField(emailTextField));
-		user.setPassword(WindowsUtils.getTextFromTextField(passwordTextField));
 		
 		Role roleSelected = (Role) WindowsUtils.getSelectedComboBoxItem(roleComboBox);
-		Role role = roleService.findByRole(roleSelected.getRole());
-		user.setRoles(Arrays.asList(role));
+		List<Role> role = roleService.findByRole(roleSelected.getRole());
 		
-		Address adress = null;
+		User user = EntityFactory.createUser(WindowsUtils.getTextFromTextField(emailTextField), 
+											 WindowsUtils.getTextFromTextField(nameTextField), 
+											 null, 
+											 WindowsUtils.getTextFromTextField(passwordTextField), 
+											 role);
 		
+		Address address = null;
 		if (isAddressFilled()) {
-			adress = new Address();
-			adress.setStreet(WindowsUtils.getTextFromTextField(streetTextField));
-			adress.setNumber(WindowsUtils.getIntegerFromTextField(numberTextField));
-			adress.setSuburb(WindowsUtils.getTextFromTextField(districtTextField));
-			adress.setComplement(WindowsUtils.getTextFromTextField(complementTextField));
-			adress.setCity(WindowsUtils.getTextFromTextField(cityTextField));
-			adress.setState(WindowsUtils.getTextFromTextField(stateTextField));
-			adress.setCountry((String) WindowsUtils.getSelectedComboBoxItem(countryComboBox));
+			address = EntityFactory.createAddress(WindowsUtils.getTextFromTextField(streetTextField), 
+												  WindowsUtils.getIntegerFromTextField(numberTextField), 
+												  WindowsUtils.getTextFromTextField(complementTextField), 
+												  WindowsUtils.getTextFromTextField(districtTextField), 
+												  WindowsUtils.getTextFromTextField(cityTextField), 
+												  WindowsUtils.getTextFromTextField(stateTextField), 
+												  (String) WindowsUtils.getSelectedComboBoxItem(countryComboBox), 
+												  WindowsUtils.getTextFromTextField(cepTextField));
 		}
 		
-		Fone fone = new Fone();
-		fone.setNumber(WindowsUtils.getIntegerFromTextField(cellPhoneTextField));
-		fone.setNumber(WindowsUtils.getIntegerFromTextField(residentialPhoneTextField));
-		
-		employee.setUser(user);
-		employee.setAddres(adress);
-		employee.setFones(Arrays.asList(fone));
-		employee.setCpf(WindowsUtils.getTextFromTextField(cpfTextField));
+		List<Fone> phones = Arrays.asList(EntityFactory.createPhone(WindowsUtils.getIntegerFromTextField(cellPhoneTextField)),
+										 EntityFactory.createPhone(WindowsUtils.getIntegerFromTextField(residentialPhoneTextField)));
 		
 		try {
-			employeeService.save(employee);
+			employeeService.save(EntityFactory.createEmployee(employee, WindowsUtils.getTextFromTextField(cpfTextField), 
+															  user, address, phones));
+			
 			WindowsUtils.createDefaultDialog(container, "Sucess", "Employee save with sucess.", () -> { employeeNewStage.close(); });
 		} catch (Exception e) {
 			e.printStackTrace();

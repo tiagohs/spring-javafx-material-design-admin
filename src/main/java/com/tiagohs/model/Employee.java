@@ -25,9 +25,6 @@ public class Employee {
 	@Column(name = "cpf")
 	private String cpf;
 	
-	@Column(name = "tasks")
-	private String tasks;
-	
 	@OneToOne(optional = true, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Address address;
 	
@@ -77,4 +74,12 @@ public class Employee {
 		this.user = user;
 	}
 	
+	@Override
+	public String toString() {
+		if (getUser() != null) {
+			return getUser().getName();
+		} else {
+			return getCpf();
+		}
+	}
 }

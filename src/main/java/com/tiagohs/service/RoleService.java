@@ -1,8 +1,10 @@
 package com.tiagohs.service;
 
+import java.util.List;
+
 import com.tiagohs.model.Role;
 
 public interface RoleService extends IBaseService<Role> {
 	
-	Role findByRole(String role);
+	List<Role> findByRole(String role);
 }

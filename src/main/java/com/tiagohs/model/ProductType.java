@@ -50,7 +50,10 @@ public class ProductType {
 		this.product = product;
 	}
 	
-	
+	@Override
+	public String toString() {
+		return getName();
+	}
 	
 	
 }

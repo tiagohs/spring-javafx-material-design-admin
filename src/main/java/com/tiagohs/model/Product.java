@@ -1,6 +1,5 @@
 package com.tiagohs.model;
 
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -62,7 +61,7 @@ public class Product {
 	
 	@Column(name = "updated_at")
 	@Type(type="date")
-	private Calendar updatedAt;
+	private Date updatedAt;
 	
 	@ManyToOne
 	private Supplier supplier; 
@@ -81,6 +80,7 @@ public class Product {
 	   joinColumns = @JoinColumn(name = "product_id"), 
 	   inverseJoinColumns = @JoinColumn(name = "tag_id"))
 	private List<Tag> tags;
+	
 	
 	public long getId() {
 		return id;
@@ -162,11 +162,11 @@ public class Product {
 		this.createdAt = createdAt;
 	}
 
-	public Calendar getUpdatedAt() {
+	public Date getUpdatedAt() {
 		return updatedAt;
 	}
 
-	public void setUpdatedAt(Calendar updatedAt) {
+	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
 

@@ -16,7 +16,6 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-
 <StackPane fx:id="container" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tiagohs.controller.InventoryController">
    <children>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="689.0" prefWidth="709.0" stylesheets="@../css/application.css">
@@ -100,7 +99,7 @@
                                  </columns>
                               </JFXTreeTableView>
                               <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="30.0" layoutX="540.0" layoutY="466.0" stroke="TRANSPARENT" strokeType="INSIDE" width="65.0" />
-                              <JFXTextField fx:id="productSearchTextField" layoutX="500.0" layoutY="11.0" prefHeight="30.0" prefWidth="199.0" promptText="Search..." />
+                              <JFXTextField fx:id="productSearchTextField" focusColor="#009688" labelFloat="true" layoutX="500.0" layoutY="11.0" prefHeight="30.0" prefWidth="199.0" promptText="Search..." />
                               <JFXButton fx:id="productEditButton" disable="true" layoutX="17.0" layoutY="11.0" onAction="#onEditProductTable" prefHeight="30.0" prefWidth="83.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Edit" textFill="WHITE">
                                  <graphic>
                                     <ImageView fitHeight="20.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
@@ -146,7 +145,7 @@
                                  </columns>
                               </JFXTreeTableView>
                               <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="30.0" layoutX="540.0" layoutY="466.0" stroke="TRANSPARENT" strokeType="INSIDE" width="65.0" />
-                              <JFXTextField fx:id="employeeSearchTextField" layoutX="500.0" layoutY="11.0" prefHeight="30.0" prefWidth="199.0" promptText="Search..." />
+                              <JFXTextField fx:id="employeeSearchTextField" focusColor="#009688" labelFloat="true" layoutX="500.0" layoutY="11.0" prefHeight="30.0" prefWidth="199.0" promptText="Search..." />
                               <JFXButton fx:id="employeeEditButton" disable="true" layoutX="17.0" layoutY="11.0" onAction="#onEditEmployeeTable" prefHeight="30.0" prefWidth="83.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Edit" textFill="WHITE">
                                  <graphic>
                                     <ImageView fitHeight="20.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
@@ -161,6 +160,15 @@
                                     <ImageView fitHeight="20.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@../images/edit.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </JFXButton>
+                              <JFXButton fx:id="employeesReloadButton" contentDisplay="GRAPHIC_ONLY" layoutX="195.0" layoutY="11.0" onAction="#onReloadEmployeeTable" prefHeight="30.0" prefWidth="34.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Remove" textFill="WHITE">
+                                 <graphic>
+                                    <ImageView fitHeight="20.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/reload.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -182,7 +190,7 @@
                                  </columns>
                               </JFXTreeTableView>
                               <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="30.0" layoutX="540.0" layoutY="466.0" stroke="TRANSPARENT" strokeType="INSIDE" width="65.0" />
-                              <JFXTextField fx:id="supplierSearchTextField" layoutX="500.0" layoutY="11.0" prefHeight="30.0" prefWidth="199.0" promptText="Search..." />
+                              <JFXTextField fx:id="supplierSearchTextField" focusColor="#009688" labelFloat="true" layoutX="500.0" layoutY="11.0" prefHeight="30.0" prefWidth="199.0" promptText="Search..." />
                               <JFXButton fx:id="supplierEditButton" disable="true" layoutX="17.0" layoutY="11.0" onAction="#onEditSupplierTable" prefHeight="30.0" prefWidth="83.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Edit" textFill="WHITE">
                                  <graphic>
                                     <ImageView fitHeight="20.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
@@ -197,6 +205,60 @@
                                     <ImageView fitHeight="20.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@../images/edit.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </JFXButton>
+                              <JFXButton fx:id="suppliersReloadButton" contentDisplay="GRAPHIC_ONLY" layoutX="195.0" layoutY="11.0" onAction="#onReloadSupplierTable" prefHeight="30.0" prefWidth="34.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Remove" textFill="WHITE">
+                                 <graphic>
+                                    <ImageView fitHeight="20.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/reload.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </JFXButton>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+                  <Tab text="BRANDS">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="288.0" prefWidth="558.0">
+                           <children>
+                              <Pagination fx:id="brandPagination" layoutX="293.0" layoutY="434.0" maxPageIndicatorCount="0" nodeOrientation="LEFT_TO_RIGHT" pageCount="0" prefHeight="65.0" />
+                              <JFXTreeTableView fx:id="brandTable" layoutX="17.0" layoutY="47.0" prefHeight="373.0" prefWidth="683.0">
+                                 <columns>
+                                    <JFXTreeTableColumn fx:id="brandNameColumn" minWidth="77.0" prefWidth="125.0" resizable="false" text="Name" />
+                                    <JFXTreeTableColumn fx:id="brandEmailColumn" minWidth="101.0" prefWidth="141.0" resizable="false" text="Email" />
+                                    <JFXTreeTableColumn fx:id="brandAdditionalInformationColumn" minWidth="80.0" prefWidth="416.0" resizable="false" text="Additional Information" />
+                                 </columns>
+                              </JFXTreeTableView>
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="30.0" layoutX="540.0" layoutY="466.0" stroke="TRANSPARENT" strokeType="INSIDE" width="65.0" />
+                              <JFXTextField fx:id="brandSearchTextField" focusColor="#009688" labelFloat="true" layoutX="500.0" layoutY="11.0" prefHeight="30.0" prefWidth="199.0" promptText="Search..." />
+                              <JFXButton fx:id="brandEditButton" disable="true" layoutX="17.0" layoutY="11.0" onAction="#onEditBrandTable" prefHeight="30.0" prefWidth="83.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Edit" textFill="WHITE">
+                                 <graphic>
+                                    <ImageView fitHeight="20.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/edit.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </JFXButton>
+                              <JFXButton fx:id="brandRemoveButton" disable="true" layoutX="106.0" layoutY="11.0" onAction="#onRemoveBrandTable" prefHeight="30.0" prefWidth="83.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Remove" textFill="WHITE">
+                                 <graphic>
+                                    <ImageView fitHeight="20.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/edit.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </JFXButton>
+                              <JFXButton fx:id="brandReloadButton" contentDisplay="GRAPHIC_ONLY" layoutX="195.0" layoutY="11.0" onAction="#onReloadBrandTable" prefHeight="30.0" prefWidth="34.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Remove" textFill="WHITE">
+                                 <graphic>
+                                    <ImageView fitHeight="20.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/reload.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>

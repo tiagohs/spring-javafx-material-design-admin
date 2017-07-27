@@ -168,6 +168,12 @@ public class WindowsUtils {
 		}
 	}
 	
+	public static void setTextInTextField(TextField textField, int number) {
+		if (number != 0) {
+			textField.setText(Integer.toString(number));
+		}
+	}
+	
 	public static double getDoubleFromTextField(TextField textField) {
 		return isTextFieldEmpty(textField) ? 0.0 : Double.parseDouble(textField.getText());
 	}

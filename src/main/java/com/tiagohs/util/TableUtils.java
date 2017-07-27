@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.function.Function;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTreeTableColumn;
 import com.jfoenix.controls.JFXTreeTableView;
 import com.jfoenix.controls.RecursiveTreeItem;
@@ -62,6 +63,16 @@ public class TableUtils {
         
         return new BorderPane();
     }
+
+	public static <T extends RecursiveTreeObject<T>> void configureEditAndRemoveOptions(JFXTreeTableView<T> table, JFXButton edit, JFXButton remove) {
+		table.setOnMouseClicked((e) -> { 
+			if (table.getSelectionModel().selectedItemProperty().get() != null) {
+				edit.setDisable(false);
+				remove.setDisable(false);
+			}
+			
+		});
+	}
 	
 	public static <T extends RecursiveTreeObject<T>> void configureTableSearch(TextField textField, JFXTreeTableView<T> tableView, ITableSearchTest<T> test) {
 		textField.textProperty().addListener((o, oldVal, newVal) -> {

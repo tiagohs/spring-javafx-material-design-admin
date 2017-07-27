@@ -11,12 +11,15 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXTreeTableColumn;
 import com.jfoenix.controls.JFXTreeTableView;
+import com.tiagohs.model.Brand;
 import com.tiagohs.model.Employee;
 import com.tiagohs.model.Product;
 import com.tiagohs.model.Supplier;
+import com.tiagohs.model.dto.BrandTableDTO;
 import com.tiagohs.model.dto.EmployeeTableDTO;
 import com.tiagohs.model.dto.ProductTableDTO;
 import com.tiagohs.model.dto.SupplierTableDTO;
+import com.tiagohs.service.BrandService;
 import com.tiagohs.service.EmployeeService;
 import com.tiagohs.service.ProductService;
 import com.tiagohs.service.SupplierService;
@@ -51,6 +54,9 @@ public class InventoryController implements BaseController {
 	
 	@FXML
 	private JFXTreeTableView<SupplierTableDTO> supplierTable;
+	
+	@FXML
+	private JFXTreeTableView<BrandTableDTO> brandTable;
 	
 	@FXML
     private JFXTreeTableColumn<EmployeeTableDTO, String> employeeNameColumn;
@@ -89,6 +95,15 @@ public class InventoryController implements BaseController {
     private JFXTreeTableColumn<SupplierTableDTO, String> supplierAddresColumn;
 	
 	@FXML
+    private JFXTreeTableColumn<BrandTableDTO, String> brandNameColumn;
+	
+	@FXML
+    private JFXTreeTableColumn<BrandTableDTO, String> brandEmailColumn;
+	
+	@FXML
+    private JFXTreeTableColumn<BrandTableDTO, String> brandAdditionalInformationColumn;
+	
+	@FXML
 	private Pagination productPagination;
 	
 	@FXML
@@ -98,6 +113,9 @@ public class InventoryController implements BaseController {
 	private Pagination supplierPagination;
 	
 	@FXML
+	private Pagination brandPagination;
+	
+	@FXML
     private JFXTextField productSearchTextField;
 	
 	@FXML
@@ -105,6 +123,9 @@ public class InventoryController implements BaseController {
 	
 	@FXML
     private JFXTextField supplierSearchTextField;
+	
+	@FXML
+    private JFXTextField brandSearchTextField;
 	
 	@FXML
     private JFXButton productEditButton;
@@ -125,8 +146,11 @@ public class InventoryController implements BaseController {
     private JFXButton supplierRemoveButton;
     
     @FXML
-    private JFXButton productReloadButton;
+    private JFXButton brandEditButton;
 	
+    @FXML
+    private JFXButton brandRemoveButton;
+    
 	@Autowired
 	private ProductService productService;
 	
@@ -136,11 +160,16 @@ public class InventoryController implements BaseController {
 	@Autowired
 	private SupplierService supplierService;
 	
+	@Autowired
+	private BrandService brandService;
+	
 	private ObservableList<ProductTableDTO> productsData;
 	
 	private ObservableList<EmployeeTableDTO> employeesData;
 	
 	private ObservableList<SupplierTableDTO> suppliersData;
+	
+	private ObservableList<BrandTableDTO> brandsData;
 	
 	private List<TableService> tableService;
 	
@@ -148,7 +177,6 @@ public class InventoryController implements BaseController {
 		
 		configureTables();
 		configureSearchs();
-		configureEditAndRemoveOptions();
 	}
 	
 	private void configureTables() {
@@ -157,21 +185,19 @@ public class InventoryController implements BaseController {
 		tableService.add(new TableService(() -> configureProductTable()));
 		tableService.add(new TableService(() -> configureEmployeeTable()));
 		tableService.add(new TableService(() -> configureSupplierTable()));
+		tableService.add(new TableService(() -> configureBrandTable()));
 		
 		tableService.forEach(s -> { s.start(); });
+		
+		TableUtils.configureEditAndRemoveOptions(productsTable, productEditButton, productRemoveButton);
+		TableUtils.configureEditAndRemoveOptions(employeeTable, employeeEditButton, employeeRemoveButton);
+		TableUtils.configureEditAndRemoveOptions(supplierTable, supplierEditButton, supplierRemoveButton);
 	}
 	
 	private void configureSearchs() {
 		TableUtils.configureTableSearch(productSearchTextField, productsTable, (productProp, newVal) -> configureProductSearchTest(productProp, newVal));
 		TableUtils.configureTableSearch(employeeSearchTextField, employeeTable, (productProp, newVal) -> configureEmployeeSearchTest(productProp, newVal));
 		TableUtils.configureTableSearch(supplierSearchTextField, supplierTable, (productProp, newVal) -> configureSupplierSearchTest(productProp, newVal));
-	}
-	
-	private void configureEditAndRemoveOptions() {
-		productsTable.setOnMouseClicked((e) -> { 
-			productEditButton.setDisable(false);
-			productRemoveButton.setDisable(false);
-		});
 	}
 	
 	private boolean configureProductSearchTest(TreeItem<ProductTableDTO> productProp, String value) {
@@ -236,6 +262,19 @@ public class InventoryController implements BaseController {
 		supplierTable.setShowRoot(false);
 	}
 	
+
+	private void configureBrandTable() {
+		TableUtils.setupColumn(brandNameColumn, BrandTableDTO::getName);
+		TableUtils.setupColumn(brandEmailColumn, BrandTableDTO::getEmail);
+		TableUtils.setupColumn(brandAdditionalInformationColumn, BrandTableDTO::getAdditionalInformation);
+		
+		brandsData = TableUtils.filledDataOnTable(brandService.findAll(), e -> createBrandData(e));
+		
+		TableUtils.configurePagination(brandTable, brandsData, brandPagination);
+		brandTable.setShowRoot(false);
+	}
+
+	
 	private EmployeeTableDTO createEmplyeeData(Employee e) {
 		EmployeeTableDTO em = new EmployeeTableDTO();
 		
@@ -296,6 +335,17 @@ public class InventoryController implements BaseController {
 		
 	}
 	
+	private BrandTableDTO createBrandData(Brand brand) {
+		BrandTableDTO brandTableDTO = new BrandTableDTO();
+		
+		brandTableDTO.setName(brand.getName());
+		brandTableDTO.setEmail(brand.getEmail());
+		brandTableDTO.setAdditionalInformation(brand.getAdditionalInformation());
+		brandTableDTO.setOriginalBrand(brand);
+		
+		return brandTableDTO;
+	}
+	
 	@FXML
 	private void onReloadProductTable() {
 		TableUtils.reloadTable(() -> configureProductTable());
@@ -309,6 +359,11 @@ public class InventoryController implements BaseController {
 	@FXML
 	private void onReloadSupplierTable() {
 		TableUtils.reloadTable(() -> configureSupplierTable());
+	}
+	
+	@FXML
+	private void onReloadBrandTable() {
+		TableUtils.reloadTable(() -> configureBrandTable());
 	}
 	
 	@FXML
@@ -327,6 +382,12 @@ public class InventoryController implements BaseController {
 	private void onEditSupplierTable() throws Exception {
 		SupplierTableDTO supplierTableValue = supplierTable.getSelectionModel().selectedItemProperty().get().getValue();
 		TableUtils.editItemFromTable(supplierTable, supplierTableValue.getOriginalSupplier(), SupplierNewController.SUPPLIER_KEY, SupplierNewController.PATH_FXML, SupplierNewController.TITLE, SupplierNewController.PATH_ICON);
+	}
+	
+	@FXML
+	private void onEditBrandTable() throws Exception {
+		BrandTableDTO brandTableValue = brandTable.getSelectionModel().selectedItemProperty().get().getValue();
+		TableUtils.editItemFromTable(brandTable, brandTableValue.getOriginalBrand(), BrandNewController.BRAND_KEY, BrandNewController.PATH_FXML, BrandNewController.TITLE, BrandNewController.PATH_ICON);
 	}
 	
 	@FXML
@@ -351,6 +412,14 @@ public class InventoryController implements BaseController {
 		WindowsUtils.createDefaultDialog(container, 
 				 						 "Remove Supplier", "Are you sure you want to delete the " + supplierTableValue.getOriginalSupplier().getCompanyName() + " ?", 
 				 						 () -> { TableUtils.removeItemFromTable(supplierService, supplierTableValue.getOriginalSupplier().getId(), supplierTable, suppliersData, container); });
+	}
+	
+	@FXML
+	private void onRemoveBrandTable() {
+		BrandTableDTO brandTableValue = brandTable.getSelectionModel().selectedItemProperty().get().getValue();
+		WindowsUtils.createDefaultDialog(container, 
+				 						 "Remove Supplier", "Are you sure you want to delete the " + brandTableValue.getOriginalBrand().getName() + " ?", 
+				 						 () -> { TableUtils.removeItemFromTable(brandService, brandTableValue.getOriginalBrand().getId(), brandTable, brandsData, container); });
 	}
 	
 	@FXML

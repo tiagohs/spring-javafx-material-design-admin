@@ -28,12 +28,13 @@ public class Supplier {
 	@Column(name = "email")
 	private String email;
 	
-	@OneToOne(optional = true, fetch = FetchType.LAZY)
+	@OneToOne(optional = true, fetch = FetchType.LAZY, cascade=CascadeType.ALL)
 	private Address addres;
 	
 	@OneToMany(mappedBy = "supplier", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Product> products;
-
+	
+	
 	public long getId() {
 		return id;
 	}
@@ -74,6 +75,9 @@ public class Supplier {
 		this.products = products;
 	}
 	
-	
+	@Override
+	public String toString() {
+		return getCompanyName();
+	}
 	
 }

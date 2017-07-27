@@ -1,5 +1,6 @@
 package com.tiagohs.controller;
 
+import java.util.Date;
 import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,7 @@ import com.tiagohs.service.BrandService;
 import com.tiagohs.service.ProductService;
 import com.tiagohs.service.ProductTypeService;
 import com.tiagohs.service.SupplierService;
+import com.tiagohs.util.EntityFactory;
 import com.tiagohs.util.ValidatorUtils;
 import com.tiagohs.util.WindowsUtils;
 
@@ -102,16 +104,18 @@ public class ProductNewController implements BaseController {
 	public <T> void init(Stage stage, HashMap<String, T> parameters) {
 		this.productNewStage = stage;
 		
-		if (parameters != null) {
-			System.out.println(parameters.get(PRODUCT_KEY).toString());
-			this.product = (Product) parameters.get(PRODUCT_KEY);
-			updateTextFields();
-		}
-		
+		checkParameters(parameters);
 		validateTextFields();
 		watchEvents();
 		fillComboBoxes();
 		
+	}
+	
+	private <T> void checkParameters( HashMap<String, T> parameters) {
+		if (parameters != null) {
+			this.product = (Product) parameters.get(PRODUCT_KEY);
+			updateTextFields();
+		}
 	}
 	
 	private void updateTextFields() {
@@ -176,25 +180,23 @@ public class ProductNewController implements BaseController {
 	@FXML
 	public void onSave() {
 		
-		if (product == null)
-			product = new Product();
-		
-		product.setSku(WindowsUtils.getTextFromTextField(skuTextField));
-		product.setName(WindowsUtils.getTextFromTextField(productNameTextField));
-		product.setDescription(WindowsUtils.getTextFromTextArea(descriptionTextArea));
-		product.setInitialCostPrice(WindowsUtils.getDoubleFromTextField(initialCostPriceTextField));
-		product.setBuyPrice(WindowsUtils.getDoubleFromTextField(buyPriceTextField));
-		product.setWholesalePrice(WindowsUtils.getDoubleFromTextField(wholesalePriceTextField));
-		product.setRetailPrice(WindowsUtils.getDoubleFromTextField(retailPriceTextField));
-		product.setWeight(WindowsUtils.getDoubleFromTextField(weightTextField));
-		product.setInitialStock(WindowsUtils.getDoubleFromTextField(initialStockTextField));
-		
-		product.setBrand((Brand) WindowsUtils.getSelectedComboBoxItem(brandComboBox));
-		product.setProductType((ProductType) WindowsUtils.getSelectedComboBoxItem(productTypeComboBox));
-		product.setSupplier((Supplier) WindowsUtils.getSelectedComboBoxItem(supplierComboBox));
-		
 		try {
-			productService.save(product);
+			productService.save(EntityFactory.createProduct(product, WindowsUtils.getTextFromTextField(skuTextField), 
+															WindowsUtils.getTextFromTextField(productNameTextField), 
+															WindowsUtils.getTextFromTextArea(descriptionTextArea), 
+															WindowsUtils.getDoubleFromTextField(initialCostPriceTextField), 
+															WindowsUtils.getDoubleFromTextField(buyPriceTextField), 
+															WindowsUtils.getDoubleFromTextField(wholesalePriceTextField), 
+															WindowsUtils.getDoubleFromTextField(retailPriceTextField), 
+															WindowsUtils.getDoubleFromTextField(weightTextField), 
+															WindowsUtils.getDoubleFromTextField(initialStockTextField), 
+															product == null ? new Date() : product.getCreatedAt(), 
+															new Date(), 
+															(Supplier) WindowsUtils.getSelectedComboBoxItem(supplierComboBox), 
+															(Brand) WindowsUtils.getSelectedComboBoxItem(brandComboBox), 
+															(ProductType) WindowsUtils.getSelectedComboBoxItem(productTypeComboBox), 
+															null, 
+															null));
 			WindowsUtils.createDefaultDialog(container, "Sucess", "Product save with sucess.", () -> { productNewStage.close(); });
 		} catch (Exception e) {
 			WindowsUtils.createDefaultDialog(container, "Error", "Error saving product, try again.", () -> {});
