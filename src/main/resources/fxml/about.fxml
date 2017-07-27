@@ -31,7 +31,7 @@
          </font>
       </Label>
       <Pane layoutX="188.0" layoutY="25.0" prefHeight="200.0" prefWidth="1.0" style="-fx-background-color: #EEEEEE;" />
-      <JFXButton fx:id="saveButton" contentDisplay="GRAPHIC_ONLY" layoutX="222.0" layoutY="25.0" onAction="#onSave" prefHeight="45.0" prefWidth="45.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" textFill="WHITE">
+      <JFXButton fx:id="saveButton" contentDisplay="GRAPHIC_ONLY" layoutX="222.0" layoutY="25.0" onAction="#onFacebook" prefHeight="45.0" prefWidth="45.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" textFill="WHITE">
          <font>
             <Font size="14.0" />
          </font>
@@ -43,7 +43,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="saveButton1" contentDisplay="GRAPHIC_ONLY" layoutX="292.0" layoutY="25.0" onAction="#onSave" prefHeight="45.0" prefWidth="45.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" textFill="WHITE">
+      <JFXButton fx:id="saveButton1" contentDisplay="GRAPHIC_ONLY" layoutX="292.0" layoutY="25.0" onAction="#onGithub" prefHeight="45.0" prefWidth="45.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" textFill="WHITE">
          <font>
             <Font size="14.0" />
          </font>
@@ -55,7 +55,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="saveButton11" contentDisplay="GRAPHIC_ONLY" layoutX="222.0" layoutY="87.0" onAction="#onSave" prefHeight="45.0" prefWidth="45.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" textFill="WHITE">
+      <JFXButton fx:id="saveButton11" contentDisplay="GRAPHIC_ONLY" layoutX="222.0" layoutY="87.0" onAction="#onLinkedin" prefHeight="45.0" prefWidth="45.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" textFill="WHITE">
          <font>
             <Font size="14.0" />
          </font>
@@ -67,7 +67,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="saveButton111" contentDisplay="GRAPHIC_ONLY" layoutX="292.0" layoutY="87.0" onAction="#onSave" prefHeight="45.0" prefWidth="45.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" textFill="WHITE">
+      <JFXButton fx:id="saveButton111" contentDisplay="GRAPHIC_ONLY" layoutX="292.0" layoutY="87.0" onAction="#onEmail" prefHeight="45.0" prefWidth="45.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" textFill="WHITE">
          <font>
             <Font size="14.0" />
          </font>
@@ -80,7 +80,7 @@
          </graphic>
       </JFXButton>
       <Label contentDisplay="CENTER" layoutX="196.0" layoutY="148.0" prefHeight="91.0" prefWidth="206.0" text="stuffs-admin: Inventory Management&#10;Copyright 2017 stuffs-admin Inc. &#10;All rights reserved" textAlignment="CENTER" />
-      <JFXButton fx:id="okButton" layoutX="163.0" layoutY="241.0" prefHeight="27.0" prefWidth="90.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Ok" textFill="WHITE">
+      <JFXButton fx:id="okButton" layoutX="163.0" layoutY="241.0" onAction="#onOk" prefHeight="27.0" prefWidth="90.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Ok" textFill="WHITE">
          <font>
             <Font size="14.0" />
          </font>

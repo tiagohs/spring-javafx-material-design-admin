@@ -28,7 +28,7 @@
             </Label>
          </children>
       </Pane>
-      <Pagination fx:id="pagination1" layoutX="442.0" layoutY="610.0" maxPageIndicatorCount="5" pageCount="7" prefHeight="65.0" prefWidth="253.0" />
+      <Pagination fx:id="clientPagination" layoutX="442.0" layoutY="610.0" maxPageIndicatorCount="5" pageCount="7" prefHeight="65.0" prefWidth="253.0" />
       <JFXTreeTableView fx:id="clientsTable" layoutX="13.0" layoutY="115.0" prefHeight="489.0" prefWidth="683.0">
          <columns>
             <JFXTreeTableColumn fx:id="nameColumn" minWidth="77.0" prefWidth="125.0" resizable="false" text="Name" />
@@ -39,13 +39,32 @@
             <JFXTreeTableColumn fx:id="typeColumn" minWidth="92.0" prefWidth="101.0" resizable="false" text="Type" />
          </columns>
       </JFXTreeTableView>
-      <JFXTextField layoutX="420.0" layoutY="73.0" prefHeight="30.0" prefWidth="182.0" promptText="Search..." />
-      <JFXButton layoutX="607.0" layoutY="73.0" prefHeight="30.0" prefWidth="88.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Search" textFill="WHITE" />
-      <JFXButton layoutX="13.0" layoutY="70.0" onAction="#onNewClient" prefHeight="39.0" prefWidth="136.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="New Client" textFill="WHITE" />
-      <ImageView fitHeight="31.0" fitWidth="42.0" layoutX="20.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/plus.png" />
-         </image>
-      </ImageView>
+      <JFXTextField fx:id="clienteSearchTextField" layoutX="513.0" layoutY="73.0" prefHeight="30.0" prefWidth="182.0" promptText="Search..." />
+      <JFXButton layoutX="13.0" layoutY="73.0" onAction="#onNewClient" prefHeight="30.0" prefWidth="105.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="New Client" textFill="WHITE">
+         <graphic>
+            <ImageView fitHeight="25.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/plus.png" />
+               </image>
+            </ImageView>
+         </graphic></JFXButton>
+      <JFXButton fx:id="clientEditButton" layoutX="125.0" layoutY="73.0" prefHeight="30.0" prefWidth="105.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Edit Client" textFill="WHITE">
+         <graphic>
+            <ImageView fitHeight="25.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/plus.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="clientDeleteButton" layoutX="238.0" layoutY="73.0" prefHeight="30.0" prefWidth="116.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Delete Client" textFill="WHITE">
+         <graphic>
+            <ImageView fitHeight="25.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/plus.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
    </children>
 </AnchorPane>
