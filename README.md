@@ -30,6 +30,10 @@ Pequenos projetos de Admins em diversas linguagens.
 
 <b>Branch com o código</b>: <a href="https://github.com/tiagohs/stuffs-admin/tree/admin-javafx">Clique Aqui</a>
 
+<p align="center">
+  <img src="https://github.com/tiagohs/stuffs-admin/raw/admin-javafx/screens/inventory.png" width="575" height="442">
+</p>
+
 <b>Principais técnologias utilizadas:</b>
 
 <ul>
