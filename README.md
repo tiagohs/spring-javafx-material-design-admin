@@ -24,7 +24,7 @@ Pequenos projetos de Admins em diversas linguagens.
   <li>Bootstrap 3</li>
 </ul>
 
-## stuffs-admin JavaFX Desktop: Gerenciamento de Estoque e Vendas
+## stuffs-admin Material Design & JavaFX Desktop: Gerenciamento de Estoque e Vendas
 [![Build Status](https://travis-ci.org/tiagohs/stuffs-admin.svg?branch=admin-javafx)](https://travis-ci.org/tiagohs/stuffs-admin)
 ##### <i>Em desenvolvimento..</i>
 
