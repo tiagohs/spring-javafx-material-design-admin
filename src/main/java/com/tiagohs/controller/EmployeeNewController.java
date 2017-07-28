@@ -135,10 +135,10 @@ public class EmployeeNewController implements BaseController {
 			WindowsUtils.setTextInTextField(stateTextField, employee.getAddres().getState());
 			
 			WindowsUtils.setSelectedComboBoxItem(countryComboBox, employee.getAddres().getCountry());
-			WindowsUtils.setSelectedComboBoxItem(roleComboBox, employee.getUser().getRoles().get(0));
 		}
 		
 		if (employee.getUser() != null) {
+			WindowsUtils.setSelectedComboBoxItem(roleComboBox, employee.getUser().getRoles().get(0));
 			WindowsUtils.setTextInTextField(nameTextField, employee.getUser().getName());
 			WindowsUtils.setTextInTextField(emailTextField, employee.getUser().getEmail());
 			WindowsUtils.setTextInTextField(passwordTextField, employee.getUser().getPassword());

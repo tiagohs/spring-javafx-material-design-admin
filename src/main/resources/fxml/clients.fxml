@@ -10,61 +10,77 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="689.0" prefWidth="709.0" style="-fx-background-color: #FFFFF;" stylesheets="@../css/application.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tiagohs.controller.ClientsController">
+
+<StackPane fx:id="container" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tiagohs.controller.ClientsController">
    <children>
-      <Pane layoutY="-6.0" prefHeight="61.0" prefWidth="728.0" style="-fx-background-color: #3F51B5;" styleClass="product-detail-header">
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="689.0" prefWidth="709.0" style="-fx-background-color: #FFFFF;" stylesheets="@../css/application.css">
          <children>
-            <Label layoutX="85.0" layoutY="20.0" text="Clients" textFill="#fafafa">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label layoutX="23.0" layoutY="23.0" text="Home /" textFill="#e0e0e0">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Label>
+            <Pane layoutY="-6.0" prefHeight="61.0" prefWidth="728.0" style="-fx-background-color: #3F51B5;" styleClass="product-detail-header">
+               <children>
+                  <Label layoutX="85.0" layoutY="20.0" text="Clients" textFill="#fafafa">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="23.0" layoutY="23.0" text="Home /" textFill="#e0e0e0">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pagination fx:id="clientPagination" layoutX="442.0" layoutY="610.0" maxPageIndicatorCount="5" pageCount="7" prefHeight="65.0" prefWidth="253.0" />
+            <JFXTreeTableView fx:id="clientsTable" layoutX="13.0" layoutY="115.0" prefHeight="489.0" prefWidth="683.0">
+               <columns>
+                  <JFXTreeTableColumn fx:id="nameColumn" minWidth="77.0" prefWidth="125.0" resizable="false" text="Name" />
+                  <JFXTreeTableColumn fx:id="emailColumn" minWidth="83.0" prefWidth="166.0" resizable="false" text="E-mail" />
+                  <JFXTreeTableColumn fx:id="addressColumn" minWidth="74.0" prefWidth="126.0" resizable="false" text="Address" />
+                  <JFXTreeTableColumn fx:id="foneColumn" minWidth="72.0" prefWidth="96.0" resizable="false" text="Fone" />
+                  <JFXTreeTableColumn fx:id="numOrdersColumn" minWidth="58.0" prefWidth="68.0" resizable="false" text="Nº Orders" />
+                  <JFXTreeTableColumn fx:id="typeColumn" minWidth="92.0" prefWidth="101.0" resizable="false" text="Type" />
+               </columns>
+            </JFXTreeTableView>
+            <JFXTextField fx:id="clientSearchTextField" layoutX="513.0" layoutY="73.0" prefHeight="30.0" prefWidth="182.0" promptText="Search..." />
+            <JFXButton layoutX="13.0" layoutY="73.0" onAction="#onNewClient" prefHeight="30.0" prefWidth="105.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="New Client" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/plus.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="clientEditButton" disable="true" layoutX="125.0" layoutY="73.0" onAction="#onEditTable" prefHeight="30.0" prefWidth="105.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Edit Client" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/plus.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="clientRemoveButton" disable="true" layoutX="238.0" layoutY="73.0" onAction="#onRemoveTable" prefHeight="30.0" prefWidth="116.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Delete Client" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/plus.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="clientReloadButton" contentDisplay="GRAPHIC_ONLY" layoutX="362.0" layoutY="73.0" onAction="#onReloadTable" prefHeight="30.0" prefWidth="34.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Remove" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/reload.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
          </children>
-      </Pane>
-      <Pagination fx:id="clientPagination" layoutX="442.0" layoutY="610.0" maxPageIndicatorCount="5" pageCount="7" prefHeight="65.0" prefWidth="253.0" />
-      <JFXTreeTableView fx:id="clientsTable" layoutX="13.0" layoutY="115.0" prefHeight="489.0" prefWidth="683.0">
-         <columns>
-            <JFXTreeTableColumn fx:id="nameColumn" minWidth="77.0" prefWidth="125.0" resizable="false" text="Name" />
-            <JFXTreeTableColumn fx:id="emailColumn" minWidth="83.0" prefWidth="166.0" resizable="false" text="E-mail" />
-            <JFXTreeTableColumn fx:id="addressColumn" minWidth="74.0" prefWidth="126.0" resizable="false" text="Address" />
-            <JFXTreeTableColumn fx:id="foneColumn" minWidth="72.0" prefWidth="96.0" resizable="false" text="Fone" />
-            <JFXTreeTableColumn fx:id="numOrdersColumn" minWidth="58.0" prefWidth="68.0" resizable="false" text="Nº Orders" />
-            <JFXTreeTableColumn fx:id="typeColumn" minWidth="92.0" prefWidth="101.0" resizable="false" text="Type" />
-         </columns>
-      </JFXTreeTableView>
-      <JFXTextField fx:id="clienteSearchTextField" layoutX="513.0" layoutY="73.0" prefHeight="30.0" prefWidth="182.0" promptText="Search..." />
-      <JFXButton layoutX="13.0" layoutY="73.0" onAction="#onNewClient" prefHeight="30.0" prefWidth="105.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="New Client" textFill="WHITE">
-         <graphic>
-            <ImageView fitHeight="25.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/plus.png" />
-               </image>
-            </ImageView>
-         </graphic></JFXButton>
-      <JFXButton fx:id="clientEditButton" layoutX="125.0" layoutY="73.0" prefHeight="30.0" prefWidth="105.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Edit Client" textFill="WHITE">
-         <graphic>
-            <ImageView fitHeight="25.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/plus.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </JFXButton>
-      <JFXButton fx:id="clientDeleteButton" layoutX="238.0" layoutY="73.0" prefHeight="30.0" prefWidth="116.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Delete Client" textFill="WHITE">
-         <graphic>
-            <ImageView fitHeight="25.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/plus.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </JFXButton>
+      </AnchorPane>
    </children>
-</AnchorPane>
+</StackPane>

@@ -192,12 +192,14 @@ public class InventoryController implements BaseController {
 		TableUtils.configureEditAndRemoveOptions(productsTable, productEditButton, productRemoveButton);
 		TableUtils.configureEditAndRemoveOptions(employeeTable, employeeEditButton, employeeRemoveButton);
 		TableUtils.configureEditAndRemoveOptions(supplierTable, supplierEditButton, supplierRemoveButton);
+		TableUtils.configureEditAndRemoveOptions(brandTable, brandEditButton, brandRemoveButton);
 	}
 	
 	private void configureSearchs() {
 		TableUtils.configureTableSearch(productSearchTextField, productsTable, (productProp, newVal) -> configureProductSearchTest(productProp, newVal));
-		TableUtils.configureTableSearch(employeeSearchTextField, employeeTable, (productProp, newVal) -> configureEmployeeSearchTest(productProp, newVal));
-		TableUtils.configureTableSearch(supplierSearchTextField, supplierTable, (productProp, newVal) -> configureSupplierSearchTest(productProp, newVal));
+		TableUtils.configureTableSearch(employeeSearchTextField, employeeTable, (employeeProp, newVal) -> configureEmployeeSearchTest(employeeProp, newVal));
+		TableUtils.configureTableSearch(supplierSearchTextField, supplierTable, (supplierProp, newVal) -> configureSupplierSearchTest(supplierProp, newVal));
+		TableUtils.configureTableSearch(brandSearchTextField, brandTable, (brandProp, newVal) -> configureBrandSearchTest(brandProp, newVal));
 	}
 	
 	private boolean configureProductSearchTest(TreeItem<ProductTableDTO> productProp, String value) {
@@ -222,6 +224,13 @@ public class InventoryController implements BaseController {
         return supplier.getCompanyName().get().contains(value)
             || supplier.getEmail().get().contains(value)
             || supplier.getAdress().get().contains(value);
+	}
+	
+	private boolean configureBrandSearchTest(TreeItem<BrandTableDTO> brandProp, String value) {
+		final BrandTableDTO brand = brandProp.getValue();
+        return brand.getName().get().contains(value)
+            || brand.getEmail().get().contains(value)
+            || brand.getAdditionalInformation().get().contains(value);
 	}
 	
 	private void configureProductTable() {
@@ -349,21 +358,26 @@ public class InventoryController implements BaseController {
 	@FXML
 	private void onReloadProductTable() {
 		TableUtils.reloadTable(() -> configureProductTable());
+		TableUtils.updateEditAndRemoveButtonState(productsTable, productEditButton, productRemoveButton);
 	}
 	
 	@FXML
 	private void onReloadEmployeeTable() {
 		TableUtils.reloadTable(() -> configureEmployeeTable());
+		TableUtils.updateEditAndRemoveButtonState(employeeTable, employeeEditButton, employeeRemoveButton);
 	}
 	
 	@FXML
 	private void onReloadSupplierTable() {
 		TableUtils.reloadTable(() -> configureSupplierTable());
+		TableUtils.updateEditAndRemoveButtonState(supplierTable, supplierEditButton, supplierRemoveButton);
 	}
+	
 	
 	@FXML
 	private void onReloadBrandTable() {
 		TableUtils.reloadTable(() -> configureBrandTable());
+		TableUtils.updateEditAndRemoveButtonState(brandTable, brandEditButton, brandRemoveButton);
 	}
 	
 	@FXML

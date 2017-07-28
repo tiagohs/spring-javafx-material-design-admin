@@ -66,13 +66,17 @@ public class TableUtils {
 
 	public static <T extends RecursiveTreeObject<T>> void configureEditAndRemoveOptions(JFXTreeTableView<T> table, JFXButton edit, JFXButton remove) {
 		table.setOnMouseClicked((e) -> { 
-			if (table.getSelectionModel().selectedItemProperty().get() != null) {
-				edit.setDisable(false);
-				remove.setDisable(false);
-			}
-			
+			updateEditAndRemoveButtonState(table, edit, remove);
 		});
 	}
+	
+	public static <T extends RecursiveTreeObject<T>> void updateEditAndRemoveButtonState(JFXTreeTableView<T> table, JFXButton edit, JFXButton remove) {
+		if (table.getSelectionModel().selectedItemProperty().get() != null) {
+			edit.setDisable(false);
+			remove.setDisable(false);
+		} 
+	}
+	
 	
 	public static <T extends RecursiveTreeObject<T>> void configureTableSearch(TextField textField, JFXTreeTableView<T> tableView, ITableSearchTest<T> test) {
 		textField.textProperty().addListener((o, oldVal, newVal) -> {
@@ -104,6 +108,6 @@ public class TableUtils {
 		TableService service = new TableService(creator);
 		service.start();
 	}
-	
+
 	
 }

@@ -25,7 +25,10 @@ public class Fone {
 	
 	@ManyToOne
 	private Employee employee;
-
+	
+	@ManyToOne
+	private Client client;
+	
 	public long getId() {
 		return id;
 	}

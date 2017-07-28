@@ -5,6 +5,8 @@ import java.util.List;
 
 import com.tiagohs.model.Address;
 import com.tiagohs.model.Brand;
+import com.tiagohs.model.Client;
+import com.tiagohs.model.ClientType;
 import com.tiagohs.model.Employee;
 import com.tiagohs.model.Fone;
 import com.tiagohs.model.Image;
@@ -101,6 +103,35 @@ public class EntityFactory {
 		brand.setAdditionalInformation(additionalInformation);
 		
 		return brand;
+	}
+	
+	public static Client createClient(String cpf, ClientType clientType, Address address,
+											List<Fone> phones, User user) {
+		return createClient(new Client(), cpf, clientType, address, phones, user);
+	}
+	
+	public static Client createClient(Client client, String cpf, ClientType clientType, Address address,
+									List<Fone> phones, User user) {
+		
+		if (client == null) {
+			client = new Client();
+		}
+		
+		client.setAddress(address);
+		client.setCpf(cpf);
+		client.setClientType(clientType);
+		client.setPhones(phones);
+		client.setUser(user);
+		
+		return client;
+	}
+	
+	public static ClientType createClientType(String name) {
+		ClientType clientType = new ClientType();
+		
+		clientType.setName(name);
+		
+		return clientType;
 	}
 	
 	public static ProductType createProductType(String name) {

@@ -2,6 +2,7 @@ package com.tiagohs.model.dto;
 
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import com.tiagohs.model.Address;
+import com.tiagohs.model.Client;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -14,6 +15,7 @@ public class ClientTableDTO extends RecursiveTreeObject<ClientTableDTO>{
 	private StringProperty fone;
 	private StringProperty numOrders;
 	private StringProperty type;
+	private Client originalClient;
 	
 	public StringProperty getName() {
 		return name;
@@ -71,6 +73,12 @@ public class ClientTableDTO extends RecursiveTreeObject<ClientTableDTO>{
 	}
 	public void setType(String type) {
 		this.type = new SimpleStringProperty(type);
+	}
+	public Client getOriginalClient() {
+		return originalClient;
+	}
+	public void setOriginalClient(Client originalClient) {
+		this.originalClient = originalClient;
 	}
 	
 }
