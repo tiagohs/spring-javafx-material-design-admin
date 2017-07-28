@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
 <?import com.jfoenix.controls.JFXTextArea?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import com.jfoenix.validation.RequiredFieldValidator?>
@@ -74,12 +75,12 @@
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <JFXTextField fx:id="emailTextField1" accessibleHelp="Auto" focusColor="#009688" labelFloat="true" layoutX="527.0" layoutY="77.0" prefHeight="25.0" prefWidth="168.0" promptText="Phone">
+                        <JFXTextField fx:id="phoneTextField" accessibleHelp="Auto" focusColor="#009688" labelFloat="true" layoutX="527.0" layoutY="77.0" prefHeight="25.0" prefWidth="168.0" promptText="Phone">
                            <validators>
                               <RequiredFieldValidator message="Input Required!" />
                            </validators>
                         </JFXTextField>
-                        <JFXComboBox fx:id="countryComboBox" focusColor="#009688" labelFloat="true" layoutX="19.0" layoutY="77.0" prefHeight="25.0" prefWidth="199.0" promptText="Select the Client">
+                        <JFXComboBox fx:id="clientComboBox" focusColor="#009688" labelFloat="true" layoutX="19.0" layoutY="77.0" prefHeight="25.0" prefWidth="199.0" promptText="Select the Client">
                            <items>
                               <FXCollections fx:factory="observableArrayList">
                                  <String fx:value="Afghanistan" />
@@ -324,39 +325,13 @@
                               </FXCollections>
                            </items>
                         </JFXComboBox>
-                        <JFXTextField fx:id="emailTextField11" accessibleHelp="Auto" focusColor="#009688" labelFloat="true" layoutX="429.0" layoutY="126.0" prefHeight="25.0" prefWidth="265.0" promptText="Reference">
+                        <JFXTextField fx:id="referenceTextField" accessibleHelp="Auto" focusColor="#009688" labelFloat="true" layoutX="399.0" layoutY="126.0" prefHeight="25.0" prefWidth="295.0" promptText="Reference">
                            <validators>
                               <RequiredFieldValidator message="Input Required!" />
                            </validators>
                         </JFXTextField>
-                        <JFXTextField fx:id="emailTextField12" accessibleHelp="Auto" focusColor="#009688" labelFloat="true" layoutX="19.0" layoutY="126.0" prefHeight="25.0" prefWidth="152.0" promptText="Issue Date">
-                           <validators>
-                              <RequiredFieldValidator message="Input Required!" />
-                           </validators>
-                        </JFXTextField>
-                        <JFXButton contentDisplay="GRAPHIC_ONLY" layoutX="171.0" layoutY="122.0">
-                           <graphic>
-                              <ImageView fitHeight="25.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../images/calendar.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </JFXButton>
-                        <JFXTextField fx:id="emailTextField121" accessibleHelp="Auto" focusColor="#009688" labelFloat="true" layoutX="225.0" layoutY="126.0" prefHeight="25.0" prefWidth="152.0" promptText="Shipment Date">
-                           <validators>
-                              <RequiredFieldValidator message="Input Required!" />
-                           </validators>
-                        </JFXTextField>
-                        <JFXButton contentDisplay="GRAPHIC_ONLY" layoutX="377.0" layoutY="122.0">
-                           <graphic>
-                              <ImageView fitHeight="25.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../images/calendar.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </JFXButton>
+                        <JFXButton contentDisplay="GRAPHIC_ONLY" layoutX="171.0" layoutY="122.0" />
+                        <JFXButton contentDisplay="GRAPHIC_ONLY" layoutX="377.0" layoutY="122.0" />
                         <Label layoutX="449.0" layoutY="388.0" text="Total Units" textFill="#00796b">
                            <font>
                               <Font size="14.0" />
@@ -378,7 +353,7 @@
                            </font>
                         </Label>
                         <Pane layoutX="25.0" layoutY="207.0" prefHeight="1.0" prefWidth="672.0" style="-fx-background-color: #EEEEEE;" />
-                        <JFXButton fx:id="saveButton1" layoutX="273.0" layoutY="279.0" onAction="#onSave" prefHeight="39.0" prefWidth="176.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Add another item" textFill="WHITE">
+                        <JFXButton fx:id="addAnotherItemButton" layoutX="273.0" layoutY="279.0" onAction="#onAddAnotherItem" prefHeight="39.0" prefWidth="176.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Add another item" textFill="WHITE">
                            <font>
                               <Font size="14.0" />
                            </font>
@@ -390,278 +365,282 @@
                               </ImageView>
                            </graphic>
                         </JFXButton>
-                        <Pane layoutX="7.0" layoutY="212.0" prefHeight="61.0" prefWidth="709.0">
+                        <Pane fx:id="itemsContainer" layoutX="7.0" layoutY="212.0" prefHeight="61.0" prefWidth="709.0">
                            <children>
-                              <JFXComboBox fx:id="countryComboBox11" focusColor="#009688" labelFloat="true" layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="202.0" promptText="Item">
-                                 <items>
-                                    <FXCollections fx:factory="observableArrayList">
-                                       <String fx:value="Afghanistan" />
-                                       <String fx:value="Albania" />
-                                       <String fx:value="Algeria" />
-                                       <String fx:value="American Samoa" />
-                                       <String fx:value="Andorra" />
-                                       <String fx:value="Angola" />
-                                       <String fx:value="Anguilla" />
-                                       <String fx:value="Antarctica" />
-                                       <String fx:value="Antigua and Barbuda" />
-                                       <String fx:value="Argentina" />
-                                       <String fx:value="Armenia" />
-                                       <String fx:value="Aruba" />
-                                       <String fx:value="Australia" />
-                                       <String fx:value="Austria" />
-                                       <String fx:value="Azerbaijan" />
-                                       <String fx:value="Bahamas" />
-                                       <String fx:value="Bahrain" />
-                                       <String fx:value="Bangladesh" />
-                                       <String fx:value="Barbados" />
-                                       <String fx:value="Belarus" />
-                                       <String fx:value="Belgium" />
-                                       <String fx:value="Belize" />
-                                       <String fx:value="Benin" />
-                                       <String fx:value="Bermuda" />
-                                       <String fx:value="Bhutan" />
-                                       <String fx:value="Bolivia" />
-                                       <String fx:value="Bosnia and Herzegovina" />
-                                       <String fx:value="Botswana" />
-                                       <String fx:value="Bouvet Island" />
-                                       <String fx:value="Brazil" />
-                                       <String fx:value="British Indian Ocean Territory" />
-                                       <String fx:value="Brunei Darussalam" />
-                                       <String fx:value="Bulgaria" />
-                                       <String fx:value="Burkina Faso" />
-                                       <String fx:value="Burundi" />
-                                       <String fx:value="Cambodia" />
-                                       <String fx:value="Cameroon" />
-                                       <String fx:value="Canada" />
-                                       <String fx:value="Cape Verde" />
-                                       <String fx:value="Cayman Islands" />
-                                       <String fx:value="Central African Republic" />
-                                       <String fx:value="Chad" />
-                                       <String fx:value="Chile" />
-                                       <String fx:value="China" />
-                                       <String fx:value="Christmas Island" />
-                                       <String fx:value="Cocos (Keeling Islands)" />
-                                       <String fx:value="Colombia" />
-                                       <String fx:value="Comoros" />
-                                       <String fx:value="Congo" />
-                                       <String fx:value="Cook Islands" />
-                                       <String fx:value="Costa Rica" />
-                                       <String fx:value="Cote D'Ivoire (Ivory Coast)" />
-                                       <String fx:value="Croatia (Hrvatska" />
-                                       <String fx:value="Cuba" />
-                                       <String fx:value="Cyprus" />
-                                       <String fx:value="Czech Republic" />
-                                       <String fx:value="Denmark" />
-                                       <String fx:value="Djibouti" />
-                                       <String fx:value="Dominica" />
-                                       <String fx:value="Dominican Republic" />
-                                       <String fx:value="East Timor" />
-                                       <String fx:value="Ecuador" />
-                                       <String fx:value="Egypt" />
-                                       <String fx:value="El Salvador" />
-                                       <String fx:value="Equatorial Guinea" />
-                                       <String fx:value="Eritrea" />
-                                       <String fx:value="Estonia" />
-                                       <String fx:value="Ethiopia" />
-                                       <String fx:value="Falkland Islands (Malvinas)" />
-                                       <String fx:value="Faroe Islands" />
-                                       <String fx:value="Fiji" />
-                                       <String fx:value="Finland" />
-                                       <String fx:value="France" />
-                                       <String fx:value="France, Metropolitan" />
-                                       <String fx:value="French Guiana" />
-                                       <String fx:value="French Polynesia" />
-                                       <String fx:value="French Southern Territories" />
-                                       <String fx:value="Gabon" />
-                                       <String fx:value="Gambia" />
-                                       <String fx:value="Georgia" />
-                                       <String fx:value="Germany" />
-                                       <String fx:value="Ghana" />
-                                       <String fx:value="Gibraltar" />
-                                       <String fx:value="Greece" />
-                                       <String fx:value="Greenland" />
-                                       <String fx:value="Grenada" />
-                                       <String fx:value="Guadeloupe" />
-                                       <String fx:value="Guam" />
-                                       <String fx:value="Guatemala" />
-                                       <String fx:value="Guinea" />
-                                       <String fx:value="Guinea-Bissau" />
-                                       <String fx:value="Guyana" />
-                                       <String fx:value="Haiti" />
-                                       <String fx:value="Heard and McDonald Islands" />
-                                       <String fx:value="Honduras" />
-                                       <String fx:value="Hong Kong" />
-                                       <String fx:value="Hungary" />
-                                       <String fx:value="Iceland" />
-                                       <String fx:value="India" />
-                                       <String fx:value="Indonesia" />
-                                       <String fx:value="Iran" />
-                                       <String fx:value="Iraq" />
-                                       <String fx:value="Ireland" />
-                                       <String fx:value="Israel" />
-                                       <String fx:value="Italy" />
-                                       <String fx:value="Jamaica" />
-                                       <String fx:value="Japan" />
-                                       <String fx:value="Jordan" />
-                                       <String fx:value="Kazakhstan" />
-                                       <String fx:value="Kenya" />
-                                       <String fx:value="Kiribati" />
-                                       <String fx:value="Korea (North)" />
-                                       <String fx:value="Korea (South)" />
-                                       <String fx:value="Kuwait" />
-                                       <String fx:value="Kyrgyzstan" />
-                                       <String fx:value="Laos" />
-                                       <String fx:value="Latvia" />
-                                       <String fx:value="Lebanon" />
-                                       <String fx:value="Lesotho" />
-                                       <String fx:value="Liberia" />
-                                       <String fx:value="Libya" />
-                                       <String fx:value="Liechtenstein" />
-                                       <String fx:value="Lithuania" />
-                                       <String fx:value="Luxembourg" />
-                                       <String fx:value="Macau" />
-                                       <String fx:value="Macedonia" />
-                                       <String fx:value="Madagascar" />
-                                       <String fx:value="Malawi" />
-                                       <String fx:value="Malaysia" />
-                                       <String fx:value="Maldives" />
-                                       <String fx:value="Mali" />
-                                       <String fx:value="Malta" />
-                                       <String fx:value="Marshall Islands" />
-                                       <String fx:value="Martinique" />
-                                       <String fx:value="Mauritania" />
-                                       <String fx:value="Mauritius" />
-                                       <String fx:value="Mayotte" />
-                                       <String fx:value="Mexico" />
-                                       <String fx:value="Micronesia" />
-                                       <String fx:value="Moldova" />
-                                       <String fx:value="Monaco" />
-                                       <String fx:value="Mongolia" />
-                                       <String fx:value="Montserrat" />
-                                       <String fx:value="Morocco" />
-                                       <String fx:value="Mozambique" />
-                                       <String fx:value="Myanmar" />
-                                       <String fx:value="Namibia" />
-                                       <String fx:value="Nauru" />
-                                       <String fx:value="Nepal" />
-                                       <String fx:value="Netherlands Antilles" />
-                                       <String fx:value="Netherlands" />
-                                       <String fx:value="New Caledonia" />
-                                       <String fx:value="New Zealand" />
-                                       <String fx:value="Nicaragua" />
-                                       <String fx:value="Niger" />
-                                       <String fx:value="Nigeria" />
-                                       <String fx:value="Niue" />
-                                       <String fx:value="Norfolk Island" />
-                                       <String fx:value="Northern Mariana Islands" />
-                                       <String fx:value="Norway" />
-                                       <String fx:value="Oman" />
-                                       <String fx:value="Pakistan" />
-                                       <String fx:value="Palau" />
-                                       <String fx:value="Panama" />
-                                       <String fx:value="Papua New Guinea" />
-                                       <String fx:value="Paraguay" />
-                                       <String fx:value="Peru" />
-                                       <String fx:value="Philippines" />
-                                       <String fx:value="Pitcairn" />
-                                       <String fx:value="Poland" />
-                                       <String fx:value="Portugal" />
-                                       <String fx:value="Puerto Rico" />
-                                       <String fx:value="Qatar" />
-                                       <String fx:value="Reunion" />
-                                       <String fx:value="Romania" />
-                                       <String fx:value="Russian Federation" />
-                                       <String fx:value="Rwanda" />
-                                       <String fx:value="S. Georgia and S. Sandwich Isls." />
-                                       <String fx:value="Saint Kitts and Nevis" />
-                                       <String fx:value="Saint Lucia" />
-                                       <String fx:value="Saint Vincent and The Grenadines" />
-                                       <String fx:value="Samoa" />
-                                       <String fx:value="San Marino" />
-                                       <String fx:value="Sao Tome and Principe" />
-                                       <String fx:value="Saudi Arabia" />
-                                       <String fx:value="Senegal" />
-                                       <String fx:value="Seychelles" />
-                                       <String fx:value="Sierra Leone" />
-                                       <String fx:value="Singapore" />
-                                       <String fx:value="Slovak Republic" />
-                                       <String fx:value="Slovenia" />
-                                       <String fx:value="Solomon Islands" />
-                                       <String fx:value="Somalia" />
-                                       <String fx:value="South Africa" />
-                                       <String fx:value="Spain" />
-                                       <String fx:value="Sri Lanka" />
-                                       <String fx:value="St. Helena" />
-                                       <String fx:value="St. Pierre and Miquelon" />
-                                       <String fx:value="Sudan" />
-                                       <String fx:value="Suriname" />
-                                       <String fx:value="Svalbard and Jan Mayen Islands" />
-                                       <String fx:value="Swaziland" />
-                                       <String fx:value="Sweden" />
-                                       <String fx:value="Switzerland" />
-                                       <String fx:value="Syria" />
-                                       <String fx:value="Taiwan" />
-                                       <String fx:value="Tajikistan" />
-                                       <String fx:value="Tanzania" />
-                                       <String fx:value="Thailand" />
-                                       <String fx:value="Togo" />
-                                       <String fx:value="Tokelau" />
-                                       <String fx:value="Tonga" />
-                                       <String fx:value="Trinidad and Tobago" />
-                                       <String fx:value="Tunisia" />
-                                       <String fx:value="Turkey" />
-                                       <String fx:value="Turkmenistan" />
-                                       <String fx:value="Turks and Caicos Islands" />
-                                       <String fx:value="Tuvalu" />
-                                       <String fx:value="US Minor Outlying Islands" />
-                                       <String fx:value="Uganda" />
-                                       <String fx:value="Ukraine" />
-                                       <String fx:value="United Arab Emirates" />
-                                       <String fx:value="United Kingdom" />
-                                       <String fx:value="United States" />
-                                       <String fx:value="Uruguay" />
-                                       <String fx:value="Uzbekistan" />
-                                       <String fx:value="Vanuatu" />
-                                       <String fx:value="Vatican City State (Holy See)" />
-                                       <String fx:value="Venezuela" />
-                                       <String fx:value="Viet Nam" />
-                                       <String fx:value="Virgin Islands (British)" />
-                                       <String fx:value="Virgin Islands (US)" />
-                                       <String fx:value="Wallis and Futuna Islands" />
-                                       <String fx:value="Western Sahara" />
-                                       <String fx:value="Yemen" />
-                                       <String fx:value="Yugoslavia" />
-                                       <String fx:value="Zaire" />
-                                       <String fx:value="Zambia" />
-                                       <String fx:value="Zimbabwe" />
-                                    </FXCollections>
-                                 </items>
-                              </JFXComboBox>
-                              <JFXTextField fx:id="emailTextField22" accessibleHelp="Auto" focusColor="#009688" labelFloat="true" layoutX="232.0" layoutY="14.0" prefHeight="25.0" prefWidth="90.0" promptText="Quantity">
-                                 <validators>
-                                    <RequiredFieldValidator message="Input Required!" />
-                                 </validators>
-                              </JFXTextField>
-                              <JFXTextField fx:id="emailTextField212" accessibleHelp="Auto" focusColor="#009688" labelFloat="true" layoutX="337.0" layoutY="14.0" prefHeight="25.0" prefWidth="90.0" promptText="Price">
-                                 <validators>
-                                    <RequiredFieldValidator message="Input Required!" />
-                                 </validators>
-                              </JFXTextField>
-                              <JFXTextField fx:id="emailTextField2112" accessibleHelp="Auto" focusColor="#009688" labelFloat="true" layoutX="442.0" layoutY="14.0" prefHeight="25.0" prefWidth="83.0" promptText="\% Discount">
-                                 <validators>
-                                    <RequiredFieldValidator message="Input Required!" />
-                                 </validators>
-                              </JFXTextField>
-                              <JFXTextField fx:id="emailTextField21111" accessibleHelp="Auto" focusColor="#009688" labelFloat="true" layoutX="529.0" layoutY="13.0" prefHeight="25.0" prefWidth="90.0" promptText="Tax">
-                                 <validators>
-                                    <RequiredFieldValidator message="Input Required!" />
-                                 </validators>
-                              </JFXTextField>
-                              <Label alignment="CENTER_RIGHT" layoutX="619.0" layoutY="17.0" prefHeight="20.0" prefWidth="72.0" text="R$ 0,00" textFill="#00796b">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                              </Label>
+                              <Pane fx:id="itemContainer" prefHeight="61.0" prefWidth="709.0">
+                                 <children>
+                                    <JFXComboBox fx:id="countryComboBox111" focusColor="#009688" labelFloat="true" layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="202.0" promptText="Item">
+                                       <items>
+                                          <FXCollections fx:factory="observableArrayList">
+                                             <String fx:value="Afghanistan" />
+                                             <String fx:value="Albania" />
+                                             <String fx:value="Algeria" />
+                                             <String fx:value="American Samoa" />
+                                             <String fx:value="Andorra" />
+                                             <String fx:value="Angola" />
+                                             <String fx:value="Anguilla" />
+                                             <String fx:value="Antarctica" />
+                                             <String fx:value="Antigua and Barbuda" />
+                                             <String fx:value="Argentina" />
+                                             <String fx:value="Armenia" />
+                                             <String fx:value="Aruba" />
+                                             <String fx:value="Australia" />
+                                             <String fx:value="Austria" />
+                                             <String fx:value="Azerbaijan" />
+                                             <String fx:value="Bahamas" />
+                                             <String fx:value="Bahrain" />
+                                             <String fx:value="Bangladesh" />
+                                             <String fx:value="Barbados" />
+                                             <String fx:value="Belarus" />
+                                             <String fx:value="Belgium" />
+                                             <String fx:value="Belize" />
+                                             <String fx:value="Benin" />
+                                             <String fx:value="Bermuda" />
+                                             <String fx:value="Bhutan" />
+                                             <String fx:value="Bolivia" />
+                                             <String fx:value="Bosnia and Herzegovina" />
+                                             <String fx:value="Botswana" />
+                                             <String fx:value="Bouvet Island" />
+                                             <String fx:value="Brazil" />
+                                             <String fx:value="British Indian Ocean Territory" />
+                                             <String fx:value="Brunei Darussalam" />
+                                             <String fx:value="Bulgaria" />
+                                             <String fx:value="Burkina Faso" />
+                                             <String fx:value="Burundi" />
+                                             <String fx:value="Cambodia" />
+                                             <String fx:value="Cameroon" />
+                                             <String fx:value="Canada" />
+                                             <String fx:value="Cape Verde" />
+                                             <String fx:value="Cayman Islands" />
+                                             <String fx:value="Central African Republic" />
+                                             <String fx:value="Chad" />
+                                             <String fx:value="Chile" />
+                                             <String fx:value="China" />
+                                             <String fx:value="Christmas Island" />
+                                             <String fx:value="Cocos (Keeling Islands)" />
+                                             <String fx:value="Colombia" />
+                                             <String fx:value="Comoros" />
+                                             <String fx:value="Congo" />
+                                             <String fx:value="Cook Islands" />
+                                             <String fx:value="Costa Rica" />
+                                             <String fx:value="Cote D'Ivoire (Ivory Coast)" />
+                                             <String fx:value="Croatia (Hrvatska" />
+                                             <String fx:value="Cuba" />
+                                             <String fx:value="Cyprus" />
+                                             <String fx:value="Czech Republic" />
+                                             <String fx:value="Denmark" />
+                                             <String fx:value="Djibouti" />
+                                             <String fx:value="Dominica" />
+                                             <String fx:value="Dominican Republic" />
+                                             <String fx:value="East Timor" />
+                                             <String fx:value="Ecuador" />
+                                             <String fx:value="Egypt" />
+                                             <String fx:value="El Salvador" />
+                                             <String fx:value="Equatorial Guinea" />
+                                             <String fx:value="Eritrea" />
+                                             <String fx:value="Estonia" />
+                                             <String fx:value="Ethiopia" />
+                                             <String fx:value="Falkland Islands (Malvinas)" />
+                                             <String fx:value="Faroe Islands" />
+                                             <String fx:value="Fiji" />
+                                             <String fx:value="Finland" />
+                                             <String fx:value="France" />
+                                             <String fx:value="France, Metropolitan" />
+                                             <String fx:value="French Guiana" />
+                                             <String fx:value="French Polynesia" />
+                                             <String fx:value="French Southern Territories" />
+                                             <String fx:value="Gabon" />
+                                             <String fx:value="Gambia" />
+                                             <String fx:value="Georgia" />
+                                             <String fx:value="Germany" />
+                                             <String fx:value="Ghana" />
+                                             <String fx:value="Gibraltar" />
+                                             <String fx:value="Greece" />
+                                             <String fx:value="Greenland" />
+                                             <String fx:value="Grenada" />
+                                             <String fx:value="Guadeloupe" />
+                                             <String fx:value="Guam" />
+                                             <String fx:value="Guatemala" />
+                                             <String fx:value="Guinea" />
+                                             <String fx:value="Guinea-Bissau" />
+                                             <String fx:value="Guyana" />
+                                             <String fx:value="Haiti" />
+                                             <String fx:value="Heard and McDonald Islands" />
+                                             <String fx:value="Honduras" />
+                                             <String fx:value="Hong Kong" />
+                                             <String fx:value="Hungary" />
+                                             <String fx:value="Iceland" />
+                                             <String fx:value="India" />
+                                             <String fx:value="Indonesia" />
+                                             <String fx:value="Iran" />
+                                             <String fx:value="Iraq" />
+                                             <String fx:value="Ireland" />
+                                             <String fx:value="Israel" />
+                                             <String fx:value="Italy" />
+                                             <String fx:value="Jamaica" />
+                                             <String fx:value="Japan" />
+                                             <String fx:value="Jordan" />
+                                             <String fx:value="Kazakhstan" />
+                                             <String fx:value="Kenya" />
+                                             <String fx:value="Kiribati" />
+                                             <String fx:value="Korea (North)" />
+                                             <String fx:value="Korea (South)" />
+                                             <String fx:value="Kuwait" />
+                                             <String fx:value="Kyrgyzstan" />
+                                             <String fx:value="Laos" />
+                                             <String fx:value="Latvia" />
+                                             <String fx:value="Lebanon" />
+                                             <String fx:value="Lesotho" />
+                                             <String fx:value="Liberia" />
+                                             <String fx:value="Libya" />
+                                             <String fx:value="Liechtenstein" />
+                                             <String fx:value="Lithuania" />
+                                             <String fx:value="Luxembourg" />
+                                             <String fx:value="Macau" />
+                                             <String fx:value="Macedonia" />
+                                             <String fx:value="Madagascar" />
+                                             <String fx:value="Malawi" />
+                                             <String fx:value="Malaysia" />
+                                             <String fx:value="Maldives" />
+                                             <String fx:value="Mali" />
+                                             <String fx:value="Malta" />
+                                             <String fx:value="Marshall Islands" />
+                                             <String fx:value="Martinique" />
+                                             <String fx:value="Mauritania" />
+                                             <String fx:value="Mauritius" />
+                                             <String fx:value="Mayotte" />
+                                             <String fx:value="Mexico" />
+                                             <String fx:value="Micronesia" />
+                                             <String fx:value="Moldova" />
+                                             <String fx:value="Monaco" />
+                                             <String fx:value="Mongolia" />
+                                             <String fx:value="Montserrat" />
+                                             <String fx:value="Morocco" />
+                                             <String fx:value="Mozambique" />
+                                             <String fx:value="Myanmar" />
+                                             <String fx:value="Namibia" />
+                                             <String fx:value="Nauru" />
+                                             <String fx:value="Nepal" />
+                                             <String fx:value="Netherlands Antilles" />
+                                             <String fx:value="Netherlands" />
+                                             <String fx:value="New Caledonia" />
+                                             <String fx:value="New Zealand" />
+                                             <String fx:value="Nicaragua" />
+                                             <String fx:value="Niger" />
+                                             <String fx:value="Nigeria" />
+                                             <String fx:value="Niue" />
+                                             <String fx:value="Norfolk Island" />
+                                             <String fx:value="Northern Mariana Islands" />
+                                             <String fx:value="Norway" />
+                                             <String fx:value="Oman" />
+                                             <String fx:value="Pakistan" />
+                                             <String fx:value="Palau" />
+                                             <String fx:value="Panama" />
+                                             <String fx:value="Papua New Guinea" />
+                                             <String fx:value="Paraguay" />
+                                             <String fx:value="Peru" />
+                                             <String fx:value="Philippines" />
+                                             <String fx:value="Pitcairn" />
+                                             <String fx:value="Poland" />
+                                             <String fx:value="Portugal" />
+                                             <String fx:value="Puerto Rico" />
+                                             <String fx:value="Qatar" />
+                                             <String fx:value="Reunion" />
+                                             <String fx:value="Romania" />
+                                             <String fx:value="Russian Federation" />
+                                             <String fx:value="Rwanda" />
+                                             <String fx:value="S. Georgia and S. Sandwich Isls." />
+                                             <String fx:value="Saint Kitts and Nevis" />
+                                             <String fx:value="Saint Lucia" />
+                                             <String fx:value="Saint Vincent and The Grenadines" />
+                                             <String fx:value="Samoa" />
+                                             <String fx:value="San Marino" />
+                                             <String fx:value="Sao Tome and Principe" />
+                                             <String fx:value="Saudi Arabia" />
+                                             <String fx:value="Senegal" />
+                                             <String fx:value="Seychelles" />
+                                             <String fx:value="Sierra Leone" />
+                                             <String fx:value="Singapore" />
+                                             <String fx:value="Slovak Republic" />
+                                             <String fx:value="Slovenia" />
+                                             <String fx:value="Solomon Islands" />
+                                             <String fx:value="Somalia" />
+                                             <String fx:value="South Africa" />
+                                             <String fx:value="Spain" />
+                                             <String fx:value="Sri Lanka" />
+                                             <String fx:value="St. Helena" />
+                                             <String fx:value="St. Pierre and Miquelon" />
+                                             <String fx:value="Sudan" />
+                                             <String fx:value="Suriname" />
+                                             <String fx:value="Svalbard and Jan Mayen Islands" />
+                                             <String fx:value="Swaziland" />
+                                             <String fx:value="Sweden" />
+                                             <String fx:value="Switzerland" />
+                                             <String fx:value="Syria" />
+                                             <String fx:value="Taiwan" />
+                                             <String fx:value="Tajikistan" />
+                                             <String fx:value="Tanzania" />
+                                             <String fx:value="Thailand" />
+                                             <String fx:value="Togo" />
+                                             <String fx:value="Tokelau" />
+                                             <String fx:value="Tonga" />
+                                             <String fx:value="Trinidad and Tobago" />
+                                             <String fx:value="Tunisia" />
+                                             <String fx:value="Turkey" />
+                                             <String fx:value="Turkmenistan" />
+                                             <String fx:value="Turks and Caicos Islands" />
+                                             <String fx:value="Tuvalu" />
+                                             <String fx:value="US Minor Outlying Islands" />
+                                             <String fx:value="Uganda" />
+                                             <String fx:value="Ukraine" />
+                                             <String fx:value="United Arab Emirates" />
+                                             <String fx:value="United Kingdom" />
+                                             <String fx:value="United States" />
+                                             <String fx:value="Uruguay" />
+                                             <String fx:value="Uzbekistan" />
+                                             <String fx:value="Vanuatu" />
+                                             <String fx:value="Vatican City State (Holy See)" />
+                                             <String fx:value="Venezuela" />
+                                             <String fx:value="Viet Nam" />
+                                             <String fx:value="Virgin Islands (British)" />
+                                             <String fx:value="Virgin Islands (US)" />
+                                             <String fx:value="Wallis and Futuna Islands" />
+                                             <String fx:value="Western Sahara" />
+                                             <String fx:value="Yemen" />
+                                             <String fx:value="Yugoslavia" />
+                                             <String fx:value="Zaire" />
+                                             <String fx:value="Zambia" />
+                                             <String fx:value="Zimbabwe" />
+                                          </FXCollections>
+                                       </items>
+                                    </JFXComboBox>
+                                    <JFXTextField fx:id="emailTextField221" accessibleHelp="Auto" focusColor="#009688" labelFloat="true" layoutX="232.0" layoutY="14.0" prefHeight="25.0" prefWidth="90.0" promptText="Quantity">
+                                       <validators>
+                                          <RequiredFieldValidator message="Input Required!" />
+                                       </validators>
+                                    </JFXTextField>
+                                    <JFXTextField fx:id="emailTextField2121" accessibleHelp="Auto" focusColor="#009688" labelFloat="true" layoutX="337.0" layoutY="14.0" prefHeight="25.0" prefWidth="90.0" promptText="Price">
+                                       <validators>
+                                          <RequiredFieldValidator message="Input Required!" />
+                                       </validators>
+                                    </JFXTextField>
+                                    <JFXTextField fx:id="emailTextField21121" accessibleHelp="Auto" focusColor="#009688" labelFloat="true" layoutX="442.0" layoutY="14.0" prefHeight="25.0" prefWidth="83.0" promptText="\% Discount">
+                                       <validators>
+                                          <RequiredFieldValidator message="Input Required!" />
+                                       </validators>
+                                    </JFXTextField>
+                                    <JFXTextField fx:id="emailTextField211111" accessibleHelp="Auto" focusColor="#009688" labelFloat="true" layoutX="529.0" layoutY="13.0" prefHeight="25.0" prefWidth="90.0" promptText="Tax">
+                                       <validators>
+                                          <RequiredFieldValidator message="Input Required!" />
+                                       </validators>
+                                    </JFXTextField>
+                                    <Label alignment="CENTER_RIGHT" layoutX="619.0" layoutY="17.0" prefHeight="20.0" prefWidth="72.0" text="R$ 0,00" textFill="#00796b">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Pane>
                            </children>
                         </Pane>
                         <JFXTextArea focusColor="#009688" labelFloat="true" layoutX="19.0" layoutY="340.0" prefHeight="180.0" prefWidth="407.0" promptText="Message to Client" />
@@ -688,6 +667,8 @@
                            </font>
                         </Label>
                         <Pane layoutX="437.0" layoutY="470.0" prefHeight="1.0" prefWidth="260.0" style="-fx-background-color: #EEEEEE;" />
+                        <JFXDatePicker fx:id="issueDateDatePicker" layoutX="19.0" layoutY="125.0" prefHeight="28.0" prefWidth="174.0" promptText="Issue Date" />
+                        <JFXDatePicker fx:id="shipmentDateDatePicker" layoutX="208.0" layoutY="125.0" prefHeight="28.0" prefWidth="183.0" promptText="Shipment Date" />
                      </children></AnchorPane>
                </content>
             </ScrollPane>

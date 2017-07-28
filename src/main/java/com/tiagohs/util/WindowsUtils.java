@@ -57,10 +57,15 @@ public class WindowsUtils {
         stage.setResizable(false);
         
         FXMLLoader loader = loadFxml(fxmlPath);
-		Scene scene = new Scene(loader.load());
-        scene.getStylesheets().add(BASE_APPLICATION_CSS_PATH);
-        stage.setScene(scene);
-        stage.show();
+        
+        try {
+    		Scene scene = new Scene(loader.load());
+            scene.getStylesheets().add(BASE_APPLICATION_CSS_PATH);
+            stage.setScene(scene);
+            stage.show();
+        } catch(Exception e) {
+        	
+        }
         
         BaseController baseController = loader.getController();
         baseController.init(stage, parameters);
