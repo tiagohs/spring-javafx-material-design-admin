@@ -15,9 +15,10 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane fx:id="container" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tiagohs.controller.SalesNewController">
+<StackPane fx:id="container" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tiagohs.controller.SalesNewController">
    <children>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="617.0" prefWidth="709.0" stylesheets="@../css/application.css">
          <children>
@@ -52,7 +53,7 @@
             </Pane>
             <ScrollPane layoutX="-6.0" layoutY="52.0" prefHeight="567.0" prefWidth="721.0">
                <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="565.0" prefWidth="718.0">
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefWidth="718.0">
                      <children>
                         <Label layoutX="19.0" layoutY="14.0" text="Order Details" textFill="#212121">
                            <font>
@@ -332,16 +333,6 @@
                         </JFXTextField>
                         <JFXButton contentDisplay="GRAPHIC_ONLY" layoutX="171.0" layoutY="122.0" />
                         <JFXButton contentDisplay="GRAPHIC_ONLY" layoutX="377.0" layoutY="122.0" />
-                        <Label layoutX="449.0" layoutY="388.0" text="Total Units" textFill="#00796b">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER_RIGHT" layoutX="634.0" layoutY="388.0" prefHeight="20.0" prefWidth="60.0" text="0" textFill="#616161">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
                         <Label layoutX="21.0" layoutY="174.0" text="Items" textFill="#212121">
                            <font>
                               <Font size="20.0" />
@@ -353,23 +344,13 @@
                            </font>
                         </Label>
                         <Pane layoutX="25.0" layoutY="207.0" prefHeight="1.0" prefWidth="672.0" style="-fx-background-color: #EEEEEE;" />
-                        <JFXButton fx:id="addAnotherItemButton" layoutX="273.0" layoutY="279.0" onAction="#onAddAnotherItem" prefHeight="39.0" prefWidth="176.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Add another item" textFill="WHITE">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                           <graphic>
-                              <ImageView fitHeight="31.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../images/plus.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </JFXButton>
-                        <Pane fx:id="itemsContainer" layoutX="7.0" layoutY="212.0" prefHeight="61.0" prefWidth="709.0">
+                        <JFXDatePicker fx:id="issueDateDatePicker" layoutX="19.0" layoutY="125.0" prefHeight="28.0" prefWidth="174.0" promptText="Issue Date" />
+                        <JFXDatePicker fx:id="shipmentDateDatePicker" layoutX="208.0" layoutY="125.0" prefHeight="28.0" prefWidth="183.0" promptText="Shipment Date" />
+                        <VBox fx:id="itemsContainer" layoutX="7.0" layoutY="212.0" prefWidth="715.0">
                            <children>
                               <Pane fx:id="itemContainer" prefHeight="61.0" prefWidth="709.0">
                                  <children>
-                                    <JFXComboBox fx:id="countryComboBox111" focusColor="#009688" labelFloat="true" layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="202.0" promptText="Item">
+                                    <JFXComboBox fx:id="countryComboBox" focusColor="#009688" labelFloat="true" layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="202.0" promptText="Item">
                                        <items>
                                           <FXCollections fx:factory="observableArrayList">
                                              <String fx:value="Afghanistan" />
@@ -614,22 +595,22 @@
                                           </FXCollections>
                                        </items>
                                     </JFXComboBox>
-                                    <JFXTextField fx:id="emailTextField221" accessibleHelp="Auto" focusColor="#009688" labelFloat="true" layoutX="232.0" layoutY="14.0" prefHeight="25.0" prefWidth="90.0" promptText="Quantity">
+                                    <JFXTextField fx:id="emailTextField" accessibleHelp="Auto" focusColor="#009688" labelFloat="true" layoutX="232.0" layoutY="14.0" prefHeight="25.0" prefWidth="90.0" promptText="Quantity">
                                        <validators>
                                           <RequiredFieldValidator message="Input Required!" />
                                        </validators>
                                     </JFXTextField>
-                                    <JFXTextField fx:id="emailTextField2121" accessibleHelp="Auto" focusColor="#009688" labelFloat="true" layoutX="337.0" layoutY="14.0" prefHeight="25.0" prefWidth="90.0" promptText="Price">
+                                    <JFXTextField fx:id="emailTextField" accessibleHelp="Auto" focusColor="#009688" labelFloat="true" layoutX="337.0" layoutY="14.0" prefHeight="25.0" prefWidth="90.0" promptText="Price">
                                        <validators>
                                           <RequiredFieldValidator message="Input Required!" />
                                        </validators>
                                     </JFXTextField>
-                                    <JFXTextField fx:id="emailTextField21121" accessibleHelp="Auto" focusColor="#009688" labelFloat="true" layoutX="442.0" layoutY="14.0" prefHeight="25.0" prefWidth="83.0" promptText="\% Discount">
+                                    <JFXTextField fx:id="emailTextField" accessibleHelp="Auto" focusColor="#009688" labelFloat="true" layoutX="442.0" layoutY="14.0" prefHeight="25.0" prefWidth="83.0" promptText="\% Discount">
                                        <validators>
                                           <RequiredFieldValidator message="Input Required!" />
                                        </validators>
                                     </JFXTextField>
-                                    <JFXTextField fx:id="emailTextField211111" accessibleHelp="Auto" focusColor="#009688" labelFloat="true" layoutX="529.0" layoutY="13.0" prefHeight="25.0" prefWidth="90.0" promptText="Tax">
+                                    <JFXTextField fx:id="emailTextField" accessibleHelp="Auto" focusColor="#009688" labelFloat="true" layoutX="529.0" layoutY="13.0" prefHeight="25.0" prefWidth="90.0" promptText="Tax">
                                        <validators>
                                           <RequiredFieldValidator message="Input Required!" />
                                        </validators>
@@ -642,33 +623,57 @@
                                  </children>
                               </Pane>
                            </children>
+                        </VBox>
+                        <Pane fx:id="paneBottomItems" layoutX="7.0" layoutY="271.0" prefHeight="280.0" prefWidth="715.0">
+                           <children>
+                              <JFXButton fx:id="addAnotherItemButton1" layoutX="270.0" layoutY="7.0" onAction="#onAddAnotherItem" prefHeight="39.0" prefWidth="176.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Add another item" textFill="WHITE">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <graphic>
+                                    <ImageView fitHeight="31.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/plus.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </JFXButton>
+                              <JFXTextArea focusColor="#009688" labelFloat="true" layoutX="14.0" layoutY="74.0" prefHeight="180.0" prefWidth="407.0" promptText="Message to Client" />
+                              <Pane prefHeight="1.0" prefWidth="260.0" style="-fx-background-color: #EEEEEE;" />
+                              <Label layoutX="469.0" layoutY="153.0" text="Subtotal" textFill="#00796b">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER_RIGHT" layoutX="602.0" layoutY="153.0" prefHeight="20.0" prefWidth="60.0" text="0" textFill="#616161">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Pane prefHeight="1.0" prefWidth="260.0" style="-fx-background-color: #EEEEEE;" />
+                              <Label layoutX="487.0" layoutY="190.0" text="Total" textFill="#00796b">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER_RIGHT" layoutX="602.0" layoutY="119.0" prefHeight="20.0" prefWidth="60.0" text="0" textFill="#616161">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Pane prefHeight="1.0" prefWidth="260.0" style="-fx-background-color: #EEEEEE;" />
+                              <Label layoutX="454.0" layoutY="119.0" text="Total Units" textFill="#00796b">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER_RIGHT" layoutX="602.0" layoutY="190.0" prefHeight="20.0" prefWidth="60.0" text="0" textFill="#616161">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                           </children>
                         </Pane>
-                        <JFXTextArea focusColor="#009688" labelFloat="true" layoutX="19.0" layoutY="340.0" prefHeight="180.0" prefWidth="407.0" promptText="Message to Client" />
-                        <Pane layoutX="437.0" layoutY="409.0" prefHeight="1.0" prefWidth="260.0" style="-fx-background-color: #EEEEEE;" />
-                        <Label layoutX="449.0" layoutY="417.0" text="Subtotal" textFill="#00796b">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER_RIGHT" layoutX="634.0" layoutY="417.0" prefHeight="20.0" prefWidth="60.0" text="0" textFill="#616161">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <Pane layoutX="437.0" layoutY="438.0" prefHeight="1.0" prefWidth="260.0" style="-fx-background-color: #EEEEEE;" />
-                        <Label layoutX="449.0" layoutY="449.0" text="Total" textFill="#00796b">
-                           <font>
-                              <Font name="System Bold" size="14.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER_RIGHT" layoutX="634.0" layoutY="449.0" prefHeight="20.0" prefWidth="60.0" text="0" textFill="#616161">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <Pane layoutX="437.0" layoutY="470.0" prefHeight="1.0" prefWidth="260.0" style="-fx-background-color: #EEEEEE;" />
-                        <JFXDatePicker fx:id="issueDateDatePicker" layoutX="19.0" layoutY="125.0" prefHeight="28.0" prefWidth="174.0" promptText="Issue Date" />
-                        <JFXDatePicker fx:id="shipmentDateDatePicker" layoutX="208.0" layoutY="125.0" prefHeight="28.0" prefWidth="183.0" promptText="Shipment Date" />
                      </children></AnchorPane>
                </content>
             </ScrollPane>
