@@ -139,6 +139,7 @@ public class ProductNewController implements BaseController {
 		ValidatorUtils.addRequiredValidator(productNameTextField, "Product Name is Required!");
 		ValidatorUtils.addRequiredValidator(skuTextField, "SKU is Required!");
 		ValidatorUtils.addRequiredValidator(initialCostPriceTextField, "Initial Cost Price is Required!");
+		ValidatorUtils.addRequiredValidator(buyPriceTextField, "Buy Price is Required!");
 		ValidatorUtils.addRequiredValidator(initialStockTextField, "Initial Stock On Hand is Required!");
 		
 		ValidatorUtils.addNumberOnlyValidator(initialCostPriceTextField);

@@ -1,16 +1,13 @@
 package com.tiagohs.model;
 
-import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -24,6 +21,9 @@ public class Item {
 	
 	@Column(name = "total_price")
 	private double totalPrice;
+	
+	@Column(name = "quantity")
+	private double quantity;
 
 	@Column(name = "discount")
 	private double discount;
@@ -31,11 +31,8 @@ public class Item {
 	@Column(name = "tax")
 	private double tax;
 	
-	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "item_product", 
-	   joinColumns = @JoinColumn(name = "item_id"), 
-	   inverseJoinColumns = @JoinColumn(name = "product_id"))
-	private List<Product> items;
+	@OneToOne(optional = true, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private Product product;
 
 	public long getId() {
 		return id;
@@ -69,14 +66,12 @@ public class Item {
 		this.tax = tax;
 	}
 
-	public List<Product> getItems() {
-		return items;
+	public Product getProduct() {
+		return product;
 	}
 
-	public void setItems(List<Product> items) {
-		this.items = items;
+	public void setProduct(Product product) {
+		this.product = product;
 	}
-	
-	
 	
 }

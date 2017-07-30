@@ -203,6 +203,12 @@ public class WindowsUtils {
 		comboBox.getItems().addAll(items);
 	}
 	
+	public static <T> void onComboBoxItemSelected(ComboBox<T> comboBox, ComboBoxSelectListener<T> listener) {
+		comboBox.getSelectionModel().selectedItemProperty().addListener( (options, oldValue, newValue) -> {
+			listener.onSelected(newValue);
+		});
+	}
+	
 	@SuppressWarnings("rawtypes")
 	public static Object getSelectedComboBoxItem(ComboBox comboBox) {
 		return comboBox.getValue() != null ? comboBox.getValue() : null;

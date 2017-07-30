@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.validation.RequiredFieldValidator?>
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane fx:id="itemContainer" prefHeight="61.0" prefWidth="709.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tiagohs.controller.ItemBaseController">
+   <children>
+      <JFXComboBox fx:id="itemsComboBox" focusColor="#009688" labelFloat="true" layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="202.0" promptText="Item" />
+      <JFXTextField fx:id="quantityTextField" accessibleHelp="Auto" focusColor="#009688" labelFloat="true" layoutX="232.0" layoutY="14.0" prefHeight="25.0" prefWidth="90.0" promptText="Quantity">
+         <validators>
+            <RequiredFieldValidator message="Input Required!" />
+         </validators>
+      </JFXTextField>
+      <JFXTextField fx:id="priceTextField" accessibleHelp="Auto" disable="true" focusColor="#009688" labelFloat="true" layoutX="337.0" layoutY="14.0" prefHeight="25.0" prefWidth="90.0" promptText="Price">
+         <validators>
+            <RequiredFieldValidator message="Input Required!" />
+         </validators>
+      </JFXTextField>
+      <JFXTextField fx:id="discountTextField" accessibleHelp="Auto" focusColor="#009688" labelFloat="true" layoutX="442.0" layoutY="14.0" prefHeight="25.0" prefWidth="83.0" promptText="\% Discount">
+         <validators>
+            <RequiredFieldValidator message="Input Required!" />
+         </validators>
+      </JFXTextField>
+      <JFXTextField fx:id="taxTextField" accessibleHelp="Auto" focusColor="#009688" labelFloat="true" layoutX="529.0" layoutY="13.0" prefHeight="25.0" prefWidth="90.0" promptText="Tax">
+         <validators>
+            <RequiredFieldValidator message="Input Required!" />
+         </validators>
+      </JFXTextField>
+      <Label fx:id="totalLabel" alignment="CENTER_RIGHT" layoutX="619.0" layoutY="17.0" prefHeight="20.0" prefWidth="72.0" text="R$ 0,00" textFill="#00796b">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+   </children>
+</Pane>

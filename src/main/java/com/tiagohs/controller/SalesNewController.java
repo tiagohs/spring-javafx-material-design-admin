@@ -1,14 +1,18 @@
 package com.tiagohs.controller;
 
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import org.springframework.stereotype.Controller;
 
-import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
 import com.tiagohs.util.WindowsUtils;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -36,11 +40,16 @@ public class SalesNewController implements BaseController {
 	@FXML
 	private Pane paneBottomItems;
 	
+	private List<ItemBaseController> itemsControllers;
+	
 	@Override
 	public <T> void init(Stage stage, HashMap<String, T> parameters) {
+		this.itemsControllers = new ArrayList<>();
 		
 		shipmentDateDatePicker.setDialogParent(container);
 		issueDateDatePicker.setDialogParent(container);
+		
+		itemsContainer.getChildren().add(createPane());
 	}
 	
 	@FXML
@@ -50,26 +59,24 @@ public class SalesNewController implements BaseController {
 	}
 	
 	private Pane createPane() {
-		VBox pane = new VBox();
+		Scene scene = null;
 		
-		pane.setPrefWidth(709.0);
-		pane.setPrefHeight(61.0);
-		pane.setScaleX(1.0);
-		pane.setScaleY(1.0);
-		pane.setScaleZ(1.0);
-		pane.setStyle("-fx-background-color: #336699;");
+		try {
+			FXMLLoader loader = WindowsUtils.loadFxml("/fxml/item_base.fxml");
+			scene = new Scene(loader.load());
+			ItemBaseController controller = (ItemBaseController) loader.getController();
+			controller.init(this);
+			
+			itemsControllers.add(controller);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		
-		JFXComboBox<String> item = new JFXComboBox<>();
+		return (Pane) scene.lookup("#itemContainer");
+	}
+	
+	public void onUpdateTotal(double total) {
 		
-		item.setPrefWidth(202.0);
-		item.setPrefHeight(25.0);
-		
-		item.setLayoutX(14);
-		item.setLayoutY(20);
-		
-		pane.getChildren().add(item);
-		
-		return pane;
 	}
 	
 	@FXML
