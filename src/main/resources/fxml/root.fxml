@@ -6,7 +6,6 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="689.0" prefWidth="843.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tiagohs.controller.RootController">
@@ -37,7 +36,6 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <Circle fill="#303f9f" layoutX="74.0" layoutY="58.0" radius="36.0" stroke="#0a0a0a00" strokeType="INSIDE" strokeWidth="0.0" />
             <Label layoutX="20.0" layoutY="100.0" text="Tiago Henrique" textFill="WHITE">
                <font>
                   <Font size="16.0" />
@@ -116,6 +114,11 @@
                   </ImageView>
                </graphic>
             </JFXButton>
+            <ImageView fitHeight="79.0" fitWidth="75.0" layoutX="32.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/user-profile.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
       <AnchorPane fx:id="rootPane" layoutX="133.0" prefHeight="689.0" prefWidth="709.0" style="-fx-background-color: #FFFF;" />

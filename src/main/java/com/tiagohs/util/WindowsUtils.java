@@ -15,9 +15,11 @@ import com.jfoenix.controls.JFXTextField;
 import com.tiagohs.MainApplication;
 import com.tiagohs.controller.BaseController;
 
+import javafx.beans.value.ChangeListener;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -140,12 +142,26 @@ public class WindowsUtils {
 
 	public static void watchEvents(TextField textField, WatchListener listener) {
 		textField.focusedProperty().addListener((o, oldValue, newValue) -> {
-			listener.watch();
+			listener.watch(newValue);
 		});
+	}
+	
+	public static <T> void watchEvents(ComboBox<T> comboBox, WatchListener listener) {
+		comboBox.focusedProperty().addListener((o, oldValue, newValue) -> {
+			listener.watch(newValue);
+		});
+	}
+	
+	public static void onTextFieldTextChange(TextField textField, ChangeListener<? super String> listener) {
+		textField.textProperty().addListener(listener);
 	}
 	
 	public static boolean isTextFieldEmpty(TextField textField) {
 		return textField.getText().trim().isEmpty();
+	}
+	
+	public static boolean isLabelEmpty(Label label) {
+		return label.getText().trim().isEmpty();
 	}
 	
 	public static boolean isTextAreaEmpty(TextArea textArea) {
@@ -159,6 +175,22 @@ public class WindowsUtils {
 	
 	public static String getTextFromTextField(TextField textField) {
 		return isTextFieldEmpty(textField) ? null : textField.getText();
+	}
+	
+	public static String getTextFromLabel(Label label) {
+		return isLabelEmpty(label) ? null : label.getText();
+	}
+	
+	public static void setTextInLabel(Label label, String text) {
+		if (text != null) {
+			label.setText(text);
+		}
+	}
+	
+	public static void setTextInLabel(Label label, double number) {
+		if (number != 0.0) {
+			label.setText(Double.toString(number));
+		}
 	}
 	
 	public static void setTextInTextField(TextField textField, String text) {

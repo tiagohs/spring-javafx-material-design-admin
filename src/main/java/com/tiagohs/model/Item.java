@@ -23,7 +23,7 @@ public class Item {
 	private double totalPrice;
 	
 	@Column(name = "quantity")
-	private double quantity;
+	private int quantity;
 
 	@Column(name = "discount")
 	private double discount;
@@ -73,5 +73,15 @@ public class Item {
 	public void setProduct(Product product) {
 		this.product = product;
 	}
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+	
+	
 	
 }

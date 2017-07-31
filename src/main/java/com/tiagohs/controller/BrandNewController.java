@@ -73,8 +73,8 @@ public class BrandNewController implements BaseController {
 	}
 
 	private void watchEvents() {
-		WindowsUtils.watchEvents(nameTextField, () -> watch());
-		WindowsUtils.watchEvents(emailTextField, () -> watch());
+		WindowsUtils.watchEvents(nameTextField, v -> watch());
+		WindowsUtils.watchEvents(emailTextField, v -> watch());
 	}
 
 	private void validateTextFields() {

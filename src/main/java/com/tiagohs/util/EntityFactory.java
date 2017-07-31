@@ -10,9 +10,11 @@ import com.tiagohs.model.ClientType;
 import com.tiagohs.model.Employee;
 import com.tiagohs.model.Fone;
 import com.tiagohs.model.Image;
+import com.tiagohs.model.Item;
 import com.tiagohs.model.Product;
 import com.tiagohs.model.ProductType;
 import com.tiagohs.model.Role;
+import com.tiagohs.model.Sale;
 import com.tiagohs.model.Supplier;
 import com.tiagohs.model.Tag;
 import com.tiagohs.model.User;
@@ -104,6 +106,34 @@ public class EntityFactory {
 		
 		return brand;
 	}
+	
+	public static Sale createSale(String saleCode, Date issueDate, Date shipmentDate, String reference, String email,
+			String message, String state, double totalUnits, double total, Fone fone, Client cliente, List<Item> items,
+			List<Tag> tags) {
+		return createSale(new Sale(), saleCode, issueDate, shipmentDate, reference, email, message, state, totalUnits, total, fone, cliente, items, tags);
+	}
+	
+	public static Sale createSale(Sale sale, String saleCode, Date issueDate, Date shipmentDate, String reference, String email,
+			String message, String state, double totalUnits, double total, Fone fone, Client cliente, List<Item> items,
+			List<Tag> tags) {
+		
+		sale.setSaleCode(saleCode);
+		sale.setIssueDate(issueDate);
+		sale.setShipmentDate(shipmentDate);
+		sale.setReference(reference);
+		sale.setEmail(email);
+		sale.setMessage(message);
+		sale.setState(state);
+		sale.setTotalUnits(totalUnits);
+		sale.setTotal(total);
+		sale.setFone(fone);
+		sale.setCliente(cliente);
+		sale.setItems(items);
+		
+		return sale;
+	}
+	
+	
 	
 	public static Client createClient(String cpf, ClientType clientType, Address address,
 											List<Fone> phones, User user) {

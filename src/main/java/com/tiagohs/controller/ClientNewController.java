@@ -182,11 +182,11 @@ public class ClientNewController implements BaseController {
 	}
 	
 	private void watchEvents() {
-		WindowsUtils.watchEvents(nameTextField, () -> watch());
-		WindowsUtils.watchEvents(emailTextField, () -> watch());
-		WindowsUtils.watchEvents(cpfTextField, () -> watch());
-		WindowsUtils.watchEvents(passwordTextField, () -> watch());
-		WindowsUtils.watchEvents(confirmPasswordTextField, () -> watch());
+		WindowsUtils.watchEvents(nameTextField, v -> watch());
+		WindowsUtils.watchEvents(emailTextField, v -> watch());
+		WindowsUtils.watchEvents(cpfTextField, v -> watch());
+		WindowsUtils.watchEvents(passwordTextField, v -> watch());
+		WindowsUtils.watchEvents(confirmPasswordTextField, v -> watch());
 	}
 	
 	private void watch() {

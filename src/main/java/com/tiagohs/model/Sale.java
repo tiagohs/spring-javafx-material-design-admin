@@ -50,16 +50,19 @@ public class Sale {
 	@Column(name = "state")
 	private String state;
 	
-	@OneToOne(optional = true, fetch = FetchType.LAZY)
+	@Column(name = "total_units")
+	private double totalUnits;
+	
+	@Column(name = "total")
+	private double total;
+	
+	@OneToOne(optional = true, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Fone fone;
 	
-	@OneToOne(optional = true, fetch = FetchType.LAZY)
+	@OneToOne(optional = true, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Client cliente;
 	
-	@OneToOne(optional = true, fetch = FetchType.LAZY)
-	private User assignTo;
-	
-	@OneToMany(fetch = FetchType.LAZY)
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Item> items;
 	
 	@ManyToMany(cascade = CascadeType.ALL)
@@ -67,7 +70,7 @@ public class Sale {
 	   joinColumns = @JoinColumn(name = "sale_id"), 
 	   inverseJoinColumns = @JoinColumn(name = "tag_id"))
 	private List<Tag> tags;
-
+	
 	public long getId() {
 		return id;
 	}
@@ -164,12 +167,20 @@ public class Sale {
 		this.state = state;
 	}
 
-	public User getAssignTo() {
-		return assignTo;
+	public double getTotalUnits() {
+		return totalUnits;
 	}
 
-	public void setAssignTo(User assignTo) {
-		this.assignTo = assignTo;
+	public void setTotalUnits(double totalUnits) {
+		this.totalUnits = totalUnits;
+	}
+
+	public double getTotal() {
+		return total;
+	}
+
+	public void setTotal(double total) {
+		this.total = total;
 	}
 	
 	

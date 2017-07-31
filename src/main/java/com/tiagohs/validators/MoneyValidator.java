@@ -2,12 +2,12 @@ package com.tiagohs.validators;
 
 import javafx.scene.control.TextField;
 
-public class NumberValidator {
-	private static final String REGEX = "[0-9]*";
+public class MoneyValidator {
+	private static final String REGEX = "^[+-]?[0-9]{1,3}(?:[0-9]*(?:[.,][0-9]{2})?|(?:,[0-9]{3})*(?:\\.[0-9]{2})?|(?:\\.[0-9]{3})*(?:,[0-9]{2})?)$";
 	
 	private TextField textField;
 	
-	public NumberValidator(TextField textField) {
+	public MoneyValidator(TextField textField) {
 		this.textField = textField;
 	}
 	

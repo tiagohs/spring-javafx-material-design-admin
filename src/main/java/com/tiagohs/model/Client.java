@@ -87,5 +87,8 @@ public class Client {
 		this.user = user;
 	}
 	
-	
+	@Override
+	public String toString() {
+		return getUser() != null ? getUser().getName() : getCpf();
+	}
 }

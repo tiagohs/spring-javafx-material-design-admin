@@ -156,9 +156,9 @@ public class ProductNewController implements BaseController {
 	}
 	
 	private void watchEvents() {
-		WindowsUtils.watchEvents(productNameTextField, () -> watch());
-		WindowsUtils.watchEvents(initialCostPriceTextField, () -> watch());
-		WindowsUtils.watchEvents(initialStockTextField, () -> watch());
+		WindowsUtils.watchEvents(productNameTextField, v -> watch());
+		WindowsUtils.watchEvents(initialCostPriceTextField, v -> watch());
+		WindowsUtils.watchEvents(initialStockTextField, v -> watch());
 	}
 	
 	private void fillComboBoxes() {
