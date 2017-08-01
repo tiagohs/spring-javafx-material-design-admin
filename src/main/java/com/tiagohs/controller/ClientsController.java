@@ -81,7 +81,7 @@ public class ClientsController implements BaseController {
 		
 		configureSearch();
 		
-		TableUtils.configureEditAndRemoveOptions(clientsTable, clientEditButton, clientRemoveButton);
+		TableUtils.configureEditAndRemoveState(clientsTable, clientEditButton, clientRemoveButton);
 	}
 	
 	private void configureSearch() {

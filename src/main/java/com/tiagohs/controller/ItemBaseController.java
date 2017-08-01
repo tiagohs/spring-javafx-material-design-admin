@@ -100,25 +100,28 @@ public class ItemBaseController implements IItemBaseController {
 	private void onQuantityChange(String value) {
 		if (!value.trim().isEmpty()) {
 			item.setQuantity(Integer.valueOf(value));
+			onUpdate();
 		}
 		
-		onUpdate();
+		
 	}
 	
 	private void onDiscountChange(String value) {
 		if (!value.trim().isEmpty()) {
 			item.setDiscount(Double.valueOf(value));
+			onUpdate();
 		}
 		
-		onUpdate();
+		
 	}
 	
 	private void onTaxChange(String value) {
 		if (!value.trim().isEmpty()) {
 			item.setTax(Double.valueOf(value));
+			onUpdate();
 		}
 		
-		onUpdate();
+		
 	}
 	
 	private void onSelect(Product product) {
@@ -133,6 +136,8 @@ public class ItemBaseController implements IItemBaseController {
 		}
 		
 		priceTextField.setText(String.format("R$ %.2f", item.getProduct().getBuyPrice()));
+		
+		salesNewController.addItem(item);
 		onUpdate();
 	}
 	

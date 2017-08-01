@@ -60,5 +60,16 @@ public class Tag {
 		this.sales = sales;
 	}
 
-	
+	@Override
+	public boolean equals(Object obj) {
+		
+		if (obj instanceof Tag) {
+			if (obj != null) {
+				Tag tag = (Tag) obj;
+				return tag.getId() == getId();
+			}
+		}
+		
+		return false;
+	}
 }

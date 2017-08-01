@@ -99,4 +99,22 @@ public class User {
 		this.photoPath = photoPath;
 	}
 	
+	@Override
+	public String toString() {
+		return getName();
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		
+		if (obj instanceof User) {
+			if (obj != null) {
+				User user = (User) obj;
+				return user.getId() == getId();
+			}
+		}
+		
+		return false;
+	}
+	
 }

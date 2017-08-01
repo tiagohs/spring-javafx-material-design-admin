@@ -59,7 +59,7 @@ public class Sale {
 	@OneToOne(optional = true, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Fone fone;
 	
-	@OneToOne(optional = true, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToOne(optional = true, fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
 	private Client cliente;
 	
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)

@@ -24,6 +24,11 @@ public class ClientServiceImpl extends BaseService<Client, JpaRepository<Client,
 	public void setClientReporitory(ClientRepository clientReporitory) {
 		this.clientReporitory = clientReporitory;
 	}
+
+	@Override
+	public Long getTotalClients() {
+		return clientReporitory.getTotalClients();
+	}
 	
 	
 }

@@ -27,6 +27,11 @@ public class UserServiceImpl extends BaseService<User, JpaRepository<User,Long>>
 		this.userRepository = userRepository;
 	}
 
+	@Override
+	public Long getTotalUsers() {
+		return userRepository.getTotalUsers();
+	}
+
 	
 	
 }

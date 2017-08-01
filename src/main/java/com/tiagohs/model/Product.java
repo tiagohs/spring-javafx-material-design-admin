@@ -222,4 +222,17 @@ public class Product {
 	public String toString() {
 		return getName();
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		
+		if (obj instanceof Product) {
+			if (obj != null) {
+				Product product = (Product) obj;
+				return product.getId() == getId();
+			}
+		}
+		
+		return false;
+	}
 }

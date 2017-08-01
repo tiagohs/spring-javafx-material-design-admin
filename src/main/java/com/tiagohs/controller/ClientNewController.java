@@ -105,9 +105,9 @@ public class ClientNewController implements BaseController {
 	public <T> void init(Stage stage, HashMap<String, T> parameters) {
 		this.clientNewStage = stage;
 		
+		fillComboBoxes();
 		checkParameters(parameters);
 		validateTextFields();
-		fillComboBoxes();
 		watchEvents();
 	}
 	

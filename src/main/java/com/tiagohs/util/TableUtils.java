@@ -64,9 +64,15 @@ public class TableUtils {
         return new BorderPane();
     }
 
-	public static <T extends RecursiveTreeObject<T>> void configureEditAndRemoveOptions(JFXTreeTableView<T> table, JFXButton edit, JFXButton remove) {
+	public static <T extends RecursiveTreeObject<T>> void configureEditAndRemoveState(JFXTreeTableView<T> table, JFXButton edit, JFXButton remove) {
 		table.setOnMouseClicked((e) -> { 
 			updateEditAndRemoveButtonState(table, edit, remove);
+		});
+	}
+	
+	public static <T extends RecursiveTreeObject<T>> void configureButtonState(JFXTreeTableView<T> table, JFXButton button) {
+		table.setOnMouseClicked((e) -> { 
+			updateButtonState(table, button);
 		});
 	}
 	
@@ -74,6 +80,12 @@ public class TableUtils {
 		if (table.getSelectionModel().selectedItemProperty().get() != null) {
 			edit.setDisable(false);
 			remove.setDisable(false);
+		} 
+	}
+	
+	private static <T extends RecursiveTreeObject<T>> void updateButtonState(JFXTreeTableView<T> table, JFXButton button) {
+		if (table.getSelectionModel().selectedItemProperty().get() != null) {
+			button.setDisable(false);
 		} 
 	}
 	

@@ -82,4 +82,17 @@ public class Employee {
 			return getCpf();
 		}
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		
+		if (obj instanceof Employee) {
+			if (obj != null) {
+				Employee employee = (Employee) obj;
+				return employee.getId() == getId();
+			}
+		}
+		
+		return false;
+	}
 }

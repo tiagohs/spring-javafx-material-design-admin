@@ -104,10 +104,10 @@ public class ProductNewController implements BaseController {
 	public <T> void init(Stage stage, HashMap<String, T> parameters) {
 		this.productNewStage = stage;
 		
+		fillComboBoxes();
 		checkParameters(parameters);
 		validateTextFields();
 		watchEvents();
-		fillComboBoxes();
 		
 	}
 	

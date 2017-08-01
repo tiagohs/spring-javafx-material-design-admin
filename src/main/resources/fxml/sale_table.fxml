@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXTreeTableColumn?>
+<?import com.jfoenix.controls.JFXTreeTableView?>
+<?import javafx.scene.control.Pagination?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Rectangle?>
+
+<StackPane fx:id="container" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tiagohs.controller.SaleTableController">
+   <children>
+      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="508.0" prefWidth="720.0" style="-fx-background-color: #FFFF;" stylesheets="@../css/application.css">
+         <children>
+            <Pagination fx:id="salesPagination" layoutX="446.0" layoutY="427.0" maxPageIndicatorCount="5" pageCount="7" prefHeight="65.0" prefWidth="253.0" />
+            <JFXTreeTableView fx:id="salesTable" layoutX="17.0" layoutY="47.0" prefHeight="373.0" prefWidth="683.0">
+               <columns>
+                  <JFXTreeTableColumn fx:id="salesCodeColumn" minWidth="77.0" prefWidth="92.0" resizable="false" text="CODE" />
+                  <JFXTreeTableColumn fx:id="salesShipmentDateColumn" minWidth="101.0" prefWidth="116.0" resizable="false" text="Shipment Date" />
+                  <JFXTreeTableColumn fx:id="salesIssueDateColumn" minWidth="93.0" prefWidth="113.0" resizable="false" text="Issue Date" />
+                  <JFXTreeTableColumn fx:id="salesClientColumn" minWidth="80.0" prefWidth="151.0" resizable="false" text="Client" />
+                  <JFXTreeTableColumn fx:id="salesTotalUnitsColumn" minWidth="83.0" prefWidth="101.0" resizable="false" text="Total Units" />
+                  <JFXTreeTableColumn fx:id="salesTotalColumn" minWidth="101.0" prefWidth="109.0" resizable="false" text="Total" />
+               </columns>
+            </JFXTreeTableView>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="30.0" layoutX="540.0" layoutY="466.0" stroke="TRANSPARENT" strokeType="INSIDE" width="65.0" />
+            <JFXTextField fx:id="salesSearchTextField" layoutX="471.0" layoutY="11.0" prefHeight="30.0" prefWidth="229.0" promptText="Search..." />
+            <JFXButton fx:id="salesEditButton" disable="true" layoutX="17.0" layoutY="11.0" onAction="#onEdiSalesTable" prefHeight="30.0" prefWidth="83.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Edit" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/edit.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="salesRemoveButton" disable="true" layoutX="106.0" layoutY="11.0" onAction="#onRemoveSalesTable" prefHeight="30.0" prefWidth="83.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Remove" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/edit.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="salesReloadButton" contentDisplay="GRAPHIC_ONLY" layoutX="196.0" layoutY="11.0" onAction="#onReloadSalesTable" prefHeight="30.0" prefWidth="34.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Remove" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/reload.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>

@@ -26,5 +26,10 @@ public class EmployeeServiceImpl extends BaseService<Employee, JpaRepository<Emp
 	public void setEmployeeRepository(EmployeeRepository employeeRepository) {
 		this.employeeRepository = employeeRepository;
 	}
+
+	@Override
+	public Long getTotalEmployees() {
+		return employeeRepository.getTotalEmployees();
+	}
 	
 }

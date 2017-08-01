@@ -31,7 +31,7 @@ public class Item {
 	@Column(name = "tax")
 	private double tax;
 	
-	@OneToOne(optional = true, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToOne(optional = true, fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
 	private Product product;
 
 	public long getId() {

@@ -91,4 +91,17 @@ public class Client {
 	public String toString() {
 		return getUser() != null ? getUser().getName() : getCpf();
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		
+		if (obj instanceof Client) {
+			if (obj != null) {
+				Client client = (Client) obj;
+				return client.getId() == getId();
+			}
+		}
+		
+		return false;
+	}
 }

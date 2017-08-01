@@ -1,19 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXTextField?>
-<?import com.jfoenix.controls.JFXTreeTableColumn?>
-<?import com.jfoenix.controls.JFXTreeTableView?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Pagination?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
+
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="689.0" prefWidth="709.0" stylesheets="@../css/application.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tiagohs.controller.SalesController">
    <children>
@@ -29,7 +25,7 @@
                   <Font size="16.0" />
                </font>
             </Label>
-            <JFXButton alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="279.0" layoutY="54.0" onAction="#onNewSale" prefHeight="75.0" prefWidth="138.0" ripplerFill="#fcfcfc" text="New Sales Order" textAlignment="CENTER" textFill="#fffdfd">
+            <JFXButton alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="295.0" layoutY="54.0" onAction="#onNewSale" prefHeight="75.0" prefWidth="138.0" ripplerFill="#fcfcfc" text="New Sales Order" textAlignment="CENTER" textFill="#fffdfd">
                <font>
                   <Font size="14.0" />
                </font>
@@ -47,62 +43,17 @@
          <tabs>
             <Tab text="ALL">
                <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="288.0" prefWidth="558.0">
-                     <children>
-                        <Pagination fx:id="pagination1" layoutX="446.0" layoutY="427.0" maxPageIndicatorCount="5" pageCount="7" prefHeight="65.0" prefWidth="253.0" />
-                        <JFXTreeTableView fx:id="productsTable1" layoutX="17.0" layoutY="47.0" prefHeight="373.0" prefWidth="683.0">
-                           <columns>
-                              <JFXTreeTableColumn fx:id="productSkuColumn1" minWidth="77.0" prefWidth="77.0" resizable="false" text="SKU" />
-                              <JFXTreeTableColumn fx:id="productSupplierColumn" minWidth="133" prefWidth="149.0" resizable="false" text="Supplier" />
-                              <JFXTreeTableColumn fx:id="productBuyPriceColumn" minWidth="80.0" resizable="false" text="Buy Price" />
-                              <JFXTreeTableColumn fx:id="productProductTypeColumn" minWidth="115.0" prefWidth="115.0" resizable="false" text="Product Type" />
-                              <JFXTreeTableColumn fx:id="productDescriptionColumn" minWidth="101.0" prefWidth="261.0" resizable="false" text="Description" />
-                           </columns>
-                        </JFXTreeTableView>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="30.0" layoutX="540.0" layoutY="466.0" stroke="TRANSPARENT" strokeType="INSIDE" width="65.0" />
-                        <JFXTextField layoutX="471.0" layoutY="11.0" prefHeight="30.0" prefWidth="136.0" promptText="Search..." />
-                        <JFXButton layoutX="611.0" layoutY="11.0" prefHeight="30.0" prefWidth="88.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Search" textFill="WHITE" />
-                     </children>
-                  </AnchorPane>
+                  <AnchorPane fx:id="allContainer" minHeight="0.0" minWidth="0.0" prefHeight="288.0" prefWidth="558.0" />
                </content>
             </Tab>
             <Tab text="OPEN">
                <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="288.0" prefWidth="558.0">
-                     <children>
-                        <Pagination fx:id="pagination" layoutX="446.0" layoutY="427.0" maxPageIndicatorCount="5" pageCount="7" prefHeight="65.0" prefWidth="253.0" />
-                        <JFXTreeTableView fx:id="employeeTable" layoutX="17.0" layoutY="47.0" prefHeight="373.0" prefWidth="683.0">
-                           <columns>
-                              <JFXTreeTableColumn fx:id="employeeNameColumn" minWidth="77.0" prefWidth="147.0" resizable="false" text="Name" />
-                              <JFXTreeTableColumn fx:id="employeeEmailColumn" minWidth="79.0" prefWidth="174.0" resizable="false" text="Email" />
-                              <JFXTreeTableColumn fx:id="employeeCpfColumn" minWidth="0.0" prefWidth="122.0" resizable="false" text="CPF" />
-                              <JFXTreeTableColumn fx:id="productTypeColumn" minWidth="115.0" prefWidth="239.0" resizable="false" text="Tasks" />
-                           </columns>
-                        </JFXTreeTableView>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="30.0" layoutX="540.0" layoutY="466.0" stroke="TRANSPARENT" strokeType="INSIDE" width="65.0" />
-                        <JFXTextField layoutX="471.0" layoutY="11.0" prefHeight="30.0" prefWidth="136.0" promptText="Search..." />
-                        <JFXButton layoutX="611.0" layoutY="11.0" prefHeight="30.0" prefWidth="88.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Search" textFill="WHITE" />
-                     </children>
-                  </AnchorPane>
+                  <AnchorPane fx:id="openContainer" minHeight="0.0" minWidth="0.0" prefHeight="288.0" prefWidth="558.0" />
                </content>
             </Tab>
             <Tab text="FINALIZED">
                <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="288.0" prefWidth="558.0">
-                     <children>
-                        <Pagination fx:id="pagination2" layoutX="446.0" layoutY="427.0" maxPageIndicatorCount="5" pageCount="7" prefHeight="65.0" prefWidth="253.0" />
-                        <JFXTreeTableView fx:id="supplierTable" layoutX="17.0" layoutY="47.0" prefHeight="373.0" prefWidth="683.0">
-                           <columns>
-                              <JFXTreeTableColumn fx:id="supplierNameColumn" minWidth="77.0" prefWidth="125.0" resizable="false" text="Company Name" />
-                              <JFXTreeTableColumn fx:id="supplierEmailColumn" minWidth="101.0" prefWidth="141.0" resizable="false" text="Email" />
-                              <JFXTreeTableColumn fx:id="supplierAddresColumn" minWidth="80.0" prefWidth="416.0" resizable="false" text="Addres" />
-                           </columns>
-                        </JFXTreeTableView>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="30.0" layoutX="540.0" layoutY="466.0" stroke="TRANSPARENT" strokeType="INSIDE" width="65.0" />
-                        <JFXTextField layoutX="471.0" layoutY="11.0" prefHeight="30.0" prefWidth="136.0" promptText="Search..." />
-                        <JFXButton layoutX="611.0" layoutY="11.0" prefHeight="30.0" prefWidth="88.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Search" textFill="WHITE" />
-                     </children>
-                  </AnchorPane>
+                  <AnchorPane fx:id="finalizedContainer" minHeight="0.0" minWidth="0.0" prefHeight="288.0" prefWidth="558.0" />
                </content>
             </Tab>
          </tabs>

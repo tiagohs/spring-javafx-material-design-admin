@@ -45,4 +45,17 @@ public class Role {
 	public String toString() {
 		return getName();
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		
+		if (obj instanceof Role) {
+			if (obj != null) {
+				Role role = (Role) obj;
+				return role.getId() == getId();
+			}
+		}
+		
+		return false;
+	}
 }

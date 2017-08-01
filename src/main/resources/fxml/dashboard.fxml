@@ -42,7 +42,7 @@
                   </ImageView>
                </children>
             </Pane>
-            <Label alignment="CENTER_RIGHT" layoutX="133.0" layoutY="10.0" prefHeight="41.0" prefWidth="37.0" text="34" textFill="WHITE">
+            <Label fx:id="usersLabel" alignment="CENTER_RIGHT" layoutX="133.0" layoutY="10.0" prefHeight="41.0" prefWidth="37.0" text="34" textFill="WHITE">
                <font>
                   <Font size="34.0" />
                </font>
@@ -75,7 +75,7 @@
                   </ImageView>
                </children>
             </Pane>
-            <Label alignment="CENTER_RIGHT" layoutX="133.0" layoutY="10.0" prefHeight="41.0" prefWidth="37.0" text="5" textAlignment="RIGHT" textFill="WHITE">
+            <Label fx:id="salesLabel" alignment="CENTER_RIGHT" layoutX="133.0" layoutY="10.0" prefHeight="41.0" prefWidth="37.0" text="5" textAlignment="RIGHT" textFill="WHITE">
                <font>
                   <Font size="34.0" />
                </font>
@@ -108,7 +108,7 @@
                   </ImageView>
                </children>
             </Pane>
-            <Label alignment="CENTER_RIGHT" layoutX="133.0" layoutY="10.0" prefHeight="41.0" prefWidth="37.0" text="40" textFill="WHITE">
+            <Label fx:id="employeesLabel" alignment="CENTER_RIGHT" layoutX="133.0" layoutY="10.0" prefHeight="41.0" prefWidth="37.0" text="40" textFill="WHITE">
                <font>
                   <Font size="34.0" />
                </font>
@@ -136,7 +136,7 @@
          </font>
       </Label>
       <Pane layoutX="19.0" layoutY="246.0" prefHeight="1.0" prefWidth="672.0" style="-fx-background-color: #EEEEEE;" />
-      <LineChart layoutX="24.0" layoutY="263.0" prefHeight="378.0" prefWidth="663.0">
+      <LineChart fx:id="salesChart" layoutX="24.0" layoutY="263.0" prefHeight="378.0" prefWidth="663.0">
         <xAxis>
           <CategoryAxis side="BOTTOM" />
         </xAxis>

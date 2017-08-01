@@ -2,6 +2,7 @@ package com.tiagohs.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -67,6 +68,9 @@ public class SalesNewController implements BaseController {
 	@FXML
 	private JFXComboBox<Client> clientComboBox;
 	
+	@FXML
+	private JFXComboBox<String> stateComboBox;
+	
     /*@FXML
     private JFXDatePicker shipmentDateDatePicker;
     
@@ -107,12 +111,11 @@ public class SalesNewController implements BaseController {
 		issueDateDatePicker.setDialogParent(container);*/
 		
 		saleCode.setText("S" + RandomStringUtils.randomAlphanumeric(5));
-		itemsContainer.getChildren().add(createPane(null));
 		
+		fillComboBoxes();
 		checkParameters(parameters);
 		validateTextFields();
 		watchEvents();
-		fillComboBoxes();
 	}
 	
 	private void fillComboBoxes() {
@@ -122,6 +125,8 @@ public class SalesNewController implements BaseController {
 	private void validateTextFields() {
 		
 		ValidatorUtils.addRequiredValidator(emailTextField, "E-mail is Required!");
+		
+		ValidatorUtils.addNumberOnlyValidator(phoneTextField);
 		
 		ValidatorUtils.addEmailValidator(emailTextField, "Email does not match");
 		
@@ -148,6 +153,9 @@ public class SalesNewController implements BaseController {
 		if (parameters != null) {
 			this.sale = (Sale) parameters.get(SALE_KEY);
 			updateTextFields();
+		} else {
+			this.sale = null;
+			addPane(null);
 		}
 	}
 	
@@ -182,13 +190,17 @@ public class SalesNewController implements BaseController {
 			HashMap<String, Item> parameters = new HashMap<String, Item>();
 			parameters.put(ItemBaseController.ITEM_KEY, item);
 			
-			itemsContainer.getChildren().add(createPane(parameters));
+			addPane(parameters);
 		});
 	}
 
 	@FXML
 	private void onAddAnotherItem() {
-		itemsContainer.getChildren().add(createPane(null));
+		addPane(null);
+	}
+	
+	private void addPane(HashMap<String, Item> parameters) {
+		itemsContainer.getChildren().add(createPane(parameters));
 		paneBottomItems.setLayoutY(paneBottomItems.getLayoutY() + 63.0);
 	}
 	
@@ -241,12 +253,12 @@ public class SalesNewController implements BaseController {
 		try {
 			saleService.save(EntityFactory.createSale(sale, 
 					WindowsUtils.getTextFromLabel(saleCode), 
-					null, 
+					new Date(), 
 					null, 
 					WindowsUtils.getTextFromTextField(referenceTextField), 
 					WindowsUtils.getTextFromTextField(emailTextField), 
 					WindowsUtils.getTextFromTextArea(messageTextArea), 
-					"Em Processo", 
+					(String) WindowsUtils.getSelectedComboBoxItem(stateComboBox), 
 					Double.valueOf(total), 
 					Double.valueOf(numUnits), 
 					phone, 

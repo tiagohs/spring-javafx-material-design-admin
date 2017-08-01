@@ -78,4 +78,17 @@ public class Brand {
 		return getName();
 	}
 	
+	@Override
+	public boolean equals(Object obj) {
+		
+		if (obj instanceof Brand) {
+			if (obj != null) {
+				Brand brand = (Brand) obj;
+				return brand.getId() == getId();
+			}
+		}
+		
+		return false;
+	}
+	
 }

@@ -80,4 +80,17 @@ public class Supplier {
 		return getCompanyName();
 	}
 	
+	@Override
+	public boolean equals(Object obj) {
+		
+		if (obj instanceof Supplier) {
+			if (obj != null) {
+				Supplier supplier = (Supplier) obj;
+				return supplier.getId() == getId();
+			}
+		}
+		
+		return false;
+	}
+	
 }

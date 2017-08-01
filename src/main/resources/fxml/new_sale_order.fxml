@@ -4,7 +4,6 @@
 <?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXTextArea?>
 <?import com.jfoenix.controls.JFXTextField?>
-<?import com.jfoenix.validation.RequiredFieldValidator?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
@@ -14,6 +13,8 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
 
 <StackPane fx:id="container" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tiagohs.controller.SalesNewController">
    <children>
@@ -71,7 +72,7 @@
                         </Label>
                         <JFXTextField fx:id="phoneTextField" accessibleHelp="Auto" focusColor="#009688" labelFloat="true" layoutX="527.0" layoutY="77.0" prefHeight="25.0" prefWidth="168.0" promptText="Phone" />
                         <JFXComboBox fx:id="clientComboBox" focusColor="#009688" labelFloat="true" layoutX="19.0" layoutY="77.0" prefHeight="25.0" prefWidth="199.0" promptText="Select the Client" />
-                        <JFXTextField fx:id="referenceTextField" accessibleHelp="Auto" focusColor="#009688" labelFloat="true" layoutX="399.0" layoutY="126.0" prefHeight="25.0" prefWidth="295.0" promptText="Reference" />
+                        <JFXTextField fx:id="referenceTextField" accessibleHelp="Auto" focusColor="#009688" labelFloat="true" layoutX="399.0" layoutY="126.0" prefHeight="25.0" prefWidth="182.0" promptText="Reference" />
                         <JFXButton contentDisplay="GRAPHIC_ONLY" layoutX="171.0" layoutY="122.0" />
                         <JFXButton contentDisplay="GRAPHIC_ONLY" layoutX="377.0" layoutY="122.0" />
                         <Label layoutX="21.0" layoutY="174.0" text="Items" textFill="#212121">
@@ -86,7 +87,7 @@
                         </Label>
                         <Pane layoutX="25.0" layoutY="207.0" prefHeight="1.0" prefWidth="672.0" style="-fx-background-color: #EEEEEE;" />
                         <VBox fx:id="itemsContainer" layoutX="7.0" layoutY="212.0" prefWidth="715.0" />
-                        <Pane fx:id="paneBottomItems" layoutX="7.0" layoutY="271.0" prefHeight="280.0" prefWidth="715.0">
+                        <Pane fx:id="paneBottomItems" layoutX="7.0" layoutY="217.0" prefHeight="280.0" prefWidth="715.0">
                            <children>
                               <JFXButton fx:id="addAnotherItemButton1" layoutX="270.0" layoutY="7.0" onAction="#onAddAnotherItem" prefHeight="39.0" prefWidth="176.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Add another item" textFill="WHITE">
                                  <font>
@@ -126,6 +127,14 @@
                               </Label>
                            </children>
                         </Pane>
+                        <JFXComboBox fx:id="stateComboBox" focusColor="#009688" labelFloat="true" layoutX="586.0" layoutY="126.0" prefHeight="25.0" prefWidth="109.0" promptText="State" >
+                     		<items>
+				      	        <FXCollections fx:factory="observableArrayList">
+					            	<String fx:value="Open" />
+									<String fx:value="Finalized" />
+				            	</FXCollections>
+				      	      </items>
+				            </JFXComboBox>
                      </children></AnchorPane>
                </content>
             </ScrollPane>

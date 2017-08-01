@@ -189,10 +189,10 @@ public class InventoryController implements BaseController {
 		
 		tableService.forEach(s -> { s.start(); });
 		
-		TableUtils.configureEditAndRemoveOptions(productsTable, productEditButton, productRemoveButton);
-		TableUtils.configureEditAndRemoveOptions(employeeTable, employeeEditButton, employeeRemoveButton);
-		TableUtils.configureEditAndRemoveOptions(supplierTable, supplierEditButton, supplierRemoveButton);
-		TableUtils.configureEditAndRemoveOptions(brandTable, brandEditButton, brandRemoveButton);
+		TableUtils.configureEditAndRemoveState(productsTable, productEditButton, productRemoveButton);
+		TableUtils.configureEditAndRemoveState(employeeTable, employeeEditButton, employeeRemoveButton);
+		TableUtils.configureEditAndRemoveState(supplierTable, supplierEditButton, supplierRemoveButton);
+		TableUtils.configureEditAndRemoveState(brandTable, brandEditButton, brandRemoveButton);
 	}
 	
 	private void configureSearchs() {
