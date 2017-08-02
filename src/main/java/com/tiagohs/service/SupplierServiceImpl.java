@@ -27,5 +27,10 @@ public class SupplierServiceImpl extends BaseService<Supplier, JpaRepository<Sup
 		this.supplierRepository = supplierRepository;
 	}
 
+	@Override
+	public Long getTotalSuppliers() {
+		return supplierRepository.getTotalSuppliers();
+	}
+
 	
 }

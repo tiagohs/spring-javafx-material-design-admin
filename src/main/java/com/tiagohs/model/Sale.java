@@ -1,6 +1,8 @@
 package com.tiagohs.model;
 
-import java.util.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -17,8 +19,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.Type;
-
 @Entity
 @Table(name = "sale")
 public class Sale {
@@ -31,12 +31,11 @@ public class Sale {
 	@Column(name = "sale_code")
 	private String saleCode;
 	
-	@Type(type = "date")
 	@Column(name = "issue_date")
-	private Date issueDate;
+	private String issueDate;
 
 	@Column(name = "shipment_date")
-	private Date shipmentDate;
+	private String shipmentDate;
 
 	@Column(name = "reference")
 	private String reference;
@@ -71,6 +70,8 @@ public class Sale {
 	   inverseJoinColumns = @JoinColumn(name = "tag_id"))
 	private List<Tag> tags;
 	
+	private SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
+	
 	public long getId() {
 		return id;
 	}
@@ -85,22 +86,6 @@ public class Sale {
 
 	public void setSaleCode(String saleCode) {
 		this.saleCode = saleCode;
-	}
-
-	public Date getIssueDate() {
-		return issueDate;
-	}
-
-	public void setIssueDate(Date issueDate) {
-		this.issueDate = issueDate;
-	}
-
-	public Date getShipmentDate() {
-		return shipmentDate;
-	}
-
-	public void setShipmentDate(Date shipmentDate) {
-		this.shipmentDate = shipmentDate;
 	}
 
 	public String getReference() {
@@ -182,6 +167,53 @@ public class Sale {
 	public void setTotal(double total) {
 		this.total = total;
 	}
+
+	public Calendar getIssueDateFormatter() {
+		Calendar c = Calendar.getInstance();
+		
+		try {
+			c.setTime(formatter.parse(issueDate));
+		} catch (ParseException e) {
+			
+		}
+		
+		return c;
+	}
 	
+	public void setIssueDate(Calendar issueDate) {
+		this.issueDate = formatter.format(issueDate.getTime());
+	}
+
+	public Calendar getShipmentDateFormatter() {
+		Calendar c = Calendar.getInstance();
+		
+		try {
+			c.setTime(formatter.parse(shipmentDate));
+		} catch (ParseException e) {
+			
+		}
+		
+		return c;
+	}
+	
+	public void setShipmentDate(Calendar shipmentDate) {
+		this.shipmentDate = formatter.format(shipmentDate.getTime());
+	}
+
+	public void setIssueDate(String issueDate) {
+		this.issueDate = issueDate;
+	}
+
+	public void setShipmentDate(String shipmentDate) {
+		this.shipmentDate = shipmentDate;
+	}
+
+	public String getIssueDate() {
+		return issueDate;
+	}
+
+	public String getShipmentDate() {
+		return shipmentDate;
+	}
 	
 }

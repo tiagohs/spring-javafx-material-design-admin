@@ -113,13 +113,13 @@ public class SaleTableController {
 			salesTableDTO.setClient(sale.getCliente().getUser().getName());
 		}
 		
-		if (sale.getIssueDate() != null) {
-			salesTableDTO.setShipmentDate(formatter.format(sale.getIssueDate()));
+		if (sale.getShipmentDate() != null) {
+			salesTableDTO.setShipmentDate(formatter.format(sale.getShipmentDateFormatter().getTime()));
 		}
 		
 		
 		if (sale.getIssueDate() != null) {
-			salesTableDTO.setIssueDate(formatter.format(sale.getIssueDate()));
+			salesTableDTO.setIssueDate(formatter.format(sale.getIssueDateFormatter().getTime()));
 		}
 		
 		salesTableDTO.setTotalUnits(sale.getTotalUnits());

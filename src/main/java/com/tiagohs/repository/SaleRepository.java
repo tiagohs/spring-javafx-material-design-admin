@@ -19,9 +19,9 @@ public interface SaleRepository extends JpaRepository<Sale, Long> {
 	@Query("SELECT COUNT(s) FROM Sale s")
 	Long getTotalSales();
 	
-	@Query("SELECT s FROM Sale s WHERE strftime('%m', s.issueDate) = :month")
-	List<Sale> findSalesByMonth(@Param("month") Integer month);
+	@Query("SELECT s FROM Sale s WHERE strftime('%m-%Y', s.issueDate) = :month")
+	List<Sale> findSalesByMonth(@Param("month") String month);
 	
-	@Query("SELECT COUNT(s) FROM Sale s WHERE strftime('%m', s.issueDate) = :month")
-	Long getTotalSalesByMonth(@Param("month") Integer month);
+	@Query("SELECT COUNT(s) FROM Sale s WHERE strftime('%m-%Y', s.issueDate) = :month")
+	Long getTotalSalesByMonth(@Param("month") String month);
 }

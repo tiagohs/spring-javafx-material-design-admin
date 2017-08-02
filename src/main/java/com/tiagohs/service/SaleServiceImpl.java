@@ -1,5 +1,6 @@
 package com.tiagohs.service;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
 
@@ -13,11 +14,13 @@ import com.tiagohs.repository.SaleRepository;
 public class SaleServiceImpl extends BaseService<Sale, JpaRepository<Sale,Long>> implements SaleService {
 	
 	private SaleRepository saleRepository;
+	private SimpleDateFormat patternMonth;
 	
 	public SaleServiceImpl(SaleRepository repository) {
 		super(repository);
 		
 		this.saleRepository = repository;
+		this.patternMonth = new SimpleDateFormat("MM-yyyy");
 	}
 	
 	public SaleRepository getSaleRepository() {
@@ -43,10 +46,7 @@ public class SaleServiceImpl extends BaseService<Sale, JpaRepository<Sale,Long>>
 	public List<Sale> findSaleByMonth(Calendar date) {
 		
 		if (date != null) {
-			Integer month = date.get(Calendar.MONTH);
-			Integer year = date.get(Calendar.YEAR);
-			
-			return saleRepository.findSalesByMonth(month);
+			return saleRepository.findSalesByMonth(patternMonth.format(date.getTime()));
 		}
 		
 		return null;
@@ -56,10 +56,7 @@ public class SaleServiceImpl extends BaseService<Sale, JpaRepository<Sale,Long>>
 	public Long getTotalSalesByMonth(Calendar date) {
 		
 		if (date != null) {
-			Integer month = date.get(Calendar.MONTH);
-			Integer year = date.get(Calendar.YEAR);
-			
-			return saleRepository.getTotalSalesByMonth(month);
+			return saleRepository.getTotalSalesByMonth(patternMonth.format(date.getTime()));
 		}
 		
 		return 0L;

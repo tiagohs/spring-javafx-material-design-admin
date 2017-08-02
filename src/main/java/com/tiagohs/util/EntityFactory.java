@@ -1,5 +1,6 @@
 package com.tiagohs.util;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -107,13 +108,13 @@ public class EntityFactory {
 		return brand;
 	}
 	
-	public static Sale createSale(String saleCode, Date issueDate, Date shipmentDate, String reference, String email,
+	public static Sale createSale(String saleCode, Calendar issueDate, Calendar shipmentDate, String reference, String email,
 			String message, String state, double totalUnits, double total, Fone fone, Client cliente, List<Item> items,
 			List<Tag> tags) {
 		return createSale(new Sale(), saleCode, issueDate, shipmentDate, reference, email, message, state, totalUnits, total, fone, cliente, items, tags);
 	}
 	
-	public static Sale createSale(Sale sale, String saleCode, Date issueDate, Date shipmentDate, String reference, String email,
+	public static Sale createSale(Sale sale, String saleCode, Calendar issueDate, Calendar shipmentDate, String reference, String email,
 			String message, String state, double totalUnits, double total, Fone fone, Client cliente, List<Item> items,
 			List<Tag> tags) {
 		

@@ -17,6 +17,10 @@ public class MainApplication extends Application  {
 	public static ConfigurableApplicationContext springContext;
 	public static HostServices hostServices;
 	
+	public void get() {
+		
+	}
+	
     @Override
     public void init() throws Exception {
     	springContext = SpringApplication.run(MainApplication.class);

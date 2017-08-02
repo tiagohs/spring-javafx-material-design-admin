@@ -58,7 +58,7 @@ public class DashboardController implements BaseController {
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	private void configureSalesChart() {
-		SimpleDateFormat month = new SimpleDateFormat("MMM");
+		SimpleDateFormat month = new SimpleDateFormat("MMM-yyyy");
 		
 		salesChart.getXAxis().setLabel("Month");
         
@@ -84,7 +84,7 @@ public class DashboardController implements BaseController {
 		List<Calendar> allDates = new ArrayList<>();
 		
 		Calendar cal = Calendar.getInstance();
-		allDates.add(cal);
+		allDates.add(Calendar.getInstance());
 		
 		for (int i = 1; i <= 12; i++) {
 			Calendar c = Calendar.getInstance();

@@ -36,13 +36,13 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="377.0" prefWidth="717.0">
                      <children>
-                        <Pagination fx:id="pagination11" layoutX="446.0" layoutY="387.0" maxPageIndicatorCount="5" pageCount="7" prefHeight="65.0" prefWidth="253.0" />
+                        <Pagination fx:id="salesPagination" layoutX="446.0" layoutY="387.0" maxPageIndicatorCount="5" pageCount="7" prefHeight="65.0" prefWidth="253.0" />
                         <JFXTreeTableView fx:id="salesTable" layoutX="17.0" layoutY="49.0" prefHeight="332.0" prefWidth="683.0">
                            <columns>
                               <JFXTreeTableColumn fx:id="saleCodeColumn" minWidth="77.0" prefWidth="77.0" resizable="false" text="CODE" />
                               <JFXTreeTableColumn fx:id="saleIssueDateColumn" minWidth="106.0" prefWidth="106.0" resizable="false" text="Issue Date" />
                               <JFXTreeTableColumn fx:id="saleShipmentDateColumn" minWidth="80.0" prefWidth="125.0" resizable="false" text="Shipment Date" />
-                              <JFXTreeTableColumn fx:id="saleStateColumn" minWidth="108.0" prefWidth="108.0" resizable="false" text="State" />
+                              <JFXTreeTableColumn fx:id="saleTotalColumn" minWidth="108.0" prefWidth="108.0" resizable="false" text="Total" />
                               <JFXTreeTableColumn fx:id="saleNumItemsColumn" minWidth="65.0" prefWidth="65.0" resizable="false" text="Nº Items" />
                               <JFXTreeTableColumn fx:id="saleClientNameColumn" minWidth="101.0" prefWidth="201.0" resizable="false" text="Client Name" />
                            </columns>
@@ -62,7 +62,7 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="377.0" prefWidth="717.0">
                      <children>
-                        <Pagination fx:id="pagination1" layoutX="446.0" layoutY="362.0" maxPageIndicatorCount="5" pageCount="7" prefHeight="65.0" prefWidth="253.0" />
+                        <Pagination fx:id="productsPagination" layoutX="446.0" layoutY="362.0" maxPageIndicatorCount="5" pageCount="7" prefHeight="65.0" prefWidth="253.0" />
                         <JFXTreeTableView fx:id="productsTable" layoutX="17.0" layoutY="49.0" prefHeight="305.0" prefWidth="683.0">
                            <columns>
                               <JFXTreeTableColumn fx:id="productSkuColumn" minWidth="77.0" prefWidth="77.0" resizable="false" text="SKU" />
@@ -87,7 +87,7 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="377.0" prefWidth="717.0">
                      <children>
-                        <Pagination fx:id="pagination12" layoutX="446.0" layoutY="362.0" maxPageIndicatorCount="5" pageCount="7" prefHeight="65.0" prefWidth="253.0" />
+                        <Pagination fx:id="employeesPagination" layoutX="446.0" layoutY="362.0" maxPageIndicatorCount="5" pageCount="7" prefHeight="65.0" prefWidth="253.0" />
                         <JFXTreeTableView fx:id="employeesTable" layoutX="17.0" layoutY="49.0" prefHeight="305.0" prefWidth="683.0">
                            <columns>
                               <JFXTreeTableColumn fx:id="employeeNameColumn" minWidth="77.0" prefWidth="147.0" resizable="false" text="Name" />
@@ -111,7 +111,7 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="377.0" prefWidth="717.0">
                      <children>
-                        <Pagination fx:id="pagination13" layoutX="446.0" layoutY="362.0" maxPageIndicatorCount="5" pageCount="7" prefHeight="65.0" prefWidth="253.0" />
+                        <Pagination fx:id="suppliersPagination" layoutX="446.0" layoutY="362.0" maxPageIndicatorCount="5" pageCount="7" prefHeight="65.0" prefWidth="253.0" />
                         <JFXTreeTableView fx:id="suppliersTable" layoutX="17.0" layoutY="49.0" prefHeight="305.0" prefWidth="683.0">
                            <columns>
                               <JFXTreeTableColumn fx:id="supplierNameColumn" minWidth="77.0" prefWidth="125.0" resizable="false" text="Company Name" />
@@ -134,7 +134,7 @@
       </TabPane>
       <Pane layoutX="12.0" layoutY="566.0" prefHeight="87.0" prefWidth="166.0" style="-fx-background-color: #F44336; -fx-background-radius: 5;">
          <children>
-            <Label alignment="CENTER_RIGHT" layoutX="124.0" layoutY="10.0" prefHeight="41.0" prefWidth="37.0" text="34" textFill="WHITE">
+            <Label fx:id="totalUserLabel" alignment="CENTER_RIGHT" layoutX="124.0" layoutY="10.0" prefHeight="41.0" prefWidth="37.0" text="34" textFill="WHITE">
                <font>
                   <Font size="34.0" />
                </font>
@@ -153,7 +153,7 @@
       </Pane>
       <Pane layoutX="185.0" layoutY="566.0" prefHeight="87.0" prefWidth="166.0" style="-fx-background-color: #9C27B0; -fx-background-radius: 5;">
          <children>
-            <Label alignment="CENTER_RIGHT" layoutX="125.0" layoutY="10.0" prefHeight="41.0" prefWidth="37.0" text="5" textAlignment="RIGHT" textFill="WHITE">
+            <Label fx:id="totalSaleLabel" alignment="CENTER_RIGHT" layoutX="125.0" layoutY="10.0" prefHeight="41.0" prefWidth="37.0" text="5" textAlignment="RIGHT" textFill="WHITE">
                <font>
                   <Font size="34.0" />
                </font>
@@ -172,7 +172,7 @@
       </Pane>
       <Pane layoutX="358.0" layoutY="566.0" prefHeight="87.0" prefWidth="166.0" style="-fx-background-color: #4CAF50; -fx-background-radius: 5;">
          <children>
-            <Label alignment="CENTER_RIGHT" layoutX="125.0" layoutY="10.0" prefHeight="41.0" prefWidth="37.0" text="40" textFill="WHITE">
+            <Label fx:id="totalEmployeeLabel" alignment="CENTER_RIGHT" layoutX="125.0" layoutY="10.0" prefHeight="41.0" prefWidth="37.0" text="40" textFill="WHITE">
                <font>
                   <Font size="34.0" />
                </font>
@@ -191,7 +191,7 @@
       </Pane>
       <Pane layoutX="531.0" layoutY="566.0" prefHeight="87.0" prefWidth="166.0" style="-fx-background-color: #2196F3; -fx-background-radius: 5;">
          <children>
-            <Label alignment="CENTER_RIGHT" layoutX="125.0" layoutY="10.0" prefHeight="41.0" prefWidth="37.0" text="20" textFill="WHITE">
+            <Label fx:id="totalSuppliersLabel" alignment="CENTER_RIGHT" layoutX="125.0" layoutY="10.0" prefHeight="41.0" prefWidth="37.0" text="20" textFill="WHITE">
                <font>
                   <Font size="34.0" />
                </font>

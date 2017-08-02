@@ -2,6 +2,7 @@ package com.tiagohs.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -241,6 +242,8 @@ public class SalesNewController implements BaseController {
 	
 	@FXML
 	public void onSave() {
+		Calendar calendar = Calendar.getInstance();
+		calendar.add(Calendar.MONTH, -1);
 		
 		if (sale == null)
 			sale = new Sale();
@@ -253,8 +256,8 @@ public class SalesNewController implements BaseController {
 		try {
 			saleService.save(EntityFactory.createSale(sale, 
 					WindowsUtils.getTextFromLabel(saleCode), 
-					new Date(), 
-					null, 
+					calendar, 
+					calendar, 
 					WindowsUtils.getTextFromTextField(referenceTextField), 
 					WindowsUtils.getTextFromTextField(emailTextField), 
 					WindowsUtils.getTextFromTextArea(messageTextArea), 
