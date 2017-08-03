@@ -10,6 +10,7 @@ import com.jfoenix.controls.JFXTreeTableView;
 import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import com.tiagohs.service.IBaseService;
+import com.tiagohs.service.TableService;
 
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.value.ObservableValue;

@@ -77,7 +77,14 @@
             <version>10.13.1.1</version>
         </dependency>  
         
-        <!-- <dependency>
+		<dependency>
+		    <groupId>com.lowagie</groupId>
+		    <artifactId>itext</artifactId>
+		    <version>4.2.2</version>
+		    <type>pom</type>
+		</dependency>
+		        
+        <dependency>
             <groupId>net.sf.jasperreports</groupId>
             <artifactId>jasperreports</artifactId>
             <version>6.4.0</version>
@@ -92,18 +99,6 @@
                 </exclusion>
             </exclusions> 
         </dependency> 
-        <dependency>
-		  <groupId>com.lowagie</groupId>
-		  <artifactId>itext</artifactId>
-		  <version>2.1.7</version>
-		  <scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.olap4j</groupId>
-		    <artifactId>olap4j</artifactId>
-		    <version>0.9.7.309-JS-3</version>
-		    <scope>compile</scope>
-		</dependency>-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>
@@ -114,6 +109,11 @@
 			<groupId>javax.inject</groupId>
 			<artifactId>javax.inject</artifactId>
 			<version>1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.scala-lang</groupId>
+			<artifactId>scala-library</artifactId>
+			<version>2.11.0</version>
 		</dependency>
 	</dependencies>
 

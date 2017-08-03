@@ -23,7 +23,7 @@ import com.tiagohs.service.BrandService;
 import com.tiagohs.service.EmployeeService;
 import com.tiagohs.service.ProductService;
 import com.tiagohs.service.SupplierService;
-import com.tiagohs.util.TableService;
+import com.tiagohs.service.TableService;
 import com.tiagohs.util.TableUtils;
 import com.tiagohs.util.WindowsUtils;
 

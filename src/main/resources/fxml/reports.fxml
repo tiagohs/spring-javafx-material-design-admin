@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXSpinner?>
 <?import com.jfoenix.controls.JFXTreeTableColumn?>
 <?import com.jfoenix.controls.JFXTreeTableView?>
 <?import javafx.scene.control.Label?>
@@ -53,7 +54,8 @@
                            </font>
                         </Label>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="30.0" layoutX="540.0" layoutY="466.0" stroke="TRANSPARENT" strokeType="INSIDE" width="65.0" />
-                        <JFXButton layoutX="110.0" layoutY="15.0" prefHeight="30.0" prefWidth="88.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Generate" textFill="WHITE" />
+                        <JFXButton fx:id="salesReportGenerate" layoutX="110.0" layoutY="15.0" onAction="#report" prefHeight="30.0" prefWidth="88.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Generate" textFill="WHITE" />
+                        <JFXSpinner fx:id="salesSpinner" layoutX="206.0" layoutY="14.0" visible="false" />
                      </children>
                   </AnchorPane>
                </content>
@@ -78,7 +80,7 @@
                            </font>
                         </Label>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="30.0" layoutX="540.0" layoutY="466.0" stroke="TRANSPARENT" strokeType="INSIDE" width="65.0" />
-                        <JFXButton layoutX="110.0" layoutY="15.0" prefHeight="30.0" prefWidth="88.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Generate" textFill="WHITE" />
+                        <JFXButton fx:id="productsReportGenerate" layoutX="110.0" layoutY="15.0" prefHeight="30.0" prefWidth="88.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Generate" textFill="WHITE" />
                      </children>
                   </AnchorPane>
                </content>
@@ -102,7 +104,7 @@
                            </font>
                         </Label>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="30.0" layoutX="540.0" layoutY="466.0" stroke="TRANSPARENT" strokeType="INSIDE" width="65.0" />
-                        <JFXButton layoutX="117.0" layoutY="15.0" prefHeight="30.0" prefWidth="88.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Generate" textFill="WHITE" />
+                        <JFXButton fx:id="employeesReportGenerate" layoutX="117.0" layoutY="15.0" prefHeight="30.0" prefWidth="88.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Generate" textFill="WHITE" />
                      </children>
                   </AnchorPane>
                </content>
@@ -125,7 +127,7 @@
                            </font>
                         </Label>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="30.0" layoutX="540.0" layoutY="466.0" stroke="TRANSPARENT" strokeType="INSIDE" width="65.0" />
-                        <JFXButton layoutX="110.0" layoutY="15.0" prefHeight="30.0" prefWidth="88.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Generate" textFill="WHITE" />
+                        <JFXButton fx:id="supplierReportGenerate" layoutX="110.0" layoutY="15.0" prefHeight="30.0" prefWidth="88.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Generate" textFill="WHITE" />
                      </children>
                   </AnchorPane>
                </content>

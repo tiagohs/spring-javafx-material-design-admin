@@ -13,7 +13,7 @@ import com.jfoenix.controls.JFXTreeTableView;
 import com.tiagohs.model.Sale;
 import com.tiagohs.model.dto.SalesTableDTO;
 import com.tiagohs.service.SaleService;
-import com.tiagohs.util.TableService;
+import com.tiagohs.service.TableService;
 import com.tiagohs.util.TableUtils;
 import com.tiagohs.util.WindowsUtils;
 

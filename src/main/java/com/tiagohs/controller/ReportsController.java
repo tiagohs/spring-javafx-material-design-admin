@@ -8,6 +8,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXSpinner;
 import com.jfoenix.controls.JFXTreeTableColumn;
 import com.jfoenix.controls.JFXTreeTableView;
 import com.tiagohs.model.Employee;
@@ -20,10 +22,12 @@ import com.tiagohs.model.dto.SalesTableDTO;
 import com.tiagohs.model.dto.SupplierTableDTO;
 import com.tiagohs.service.EmployeeService;
 import com.tiagohs.service.ProductService;
+import com.tiagohs.service.ReportsService;
 import com.tiagohs.service.SaleService;
 import com.tiagohs.service.SupplierService;
+import com.tiagohs.service.TableService;
 import com.tiagohs.service.UserService;
-import com.tiagohs.util.TableService;
+import com.tiagohs.util.JRPrintPreview;
 import com.tiagohs.util.TableUtils;
 import com.tiagohs.util.WindowsUtils;
 
@@ -31,7 +35,10 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.Pagination;
+import javafx.scene.image.Image;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import net.sf.jasperreports.engine.JasperPrint;
 
 @Controller
 public class ReportsController implements BaseController{
@@ -129,7 +136,22 @@ public class ReportsController implements BaseController{
 	
 	@FXML
 	private Label totalSuppliersLabel;
-
+	
+	@FXML
+	private JFXSpinner salesSpinner;
+	
+	@FXML
+	private JFXButton salesReportGenerate;
+	
+	@FXML
+	private JFXButton productsReportGenerate;
+	
+	@FXML
+	private JFXButton employeesReportGenerate;
+	
+	@FXML
+	private JFXButton supplierReportGenerate;
+	
 	@Autowired
 	private UserService userService;
 	
@@ -316,5 +338,29 @@ public class ReportsController implements BaseController{
 		return salesTableDTO;
 	}
 	
-	
+	@FXML
+	public void report() throws Exception {
+		ReportsService service = new ReportsService();
+		
+		service.setOnScheduled(e -> {
+			salesReportGenerate.setDisable(true);
+			salesSpinner.setVisible(true);
+		});
+		
+		service.setOnSucceeded(e -> {
+			salesReportGenerate.setDisable(false);
+			salesSpinner.setVisible(false);
+			
+			JasperPrint jasperPrint = (JasperPrint) e.getSource().getValue();
+			JRPrintPreview printPreview = new JRPrintPreview(jasperPrint);
+			printPreview.getIcons().add(new Image(WindowsUtils.ICON_APP_PATH));
+			printPreview.getScene().getStylesheets().add(WindowsUtils.BASE_APPLICATION_CSS_PATH);
+			
+			printPreview.show();
+		});
+		
+		service.start();
+		
+		//WindowsUtils.openNewWindow(ReportViewerController.PATH_FXML, ReportViewerController.TITLE, ReportViewerController.PATH_ICON, null, Modality.APPLICATION_MODAL);
+	}
 }

@@ -1,4 +1,6 @@
-package com.tiagohs.util;
+package com.tiagohs.service;
+
+import com.tiagohs.util.ITableServiceCreator;
 
 import javafx.application.Platform;
 import javafx.concurrent.Service;

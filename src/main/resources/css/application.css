@@ -50,6 +50,13 @@
     -fx-font-size: 1em;
 }
 
+.combo-box-report > .arrow-button > .arrow {
+	-fx-background-color: white;
+}
+
+.combo-box-report .list-cell {
+    -fx-text-fill: white;
+}
 
 /*******************************************************************************
 *                                                                              *
