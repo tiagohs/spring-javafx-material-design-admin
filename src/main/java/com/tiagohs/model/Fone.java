@@ -21,7 +21,7 @@ public class Fone {
 	private int code;
 	
 	@Column(name = "number")
-	private int number;
+	private long number;
 	
 	@ManyToOne
 	private Employee employee;
@@ -45,11 +45,11 @@ public class Fone {
 		this.code = code;
 	}
 
-	public int getNumber() {
+	public long getNumber() {
 		return number;
 	}
 
-	public void setNumber(int number) {
+	public void setNumber(long number) {
 		this.number = number;
 	}
 

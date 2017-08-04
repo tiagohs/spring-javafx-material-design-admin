@@ -3,12 +3,11 @@
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
-	<field name="code" class="java.lang.String"/>
-	<field name="shipmentDate" class="java.lang.String"/>
-	<field name="issueDate" class="java.lang.String"/>
-	<field name="client" class="java.lang.String"/>
-	<field name="totalUnits" class="java.lang.String"/>
-	<field name="total" class="java.lang.String"/>
+	<field name="sku" class="java.lang.String"/>
+	<field name="supplier" class="java.lang.String"/>
+	<field name="buyPrice" class="java.lang.String"/>
+	<field name="productType" class="java.lang.String"/>
+	<field name="description" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -32,7 +31,7 @@
 				<textElement>
 					<font size="18"/>
 				</textElement>
-				<text><![CDATA[Sales Report]]></text>
+				<text><![CDATA[Products Report]]></text>
 			</staticText>
 			<image>
 				<reportElement x="460" y="0" width="92" height="63" uuid="088f6531-d676-40ed-a6e6-c37de1fded05"/>
@@ -46,74 +45,64 @@
 	<columnHeader>
 		<band height="27" splitType="Stretch">
 			<rectangle>
-				<reportElement x="0" y="0" width="552" height="20" backcolor="#009688" uuid="841474d7-46ba-4f48-86bd-8678fc861cbb"/>
+				<reportElement x="0" y="0" width="555" height="20" backcolor="#009688" uuid="841474d7-46ba-4f48-86bd-8678fc861cbb"/>
 				<graphicElement>
 					<pen lineColor="#009688"/>
 				</graphicElement>
 			</rectangle>
 			<staticText>
-				<reportElement x="0" y="0" width="56" height="20" forecolor="#FFFFFF" uuid="63a9e0de-2bd5-43b8-833d-59c06ad429c0"/>
+				<reportElement x="0" y="0" width="76" height="20" forecolor="#FFFFFF" uuid="2048510a-875a-4d5a-9fdf-36d28035308a"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<text><![CDATA[Code]]></text>
+				<text><![CDATA[SKU]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="56" y="0" width="105" height="20" forecolor="#FFFFFF" uuid="d9a459ef-248c-4ac1-8100-0985816dcdad"/>
+				<reportElement x="76" y="0" width="125" height="20" forecolor="#FFFFFF" uuid="29410f2c-46b6-4207-b897-a0f0387f7a3a"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<text><![CDATA[Shipment Date]]></text>
+				<text><![CDATA[Supplier]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="161" y="0" width="96" height="20" forecolor="#FFFFFF" uuid="ecd67396-c3af-44f9-a9a4-2f02c6b3221c"/>
+				<reportElement x="201" y="0" width="80" height="20" forecolor="#FFFFFF" uuid="e6402cd3-edab-439e-b6c4-aa2120524cf3"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<text><![CDATA[Issue Date]]></text>
+				<text><![CDATA[Buy Price]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="257" y="0" width="140" height="20" forecolor="#FFFFFF" uuid="8daaf43b-591a-48d9-bc26-fc106f3983b3"/>
+				<reportElement x="281" y="0" width="100" height="20" forecolor="#FFFFFF" uuid="79c784ee-2c7e-4f15-8152-574a11df7885"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<text><![CDATA[Client Name]]></text>
+				<text><![CDATA[Product Type]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="397" y="0" width="63" height="20" forecolor="#FFFFFF" uuid="c0740702-1af8-4d3a-bbf9-d620e1729d08"/>
+				<reportElement x="381" y="0" width="174" height="20" forecolor="#FFFFFF" uuid="9e7443eb-ad4e-452b-bcfa-80e67f93049a"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<text><![CDATA[Total Units]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="460" y="0" width="92" height="20" forecolor="#FFFFFF" uuid="2abfa193-b53b-4955-a00c-1eb626dbaff3"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<text><![CDATA[Total (R$)]]></text>
+				<text><![CDATA[Description]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
 		<band height="20" splitType="Stretch">
 			<textField>
-				<reportElement x="0" y="0" width="56" height="20" uuid="a76fdfdc-569d-43ef-95e4-73521efebe50"/>
+				<reportElement x="0" y="0" width="76" height="20" uuid="c8db07bc-8457-4a97-b84e-c53a80d4a175"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{code}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{sku}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="56" y="0" width="105" height="20" uuid="d6daf7cb-5339-4f93-bb19-e9d37302f803"/>
+				<reportElement x="76" y="0" width="125" height="20" uuid="7bd0803d-8741-45a7-9c98-89474743641b"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{shipmentDate}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{supplier}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="161" y="0" width="96" height="20" uuid="4ef5743f-6607-41d1-9960-31518bc2d9f7"/>
+				<reportElement x="201" y="0" width="80" height="20" uuid="77fdb6bc-990e-412b-8a45-146ddd9ebff2"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{issueDate}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{buyPrice}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="257" y="0" width="140" height="20" uuid="8da34328-106a-4ca6-95d0-19b363bb0be7"/>
+				<reportElement x="281" y="0" width="100" height="20" uuid="5a6706cd-7fd9-4b18-896e-461d2222d0a3"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{client}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{productType}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="397" y="0" width="63" height="20" uuid="b8fedd1f-992c-47e4-8302-5c7ed9368587"/>
+				<reportElement x="381" y="0" width="174" height="20" uuid="ac3e2786-47fc-43bf-8be9-9136d9eb2103"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{totalUnits}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="460" y="0" width="92" height="20" uuid="fdc7cbd8-3c6a-43f0-8ec8-1e9615778f68"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{description}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

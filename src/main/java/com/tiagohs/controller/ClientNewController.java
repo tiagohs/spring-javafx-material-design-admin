@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
+import org.apache.hadoop.mapred.gethistory_jsp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -19,6 +20,7 @@ import com.tiagohs.model.Role;
 import com.tiagohs.model.User;
 import com.tiagohs.service.ClientService;
 import com.tiagohs.service.RoleService;
+import com.tiagohs.service.UserService;
 import com.tiagohs.util.EntityFactory;
 import com.tiagohs.util.ValidatorUtils;
 import com.tiagohs.util.WindowsUtils;
@@ -98,6 +100,9 @@ public class ClientNewController implements BaseController {
 	@Autowired
 	private ClientService clientService;
 	
+	@Autowired
+	private UserService userService;
+	
 	private Stage clientNewStage;
 	private Client client;
 	
@@ -167,6 +172,8 @@ public class ClientNewController implements BaseController {
 		
 		ValidatorUtils.addEmailValidator(emailTextField, "Email does not match");
 		
+		ValidatorUtils.addDuplicateUserValidator(emailTextField, "An account for the specified email address already exists", userService);
+		
 		WindowsUtils.validateTextField(numberTextField);
 		WindowsUtils.validateTextField(residentialPhoneTextField);
 		WindowsUtils.validateTextField(cellPhoneTextField);
@@ -177,8 +184,12 @@ public class ClientNewController implements BaseController {
 		WindowsUtils.validateTextField(confirmPasswordTextField);
 	}
 	
+	@SuppressWarnings("unchecked")
 	private void fillComboBoxes() {
-		WindowsUtils.addComboBoxItens(roleComboBox, roleService.findAll());
+		
+		roleService.findAll(e -> {
+			WindowsUtils.addComboBoxItens(roleComboBox, (List<Role>) e.getSource().getValue());
+		}, null);
 	}
 	
 	private void watchEvents() {
@@ -216,17 +227,12 @@ public class ClientNewController implements BaseController {
 				!(WindowsUtils.isTextFieldEmpty(confirmPasswordTextField));
 	}
 	
+	@SuppressWarnings("unchecked")
 	@FXML
 	public void onSave() {
 		ClientType clientType = (ClientType) WindowsUtils.getSelectedComboBoxItem(countryComboBox);
 		Role roleSelected = (Role) WindowsUtils.getSelectedComboBoxItem(roleComboBox);
-		List<Role> role = roleService.findByRole(roleSelected.getRole());
 		
-		User user = EntityFactory.createUser(WindowsUtils.getTextFromTextField(emailTextField), 
-											 WindowsUtils.getTextFromTextField(nameTextField), 
-											 null, 
-											 WindowsUtils.getTextFromTextField(passwordTextField), 
-											 role);
 		
 		Address address = null;
 		if (isAddressFilled()) {
@@ -240,19 +246,29 @@ public class ClientNewController implements BaseController {
 												  WindowsUtils.getTextFromTextField(cepTextField));
 		}
 		
-		List<Fone> phones = Arrays.asList(EntityFactory.createPhone(WindowsUtils.getIntegerFromTextField(cellPhoneTextField)),
-										 EntityFactory.createPhone(WindowsUtils.getIntegerFromTextField(residentialPhoneTextField)));
+		List<Fone> phones = Arrays.asList(EntityFactory.createPhone(WindowsUtils.getLongFromTextField(cellPhoneTextField)),
+										 EntityFactory.createPhone(WindowsUtils.getLongFromTextField(residentialPhoneTextField)));
 		
-		try {
-			clientService.save(EntityFactory.createClient(client, WindowsUtils.getTextFromTextField(cpfTextField), 
-																  clientType, address, phones, user));
+		roleService.findByRole(roleSelected.getRole(), e -> {
+			List<Role> role = (List<Role>) e.getSource().getValue();
 			
-			WindowsUtils.createDefaultDialog(container, "Sucess", "Client save with sucess.", () -> { clientNewStage.close(); });
-		} catch (Exception e) {
-			e.printStackTrace();
-			WindowsUtils.createDefaultDialog(container, "Error", "Error saving client, try again.", () -> {});
-		}
-		
+			User user = EntityFactory.createUser(WindowsUtils.getTextFromTextField(emailTextField), 
+					 WindowsUtils.getTextFromTextField(nameTextField), 
+					 null, 
+					 WindowsUtils.getTextFromTextField(passwordTextField), 
+					 role);
+
+			try {
+			clientService.save(EntityFactory.createClient(client, WindowsUtils.getTextFromTextField(cpfTextField), 
+													  clientType, address, phones, user), en -> {
+															WindowsUtils.createDefaultDialog(container, "Sucess", "Client save with sucess.", () -> { clientNewStage.close(); });
+														}, null);
+			
+			} catch (Exception error) {
+				error.printStackTrace();
+				WindowsUtils.createDefaultDialog(container, "Error", "Error saving client, try again.", () -> {});
+			}
+		}, null);
 	}
 	
 	@FXML

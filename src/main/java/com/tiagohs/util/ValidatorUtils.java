@@ -6,7 +6,9 @@ import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.validation.RequiredFieldValidator;
 import com.jfoenix.validation.ValidationFacade;
 import com.jfoenix.validation.base.ValidatorBase;
+import com.tiagohs.service.UserService;
 import com.tiagohs.validators.DecimalValidator;
+import com.tiagohs.validators.DuplicateUserValidator;
 import com.tiagohs.validators.EmailValidator;
 import com.tiagohs.validators.MaxLengthValidator;
 import com.tiagohs.validators.MoneyValidator;
@@ -27,6 +29,10 @@ public class ValidatorUtils {
 	
 	public static RequiredFieldValidator addRequiredValidator(JFXPasswordField textField, String message) {
 		return (RequiredFieldValidator) addValidator(new RequiredFieldValidator(), textField, message);
+	}
+	
+	public static DuplicateUserValidator addDuplicateUserValidator(JFXTextField textField, String message, UserService user) {
+		return (DuplicateUserValidator) addValidator(new DuplicateUserValidator(user), textField, message);
 	}
 	
 	public static EmailValidator addEmailValidator(JFXTextField textField, String message) {

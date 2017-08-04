@@ -2,19 +2,18 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
-<?import java.lang.String?>
-<?import javafx.collections.FXCollections?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="480.0" minWidth="500.0" prefHeight="594.0" prefWidth="850.0" stylesheets="@../css/application.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tiagohs.controller.ReportViewerController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="595.0" prefWidth="841.0" stylesheets="@../css/application.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tiagohs.controller.ReportViewerController">
    <children>
-      <Pane prefHeight="52.0" prefWidth="850.0" style="-fx-background-color: #3F51B5;">
+      <Pane layoutX="-9.0" prefHeight="52.0" prefWidth="859.0" style="-fx-background-color: #3F51B5;">
          <children>
             <JFXButton fx:id="saveButton" contentDisplay="GRAPHIC_ONLY" layoutX="14.0" layoutY="6.0" prefHeight="40.0" prefWidth="50.0">
                <graphic>
@@ -97,28 +96,17 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXComboBox fx:id="zoomComboBox" focusColor="#3f51b5" layoutX="673.0" layoutY="14.0" prefHeight="25.0" prefWidth="74.0" styleClass="combo-box-report" unFocusColor="#009688">
-         		<items>
-      	        <FXCollections fx:factory="observableArrayList">
-	            	<String fx:value="100%" />
-					<String fx:value="90%" />
-				</FXCollections>
-			</items>
-			<value>
-      		      <String fx:value="100%" />
-      		  </value>
-			</JFXComboBox>
-            <Label fx:id="pageTextField" layoutX="415.0" layoutY="14.0" text="1 / 1" textFill="WHITE">
+            <JFXComboBox fx:id="zoomComboBox" focusColor="#3f51b5" layoutX="673.0" layoutY="14.0" prefHeight="25.0" prefWidth="74.0" styleClass="combo-box-report" unFocusColor="#3f51b5" />
+            <Label fx:id="pageLabel" layoutX="415.0" layoutY="14.0" text="1 / 1" textFill="WHITE">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
          </children>
       </Pane>
-      <ScrollPane fx:id="containerScrollPane" layoutY="52.0" prefHeight="543.0" prefWidth="850.0">
-        <content>
-          <AnchorPane fx:id="containerAnchorPane" minHeight="0.0" minWidth="0.0" />
-        </content>
-      </ScrollPane>
+      <ScrollPane fx:id="containerScrollPane" layoutX="-9.0" layoutY="52.0" prefHeight="543.0" prefWidth="859.0">
+         <content>
+            <VBox fx:id="pageContentVBox" prefHeight="538.0" prefWidth="846.0" />
+         </content></ScrollPane>
    </children>
 </AnchorPane>

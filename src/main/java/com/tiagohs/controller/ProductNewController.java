@@ -197,8 +197,9 @@ public class ProductNewController implements BaseController {
 															(Brand) WindowsUtils.getSelectedComboBoxItem(brandComboBox), 
 															(ProductType) WindowsUtils.getSelectedComboBoxItem(productTypeComboBox), 
 															null, 
-															null));
-			WindowsUtils.createDefaultDialog(container, "Sucess", "Product save with sucess.", () -> { productNewStage.close(); });
+															null), e -> {
+																WindowsUtils.createDefaultDialog(container, "Sucess", "Product save with sucess.", () -> { productNewStage.close(); });
+															}, null);
 		} catch (Exception e) {
 			WindowsUtils.createDefaultDialog(container, "Error", "Error saving product, try again.", () -> {});
 		}

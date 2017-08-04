@@ -2,9 +2,13 @@ package com.tiagohs.service;
 
 import java.util.List;
 
+import javafx.concurrent.Service;
+import javafx.concurrent.WorkerStateEvent;
+import javafx.event.EventHandler;
+
 public interface IBaseService<T> {
-	public T save(T obj) throws Exception;
-	public List<T> findAll();
-	public void delete(long id) throws Exception;
-	public T find(long id) throws Exception;
+	public Service<T> save(T obj, EventHandler<WorkerStateEvent> onSucess, EventHandler<WorkerStateEvent> beforeStart) throws Exception;
+	public Service<List<T>> findAll(EventHandler<WorkerStateEvent> onSucess, EventHandler<WorkerStateEvent> beforeStart);
+	public Service<Void> delete(long id, EventHandler<WorkerStateEvent> onSucess, EventHandler<WorkerStateEvent> beforeStart) throws Exception;
+	public Service<T> find(long id, EventHandler<WorkerStateEvent> onSucess, EventHandler<WorkerStateEvent> beforeStart) throws Exception;
 }

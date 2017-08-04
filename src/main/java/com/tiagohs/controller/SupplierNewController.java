@@ -11,6 +11,7 @@ import com.jfoenix.controls.JFXTextField;
 import com.tiagohs.model.Address;
 import com.tiagohs.model.Supplier;
 import com.tiagohs.service.SupplierService;
+import com.tiagohs.service.UserService;
 import com.tiagohs.util.EntityFactory;
 import com.tiagohs.util.ValidatorUtils;
 import com.tiagohs.util.WindowsUtils;
@@ -67,6 +68,9 @@ public class SupplierNewController implements BaseController {
 	@Autowired
 	private SupplierService supplierService;
 	
+	@Autowired
+	private UserService userService;
+	
 	private Stage supplierNewStage;
 	private Supplier supplier;
 	
@@ -117,6 +121,8 @@ public class SupplierNewController implements BaseController {
 		ValidatorUtils.addMaxLengthValidator(cepTextField, 8);
 		
 		ValidatorUtils.addEmailValidator(emailTextField, "Email does not match");
+		
+		ValidatorUtils.addDuplicateUserValidator(emailTextField, "An account for the specified email address already exists", userService);
 		
 		WindowsUtils.validateTextField(nameTextField);
 		WindowsUtils.validateTextField(emailTextField);
@@ -181,8 +187,9 @@ public class SupplierNewController implements BaseController {
 		try {
 			supplierService.save(EntityFactory.createSupplier(supplier, WindowsUtils.getTextFromTextField(nameTextField), 
 															  WindowsUtils.getTextFromTextField(emailTextField), 
-															  address));
-			WindowsUtils.createDefaultDialog(container, "Sucess", "Supplier save with sucess.", () -> { supplierNewStage.close(); });
+															  address), e -> {
+																	WindowsUtils.createDefaultDialog(container, "Sucess", "Supplier save with sucess.", () -> { supplierNewStage.close(); });
+																}, null);
 		} catch (Exception e) {
 			e.printStackTrace();
 			WindowsUtils.createDefaultDialog(container, "Error", "Error saving supplier, try again.", () -> {});

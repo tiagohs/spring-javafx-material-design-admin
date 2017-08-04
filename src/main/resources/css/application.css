@@ -54,8 +54,28 @@
 	-fx-background-color: white;
 }
 
-.combo-box-report .list-cell {
+.combo-box-report .list-view .jfx-list-cell .label,
+.combo-box-report .list-view .jfx-list-cell:filled:hover .label {
     -fx-text-fill: white;
+}
+
+.combo-box-report .list-view .jfx-list-cell .custom-jfx-list-view-icon,
+.combo-box-report .list-view .jfx-list-cell:filled:hover .custom-jfx-list-view-icon,
+.combo-box-report .list-view .jfx-list-cell:selected .custom-jfx-list-view-icon {
+    -fx-fill: #009688;
+}
+
+.combo-box-report .list-view .jfx-list-cell:odd:selected > .jfx-rippler > StackPane,
+.combo-box-report .list-view .jfx-list-cell:even:selected > .jfx-rippler > StackPane {
+    -fx-background-color: #009688;
+}
+
+.combo-box-report .list-view .jfx-list-cell {
+    -fx-background-insets: 0.0;
+}
+
+.combo-box-report .list-view .jfx-list-cell .jfx-rippler {
+    -jfx-rippler-fill: #009688;
 }
 
 /*******************************************************************************

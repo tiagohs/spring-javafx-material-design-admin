@@ -18,6 +18,7 @@ import com.tiagohs.model.Role;
 import com.tiagohs.model.User;
 import com.tiagohs.service.EmployeeService;
 import com.tiagohs.service.RoleService;
+import com.tiagohs.service.UserService;
 import com.tiagohs.util.EntityFactory;
 import com.tiagohs.util.ValidatorUtils;
 import com.tiagohs.util.WindowsUtils;
@@ -95,6 +96,9 @@ public class EmployeeNewController implements BaseController {
 	@Autowired
 	private RoleService roleService;
 	
+	@Autowired
+	private UserService userService;
+	
 	private Stage employeeNewStage;
 	private Employee employee;
 	
@@ -164,6 +168,8 @@ public class EmployeeNewController implements BaseController {
 		
 		ValidatorUtils.addEmailValidator(emailTextField, "Email does not match");
 		
+		ValidatorUtils.addDuplicateUserValidator(emailTextField, "An account for the specified email address already exists", userService);
+		
 		WindowsUtils.validateTextField(numberTextField);
 		WindowsUtils.validateTextField(residentialPhoneTextField);
 		WindowsUtils.validateTextField(cellPhoneTextField);
@@ -219,14 +225,14 @@ public class EmployeeNewController implements BaseController {
 												  WindowsUtils.getTextFromTextField(cepTextField));
 		}
 		
-		List<Fone> phones = Arrays.asList(EntityFactory.createPhone(WindowsUtils.getIntegerFromTextField(cellPhoneTextField)),
-										 EntityFactory.createPhone(WindowsUtils.getIntegerFromTextField(residentialPhoneTextField)));
+		List<Fone> phones = Arrays.asList(EntityFactory.createPhone(WindowsUtils.getLongFromTextField(cellPhoneTextField)),
+										 EntityFactory.createPhone(WindowsUtils.getLongFromTextField(residentialPhoneTextField)));
 		
 		try {
 			employeeService.save(EntityFactory.createEmployee(employee, WindowsUtils.getTextFromTextField(cpfTextField), 
-															  user, address, phones));
-			
-			WindowsUtils.createDefaultDialog(container, "Sucess", "Employee save with sucess.", () -> { employeeNewStage.close(); });
+															  user, address, phones), e -> {
+																	WindowsUtils.createDefaultDialog(container, "Sucess", "Employee save with sucess.", () -> { employeeNewStage.close(); });
+																}, null);
 		} catch (Exception e) {
 			e.printStackTrace();
 			WindowsUtils.createDefaultDialog(container, "Error", "Error saving employee, try again.", () -> {});

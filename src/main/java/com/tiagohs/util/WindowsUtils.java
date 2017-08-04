@@ -66,7 +66,7 @@ public class WindowsUtils {
             stage.setScene(scene);
             stage.show();
         } catch(Exception e) {
-        	
+        	e.printStackTrace();
         }
         
         BaseController baseController = loader.getController();
@@ -217,6 +217,10 @@ public class WindowsUtils {
 	
 	public static int getIntegerFromTextField(TextField textField) {
 		return isTextFieldEmpty(textField) ? 0 : Integer.parseInt(textField.getText());
+	}
+	
+	public static long getLongFromTextField(TextField textField) {
+		return isTextFieldEmpty(textField) ? 0 : Long.parseLong(textField.getText());
 	}
 
 	public static String getTextFromTextArea(TextArea textArea) {

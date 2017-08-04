@@ -6,6 +6,10 @@ import org.springframework.stereotype.Service;
 import com.tiagohs.model.Client;
 import com.tiagohs.repository.ClientRepository;
 
+import javafx.concurrent.Task;
+import javafx.concurrent.WorkerStateEvent;
+import javafx.event.EventHandler;
+
 @Service("clientService")
 public class ClientServiceImpl extends BaseService<Client, JpaRepository<Client,Long>> implements ClientService {
 	
@@ -26,8 +30,12 @@ public class ClientServiceImpl extends BaseService<Client, JpaRepository<Client,
 	}
 
 	@Override
-	public Long getTotalClients() {
-		return clientReporitory.getTotalClients();
+	public javafx.concurrent.Service<Long> getTotalClients(EventHandler<WorkerStateEvent> onSucess, EventHandler<WorkerStateEvent> beforeStart) {
+		return createService(new Task<Long>() {
+			protected Long call() throws Exception {
+				return clientReporitory.getTotalClients();
+			};
+		}, onSucess, beforeStart);
 	}
 	
 	

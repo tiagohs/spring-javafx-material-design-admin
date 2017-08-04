@@ -1,6 +1,7 @@
 package com.tiagohs.controller;
 
 import java.text.SimpleDateFormat;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -87,6 +88,7 @@ public class SaleTableController {
 		TableUtils.configureEditAndRemoveState(salesTable, salesEditButton, salesRemoveButton);
 	}
 
+	@SuppressWarnings("unchecked")
 	private void configureTable() {
 		TableUtils.setupColumn(salesCodeColumn, SalesTableDTO::getCode);
 		TableUtils.setupColumn(salesShipmentDateColumn, SalesTableDTO::getShipmentDate);
@@ -95,9 +97,12 @@ public class SaleTableController {
 		TableUtils.setupColumn(salesTotalUnitsColumn, SalesTableDTO::getTotalUnits);
 		TableUtils.setupColumn(salesTotalColumn, SalesTableDTO::getTotal);
 		
-		data = TableUtils.filledDataOnTable(salesController.getSales(type), e -> createData(e));
+		salesController.getSales(type, e -> {
+			data = TableUtils.filledDataOnTable((List<Sale>) e.getSource().getValue(), en -> createData(en));
+			
+			TableUtils.configurePagination(salesTable, data, salesPagination);
+		}, null);
 		
-		TableUtils.configurePagination(salesTable, data, salesPagination);
 		salesTable.setShowRoot(false);
 		salesTable.setEditable(true);
 		

@@ -107,8 +107,9 @@ public class BrandNewController implements BaseController {
 		try {
 			brandService.save(EntityFactory.createBrand(brand, WindowsUtils.getTextFromTextField(nameTextField), 
 														WindowsUtils.getTextFromTextField(emailTextField), 
-														WindowsUtils.getTextFromTextArea(additionalInfoTextArea)));
-			WindowsUtils.createDefaultDialog(container, "Sucess", "Brand save with sucess.", () -> { brandNewStage.close(); });
+														WindowsUtils.getTextFromTextArea(additionalInfoTextArea)), e -> {
+															WindowsUtils.createDefaultDialog(container, "Sucess", "Brand save with sucess.", () -> { brandNewStage.close(); });
+														}, null);
 		} catch (Exception e) {
 			e.printStackTrace();
 			WindowsUtils.createDefaultDialog(container, "Error", "Error saving brand, try again.", () -> {});

@@ -12,6 +12,9 @@ import com.tiagohs.model.Sale;
 import com.tiagohs.service.SaleService;
 import com.tiagohs.util.WindowsUtils;
 
+import javafx.concurrent.Service;
+import javafx.concurrent.WorkerStateEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -63,15 +66,15 @@ public class SalesController implements BaseController {
 		return (StackPane) scene.lookup("#container");
 	}
 	
-	public List<Sale> getSales(TypeSaleTable type) {
+	public Service<List<Sale>> getSales(TypeSaleTable type, EventHandler<WorkerStateEvent> onSucess, EventHandler<WorkerStateEvent> beforeStart) {
 		
 		switch(type) {
 			case ALL:
-				return saleService.findAll();
+				return saleService.findAll(onSucess, beforeStart);
 			case FINALIZED:
-				return saleService.findAllFinalizedSales();
+				return saleService.findAllFinalizedSales(onSucess, beforeStart);
 			case OPEN:
-				return saleService.findAllOpenSales();
+				return saleService.findAllOpenSales(onSucess, beforeStart);
 		}
 		
 		return null;

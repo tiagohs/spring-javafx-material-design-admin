@@ -7,6 +7,10 @@ import org.springframework.stereotype.Service;
 import com.tiagohs.model.User;
 import com.tiagohs.repository.UserRepository;
 
+import javafx.concurrent.Task;
+import javafx.concurrent.WorkerStateEvent;
+import javafx.event.EventHandler;
+
 @Service("userService")
 public class UserServiceImpl extends BaseService<User, JpaRepository<User,Long>> implements UserService {
 	
@@ -28,8 +32,23 @@ public class UserServiceImpl extends BaseService<User, JpaRepository<User,Long>>
 	}
 
 	@Override
-	public Long getTotalUsers() {
-		return userRepository.getTotalUsers();
+	public javafx.concurrent.Service<Long> getTotalUsers(EventHandler<WorkerStateEvent> onSucess, EventHandler<WorkerStateEvent> beforeStart) {
+		return createService(new Task<Long>() {
+			protected Long call() throws Exception {
+				return userRepository.getTotalUsers();
+			};
+		}, onSucess, beforeStart);
+	}
+
+	@Override
+	public javafx.concurrent.Service<User> findUserByEmail(String email, EventHandler<WorkerStateEvent> onSucess, EventHandler<WorkerStateEvent> beforeStart) {
+		return createService(new Task<User>() {
+			protected User call() throws Exception {
+				return userRepository.findUserByEmail(email);
+			};
+		}, onSucess, beforeStart);
+		
+		
 	}
 
 	

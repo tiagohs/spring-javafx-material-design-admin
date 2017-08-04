@@ -3,7 +3,6 @@ package com.tiagohs.controller;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -119,8 +118,14 @@ public class SalesNewController implements BaseController {
 		watchEvents();
 	}
 	
+	@SuppressWarnings("unchecked")
 	private void fillComboBoxes() {
-		WindowsUtils.addComboBoxItens(clientComboBox, clientService.findAll());
+		
+		clientService.findAll(e -> {
+			WindowsUtils.addComboBoxItens(clientComboBox, (List<Client>) e.getSource().getValue());
+			;
+		}, null);
+		
 	}
 
 	private void validateTextFields() {
@@ -250,7 +255,7 @@ public class SalesNewController implements BaseController {
 		
 		Fone phone = null;
 		if (!WindowsUtils.isTextFieldEmpty(phoneTextField)) {
-			phone = EntityFactory.createPhone(WindowsUtils.getIntegerFromTextField(phoneTextField));
+			phone = EntityFactory.createPhone(WindowsUtils.getLongFromTextField(phoneTextField));
 		}
 		
 		try {
@@ -262,13 +267,14 @@ public class SalesNewController implements BaseController {
 					WindowsUtils.getTextFromTextField(emailTextField), 
 					WindowsUtils.getTextFromTextArea(messageTextArea), 
 					(String) WindowsUtils.getSelectedComboBoxItem(stateComboBox), 
+					Integer.valueOf(numUnits), 
 					Double.valueOf(total), 
-					Double.valueOf(numUnits), 
 					phone, 
 					(Client) WindowsUtils.getSelectedComboBoxItem(clientComboBox), 
 					items, 
-					null));
-			WindowsUtils.createDefaultDialog(container, "Sucess", "Client save with sucess.", () -> { saleStage.close(); });
+					null), e -> {
+						WindowsUtils.createDefaultDialog(container, "Sucess", "Client save with sucess.", () -> { saleStage.close(); });
+					}, null);
 		} catch (Exception e) {
 			e.printStackTrace();
 			WindowsUtils.createDefaultDialog(container, "Error", "Error saving client, try again.", () -> {});

@@ -27,15 +27,15 @@ import com.tiagohs.service.SaleService;
 import com.tiagohs.service.SupplierService;
 import com.tiagohs.service.TableService;
 import com.tiagohs.service.UserService;
-import com.tiagohs.util.JRPrintPreview;
+import com.tiagohs.util.EntityReportFactory;
 import com.tiagohs.util.TableUtils;
 import com.tiagohs.util.WindowsUtils;
 
 import javafx.collections.ObservableList;
+import javafx.concurrent.Service;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.Pagination;
-import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import net.sf.jasperreports.engine.JasperPrint;
@@ -141,6 +141,15 @@ public class ReportsController implements BaseController{
 	private JFXSpinner salesSpinner;
 	
 	@FXML
+	private JFXSpinner productsSpinner;
+	
+	@FXML
+	private JFXSpinner employeesSpinner;
+	
+	@FXML
+	private JFXSpinner suppliersSpinner;
+	
+	@FXML
 	private JFXButton salesReportGenerate;
 	
 	@FXML
@@ -166,6 +175,9 @@ public class ReportsController implements BaseController{
 	
 	@Autowired
 	private SaleService saleService;
+	
+	@Autowired
+	private ReportsService reportsService;
 	
 	private ObservableList<ProductTableDTO> productsData;
 	private ObservableList<EmployeeTableDTO> employeesData;
@@ -339,28 +351,49 @@ public class ReportsController implements BaseController{
 	}
 	
 	@FXML
-	public void report() throws Exception {
-		ReportsService service = new ReportsService();
+	public void salesReport() throws Exception {
+		createReport(EntityReportFactory.createSales(saleService.findAll()), "/reports/sales_template.jrxml", salesReportGenerate, salesSpinner);
+	}
+	
+	@FXML
+	public void productsReport() throws Exception {
+		createReport(EntityReportFactory.createProducts(productService.findAll()), "/reports/products_template.jrxml", productsReportGenerate, productsSpinner);
+	}
+	
+	@FXML
+	public void employeesReport() throws Exception {
+		createReport(EntityReportFactory.createEmployees(employeeService.findAll()), "/reports/employees_template.jrxml", employeesReportGenerate, employeesSpinner);
+	}
+	
+	@FXML
+	public void suppliersReport() throws Exception {
+		createReport(EntityReportFactory.createSuppliers(supplierService.findAll()), "/reports/suppliers_template.jrxml", supplierReportGenerate, suppliersSpinner);
+	}
+	
+	private <T> void createReport(List<T> data, String reportTemplatePath, JFXButton reportGenerate, JFXSpinner spinner) {
+		Service<JasperPrint> createTaskService = reportsService.createJasperPrint(reportTemplatePath, data);
 		
-		service.setOnScheduled(e -> {
-			salesReportGenerate.setDisable(true);
-			salesSpinner.setVisible(true);
+		createTaskService.setOnScheduled(e -> {
+			reportGenerate.setDisable(true);
+			spinner.setVisible(true);
 		});
 		
-		service.setOnSucceeded(e -> {
-			salesReportGenerate.setDisable(false);
-			salesSpinner.setVisible(false);
+		createTaskService.setOnSucceeded(e -> {
+			reportGenerate.setDisable(false);
+			spinner.setVisible(false);
 			
 			JasperPrint jasperPrint = (JasperPrint) e.getSource().getValue();
-			JRPrintPreview printPreview = new JRPrintPreview(jasperPrint);
-			printPreview.getIcons().add(new Image(WindowsUtils.ICON_APP_PATH));
-			printPreview.getScene().getStylesheets().add(WindowsUtils.BASE_APPLICATION_CSS_PATH);
 			
-			printPreview.show();
+			try {
+				HashMap<String, JasperPrint> parameters = new HashMap<String, JasperPrint>();
+				parameters.put(ReportViewerController.JASPER_PRINT, jasperPrint);
+				
+				WindowsUtils.openNewWindow(ReportViewerController.PATH_FXML, ReportViewerController.TITLE, ReportViewerController.PATH_ICON, parameters, Modality.APPLICATION_MODAL);
+			} catch (Exception e1) {
+				e1.printStackTrace();
+			}
 		});
 		
-		service.start();
-		
-		//WindowsUtils.openNewWindow(ReportViewerController.PATH_FXML, ReportViewerController.TITLE, ReportViewerController.PATH_ICON, null, Modality.APPLICATION_MODAL);
+		createTaskService.start();
 	}
 }

@@ -10,6 +10,10 @@ import org.springframework.stereotype.Service;
 import com.tiagohs.model.Sale;
 import com.tiagohs.repository.SaleRepository;
 
+import javafx.concurrent.Task;
+import javafx.concurrent.WorkerStateEvent;
+import javafx.event.EventHandler;
+
 @Service("saleService")
 public class SaleServiceImpl extends BaseService<Sale, JpaRepository<Sale,Long>> implements SaleService {
 	
@@ -28,38 +32,57 @@ public class SaleServiceImpl extends BaseService<Sale, JpaRepository<Sale,Long>>
 	}
 
 	@Override
-	public List<Sale> findAllOpenSales() {
-		return saleRepository.findAllOpenSales();
+	public javafx.concurrent.Service<List<Sale>> findAllOpenSales(EventHandler<WorkerStateEvent> onSucess, EventHandler<WorkerStateEvent> beforeStart) {
+		return createService(new Task<List<Sale>>() {
+			protected List<Sale> call() throws Exception {
+				return saleRepository.findAllOpenSales();
+			};
+		}, onSucess, beforeStart);
 	}
 
 	@Override
-	public List<Sale> findAllFinalizedSales() {
-		return saleRepository.findAllFinalizedSales();
+	public javafx.concurrent.Service<List<Sale>> findAllFinalizedSales(EventHandler<WorkerStateEvent> onSucess, EventHandler<WorkerStateEvent> beforeStart) {
+		return createService(new Task<List<Sale>>() {
+			protected List<Sale> call() throws Exception {
+				return saleRepository.findAllFinalizedSales();
+			};
+		}, onSucess, beforeStart);
 	}
 
 	@Override
-	public Long getTotalSales() {
-		return saleRepository.getTotalSales();
+	public javafx.concurrent.Service<Long> getTotalSales(EventHandler<WorkerStateEvent> onSucess, EventHandler<WorkerStateEvent> beforeStart) {
+		return createService(new Task<Long>() {
+			protected Long call() throws Exception {
+				return saleRepository.getTotalSales();
+			};
+		}, onSucess, beforeStart);
 	}
 
 	@Override
-	public List<Sale> findSaleByMonth(Calendar date) {
+	public javafx.concurrent.Service<List<Sale>> findSaleByMonth(Calendar date, EventHandler<WorkerStateEvent> onSucess, EventHandler<WorkerStateEvent> beforeStart) {
+		return createService(new Task<List<Sale>>() {
+			protected List<Sale> call() throws Exception {
+				if (date != null) {
+					return saleRepository.findSalesByMonth(patternMonth.format(date.getTime()));
+				}
+				
+				return null;
+			};
+		}, onSucess, beforeStart);
 		
-		if (date != null) {
-			return saleRepository.findSalesByMonth(patternMonth.format(date.getTime()));
-		}
-		
-		return null;
 	}
 
 	@Override
-	public Long getTotalSalesByMonth(Calendar date) {
-		
-		if (date != null) {
-			return saleRepository.getTotalSalesByMonth(patternMonth.format(date.getTime()));
-		}
-		
-		return 0L;
+	public javafx.concurrent.Service<Long> getTotalSalesByMonth(Calendar date, EventHandler<WorkerStateEvent> onSucess, EventHandler<WorkerStateEvent> beforeStart) {
+		return createService(new Task<Long>() {
+			protected Long call() throws Exception {
+				if (date != null) {
+					return saleRepository.getTotalSalesByMonth(patternMonth.format(date.getTime()));
+				}
+				
+				return 0L;
+			};
+		}, onSucess, beforeStart);
 	}
 	
 	

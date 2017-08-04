@@ -109,13 +109,13 @@ public class EntityFactory {
 	}
 	
 	public static Sale createSale(String saleCode, Calendar issueDate, Calendar shipmentDate, String reference, String email,
-			String message, String state, double totalUnits, double total, Fone fone, Client cliente, List<Item> items,
+			String message, String state, int totalUnits, double total, Fone fone, Client cliente, List<Item> items,
 			List<Tag> tags) {
 		return createSale(new Sale(), saleCode, issueDate, shipmentDate, reference, email, message, state, totalUnits, total, fone, cliente, items, tags);
 	}
 	
 	public static Sale createSale(Sale sale, String saleCode, Calendar issueDate, Calendar shipmentDate, String reference, String email,
-			String message, String state, double totalUnits, double total, Fone fone, Client cliente, List<Item> items,
+			String message, String state, int totalUnits, double total, Fone fone, Client cliente, List<Item> items,
 			List<Tag> tags) {
 		
 		sale.setSaleCode(saleCode);
@@ -227,7 +227,7 @@ public class EntityFactory {
 		return r;
 	}
 	
-	public static Fone createPhone(int number) {
+	public static Fone createPhone(long number) {
 		Fone phone = new Fone();
 		
 		phone.setNumber(number);

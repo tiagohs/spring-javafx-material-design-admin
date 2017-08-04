@@ -7,6 +7,10 @@ import org.springframework.stereotype.Service;
 import com.tiagohs.model.Supplier;
 import com.tiagohs.repository.SupplierRepository;
 
+import javafx.concurrent.Task;
+import javafx.concurrent.WorkerStateEvent;
+import javafx.event.EventHandler;
+
 @Service("supplierService")
 public class SupplierServiceImpl extends BaseService<Supplier, JpaRepository<Supplier,Long>> implements SupplierService {
 	
@@ -28,8 +32,12 @@ public class SupplierServiceImpl extends BaseService<Supplier, JpaRepository<Sup
 	}
 
 	@Override
-	public Long getTotalSuppliers() {
-		return supplierRepository.getTotalSuppliers();
+	public javafx.concurrent.Service<Long> getTotalSuppliers(EventHandler<WorkerStateEvent> onSucess, EventHandler<WorkerStateEvent> beforeStart) {
+		return createService(new Task<Long>() {
+			protected Long call() throws Exception {
+				return supplierRepository.getTotalSuppliers();
+			};
+		}, onSucess, beforeStart);
 	}
 
 	

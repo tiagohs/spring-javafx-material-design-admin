@@ -7,6 +7,10 @@ import org.springframework.stereotype.Service;
 import com.tiagohs.model.Employee;
 import com.tiagohs.repository.EmployeeRepository;
 
+import javafx.concurrent.Task;
+import javafx.concurrent.WorkerStateEvent;
+import javafx.event.EventHandler;
+
 @Service("employeeService")
 public class EmployeeServiceImpl extends BaseService<Employee, JpaRepository<Employee,Long>> implements EmployeeService {
 	
@@ -28,8 +32,12 @@ public class EmployeeServiceImpl extends BaseService<Employee, JpaRepository<Emp
 	}
 
 	@Override
-	public Long getTotalEmployees() {
-		return employeeRepository.getTotalEmployees();
+	public javafx.concurrent.Service<Long> getTotalEmployees(EventHandler<WorkerStateEvent> onSucess, EventHandler<WorkerStateEvent> beforeStart) {
+		return createService(new Task<Long>() {
+			protected Long call() throws Exception {
+				return employeeRepository.getTotalEmployees();
+			};
+		}, onSucess, beforeStart);
 	}
 	
 }

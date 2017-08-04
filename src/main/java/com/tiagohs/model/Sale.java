@@ -50,7 +50,7 @@ public class Sale {
 	private String state;
 	
 	@Column(name = "total_units")
-	private double totalUnits;
+	private int totalUnits;
 	
 	@Column(name = "total")
 	private double total;
@@ -152,11 +152,11 @@ public class Sale {
 		this.state = state;
 	}
 
-	public double getTotalUnits() {
+	public int getTotalUnits() {
 		return totalUnits;
 	}
 
-	public void setTotalUnits(double totalUnits) {
+	public void setTotalUnits(int totalUnits) {
 		this.totalUnits = totalUnits;
 	}
 

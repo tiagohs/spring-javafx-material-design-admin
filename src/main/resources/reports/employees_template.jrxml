@@ -3,12 +3,10 @@
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
-	<field name="code" class="java.lang.String"/>
-	<field name="shipmentDate" class="java.lang.String"/>
-	<field name="issueDate" class="java.lang.String"/>
-	<field name="client" class="java.lang.String"/>
-	<field name="totalUnits" class="java.lang.String"/>
-	<field name="total" class="java.lang.String"/>
+	<field name="name" class="java.lang.String"/>
+	<field name="email" class="java.lang.String"/>
+	<field name="cpf" class="java.lang.String"/>
+	<field name="adress" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -32,7 +30,7 @@
 				<textElement>
 					<font size="18"/>
 				</textElement>
-				<text><![CDATA[Sales Report]]></text>
+				<text><![CDATA[Employees Report]]></text>
 			</staticText>
 			<image>
 				<reportElement x="460" y="0" width="92" height="63" uuid="088f6531-d676-40ed-a6e6-c37de1fded05"/>
@@ -46,74 +44,54 @@
 	<columnHeader>
 		<band height="27" splitType="Stretch">
 			<rectangle>
-				<reportElement x="0" y="0" width="552" height="20" backcolor="#009688" uuid="841474d7-46ba-4f48-86bd-8678fc861cbb"/>
+				<reportElement x="0" y="0" width="555" height="20" backcolor="#009688" uuid="841474d7-46ba-4f48-86bd-8678fc861cbb"/>
 				<graphicElement>
 					<pen lineColor="#009688"/>
 				</graphicElement>
 			</rectangle>
 			<staticText>
-				<reportElement x="0" y="0" width="56" height="20" forecolor="#FFFFFF" uuid="63a9e0de-2bd5-43b8-833d-59c06ad429c0"/>
+				<reportElement x="0" y="0" width="138" height="20" forecolor="#FFFFFF" uuid="d4918b13-8a03-4a76-b4c8-827ecf03ae02"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<text><![CDATA[Code]]></text>
+				<text><![CDATA[Name]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="56" y="0" width="105" height="20" forecolor="#FFFFFF" uuid="d9a459ef-248c-4ac1-8100-0985816dcdad"/>
+				<reportElement x="138" y="0" width="138" height="20" forecolor="#FFFFFF" uuid="a2a8f778-f1db-462a-a525-895c773fb4a1"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<text><![CDATA[Shipment Date]]></text>
+				<text><![CDATA[Email]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="161" y="0" width="96" height="20" forecolor="#FFFFFF" uuid="ecd67396-c3af-44f9-a9a4-2f02c6b3221c"/>
+				<reportElement x="276" y="0" width="102" height="20" forecolor="#FFFFFF" uuid="78d98f42-eb0e-4841-bdf0-669ae2aef1cf"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<text><![CDATA[Issue Date]]></text>
+				<text><![CDATA[CPF]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="257" y="0" width="140" height="20" forecolor="#FFFFFF" uuid="8daaf43b-591a-48d9-bc26-fc106f3983b3"/>
+				<reportElement x="378" y="0" width="174" height="20" forecolor="#FFFFFF" uuid="743fa40c-a63a-4f41-878e-408383e758ec"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<text><![CDATA[Client Name]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="397" y="0" width="63" height="20" forecolor="#FFFFFF" uuid="c0740702-1af8-4d3a-bbf9-d620e1729d08"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<text><![CDATA[Total Units]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="460" y="0" width="92" height="20" forecolor="#FFFFFF" uuid="2abfa193-b53b-4955-a00c-1eb626dbaff3"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<text><![CDATA[Total (R$)]]></text>
+				<text><![CDATA[Adress]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
 		<band height="20" splitType="Stretch">
 			<textField>
-				<reportElement x="0" y="0" width="56" height="20" uuid="a76fdfdc-569d-43ef-95e4-73521efebe50"/>
+				<reportElement x="0" y="0" width="138" height="20" uuid="0b546605-fa08-4f0b-b7c6-4c765357f226"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{code}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="56" y="0" width="105" height="20" uuid="d6daf7cb-5339-4f93-bb19-e9d37302f803"/>
+				<reportElement x="138" y="0" width="138" height="20" uuid="f4aef3af-8663-44f9-9669-b6ef1d3689ce"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{shipmentDate}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{email}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="161" y="0" width="96" height="20" uuid="4ef5743f-6607-41d1-9960-31518bc2d9f7"/>
+				<reportElement x="276" y="0" width="102" height="20" uuid="4f1de192-953c-44e6-8cdc-cdb1b3609900"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{issueDate}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{cpf}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="257" y="0" width="140" height="20" uuid="8da34328-106a-4ca6-95d0-19b363bb0be7"/>
+				<reportElement x="378" y="0" width="174" height="20" uuid="487720b8-6aef-4473-a9da-8c61653fc38d"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{client}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="397" y="0" width="63" height="20" uuid="b8fedd1f-992c-47e4-8302-5c7ed9368587"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{totalUnits}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="460" y="0" width="92" height="20" uuid="fdc7cbd8-3c6a-43f0-8ec8-1e9615778f68"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{adress}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

@@ -54,7 +54,7 @@
                            </font>
                         </Label>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="30.0" layoutX="540.0" layoutY="466.0" stroke="TRANSPARENT" strokeType="INSIDE" width="65.0" />
-                        <JFXButton fx:id="salesReportGenerate" layoutX="110.0" layoutY="15.0" onAction="#report" prefHeight="30.0" prefWidth="88.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Generate" textFill="WHITE" />
+                        <JFXButton fx:id="salesReportGenerate" layoutX="110.0" layoutY="15.0" onAction="#salesReport" prefHeight="30.0" prefWidth="88.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Generate" textFill="WHITE" />
                         <JFXSpinner fx:id="salesSpinner" layoutX="206.0" layoutY="14.0" visible="false" />
                      </children>
                   </AnchorPane>
@@ -80,7 +80,8 @@
                            </font>
                         </Label>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="30.0" layoutX="540.0" layoutY="466.0" stroke="TRANSPARENT" strokeType="INSIDE" width="65.0" />
-                        <JFXButton fx:id="productsReportGenerate" layoutX="110.0" layoutY="15.0" prefHeight="30.0" prefWidth="88.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Generate" textFill="WHITE" />
+                        <JFXButton fx:id="productsReportGenerate" layoutX="110.0" layoutY="15.0" onAction="#productsReport" prefHeight="30.0" prefWidth="88.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Generate" textFill="WHITE" />
+                        <JFXSpinner fx:id="productsSpinner" layoutX="205.0" layoutY="14.0" visible="false" />
                      </children>
                   </AnchorPane>
                </content>
@@ -104,7 +105,8 @@
                            </font>
                         </Label>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="30.0" layoutX="540.0" layoutY="466.0" stroke="TRANSPARENT" strokeType="INSIDE" width="65.0" />
-                        <JFXButton fx:id="employeesReportGenerate" layoutX="117.0" layoutY="15.0" prefHeight="30.0" prefWidth="88.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Generate" textFill="WHITE" />
+                        <JFXButton fx:id="employeesReportGenerate" layoutX="117.0" layoutY="15.0" onAction="#employeesReport" prefHeight="30.0" prefWidth="88.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Generate" textFill="WHITE" />
+                        <JFXSpinner fx:id="employeesSpinner" layoutX="212.0" layoutY="14.0" visible="false" />
                      </children>
                   </AnchorPane>
                </content>
@@ -117,8 +119,8 @@
                         <JFXTreeTableView fx:id="suppliersTable" layoutX="17.0" layoutY="49.0" prefHeight="305.0" prefWidth="683.0">
                            <columns>
                               <JFXTreeTableColumn fx:id="supplierNameColumn" minWidth="77.0" prefWidth="125.0" resizable="false" text="Company Name" />
-                              <JFXTreeTableColumn fx:id="supplierEmailColumn" minWidth="101.0" prefWidth="141.0" resizable="false" text="Email" />
-                              <JFXTreeTableColumn fx:id="supplierAddresColumn" minWidth="80.0" prefWidth="416.0" resizable="false" text="Addres" />
+                              <JFXTreeTableColumn fx:id="supplierEmailColumn" minWidth="101.0" prefWidth="186.0" resizable="false" text="Email" />
+                              <JFXTreeTableColumn fx:id="supplierAddresColumn" minWidth="80.0" prefWidth="371.0" resizable="false" text="Addres" />
                            </columns>
                         </JFXTreeTableView>
                         <Label fx:id="Suppliers" layoutX="25.0" layoutY="18.0" text="Suppliers">
@@ -127,7 +129,8 @@
                            </font>
                         </Label>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="30.0" layoutX="540.0" layoutY="466.0" stroke="TRANSPARENT" strokeType="INSIDE" width="65.0" />
-                        <JFXButton fx:id="supplierReportGenerate" layoutX="110.0" layoutY="15.0" prefHeight="30.0" prefWidth="88.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Generate" textFill="WHITE" />
+                        <JFXButton fx:id="supplierReportGenerate" layoutX="110.0" layoutY="15.0" onAction="#suppliersReport" prefHeight="30.0" prefWidth="88.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Generate" textFill="WHITE" />
+                        <JFXSpinner fx:id="suppliersSpinner" layoutX="204.0" layoutY="14.0" visible="false" />
                      </children>
                   </AnchorPane>
                </content>
