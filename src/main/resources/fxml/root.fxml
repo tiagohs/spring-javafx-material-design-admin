@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -23,6 +24,9 @@
                      </image>
                   </ImageView>
                </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </JFXButton>
             <JFXButton fx:id="inventoryButton" alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="4.0" layoutY="234.0" onAction="#onInvetoryAction" prefHeight="95.0" prefWidth="131.0" ripplerFill="#7986cb" text="Inventory" textAlignment="CENTER" textFill="#fffdfd">
                <font>
@@ -35,6 +39,9 @@
                      </image>
                   </ImageView>
                </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </JFXButton>
             <Label layoutX="20.0" layoutY="100.0" text="Tiago Henrique" textFill="WHITE">
                <font>
@@ -52,6 +59,9 @@
                      </image>
                   </ImageView>
                </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </JFXButton>
             <JFXButton alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="4.0" layoutY="424.0" onAction="#onClientsAction" prefHeight="95.0" prefWidth="131.0" ripplerFill="#7986cb" text="Clients" textAlignment="CENTER" textFill="#fffdfd">
                <font>
@@ -64,6 +74,9 @@
                      </image>
                   </ImageView>
                </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </JFXButton>
             <Pane layoutX="9.0" layoutY="634.0" prefHeight="1.0" prefWidth="123.0" style="-fx-background-color: #303F9F;" />
             <JFXButton alignment="BOTTOM_CENTER" contentDisplay="GRAPHIC_ONLY" layoutX="4.0" layoutY="649.0" onAction="#onAbout" prefHeight="35.0" prefWidth="45.0" ripplerFill="#7986cb" textAlignment="CENTER" textFill="#fffdfd">
@@ -77,6 +90,9 @@
                      </image>
                   </ImageView>
                </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </JFXButton>
             <JFXButton alignment="BOTTOM_CENTER" contentDisplay="GRAPHIC_ONLY" layoutX="48.0" layoutY="649.0" onAction="#onSettings" prefHeight="35.0" prefWidth="45.0" ripplerFill="#7986cb" textAlignment="CENTER" textFill="#fffdfd">
                <font>
@@ -89,6 +105,9 @@
                      </image>
                   </ImageView>
                </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </JFXButton>
             <JFXButton alignment="BOTTOM_CENTER" contentDisplay="GRAPHIC_ONLY" layoutX="90.0" layoutY="649.0" onAction="#onLogout" prefHeight="35.0" prefWidth="45.0" ripplerFill="#7986cb" textAlignment="CENTER" textFill="#fffdfd">
                <font>
@@ -101,6 +120,9 @@
                      </image>
                   </ImageView>
                </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </JFXButton>
             <JFXButton alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="4.0" layoutY="519.0" onAction="#onReportsAction" prefHeight="95.0" prefWidth="131.0" ripplerFill="#7986cb" text="Reports" textAlignment="CENTER" textFill="#fffdfd">
                <font>
@@ -113,6 +135,9 @@
                      </image>
                   </ImageView>
                </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </JFXButton>
             <ImageView fitHeight="79.0" fitWidth="75.0" layoutX="32.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
                <image>

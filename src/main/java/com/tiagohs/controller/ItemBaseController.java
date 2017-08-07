@@ -85,7 +85,7 @@ public class ItemBaseController implements IItemBaseController {
 	}
 	
 	private void fillComboBoxs() {
-		WindowsUtils.addComboBoxItens(itemsComboBox, productService.findAll());
+		WindowsUtils.addComboBoxItens(itemsComboBox, productService);
 	}
 	
 	private void watchEvents() {

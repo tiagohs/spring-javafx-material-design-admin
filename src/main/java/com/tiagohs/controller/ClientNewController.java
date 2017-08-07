@@ -4,7 +4,6 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
-import org.apache.hadoop.mapred.gethistory_jsp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -30,7 +29,7 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 @Controller
-public class ClientNewController implements BaseController {
+public class ClientNewController extends BaseController {
 	
 	public static final String PRODUCT_KEY = "client_key";
 	public static final String PATH_FXML = "/fxml/new_client.fxml";
@@ -103,17 +102,23 @@ public class ClientNewController implements BaseController {
 	@Autowired
 	private UserService userService;
 	
-	private Stage clientNewStage;
 	private Client client;
 	
 	@Override
 	public <T> void init(Stage stage, HashMap<String, T> parameters) {
-		this.clientNewStage = stage;
+		super.init(stage, parameters);
 		
 		fillComboBoxes();
 		checkParameters(parameters);
 		validateTextFields();
 		watchEvents();
+	}
+
+	@Override
+	protected void onClose() {
+		roleService.onClose();
+		clientService.onClose();
+		userService.onClose();
 	}
 	
 	private <T> void checkParameters(HashMap<String, T> parameters) {
@@ -184,12 +189,8 @@ public class ClientNewController implements BaseController {
 		WindowsUtils.validateTextField(confirmPasswordTextField);
 	}
 	
-	@SuppressWarnings("unchecked")
 	private void fillComboBoxes() {
-		
-		roleService.findAll(e -> {
-			WindowsUtils.addComboBoxItens(roleComboBox, (List<Role>) e.getSource().getValue());
-		}, null);
+		WindowsUtils.addComboBoxItens(roleComboBox, roleService);
 	}
 	
 	private void watchEvents() {
@@ -232,20 +233,6 @@ public class ClientNewController implements BaseController {
 	public void onSave() {
 		ClientType clientType = (ClientType) WindowsUtils.getSelectedComboBoxItem(countryComboBox);
 		Role roleSelected = (Role) WindowsUtils.getSelectedComboBoxItem(roleComboBox);
-		
-		
-		Address address = null;
-		if (isAddressFilled()) {
-			address = EntityFactory.createAddress(WindowsUtils.getTextFromTextField(streetTextField), 
-												  WindowsUtils.getIntegerFromTextField(numberTextField), 
-												  WindowsUtils.getTextFromTextField(complementTextField), 
-												  WindowsUtils.getTextFromTextField(districtTextField), 
-												  WindowsUtils.getTextFromTextField(cityTextField), 
-												  WindowsUtils.getTextFromTextField(stateTextField), 
-												  (String) WindowsUtils.getSelectedComboBoxItem(countryComboBox), 
-												  WindowsUtils.getTextFromTextField(cepTextField));
-		}
-		
 		List<Fone> phones = Arrays.asList(EntityFactory.createPhone(WindowsUtils.getLongFromTextField(cellPhoneTextField)),
 										 EntityFactory.createPhone(WindowsUtils.getLongFromTextField(residentialPhoneTextField)));
 		
@@ -257,11 +244,23 @@ public class ClientNewController implements BaseController {
 					 null, 
 					 WindowsUtils.getTextFromTextField(passwordTextField), 
 					 role);
-
+			
+			Address address = null;
+			if (isAddressFilled()) {
+				address = EntityFactory.createAddress(WindowsUtils.getTextFromTextField(streetTextField), 
+													  WindowsUtils.getIntegerFromTextField(numberTextField), 
+													  WindowsUtils.getTextFromTextField(complementTextField), 
+													  WindowsUtils.getTextFromTextField(districtTextField), 
+													  WindowsUtils.getTextFromTextField(cityTextField), 
+													  WindowsUtils.getTextFromTextField(stateTextField), 
+													  (String) WindowsUtils.getSelectedComboBoxItem(countryComboBox), 
+													  WindowsUtils.getTextFromTextField(cepTextField));
+			}
+			
 			try {
-			clientService.save(EntityFactory.createClient(client, WindowsUtils.getTextFromTextField(cpfTextField), 
+				clientService.save(EntityFactory.createClient(client, WindowsUtils.getTextFromTextField(cpfTextField), 
 													  clientType, address, phones, user), en -> {
-															WindowsUtils.createDefaultDialog(container, "Sucess", "Client save with sucess.", () -> { clientNewStage.close(); });
+															WindowsUtils.createDefaultDialog(container, "Sucess", "Client save with sucess.", () -> { stage.close(); });
 														}, null);
 			
 			} catch (Exception error) {
@@ -273,7 +272,7 @@ public class ClientNewController implements BaseController {
 	
 	@FXML
 	public void onCancel() {
-		clientNewStage.close();
+		stage.close();
 	}
 	
 	@FXML

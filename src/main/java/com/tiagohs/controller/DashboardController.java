@@ -22,7 +22,7 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 @Controller
-public class DashboardController implements BaseController {
+public class DashboardController extends BaseController {
 	
 	public static final String PATH_FXML = "/fxml/dashboard.fxml";
 	public static final String TITLE = "Dashboard - Inventory Management";
@@ -51,9 +51,17 @@ public class DashboardController implements BaseController {
 	
 	@Override
 	public <T> void init(Stage stage, HashMap<String, T> parameters) {
+		super.init(stage, parameters);
 		
 		configureSalesChart();
 		configureLabels();
+	}
+
+	@Override
+	protected void onClose() {
+		userService.onClose();
+		saleService.onClose();
+		employeeService.onClose();
 	}
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
@@ -73,8 +81,7 @@ public class DashboardController implements BaseController {
 		}
         
         for (Calendar calendar : allMonths) {
-        	series.getData().add(new XYChart.Data(month.format(calendar.getTime()), 
-        						 saleService.getTotalSalesByMonth(calendar)));
+        	series.getData().add(new XYChart.Data(month.format(calendar.getTime()), saleService.getTotalSalesByMonth(calendar)));
         }
         
         salesChart.getData().add(series);
@@ -105,10 +112,22 @@ public class DashboardController implements BaseController {
 	}
 	
 	private void configureLabels() {
-		WindowsUtils.setTextInLabel(usersLabel, String.valueOf(userService.getTotalUsers()));
-		WindowsUtils.setTextInLabel(salesLabel, String.valueOf(saleService.getTotalSales()));
-		WindowsUtils.setTextInLabel(employeesLabel, String.valueOf(employeeService.getTotalEmployees()));
+		
+		userService.getTotalUsers(e -> {
+			configureLabel(usersLabel, (Long) e.getSource().getValue());
+		}, null);
+		
+		saleService.getTotalSales(e -> {
+			configureLabel(salesLabel, (Long) e.getSource().getValue());		
+		}, null);
+		
+		employeeService.getTotalEmployees(e -> {
+			configureLabel(employeesLabel, (Long) e.getSource().getValue());
+		}, null);
 	}
 	
+	private void configureLabel(Label label, long value) {
+		WindowsUtils.setTextInLabel(label, String.valueOf(value));
+	}
 	
 }

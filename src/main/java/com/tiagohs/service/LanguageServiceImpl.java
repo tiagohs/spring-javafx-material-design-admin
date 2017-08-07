@@ -7,7 +7,7 @@ import com.tiagohs.model.Language;
 import com.tiagohs.repository.LanguageRepository;
 
 @Service("languageService")
-public class LanguageServiceImpl extends BaseService<Language, JpaRepository<Language,Long>> implements LanguageService {
+public class LanguageServiceImpl extends BaseCrudService<Language, JpaRepository<Language,Long>> implements LanguageService {
 	
 	private LanguageRepository languageRepository;
 	

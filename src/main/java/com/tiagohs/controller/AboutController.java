@@ -11,7 +11,7 @@ import javafx.fxml.FXML;
 import javafx.stage.Stage;
 
 @Controller
-public class AboutController implements BaseController {
+public class AboutController extends BaseController {
 	
 	public static final String PATH_FXML = "/fxml/about.fxml";
 	public static final String TITLE = "About Inventory Management";
@@ -22,10 +22,13 @@ public class AboutController implements BaseController {
 	public static final String LINKEDIN_URL = "https://br.linkedin.com/in/tiago-henrique-395868b7";
 	public static final String EMAIL_URL = "mailto:tiago.hsilva@al.infnet.edu.br";
 	
-	private Stage aboutStage;
-	
 	public <T> void init(Stage stage, HashMap<String, T> parameters) {
-		this.aboutStage = stage;
+		super.init(stage, parameters);
+	}
+
+	@Override
+	protected void onClose() {
+		
 	}
 	
 	@FXML
@@ -49,6 +52,7 @@ public class AboutController implements BaseController {
 	}
 	
 	public void onOk() {
-		aboutStage.close();
+		stage.close();
 	}
+
 }

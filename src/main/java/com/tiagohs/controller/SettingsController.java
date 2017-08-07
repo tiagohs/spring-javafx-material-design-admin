@@ -10,7 +10,7 @@ import javafx.fxml.FXML;
 import javafx.stage.Stage;
 
 @Controller
-public class SettingsController implements BaseController {
+public class SettingsController extends BaseController {
 
 	public static final String PATH_FXML = "/fxml/settings.fxml";
 	public static final String TITLE = "Settings - Inventory Management";
@@ -18,6 +18,11 @@ public class SettingsController implements BaseController {
 	
 	@Override
 	public <T> void init(Stage stage, HashMap<String, T> parameters) {
+		super.init(stage, parameters);
+	}
+	
+	@Override
+	protected void onClose() {
 		
 	}
 	

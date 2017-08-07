@@ -12,7 +12,7 @@ import javafx.concurrent.WorkerStateEvent;
 import javafx.event.EventHandler;
 
 @Service("userService")
-public class UserServiceImpl extends BaseService<User, JpaRepository<User,Long>> implements UserService {
+public class UserServiceImpl extends BaseCrudService<User, JpaRepository<User,Long>> implements UserService {
 	
 	private UserRepository userRepository;
 	

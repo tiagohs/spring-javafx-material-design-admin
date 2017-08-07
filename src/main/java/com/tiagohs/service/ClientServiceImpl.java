@@ -11,7 +11,7 @@ import javafx.concurrent.WorkerStateEvent;
 import javafx.event.EventHandler;
 
 @Service("clientService")
-public class ClientServiceImpl extends BaseService<Client, JpaRepository<Client,Long>> implements ClientService {
+public class ClientServiceImpl extends BaseCrudService<Client, JpaRepository<Client,Long>> implements ClientService {
 	
 	private ClientRepository clientReporitory;
 	

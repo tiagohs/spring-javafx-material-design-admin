@@ -4,6 +4,7 @@
 <?import com.jfoenix.controls.JFXTextField?>
 <?import com.jfoenix.controls.JFXTreeTableColumn?>
 <?import com.jfoenix.controls.JFXTreeTableView?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Pagination?>
 <?import javafx.scene.control.Tab?>
@@ -43,6 +44,9 @@
                            </image>
                         </ImageView>
                      </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </JFXButton>
                   <JFXButton alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="244.0" layoutY="54.0" onAction="#onNewEmployee" prefHeight="75.0" prefWidth="114.0" ripplerFill="#7986cb" text="New Employee" textAlignment="CENTER" textFill="#fffdfd">
                      <font>
@@ -55,6 +59,9 @@
                            </image>
                         </ImageView>
                      </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </JFXButton>
                   <JFXButton alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="369.0" layoutY="54.0" onAction="#onNewSupplier" prefHeight="75.0" prefWidth="114.0" ripplerFill="#7986cb" text="New Supplier" textAlignment="CENTER" textFill="#fffdfd">
                      <font>
@@ -67,6 +74,9 @@
                            </image>
                         </ImageView>
                      </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </JFXButton>
                   <JFXButton alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="492.0" layoutY="54.0" onAction="#onNewSupplier" prefHeight="75.0" prefWidth="114.0" ripplerFill="#7986cb" text="New Brand" textAlignment="CENTER" textFill="#fffdfd">
                      <font>
@@ -79,6 +89,9 @@
                            </image>
                         </ImageView>
                      </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </JFXButton>
                </children>
             </Pane>
@@ -88,7 +101,10 @@
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="288.0" prefWidth="558.0">
                            <children>
-                              <Pagination fx:id="productPagination" layoutX="297.0" layoutY="431.0" maxPageIndicatorCount="0" pageCount="0" prefHeight="65.0" />
+                              <Pagination fx:id="productPagination" layoutX="297.0" layoutY="431.0" maxPageIndicatorCount="0" pageCount="0" prefHeight="65.0">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor></Pagination>
                               <JFXTreeTableView fx:id="productsTable" layoutX="17.0" layoutY="47.0" prefHeight="373.0" prefWidth="683.0">
                                  <columns>
                                     <JFXTreeTableColumn fx:id="productSkuColumn" minWidth="77.0" prefWidth="77.0" resizable="false" text="SKU" />
@@ -108,6 +124,9 @@
                                        </image>
                                     </ImageView>
                                  </graphic>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
                               </JFXButton>
                               <JFXButton fx:id="productRemoveButton" disable="true" layoutX="106.0" layoutY="11.0" onAction="#onRemoveProductTable" prefHeight="30.0" prefWidth="83.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Remove" textFill="WHITE">
                                  <graphic>
@@ -117,6 +136,9 @@
                                        </image>
                                     </ImageView>
                                  </graphic>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
                               </JFXButton>
                               <JFXButton fx:id="productReloadButton" contentDisplay="GRAPHIC_ONLY" layoutX="195.0" layoutY="11.0" onAction="#onReloadProductTable" prefHeight="30.0" prefWidth="34.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Remove" textFill="WHITE">
                                  <graphic>
@@ -126,6 +148,9 @@
                                        </image>
                                     </ImageView>
                                  </graphic>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
                               </JFXButton>
                            </children>
                         </AnchorPane>
@@ -135,7 +160,10 @@
                      <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="288.0" prefWidth="558.0">
                            <children>
-                              <Pagination fx:id="employeePagination" layoutX="293.0" layoutY="431.0" maxPageIndicatorCount="0" pageCount="0" prefHeight="65.0" />
+                              <Pagination fx:id="employeePagination" layoutX="293.0" layoutY="431.0" maxPageIndicatorCount="0" pageCount="0" prefHeight="65.0">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor></Pagination>
                               <JFXTreeTableView fx:id="employeeTable" layoutX="17.0" layoutY="47.0" prefHeight="373.0" prefWidth="683.0">
                                  <columns>
                                     <JFXTreeTableColumn fx:id="employeeNameColumn" minWidth="77.0" prefWidth="147.0" resizable="false" text="Name" />
@@ -154,6 +182,9 @@
                                        </image>
                                     </ImageView>
                                  </graphic>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
                               </JFXButton>
                               <JFXButton fx:id="employeeRemoveButton" disable="true" layoutX="106.0" layoutY="11.0" onAction="#onRemoveEmployeeTable" prefHeight="30.0" prefWidth="83.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Remove" textFill="WHITE">
                                  <graphic>
@@ -163,6 +194,9 @@
                                        </image>
                                     </ImageView>
                                  </graphic>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
                               </JFXButton>
                               <JFXButton fx:id="employeesReloadButton" contentDisplay="GRAPHIC_ONLY" layoutX="195.0" layoutY="11.0" onAction="#onReloadEmployeeTable" prefHeight="30.0" prefWidth="34.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Remove" textFill="WHITE">
                                  <graphic>
@@ -172,6 +206,9 @@
                                        </image>
                                     </ImageView>
                                  </graphic>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
                               </JFXButton>
                            </children>
                         </AnchorPane>
@@ -181,7 +218,10 @@
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="288.0" prefWidth="558.0">
                            <children>
-                              <Pagination fx:id="supplierPagination" layoutX="293.0" layoutY="434.0" maxPageIndicatorCount="0" nodeOrientation="LEFT_TO_RIGHT" pageCount="0" prefHeight="65.0" />
+                              <Pagination fx:id="supplierPagination" layoutX="293.0" layoutY="434.0" maxPageIndicatorCount="0" nodeOrientation="LEFT_TO_RIGHT" pageCount="0" prefHeight="65.0">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor></Pagination>
                               <JFXTreeTableView fx:id="supplierTable" layoutX="17.0" layoutY="47.0" prefHeight="373.0" prefWidth="683.0">
                                  <columns>
                                     <JFXTreeTableColumn fx:id="supplierNameColumn" minWidth="77.0" prefWidth="125.0" resizable="false" text="Company Name" />
@@ -199,6 +239,9 @@
                                        </image>
                                     </ImageView>
                                  </graphic>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
                               </JFXButton>
                               <JFXButton fx:id="supplierRemoveButton" disable="true" layoutX="106.0" layoutY="11.0" onAction="#onRemoveSupplierTable" prefHeight="30.0" prefWidth="83.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Remove" textFill="WHITE">
                                  <graphic>
@@ -208,6 +251,9 @@
                                        </image>
                                     </ImageView>
                                  </graphic>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
                               </JFXButton>
                               <JFXButton fx:id="suppliersReloadButton" contentDisplay="GRAPHIC_ONLY" layoutX="195.0" layoutY="11.0" onAction="#onReloadSupplierTable" prefHeight="30.0" prefWidth="34.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Remove" textFill="WHITE">
                                  <graphic>
@@ -217,6 +263,9 @@
                                        </image>
                                     </ImageView>
                                  </graphic>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
                               </JFXButton>
                            </children>
                         </AnchorPane>
@@ -226,7 +275,10 @@
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="288.0" prefWidth="558.0">
                            <children>
-                              <Pagination fx:id="brandPagination" layoutX="293.0" layoutY="434.0" maxPageIndicatorCount="0" nodeOrientation="LEFT_TO_RIGHT" pageCount="0" prefHeight="65.0" />
+                              <Pagination fx:id="brandPagination" layoutX="293.0" layoutY="434.0" maxPageIndicatorCount="0" nodeOrientation="LEFT_TO_RIGHT" pageCount="0" prefHeight="65.0">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor></Pagination>
                               <JFXTreeTableView fx:id="brandTable" layoutX="17.0" layoutY="47.0" prefHeight="373.0" prefWidth="683.0">
                                  <columns>
                                     <JFXTreeTableColumn fx:id="brandNameColumn" minWidth="77.0" prefWidth="125.0" resizable="false" text="Name" />
@@ -244,6 +296,9 @@
                                        </image>
                                     </ImageView>
                                  </graphic>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
                               </JFXButton>
                               <JFXButton fx:id="brandRemoveButton" disable="true" layoutX="106.0" layoutY="11.0" onAction="#onRemoveBrandTable" prefHeight="30.0" prefWidth="83.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Remove" textFill="WHITE">
                                  <graphic>
@@ -253,6 +308,9 @@
                                        </image>
                                     </ImageView>
                                  </graphic>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
                               </JFXButton>
                               <JFXButton fx:id="brandReloadButton" contentDisplay="GRAPHIC_ONLY" layoutX="195.0" layoutY="11.0" onAction="#onReloadBrandTable" prefHeight="30.0" prefWidth="34.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Remove" textFill="WHITE">
                                  <graphic>
@@ -262,6 +320,9 @@
                                        </image>
                                     </ImageView>
                                  </graphic>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
                               </JFXButton>
                            </children>
                         </AnchorPane>

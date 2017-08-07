@@ -32,7 +32,6 @@ import com.tiagohs.util.TableUtils;
 import com.tiagohs.util.WindowsUtils;
 
 import javafx.collections.ObservableList;
-import javafx.concurrent.Service;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.Pagination;
@@ -40,8 +39,9 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import net.sf.jasperreports.engine.JasperPrint;
 
+@SuppressWarnings("unchecked")
 @Controller
-public class ReportsController implements BaseController{
+public class ReportsController extends BaseController{
 
 	public static final String PATH_FXML = "/fxml/reports.fxml";
 	public static final String TITLE = "Reports - Inventory Management";
@@ -192,12 +192,26 @@ public class ReportsController implements BaseController{
 		configureLabels();
 		configureTables();
 	}
+
+	@Override
+	protected void onClose() {
+		productService.onClose();
+		supplierService.onClose();
+		employeeService.onClose();
+		saleService.onClose();
+		userService.onClose();
+		reportsService.onClose();
+	}
 	
 	private void configureLabels() {
-		WindowsUtils.setTextInLabel(totalUserLabel, String.valueOf(userService.getTotalUsers()));
-		WindowsUtils.setTextInLabel(totalSaleLabel, String.valueOf(saleService.getTotalSales()));
-		WindowsUtils.setTextInLabel(totalEmployeeLabel, String.valueOf(employeeService.getTotalEmployees()));
-		WindowsUtils.setTextInLabel(totalSuppliersLabel, String.valueOf(supplierService.getTotalSuppliers()));
+		userService.getTotalUsers(e -> { configureLabel(totalUserLabel, (Long) e.getSource().getValue()); }, null);
+		saleService.getTotalSales(e -> { configureLabel(totalSaleLabel, (Long) e.getSource().getValue()); }, null);
+		employeeService.getTotalEmployees(e -> { configureLabel(totalEmployeeLabel, (Long) e.getSource().getValue()); }, null);
+		supplierService.getTotalSuppliers(e -> { configureLabel(totalSuppliersLabel, (Long) e.getSource().getValue()); }, null);
+	}
+	
+	private void configureLabel(Label label, long value) {
+		WindowsUtils.setTextInLabel(label, String.valueOf(value));
 	}
 	
 	private void configureTables() {
@@ -219,11 +233,9 @@ public class ReportsController implements BaseController{
 		TableUtils.setupColumn(productProductTypeColumn, ProductTableDTO::getProductType);
 		TableUtils.setupColumn(productDescriptionColumn, ProductTableDTO::getDescription);
 		
-		productsData = TableUtils.filledDataOnTable(productService.findAll(), e -> createProductData(e));
-		
-		TableUtils.configurePagination(productsTable, productsData, productsPagination);
-		productsTable.setShowRoot(false);
-		productsTable.setEditable(true);
+		productService.findAll(e -> {
+			TableUtils.configureTable((List<Product>) e.getSource().getValue(), productsData, productsTable, productsPagination, en -> createProductData(en));
+		}, null);
 	}
 	
 	private void configureEmployeeTable() {
@@ -232,21 +244,20 @@ public class ReportsController implements BaseController{
 		TableUtils.setupColumn(employeeEmailColumn, EmployeeTableDTO::getEmail);
 		TableUtils.setupColumn(employeeCpfColumn, EmployeeTableDTO::getCpf);
 		
-		employeesData = TableUtils.filledDataOnTable(employeeService.findAll(), e -> createEmployeeData(e));
-		
-		TableUtils.configurePagination(employeesTable, employeesData, employeesPagination);
-		employeesTable.setShowRoot(false);
+		employeeService.findAll(e -> {
+			TableUtils.configureTable((List<Employee>) e.getSource().getValue(), employeesData, employeesTable, employeesPagination, en -> createEmployeeData(en));
+		}, null);
 	}
+	
 	
 	private void configureSupplierTable() {
 		TableUtils.setupColumn(supplierNameColumn, SupplierTableDTO::getCompanyName);
 		TableUtils.setupColumn(supplierEmailColumn, SupplierTableDTO::getEmail);
 		TableUtils.setupColumn(supplierAddresColumn, SupplierTableDTO::getAdress);
 		
-		suppliersData = TableUtils.filledDataOnTable(supplierService.findAll(), e -> createSupplierData(e));
-		
-		TableUtils.configurePagination(suppliersTable, suppliersData, suppliersPagination);
-		suppliersTable.setShowRoot(false);
+		supplierService.findAll(e -> {
+			TableUtils.configureTable((List<Supplier>) e.getSource().getValue(), suppliersData, suppliersTable, suppliersPagination, en -> createSupplierData(en));
+		}, null);
 	}
 	
 	private void configureSaleTable() {
@@ -257,11 +268,9 @@ public class ReportsController implements BaseController{
 		TableUtils.setupColumn(saleNumItemsColumn, SalesTableDTO::getTotalUnits);
 		TableUtils.setupColumn(saleTotalColumn, SalesTableDTO::getTotal);
 		
-		salesData = TableUtils.filledDataOnTable(saleService.findAll(), e -> createSaleData(e));
-		
-		TableUtils.configurePagination(salesTable, salesData, salesPagination);
-		salesTable.setShowRoot(false);
-		salesTable.setEditable(true);
+		saleService.findAll(e -> {
+			TableUtils.configureTable((List<Sale>) e.getSource().getValue(), salesData, salesTable, salesPagination, en -> createSaleData(en));
+		}, null);
 	}
 	
 	private EmployeeTableDTO createEmployeeData(Employee e) {
@@ -350,35 +359,8 @@ public class ReportsController implements BaseController{
 		return salesTableDTO;
 	}
 	
-	@FXML
-	public void salesReport() throws Exception {
-		createReport(EntityReportFactory.createSales(saleService.findAll()), "/reports/sales_template.jrxml", salesReportGenerate, salesSpinner);
-	}
-	
-	@FXML
-	public void productsReport() throws Exception {
-		createReport(EntityReportFactory.createProducts(productService.findAll()), "/reports/products_template.jrxml", productsReportGenerate, productsSpinner);
-	}
-	
-	@FXML
-	public void employeesReport() throws Exception {
-		createReport(EntityReportFactory.createEmployees(employeeService.findAll()), "/reports/employees_template.jrxml", employeesReportGenerate, employeesSpinner);
-	}
-	
-	@FXML
-	public void suppliersReport() throws Exception {
-		createReport(EntityReportFactory.createSuppliers(supplierService.findAll()), "/reports/suppliers_template.jrxml", supplierReportGenerate, suppliersSpinner);
-	}
-	
 	private <T> void createReport(List<T> data, String reportTemplatePath, JFXButton reportGenerate, JFXSpinner spinner) {
-		Service<JasperPrint> createTaskService = reportsService.createJasperPrint(reportTemplatePath, data);
-		
-		createTaskService.setOnScheduled(e -> {
-			reportGenerate.setDisable(true);
-			spinner.setVisible(true);
-		});
-		
-		createTaskService.setOnSucceeded(e -> {
+		reportsService.createJasperPrint(reportTemplatePath, data, e -> {
 			reportGenerate.setDisable(false);
 			spinner.setVisible(false);
 			
@@ -388,12 +370,66 @@ public class ReportsController implements BaseController{
 				HashMap<String, JasperPrint> parameters = new HashMap<String, JasperPrint>();
 				parameters.put(ReportViewerController.JASPER_PRINT, jasperPrint);
 				
+				System.out.println(jasperPrint);
+				
 				WindowsUtils.openNewWindow(ReportViewerController.PATH_FXML, ReportViewerController.TITLE, ReportViewerController.PATH_ICON, parameters, Modality.APPLICATION_MODAL);
 			} catch (Exception e1) {
 				e1.printStackTrace();
 			}
+		},
+		e -> {
+			reportGenerate.setDisable(true);
+			spinner.setVisible(true);
 		});
-		
-		createTaskService.start();
 	}
+	
+	@FXML
+	public void salesReport() throws Exception {
+		
+		saleService.findAll(e -> {
+			createReport(EntityReportFactory.createSales((List<Sale>) e.getSource().getValue()), "/reports/sales_template.jrxml", salesReportGenerate, salesSpinner);
+		}, null);
+	}
+	
+	@FXML
+	public void productsReport() throws Exception {
+		productService.findAll(e -> {
+			createReport(EntityReportFactory.createProducts((List<Product>) e.getSource().getValue()), "/reports/products_template.jrxml", productsReportGenerate, productsSpinner);
+		}, null);
+	}
+	
+	@FXML
+	public void employeesReport() throws Exception {
+		employeeService.findAll(e -> {
+			createReport(EntityReportFactory.createEmployees((List<Employee>) e.getSource().getValue()), "/reports/employees_template.jrxml", employeesReportGenerate, employeesSpinner);
+		}, null);
+	}
+	
+	@FXML
+	public void suppliersReport() throws Exception {
+		supplierService.findAll(e -> {
+			createReport(EntityReportFactory.createSuppliers((List<Supplier>) e.getSource().getValue()), "/reports/suppliers_template.jrxml", supplierReportGenerate, suppliersSpinner);
+		}, null);
+	}
+	
+	@FXML
+	public void onReloadSaleTable() {
+		TableUtils.reloadTable(() -> configureSaleTable());
+	}
+	
+	@FXML
+	public void onReloadProductTable() {
+		TableUtils.reloadTable(() -> configureProductTable());
+	}
+	
+	@FXML
+	public void onReloadEmployeeTable() {
+		TableUtils.reloadTable(() -> configureEmployeeTable());
+	}
+	
+	@FXML
+	public void onReloadSupplierTable() {
+		TableUtils.reloadTable(() -> configureSupplierTable());
+	}
+	
 }

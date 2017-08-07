@@ -8,7 +8,7 @@ import com.tiagohs.model.Brand;
 import com.tiagohs.repository.BrandRepository;
 
 @Service("brandService")
-public class BrandServiceImpl extends BaseService<Brand, JpaRepository<Brand,Long>> implements BrandService {
+public class BrandServiceImpl extends BaseCrudService<Brand, JpaRepository<Brand,Long>> implements BrandService {
 	
 	private BrandRepository brandRepository;
 	

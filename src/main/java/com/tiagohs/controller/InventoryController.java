@@ -35,9 +35,9 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-
+@SuppressWarnings("unchecked")
 @Controller
-public class InventoryController implements BaseController {
+public class InventoryController extends BaseController {
 	
 	public static final String PATH_FXML = "/fxml/inventory.fxml";
 	public static final String TITLE = "Inventory - Inventory Management";
@@ -174,9 +174,18 @@ public class InventoryController implements BaseController {
 	private List<TableService> tableService;
 	
 	public <T> void init(Stage stage, HashMap<String, T> parameters) {
+		super.init(stage, parameters);
 		
 		configureTables();
 		configureSearchs();
+	}
+
+	@Override
+	protected void onClose() {
+		productService.onClose();
+		supplierService.onClose();
+		employeeService.onClose();
+		brandService.onClose();
 	}
 	
 	private void configureTables() {
@@ -240,11 +249,9 @@ public class InventoryController implements BaseController {
 		TableUtils.setupColumn(productProductTypeColumn, ProductTableDTO::getProductType);
 		TableUtils.setupColumn(productDescriptionColumn, ProductTableDTO::getDescription);
 		
-		productsData = TableUtils.filledDataOnTable(productService.findAll(), e -> createProductData(e));
-		
-		TableUtils.configurePagination(productsTable, productsData, productPagination);
-		productsTable.setShowRoot(false);
-		productsTable.setEditable(true);
+		productService.findAll(e -> {
+			TableUtils.configureTable((List<Product>) e.getSource().getValue(), productsData, productsTable, productPagination, en -> createProductData(en));
+		}, null);
 	}
 	
 	private void configureEmployeeTable() {
@@ -254,10 +261,9 @@ public class InventoryController implements BaseController {
 		TableUtils.setupColumn(employeeCpfColumn, EmployeeTableDTO::getCpf);
 		TableUtils.setupColumn(employeeAdressColumn, EmployeeTableDTO::getAdress);
 		
-		employeesData = TableUtils.filledDataOnTable(employeeService.findAll(), e -> createEmplyeeData(e));
-		
-		TableUtils.configurePagination(employeeTable, employeesData, employeePagination);
-		employeeTable.setShowRoot(false);
+		employeeService.findAll(e -> {
+			TableUtils.configureTable((List<Employee>) e.getSource().getValue(), employeesData, employeeTable, employeePagination, en -> createEmplyeeData(en));
+		}, null);
 	}
 	
 	private void configureSupplierTable() {
@@ -265,10 +271,9 @@ public class InventoryController implements BaseController {
 		TableUtils.setupColumn(supplierEmailColumn, SupplierTableDTO::getEmail);
 		TableUtils.setupColumn(supplierAddresColumn, SupplierTableDTO::getAdress);
 		
-		suppliersData = TableUtils.filledDataOnTable(supplierService.findAll(), e -> createSupplierData(e));
-		
-		TableUtils.configurePagination(supplierTable, suppliersData, supplierPagination);
-		supplierTable.setShowRoot(false);
+		supplierService.findAll(e -> {
+			TableUtils.configureTable((List<Supplier>) e.getSource().getValue(), suppliersData, supplierTable, supplierPagination, en -> createSupplierData(en));
+		}, null);
 	}
 	
 
@@ -277,10 +282,9 @@ public class InventoryController implements BaseController {
 		TableUtils.setupColumn(brandEmailColumn, BrandTableDTO::getEmail);
 		TableUtils.setupColumn(brandAdditionalInformationColumn, BrandTableDTO::getAdditionalInformation);
 		
-		brandsData = TableUtils.filledDataOnTable(brandService.findAll(), e -> createBrandData(e));
-		
-		TableUtils.configurePagination(brandTable, brandsData, brandPagination);
-		brandTable.setShowRoot(false);
+		brandService.findAll(e -> {
+			TableUtils.configureTable((List<Brand>) e.getSource().getValue(), brandsData, brandTable, brandPagination, en -> createBrandData(en));
+		}, null);
 	}
 
 	

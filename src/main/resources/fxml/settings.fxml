@@ -4,6 +4,7 @@
 <?import com.jfoenix.controls.JFXComboBox?>
 <?import java.lang.String?>
 <?import javafx.collections.FXCollections?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
@@ -25,16 +26,25 @@
                      <font>
                         <Font size="14.0" />
                      </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </JFXButton>
                   <JFXButton fx:id="helpButton" layoutX="372.0" layoutY="20.0" onAction="#onHelp" prefHeight="27.0" prefWidth="92.0" ripplerFill="#7986cb" text="Help" textFill="WHITE">
                      <font>
                         <Font size="14.0" />
                      </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </JFXButton>
                   <JFXButton fx:id="saveButton" disable="true" layoutX="146.0" layoutY="20.0" onAction="#onSave" prefHeight="30.0" prefWidth="127.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Save Changes" textFill="WHITE">
                      <font>
                         <Font size="14.0" />
                      </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </JFXButton>
                </children>
             </Pane>

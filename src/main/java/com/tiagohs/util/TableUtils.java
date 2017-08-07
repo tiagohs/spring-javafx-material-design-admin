@@ -39,7 +39,7 @@ public class TableUtils {
         });
     }
 	
-	public static <T, D extends RecursiveTreeObject<?>> ObservableList<D> filledDataOnTable(List<T> originalData, ITableDataCreator<D, T> onCreator) {
+	public static <T, D extends RecursiveTreeObject<D>> ObservableList<D> filledDataOnTable(List<T> originalData, ITableDataCreator<D, T> onCreator) {
 		final ObservableList<D> data = FXCollections.observableArrayList();
 		
 		originalData.forEach(d -> {
@@ -47,6 +47,15 @@ public class TableUtils {
 		});
 		
 		return data;
+	}
+	
+	public static <T, D extends RecursiveTreeObject<D>, V extends RecursiveTreeObject<?>> void configureTable(List<T> originalData, ObservableList<D> observableData, JFXTreeTableView<D> table, Pagination pagination, ITableDataCreator<D, T> onCreator) {
+		
+		observableData = TableUtils.filledDataOnTable(originalData, onCreator);
+		
+		TableUtils.configurePagination(table, observableData, pagination);
+		table.setShowRoot(false);
+		table.setEditable(true);
 	}
 	
 	public static <T extends RecursiveTreeObject<T>> void configurePagination(JFXTreeTableView<T> tableView, ObservableList<T> data, Pagination pagination) {
@@ -101,10 +110,11 @@ public class TableUtils {
 	
 	public static <T extends RecursiveTreeObject<T>> void removeItemFromTable(IBaseService<?> service, long id, JFXTreeTableView<T> table, ObservableList<T> data, StackPane container) {
 		try {
-			service.delete(id);
-			data.remove(table.getSelectionModel().selectedItemProperty().get().getValue());
-	        final IntegerProperty currCountProp = table.currentItemsCountProperty();
-	        currCountProp.set(currCountProp.get() - 1);
+			service.delete(id, e -> {
+				data.remove(table.getSelectionModel().selectedItemProperty().get().getValue());
+		        final IntegerProperty currCountProp = table.currentItemsCountProperty();
+		        currCountProp.set(currCountProp.get() - 1);
+			}, null);
 		} catch (Exception e) {
 			WindowsUtils.createDefaultDialog(container, "Error", "Error removing item, try again.", () -> {});
 		}

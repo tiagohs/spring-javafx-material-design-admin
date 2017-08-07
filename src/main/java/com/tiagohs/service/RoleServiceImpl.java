@@ -7,7 +7,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
 import com.tiagohs.model.Role;
-import com.tiagohs.model.Sale;
 import com.tiagohs.repository.RoleRepository;
 
 import javafx.concurrent.Task;
@@ -15,7 +14,7 @@ import javafx.concurrent.WorkerStateEvent;
 import javafx.event.EventHandler;
 
 @Service("roleService")
-public class RoleServiceImpl extends BaseService<Role, JpaRepository<Role,Long>> implements RoleService {
+public class RoleServiceImpl extends BaseCrudService<Role, JpaRepository<Role,Long>> implements RoleService {
 	
 	private RoleRepository roleRepository;
 	

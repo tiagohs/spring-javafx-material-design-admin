@@ -6,6 +6,7 @@
 <?import com.jfoenix.controls.JFXTextField?>
 <?import java.lang.String?>
 <?import javafx.collections.FXCollections?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
@@ -32,16 +33,25 @@
                      <font>
                         <Font size="14.0" />
                      </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </JFXButton>
                   <JFXButton fx:id="helpButton" layoutX="597.0" layoutY="20.0" onAction="#onHelp" prefHeight="27.0" prefWidth="90.0" ripplerFill="#7986cb" text="Help" textFill="WHITE">
                      <font>
                         <Font size="14.0" />
                      </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </JFXButton>
                   <JFXButton fx:id="saveButton" disable="true" layoutX="408.0" layoutY="20.0" onAction="#onSave" prefHeight="27.0" prefWidth="90.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Save" textFill="WHITE">
                      <font>
                         <Font size="14.0" />
                      </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </JFXButton>
                </children>
             </Pane>

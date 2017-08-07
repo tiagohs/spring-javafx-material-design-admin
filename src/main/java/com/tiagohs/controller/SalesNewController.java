@@ -34,7 +34,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 @Controller
-public class SalesNewController implements BaseController {
+public class SalesNewController extends BaseController {
 	
 	public static final String SALE_KEY = "sale_key";
 	public static final String PATH_FXML = "/fxml/new_sale_order.fxml";
@@ -98,11 +98,11 @@ public class SalesNewController implements BaseController {
 	private List<ItemBaseController> itemsControllers;
 	private List<Item> items;
 	private Sale sale;
-	private Stage saleStage;
 	
 	@Override
 	public <T> void init(Stage stage, HashMap<String, T> parameters) {
-		this.saleStage = stage;
+		super.init(stage, parameters);
+		
 		this.itemsControllers = new ArrayList<>();
 		this.items = new ArrayList<>();
 		this.total = 0;
@@ -118,26 +118,22 @@ public class SalesNewController implements BaseController {
 		watchEvents();
 	}
 	
-	@SuppressWarnings("unchecked")
+	@Override
+	protected void onClose() {
+		clientService.onClose();
+		saleService.onClose();
+	}
+	
 	private void fillComboBoxes() {
-		
-		clientService.findAll(e -> {
-			WindowsUtils.addComboBoxItens(clientComboBox, (List<Client>) e.getSource().getValue());
-			;
-		}, null);
-		
+		WindowsUtils.addComboBoxItens(clientComboBox, clientService);
 	}
 
 	private void validateTextFields() {
 		
 		ValidatorUtils.addRequiredValidator(emailTextField, "E-mail is Required!");
-		
 		ValidatorUtils.addNumberOnlyValidator(phoneTextField);
-		
 		ValidatorUtils.addEmailValidator(emailTextField, "Email does not match");
-		
 		WindowsUtils.validateTextField(emailTextField);
-		
 	}
 	
 	private void watchEvents() {
@@ -273,7 +269,7 @@ public class SalesNewController implements BaseController {
 					(Client) WindowsUtils.getSelectedComboBoxItem(clientComboBox), 
 					items, 
 					null), e -> {
-						WindowsUtils.createDefaultDialog(container, "Sucess", "Client save with sucess.", () -> { saleStage.close(); });
+						WindowsUtils.createDefaultDialog(container, "Sucess", "Client save with sucess.", () -> { stage.close(); });
 					}, null);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -284,7 +280,7 @@ public class SalesNewController implements BaseController {
 	
 	@FXML
 	public void onCancel() {
-		saleStage.close();
+		stage.close();
 	}
 	
 	@FXML

@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 
 
 @Controller
-public class RootController implements BaseController {
+public class RootController extends BaseController {
 
 	public static final String PATH_FXML = "/fxml/root.fxml";
 	public static final String TITLE = "Inventory Management - stuffs-Admin";
@@ -22,41 +22,44 @@ public class RootController implements BaseController {
 	@FXML
 	private AnchorPane rootPane;
 	
-	private Stage rootStage;
-	
 	public <T> void init(Stage stage, HashMap<String, T> parameters) {
-		this.rootStage = stage;
+		super.init(stage, parameters);
 		
 		try {
-			WindowsUtils.replaceFxmlOnWindow(rootPane, DashboardController.PATH_FXML, rootStage, null);
+			WindowsUtils.replaceFxmlOnWindow(rootPane, DashboardController.PATH_FXML, stage, null);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 	
+	@Override
+	protected void onClose() {
+		
+	}
+	
 	@FXML
 	private void onInvetoryAction() throws Exception {
-		WindowsUtils.replaceFxmlOnWindow(rootPane, InventoryController.PATH_FXML, rootStage, null);
+		WindowsUtils.replaceFxmlOnWindow(rootPane, InventoryController.PATH_FXML, stage, null);
 	}
 	
 	@FXML
 	private void onDashboardAction() throws Exception {
-		WindowsUtils.replaceFxmlOnWindow(rootPane, DashboardController.PATH_FXML, rootStage, null);
+		WindowsUtils.replaceFxmlOnWindow(rootPane, DashboardController.PATH_FXML, stage, null);
 	}
 	
 	@FXML
 	private void onSalesAction() throws Exception {
-		WindowsUtils.replaceFxmlOnWindow(rootPane, SalesController.PATH_FXML, rootStage, null);
+		WindowsUtils.replaceFxmlOnWindow(rootPane, SalesController.PATH_FXML, stage, null);
 	}
 	
 	@FXML
 	private void onClientsAction() throws Exception {
-		WindowsUtils.replaceFxmlOnWindow(rootPane, ClientsController.PATH_FXML, rootStage, null);
+		WindowsUtils.replaceFxmlOnWindow(rootPane, ClientsController.PATH_FXML, stage, null);
 	}
 	
 	@FXML
 	private void onReportsAction() throws Exception {
-		WindowsUtils.replaceFxmlOnWindow(rootPane, ReportsController.PATH_FXML, rootStage, null);
+		WindowsUtils.replaceFxmlOnWindow(rootPane, ReportsController.PATH_FXML, stage, null);
 	}
 	
 	@FXML

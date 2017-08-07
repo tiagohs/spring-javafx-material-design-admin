@@ -4,6 +4,7 @@
 <?import com.jfoenix.controls.JFXTextField?>
 <?import com.jfoenix.controls.JFXTreeTableColumn?>
 <?import com.jfoenix.controls.JFXTreeTableView?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Pagination?>
 <?import javafx.scene.image.Image?>
@@ -12,7 +13,6 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
-
 
 <StackPane fx:id="container" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tiagohs.controller.ClientsController">
    <children>
@@ -32,7 +32,10 @@
                   </Label>
                </children>
             </Pane>
-            <Pagination fx:id="clientPagination" layoutX="442.0" layoutY="610.0" maxPageIndicatorCount="5" pageCount="7" prefHeight="65.0" prefWidth="253.0" />
+            <Pagination fx:id="clientPagination" layoutX="442.0" layoutY="610.0" maxPageIndicatorCount="5" pageCount="7" prefHeight="65.0" prefWidth="253.0">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Pagination>
             <JFXTreeTableView fx:id="clientsTable" layoutX="13.0" layoutY="115.0" prefHeight="489.0" prefWidth="683.0">
                <columns>
                   <JFXTreeTableColumn fx:id="nameColumn" minWidth="77.0" prefWidth="125.0" resizable="false" text="Name" />
@@ -52,6 +55,9 @@
                      </image>
                   </ImageView>
                </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </JFXButton>
             <JFXButton fx:id="clientEditButton" disable="true" layoutX="125.0" layoutY="73.0" onAction="#onEditTable" prefHeight="30.0" prefWidth="105.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Edit Client" textFill="WHITE">
                <graphic>
@@ -61,6 +67,9 @@
                      </image>
                   </ImageView>
                </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </JFXButton>
             <JFXButton fx:id="clientRemoveButton" disable="true" layoutX="238.0" layoutY="73.0" onAction="#onRemoveTable" prefHeight="30.0" prefWidth="116.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Delete Client" textFill="WHITE">
                <graphic>
@@ -70,6 +79,9 @@
                      </image>
                   </ImageView>
                </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </JFXButton>
             <JFXButton fx:id="clientReloadButton" contentDisplay="GRAPHIC_ONLY" layoutX="362.0" layoutY="73.0" onAction="#onReloadTable" prefHeight="30.0" prefWidth="34.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Remove" textFill="WHITE">
                <graphic>
@@ -79,6 +91,9 @@
                      </image>
                   </ImageView>
                </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </JFXButton>
          </children>
       </AnchorPane>

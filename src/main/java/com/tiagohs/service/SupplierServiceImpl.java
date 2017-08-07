@@ -12,7 +12,7 @@ import javafx.concurrent.WorkerStateEvent;
 import javafx.event.EventHandler;
 
 @Service("supplierService")
-public class SupplierServiceImpl extends BaseService<Supplier, JpaRepository<Supplier,Long>> implements SupplierService {
+public class SupplierServiceImpl extends BaseCrudService<Supplier, JpaRepository<Supplier,Long>> implements SupplierService {
 	
 	private SupplierRepository supplierRepository;
 	

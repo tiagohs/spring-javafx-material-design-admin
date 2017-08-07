@@ -26,23 +26,9 @@
             </Label>
          </children>
       </Pane>
-      <Pane layoutX="45.0" layoutY="75.0" prefHeight="105.0" prefWidth="177.0" style="-fx-background-color: #F44336; -fx-background-radius: 5;">
+      <Pane layoutX="45.0" layoutY="75.0" prefHeight="93.0" prefWidth="177.0" style="-fx-background-color: #F44336; -fx-background-radius: 5;">
          <children>
-            <Pane layoutY="82.0" prefHeight="25.0" prefWidth="177.0" style="-fx-background-color: #E53935;">
-               <children>
-                  <Label layoutX="10.0" layoutY="4.0" text="VIEW HOME" textFill="WHITE">
-                     <font>
-                        <Font size="11.0" />
-                     </font>
-                  </Label>
-                  <ImageView fitHeight="25.0" fitWidth="21.0" layoutX="148.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/home.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </Pane>
-            <Label fx:id="usersLabel" alignment="CENTER_RIGHT" layoutX="133.0" layoutY="10.0" prefHeight="41.0" prefWidth="37.0" text="34" textFill="WHITE">
+            <Label fx:id="usersLabel" alignment="CENTER_RIGHT" layoutX="133.0" layoutY="10.0" prefHeight="41.0" prefWidth="37.0" textFill="WHITE">
                <font>
                   <Font size="34.0" />
                </font>
@@ -59,23 +45,9 @@
             </ImageView>
          </children>
       </Pane>
-      <Pane layoutX="266.0" layoutY="75.0" prefHeight="105.0" prefWidth="177.0" style="-fx-background-color: #9C27B0; -fx-background-radius: 5;">
+      <Pane layoutX="266.0" layoutY="75.0" prefHeight="93.0" prefWidth="177.0" style="-fx-background-color: #9C27B0; -fx-background-radius: 5;">
          <children>
-            <Pane layoutY="82.0" prefHeight="25.0" prefWidth="177.0" style="-fx-background-color: #8E24AA;">
-               <children>
-                  <Label layoutX="10.0" layoutY="4.0" text="VIEW HOME" textFill="WHITE">
-                     <font>
-                        <Font size="11.0" />
-                     </font>
-                  </Label>
-                  <ImageView fitHeight="25.0" fitWidth="21.0" layoutX="148.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/home.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </Pane>
-            <Label fx:id="salesLabel" alignment="CENTER_RIGHT" layoutX="133.0" layoutY="10.0" prefHeight="41.0" prefWidth="37.0" text="5" textAlignment="RIGHT" textFill="WHITE">
+            <Label fx:id="salesLabel" alignment="CENTER_RIGHT" layoutX="133.0" layoutY="10.0" prefHeight="41.0" prefWidth="37.0" textAlignment="RIGHT" textFill="WHITE">
                <font>
                   <Font size="34.0" />
                </font>
@@ -92,23 +64,9 @@
             </ImageView>
          </children>
       </Pane>
-      <Pane layoutX="485.0" layoutY="75.0" prefHeight="105.0" prefWidth="177.0" style="-fx-background-color: #4CAF50; -fx-background-radius: 5;">
+      <Pane layoutX="485.0" layoutY="75.0" prefHeight="93.0" prefWidth="177.0" style="-fx-background-color: #4CAF50; -fx-background-radius: 5;">
          <children>
-            <Pane layoutY="82.0" prefHeight="25.0" prefWidth="177.0" style="-fx-background-color: #43A047;">
-               <children>
-                  <Label layoutX="10.0" layoutY="4.0" text="VIEW HOME" textFill="WHITE">
-                     <font>
-                        <Font size="11.0" />
-                     </font>
-                  </Label>
-                  <ImageView fitHeight="25.0" fitWidth="21.0" layoutX="148.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/home.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </Pane>
-            <Label fx:id="employeesLabel" alignment="CENTER_RIGHT" layoutX="133.0" layoutY="10.0" prefHeight="41.0" prefWidth="37.0" text="40" textFill="WHITE">
+            <Label fx:id="employeesLabel" alignment="CENTER_RIGHT" layoutX="133.0" layoutY="10.0" prefHeight="41.0" prefWidth="37.0" textFill="WHITE">
                <font>
                   <Font size="34.0" />
                </font>
@@ -125,18 +83,18 @@
             </ImageView>
          </children>
       </Pane>
-      <Label layoutX="19.0" layoutY="208.0" text="Sales" textFill="#212121">
+      <Label layoutX="19.0" layoutY="192.0" text="Sales" textFill="#212121">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label layoutX="70.0" layoutY="212.0" text="Sales realized in the month" textFill="#616161">
+      <Label layoutX="70.0" layoutY="196.0" text="Sales realized in the month" textFill="#616161">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Pane layoutX="19.0" layoutY="246.0" prefHeight="1.0" prefWidth="672.0" style="-fx-background-color: #EEEEEE;" />
-      <LineChart fx:id="salesChart" layoutX="24.0" layoutY="263.0" prefHeight="378.0" prefWidth="663.0">
+      <Pane layoutX="19.0" layoutY="230.0" prefHeight="1.0" prefWidth="672.0" style="-fx-background-color: #EEEEEE;" />
+      <LineChart fx:id="salesChart" layoutX="24.0" layoutY="243.0" prefHeight="428.0" prefWidth="663.0">
         <xAxis>
           <CategoryAxis side="BOTTOM" />
         </xAxis>

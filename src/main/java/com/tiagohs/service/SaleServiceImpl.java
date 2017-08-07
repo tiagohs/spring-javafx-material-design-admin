@@ -15,7 +15,7 @@ import javafx.concurrent.WorkerStateEvent;
 import javafx.event.EventHandler;
 
 @Service("saleService")
-public class SaleServiceImpl extends BaseService<Sale, JpaRepository<Sale,Long>> implements SaleService {
+public class SaleServiceImpl extends BaseCrudService<Sale, JpaRepository<Sale,Long>> implements SaleService {
 	
 	private SaleRepository saleRepository;
 	private SimpleDateFormat patternMonth;
@@ -73,16 +73,21 @@ public class SaleServiceImpl extends BaseService<Sale, JpaRepository<Sale,Long>>
 	}
 
 	@Override
-	public javafx.concurrent.Service<Long> getTotalSalesByMonth(Calendar date, EventHandler<WorkerStateEvent> onSucess, EventHandler<WorkerStateEvent> beforeStart) {
+	public javafx.concurrent.Service<Long> getTotalSalesByMonthService(Calendar date, EventHandler<WorkerStateEvent> onSucess, EventHandler<WorkerStateEvent> beforeStart) {
 		return createService(new Task<Long>() {
 			protected Long call() throws Exception {
 				if (date != null) {
-					return saleRepository.getTotalSalesByMonth(patternMonth.format(date.getTime()));
+					return getTotalSalesByMonth(date);
 				}
 				
 				return 0L;
 			};
 		}, onSucess, beforeStart);
+	}
+
+	@Override
+	public Long getTotalSalesByMonth(Calendar date) {
+		return saleRepository.getTotalSalesByMonth(patternMonth.format(date.getTime()));
 	}
 	
 	

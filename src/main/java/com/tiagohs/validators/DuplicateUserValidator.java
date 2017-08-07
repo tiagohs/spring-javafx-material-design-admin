@@ -24,11 +24,14 @@ public class DuplicateUserValidator extends ValidatorBase {
 	}
 	
 	private void validateEmail(String email) {
-		if (userService.findUserByEmail(email) != null) {
-            hasErrors.set(true);
-        } else {
-            hasErrors.set(false);
-        }
+		
+		userService.findUserByEmail(email, e -> {
+			if (e.getSource().getValue() != null) {
+	            hasErrors.set(true);
+	        } else {
+	            hasErrors.set(false);
+	        }
+		}, null);
 	}
 	
 	private boolean isEmpty(String text) {

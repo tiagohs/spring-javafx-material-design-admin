@@ -1,62 +1,19 @@
 package com.tiagohs.service;
 
+import java.util.ArrayList;
 import java.util.List;
-
-import org.springframework.data.jpa.repository.JpaRepository;
 
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
 import javafx.concurrent.WorkerStateEvent;
 import javafx.event.EventHandler;
 
-public abstract class BaseService<T, R extends JpaRepository<T, Long>> {
+public abstract class BaseService {
 	
-	private R repository;
-	
-	public BaseService(R repository) {
-		this.repository = repository;
-	}
-	
-	public Service<T> save(T obj, EventHandler<WorkerStateEvent> onSucess, EventHandler<WorkerStateEvent> beforeStart) throws Exception {
-		
-		if (obj == null) {
-			throw new Exception();
-		}
-		
-		return createService(new Task<T>() {
-			protected T call() throws Exception {
-				return repository.save(obj);
-			};
-		}, onSucess, beforeStart);
-		
-	}
-	
-	public Service<List<T>> findAll(EventHandler<WorkerStateEvent> onSucess, EventHandler<WorkerStateEvent> beforeStart) {
-		return createService(new Task<List<T>>() {
-			protected List<T> call() throws Exception {
-				return repository.findAll();
-			};
-		}, onSucess, beforeStart);
-	}
-	
-	
-	public Service<Void> delete(long id, EventHandler<WorkerStateEvent> onSucess, EventHandler<WorkerStateEvent> beforeStart) throws Exception {
-		return createService(new Task<Void>() {
-			protected Void call() throws Exception {
-				repository.delete(id);
-				return null;
-			};
-		}, onSucess, beforeStart);
-		
-	}
-	
-	
-	public Service<T> find(long id, EventHandler<WorkerStateEvent> onSucess, EventHandler<WorkerStateEvent> beforeStart) throws Exception {
-		return createService(new Task<T>() {
-			protected T call() throws Exception {
-				return repository.findOne(id);
-			};
-		}, onSucess, beforeStart);
+	private List<Service<?>> services;
+
+	public BaseService() {
+		this.services = new ArrayList<Service<?>>();
 	}
 	
 	protected <D> Service<D> createService(Task<D> task, EventHandler<WorkerStateEvent> onSucess, EventHandler<WorkerStateEvent> beforeStart) {
@@ -72,7 +29,19 @@ public abstract class BaseService<T, R extends JpaRepository<T, Long>> {
 		if (beforeStart != null)
 			service.setOnScheduled(beforeStart);
 		
+		service.start();
+		
+		services.add(service);
+		
 		return service;
+	}
+	
+	public void onClose() {
+		
+		for (Service<?> service : services) {
+			service.cancel();
+		}
+		
 	}
 	
 }

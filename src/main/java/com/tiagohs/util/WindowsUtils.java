@@ -14,6 +14,7 @@ import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import com.tiagohs.MainApplication;
 import com.tiagohs.controller.BaseController;
+import com.tiagohs.service.IBaseService;
 
 import javafx.beans.value.ChangeListener;
 import javafx.fxml.FXMLLoader;
@@ -234,9 +235,11 @@ public class WindowsUtils {
 		
 	}
 	
-	@SuppressWarnings({ "rawtypes", "unchecked" }) 
-	public static void addComboBoxItens(ComboBox comboBox, List items) {
-		comboBox.getItems().addAll(items);
+	@SuppressWarnings({ "unchecked" }) 
+	public static <T> void addComboBoxItens(ComboBox<T> comboBox, IBaseService<T> service) {
+		service.findAll(e -> {
+			comboBox.getItems().addAll((List<T>) e.getSource().getValue());
+		}, null);
 	}
 	
 	public static <T> void onComboBoxItemSelected(ComboBox<T> comboBox, ComboBoxSelectListener<T> listener) {

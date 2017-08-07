@@ -27,8 +27,9 @@ import javafx.fxml.FXML;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
+@SuppressWarnings("unchecked")
 @Controller
-public class EmployeeNewController implements BaseController {
+public class EmployeeNewController extends BaseController {
 
 	public static final String EMPLOYEE_KEY = "employee_key";
 	
@@ -99,17 +100,23 @@ public class EmployeeNewController implements BaseController {
 	@Autowired
 	private UserService userService;
 	
-	private Stage employeeNewStage;
 	private Employee employee;
 	
 	@Override
 	public <T> void init(Stage stage, HashMap<String, T> parameters) {
-		this.employeeNewStage = stage;
+		super.init(stage, parameters);
 		
 		fillComboBoxes();
 		checkParameters(parameters);
 		validateTextFields();
 		watchEvents();
+	}
+
+	@Override
+	protected void onClose() {
+		userService.onClose();
+		roleService.onClose();
+		employeeService.onClose();
 	}
 	
 	private <T> void checkParameters(HashMap<String, T> parameters) {
@@ -181,7 +188,7 @@ public class EmployeeNewController implements BaseController {
 	}
 	
 	private void fillComboBoxes() {
-		WindowsUtils.addComboBoxItens(roleComboBox, roleService.findAll());
+		WindowsUtils.addComboBoxItens(roleComboBox, roleService);
 	}
 	
 	private void watchEvents() {
@@ -203,40 +210,40 @@ public class EmployeeNewController implements BaseController {
 	
 	@FXML
 	public void onSave() {
-		
 		Role roleSelected = (Role) WindowsUtils.getSelectedComboBoxItem(roleComboBox);
-		List<Role> role = roleService.findByRole(roleSelected.getRole());
-		
-		User user = EntityFactory.createUser(WindowsUtils.getTextFromTextField(emailTextField), 
-											 WindowsUtils.getTextFromTextField(nameTextField), 
-											 null, 
-											 WindowsUtils.getTextFromTextField(passwordTextField), 
-											 role);
-		
-		Address address = null;
-		if (isAddressFilled()) {
-			address = EntityFactory.createAddress(WindowsUtils.getTextFromTextField(streetTextField), 
-												  WindowsUtils.getIntegerFromTextField(numberTextField), 
-												  WindowsUtils.getTextFromTextField(complementTextField), 
-												  WindowsUtils.getTextFromTextField(districtTextField), 
-												  WindowsUtils.getTextFromTextField(cityTextField), 
-												  WindowsUtils.getTextFromTextField(stateTextField), 
-												  (String) WindowsUtils.getSelectedComboBoxItem(countryComboBox), 
-												  WindowsUtils.getTextFromTextField(cepTextField));
-		}
 		
 		List<Fone> phones = Arrays.asList(EntityFactory.createPhone(WindowsUtils.getLongFromTextField(cellPhoneTextField)),
 										 EntityFactory.createPhone(WindowsUtils.getLongFromTextField(residentialPhoneTextField)));
 		
-		try {
-			employeeService.save(EntityFactory.createEmployee(employee, WindowsUtils.getTextFromTextField(cpfTextField), 
-															  user, address, phones), e -> {
-																	WindowsUtils.createDefaultDialog(container, "Sucess", "Employee save with sucess.", () -> { employeeNewStage.close(); });
-																}, null);
-		} catch (Exception e) {
-			e.printStackTrace();
-			WindowsUtils.createDefaultDialog(container, "Error", "Error saving employee, try again.", () -> {});
-		}
+		roleService.findByRole(roleSelected.getRole(), en -> {
+			User user = EntityFactory.createUser(WindowsUtils.getTextFromTextField(emailTextField), 
+					 WindowsUtils.getTextFromTextField(nameTextField), 
+					 null, 
+					 WindowsUtils.getTextFromTextField(passwordTextField), 
+					 (List<Role>) en.getSource().getValue());
+			
+			Address address = null;
+			if (isAddressFilled()) {
+				address = EntityFactory.createAddress(WindowsUtils.getTextFromTextField(streetTextField), 
+													  WindowsUtils.getIntegerFromTextField(numberTextField), 
+													  WindowsUtils.getTextFromTextField(complementTextField), 
+													  WindowsUtils.getTextFromTextField(districtTextField), 
+													  WindowsUtils.getTextFromTextField(cityTextField), 
+													  WindowsUtils.getTextFromTextField(stateTextField), 
+													  (String) WindowsUtils.getSelectedComboBoxItem(countryComboBox), 
+													  WindowsUtils.getTextFromTextField(cepTextField));
+			}
+			
+			try {
+				employeeService.save(EntityFactory.createEmployee(employee, WindowsUtils.getTextFromTextField(cpfTextField), 
+																  user, address, phones), e -> {
+																		WindowsUtils.createDefaultDialog(container, "Sucess", "Employee save with sucess.", () -> { stage.close(); });
+																	}, null);
+			} catch (Exception e) {
+				e.printStackTrace();
+				WindowsUtils.createDefaultDialog(container, "Error", "Error saving employee, try again.", () -> {});
+			}
+		}, null);
 		
 	}
 	
@@ -260,7 +267,7 @@ public class EmployeeNewController implements BaseController {
 	
 	@FXML
 	public void onCancel() {
-		employeeNewStage.close();
+		stage.close();
 	}
 	
 	@FXML

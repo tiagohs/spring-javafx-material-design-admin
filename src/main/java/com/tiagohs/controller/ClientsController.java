@@ -1,6 +1,7 @@
 package com.tiagohs.controller;
 
 import java.util.HashMap;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,8 +25,9 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+@SuppressWarnings("unchecked")
 @Controller
-public class ClientsController implements BaseController {
+public class ClientsController extends BaseController {
 
 	public static final String PATH_FXML = "/fxml/clients.fxml";
 	public static final String TITLE = "Clients - Inventory Management";
@@ -75,6 +77,7 @@ public class ClientsController implements BaseController {
     
 	@Override
 	public <T> void init(Stage stage, HashMap<String, T> parameters) {
+		super.init(stage, parameters);
 		
 		this.tableService = new TableService(() -> configureTable());
 		this.tableService.start();
@@ -82,6 +85,11 @@ public class ClientsController implements BaseController {
 		configureSearch();
 		
 		TableUtils.configureEditAndRemoveState(clientsTable, clientEditButton, clientRemoveButton);
+	}
+
+	@Override
+	protected void onClose() {
+		clientService.onClose();
 	}
 	
 	private void configureSearch() {
@@ -107,11 +115,9 @@ public class ClientsController implements BaseController {
 		TableUtils.setupColumn(numOrdersColumn, ClientTableDTO::getNumOrders);
 		TableUtils.setupColumn(typeColumn, ClientTableDTO::getType);
 		
-		data = TableUtils.filledDataOnTable(clientService.findAll(), e -> createData(e));
-		
-		TableUtils.configurePagination(clientsTable, data, clientPagination);
-		clientsTable.setShowRoot(false);
-		clientsTable.setEditable(true);
+		clientService.findAll(e -> {
+			TableUtils.configureTable((List<Client>) e.getSource().getValue(), data, clientsTable, clientPagination, en -> createData(en));
+		}, null);
 	}
 	
 	private ClientTableDTO createData(Client client) {

@@ -4,6 +4,7 @@
 <?import com.jfoenix.controls.JFXTextField?>
 <?import com.jfoenix.controls.JFXTreeTableColumn?>
 <?import com.jfoenix.controls.JFXTreeTableView?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Pagination?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -15,7 +16,10 @@
    <children>
       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="508.0" prefWidth="720.0" style="-fx-background-color: #FFFF;" stylesheets="@../css/application.css">
          <children>
-            <Pagination fx:id="salesPagination" layoutX="446.0" layoutY="427.0" maxPageIndicatorCount="5" pageCount="7" prefHeight="65.0" prefWidth="253.0" />
+            <Pagination fx:id="salesPagination" layoutX="446.0" layoutY="427.0" maxPageIndicatorCount="5" pageCount="7" prefHeight="65.0" prefWidth="253.0">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Pagination>
             <JFXTreeTableView fx:id="salesTable" layoutX="17.0" layoutY="47.0" prefHeight="373.0" prefWidth="683.0">
                <columns>
                   <JFXTreeTableColumn fx:id="salesCodeColumn" minWidth="77.0" prefWidth="92.0" resizable="false" text="CODE" />
@@ -36,6 +40,9 @@
                      </image>
                   </ImageView>
                </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </JFXButton>
             <JFXButton fx:id="salesRemoveButton" disable="true" layoutX="106.0" layoutY="11.0" onAction="#onRemoveSalesTable" prefHeight="30.0" prefWidth="83.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Remove" textFill="WHITE">
                <graphic>
@@ -45,6 +52,9 @@
                      </image>
                   </ImageView>
                </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </JFXButton>
             <JFXButton fx:id="salesReloadButton" contentDisplay="GRAPHIC_ONLY" layoutX="196.0" layoutY="11.0" onAction="#onReloadSalesTable" prefHeight="30.0" prefWidth="34.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Remove" textFill="WHITE">
                <graphic>
@@ -54,6 +64,9 @@
                      </image>
                   </ImageView>
                </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </JFXButton>
          </children>
       </AnchorPane>

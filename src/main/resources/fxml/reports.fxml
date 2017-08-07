@@ -4,6 +4,7 @@
 <?import com.jfoenix.controls.JFXSpinner?>
 <?import com.jfoenix.controls.JFXTreeTableColumn?>
 <?import com.jfoenix.controls.JFXTreeTableView?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Pagination?>
 <?import javafx.scene.control.Tab?>
@@ -37,7 +38,10 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="377.0" prefWidth="717.0">
                      <children>
-                        <Pagination fx:id="salesPagination" layoutX="446.0" layoutY="387.0" maxPageIndicatorCount="5" pageCount="7" prefHeight="65.0" prefWidth="253.0" />
+                        <Pagination fx:id="salesPagination" layoutX="446.0" layoutY="387.0" maxPageIndicatorCount="5" pageCount="7" prefHeight="65.0" prefWidth="253.0">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></Pagination>
                         <JFXTreeTableView fx:id="salesTable" layoutX="17.0" layoutY="49.0" prefHeight="332.0" prefWidth="683.0">
                            <columns>
                               <JFXTreeTableColumn fx:id="saleCodeColumn" minWidth="77.0" prefWidth="77.0" resizable="false" text="CODE" />
@@ -48,14 +52,24 @@
                               <JFXTreeTableColumn fx:id="saleClientNameColumn" minWidth="101.0" prefWidth="201.0" resizable="false" text="Client Name" />
                            </columns>
                         </JFXTreeTableView>
-                        <Label layoutX="25.0" layoutY="18.0" text="Sales">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Label>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="30.0" layoutX="540.0" layoutY="466.0" stroke="TRANSPARENT" strokeType="INSIDE" width="65.0" />
-                        <JFXButton fx:id="salesReportGenerate" layoutX="110.0" layoutY="15.0" onAction="#salesReport" prefHeight="30.0" prefWidth="88.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Generate" textFill="WHITE" />
+                        <JFXButton fx:id="salesReportGenerate" layoutX="59.0" layoutY="15.0" onAction="#salesReport" prefHeight="30.0" prefWidth="88.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Generate" textFill="WHITE">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></JFXButton>
                         <JFXSpinner fx:id="salesSpinner" layoutX="206.0" layoutY="14.0" visible="false" />
+                        <JFXButton contentDisplay="GRAPHIC_ONLY" layoutX="17.0" layoutY="15.0" onAction="#onReloadSaleTable" prefHeight="30.0" prefWidth="34.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Remove" textFill="WHITE">
+                           <graphic>
+                              <ImageView fitHeight="20.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/reload.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </JFXButton>
                      </children>
                   </AnchorPane>
                </content>
@@ -74,14 +88,24 @@
                               <JFXTreeTableColumn fx:id="productDescriptionColumn" minWidth="101.0" prefWidth="261.0" resizable="false" text="Description" />
                            </columns>
                         </JFXTreeTableView>
-                        <Label layoutX="25.0" layoutY="18.0" text="Products">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Label>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="30.0" layoutX="540.0" layoutY="466.0" stroke="TRANSPARENT" strokeType="INSIDE" width="65.0" />
-                        <JFXButton fx:id="productsReportGenerate" layoutX="110.0" layoutY="15.0" onAction="#productsReport" prefHeight="30.0" prefWidth="88.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Generate" textFill="WHITE" />
+                        <JFXButton fx:id="productsReportGenerate" layoutX="59.0" layoutY="15.0" onAction="#productsReport" prefHeight="30.0" prefWidth="88.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Generate" textFill="WHITE">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></JFXButton>
                         <JFXSpinner fx:id="productsSpinner" layoutX="205.0" layoutY="14.0" visible="false" />
+                        <JFXButton contentDisplay="GRAPHIC_ONLY" layoutX="17.0" layoutY="15.0" onAction="#onReloadProductTable" prefHeight="30.0" prefWidth="34.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Remove" textFill="WHITE">
+                           <graphic>
+                              <ImageView fitHeight="20.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/reload.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </JFXButton>
                      </children>
                   </AnchorPane>
                </content>
@@ -99,14 +123,24 @@
                               <JFXTreeTableColumn fx:id="productTypeColumn" minWidth="115.0" prefWidth="239.0" resizable="false" text="Tasks" />
                            </columns>
                         </JFXTreeTableView>
-                        <Label fx:id="Employees" layoutX="25.0" layoutY="18.0" text="Employees">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Label>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="30.0" layoutX="540.0" layoutY="466.0" stroke="TRANSPARENT" strokeType="INSIDE" width="65.0" />
-                        <JFXButton fx:id="employeesReportGenerate" layoutX="117.0" layoutY="15.0" onAction="#employeesReport" prefHeight="30.0" prefWidth="88.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Generate" textFill="WHITE" />
+                        <JFXButton fx:id="employeesReportGenerate" layoutX="59.0" layoutY="15.0" onAction="#employeesReport" prefHeight="30.0" prefWidth="88.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Generate" textFill="WHITE">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></JFXButton>
                         <JFXSpinner fx:id="employeesSpinner" layoutX="212.0" layoutY="14.0" visible="false" />
+                        <JFXButton contentDisplay="GRAPHIC_ONLY" layoutX="17.0" layoutY="15.0" onAction="#onReloadEmployeeTable" prefHeight="30.0" prefWidth="34.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Remove" textFill="WHITE">
+                           <graphic>
+                              <ImageView fitHeight="20.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/reload.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </JFXButton>
                      </children>
                   </AnchorPane>
                </content>
@@ -123,14 +157,24 @@
                               <JFXTreeTableColumn fx:id="supplierAddresColumn" minWidth="80.0" prefWidth="371.0" resizable="false" text="Addres" />
                            </columns>
                         </JFXTreeTableView>
-                        <Label fx:id="Suppliers" layoutX="25.0" layoutY="18.0" text="Suppliers">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Label>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="30.0" layoutX="540.0" layoutY="466.0" stroke="TRANSPARENT" strokeType="INSIDE" width="65.0" />
-                        <JFXButton fx:id="supplierReportGenerate" layoutX="110.0" layoutY="15.0" onAction="#suppliersReport" prefHeight="30.0" prefWidth="88.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Generate" textFill="WHITE" />
+                        <JFXButton fx:id="supplierReportGenerate" layoutX="59.0" layoutY="15.0" onAction="#suppliersReport" prefHeight="30.0" prefWidth="88.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Generate" textFill="WHITE">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></JFXButton>
                         <JFXSpinner fx:id="suppliersSpinner" layoutX="204.0" layoutY="14.0" visible="false" />
+                        <JFXButton contentDisplay="GRAPHIC_ONLY" layoutX="17.0" layoutY="15.0" onAction="#onReloadSupplierTable" prefHeight="30.0" prefWidth="34.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Remove" textFill="WHITE">
+                           <graphic>
+                              <ImageView fitHeight="20.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/reload.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </JFXButton>
                      </children>
                   </AnchorPane>
                </content>

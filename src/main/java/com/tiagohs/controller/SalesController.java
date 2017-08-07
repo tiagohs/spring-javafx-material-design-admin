@@ -24,7 +24,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 @Controller
-public class SalesController implements BaseController {
+public class SalesController extends BaseController {
 
 	public static final String PATH_FXML = "/fxml/sales.fxml";
 	public static final String TITLE = "Sales - Inventory Management";
@@ -44,10 +44,16 @@ public class SalesController implements BaseController {
 	
 	@Override
 	public <T> void init(Stage stage, HashMap<String, T> parameters) {
+		super.init(stage, parameters);
 		
 		allContainer.getChildren().add(createAllTable(TypeSaleTable.ALL));
 		openContainer.getChildren().add(createAllTable(TypeSaleTable.OPEN));
 		finalizedContainer.getChildren().add(createAllTable(TypeSaleTable.FINALIZED));
+	}
+	
+	@Override
+	protected void onClose() {
+		saleService.onClose();
 	}
 	
 	private StackPane createAllTable(TypeSaleTable type) {

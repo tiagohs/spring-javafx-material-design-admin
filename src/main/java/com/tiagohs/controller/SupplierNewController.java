@@ -21,7 +21,7 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 @Controller
-public class SupplierNewController implements BaseController {
+public class SupplierNewController extends BaseController {
 
 	public static final String SUPPLIER_KEY = "supplier_key";
 	
@@ -71,16 +71,21 @@ public class SupplierNewController implements BaseController {
 	@Autowired
 	private UserService userService;
 	
-	private Stage supplierNewStage;
 	private Supplier supplier;
 	
 	@Override
 	public <T> void init(Stage stage, HashMap<String, T> parameters) {
-		this.supplierNewStage = stage;
+		super.init(stage, parameters);
 		
 		checkParameters(parameters);
 		validateTextFields();
 		watchEvents();
+	}
+
+	@Override
+	protected void onClose() {
+		userService.onClose();
+		supplierService.onClose();
 	}
 	
 	private <T> void checkParameters( HashMap<String, T> parameters) {
@@ -188,7 +193,7 @@ public class SupplierNewController implements BaseController {
 			supplierService.save(EntityFactory.createSupplier(supplier, WindowsUtils.getTextFromTextField(nameTextField), 
 															  WindowsUtils.getTextFromTextField(emailTextField), 
 															  address), e -> {
-																	WindowsUtils.createDefaultDialog(container, "Sucess", "Supplier save with sucess.", () -> { supplierNewStage.close(); });
+																	WindowsUtils.createDefaultDialog(container, "Sucess", "Supplier save with sucess.", () -> { stage.close(); });
 																}, null);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -198,7 +203,7 @@ public class SupplierNewController implements BaseController {
 	
 	@FXML
 	public void onCancel() {
-		supplierNewStage.close();
+		stage.close();
 	}
 	
 	@FXML

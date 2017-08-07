@@ -19,7 +19,7 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 @Controller
-public class BrandNewController implements BaseController {
+public class BrandNewController extends BaseController {
 	
 	public static final String BRAND_KEY = "brand_key";
 	
@@ -45,17 +45,20 @@ public class BrandNewController implements BaseController {
 	@Autowired
 	private BrandService brandService;
 	
-	private Stage brandNewStage;
-	
 	private Brand brand;
 	
 	@Override
 	public <T> void init(Stage stage, HashMap<String, T> parameters) {
-		this.brandNewStage = stage;
+		super.init(stage, parameters);
 		
 		checkParameters(parameters);
 		validateTextFields();
 		watchEvents();
+	}
+
+	@Override
+	protected void onClose() {
+		brandService.onClose();
 	}
 	
 	private <T> void checkParameters( HashMap<String, T> parameters) {
@@ -108,7 +111,7 @@ public class BrandNewController implements BaseController {
 			brandService.save(EntityFactory.createBrand(brand, WindowsUtils.getTextFromTextField(nameTextField), 
 														WindowsUtils.getTextFromTextField(emailTextField), 
 														WindowsUtils.getTextFromTextArea(additionalInfoTextArea)), e -> {
-															WindowsUtils.createDefaultDialog(container, "Sucess", "Brand save with sucess.", () -> { brandNewStage.close(); });
+															WindowsUtils.createDefaultDialog(container, "Sucess", "Brand save with sucess.", () -> { stage.close(); });
 														}, null);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -118,7 +121,7 @@ public class BrandNewController implements BaseController {
 	
 	@FXML
 	public void onCancel() {
-		
+		stage.close();
 	}
 	
 	@FXML

@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import com.jfoenix.controls.JFXButton;
@@ -46,7 +47,8 @@ import net.sf.jasperreports.engine.JasperReportsContext;
 import net.sf.jasperreports.engine.PrintPageFormat;
 
 @Controller
-public class ReportViewerController implements BaseController {
+@Scope("prototype")
+public class ReportViewerController extends BaseController {
 
 	public static final String JASPER_PRINT = "jasper_print.key";
 
@@ -112,13 +114,12 @@ public class ReportViewerController implements BaseController {
 	private JasperReportsContext jasperReportsContext;
 	private ResourceBundle resourceBundle;
 
-	private Stage reportViewerStage;
-
 	@Override
 	public <T> void init(Stage stage, HashMap<String, T> parameters) {
+		super.init(stage, parameters);
+		
 		this.jasperReportsContext = DefaultJasperReportsContext.getInstance();
 		this.resourceBundle = ResourceBundle.getBundle("net/sf/jasperreports/view/viewer", Locale.getDefault());
-		this.reportViewerStage = stage;
 
 		try {
 			checkParameters(parameters);
@@ -128,6 +129,11 @@ public class ReportViewerController implements BaseController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	protected void onClose() {
+		
 	}
 	
 	private <T> void checkParameters(HashMap<String, T> parameters) throws Exception {
@@ -265,12 +271,12 @@ public class ReportViewerController implements BaseController {
 			protected Boolean call() throws Exception {
 				try {
 					printerButton.setDisable(true);
-					reportViewerStage.getScene().setCursor(Cursor.WAIT);
+					stage.getScene().setCursor(Cursor.WAIT);
 					return JasperPrintManager.getInstance(jasperReportsContext).print(jasperPrint, true);
 				} catch (JRException ex) {
 					ex.printStackTrace();
 				} finally {
-					reportViewerStage.getScene().setCursor(Cursor.DEFAULT);
+					stage.getScene().setCursor(Cursor.DEFAULT);
 					printerButton.setDisable(false);
 				}
 

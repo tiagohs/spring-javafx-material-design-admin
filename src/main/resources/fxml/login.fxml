@@ -3,6 +3,7 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXCheckBox?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -32,6 +33,9 @@
                </image>
             </ImageView>
          </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </JFXButton>
       <JFXButton alignment="BOTTOM_CENTER" contentDisplay="GRAPHIC_ONLY" layoutX="161.0" layoutY="82.0" prefHeight="49.0" prefWidth="49.0" ripplerFill="#ffb9b9" style="-fx-background-color: #ff4343;" text="Dashboard" textAlignment="CENTER" textFill="#fffdfd">
          <font>
@@ -44,6 +48,9 @@
                </image>
             </ImageView>
          </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </JFXButton>
       <JFXButton alignment="BOTTOM_CENTER" contentDisplay="GRAPHIC_ONLY" layoutX="226.0" layoutY="82.0" prefHeight="43.0" prefWidth="60.0" ripplerFill="#0084b4" style="-fx-background-color: #00b2ff;" text="Dashboard" textAlignment="CENTER" textFill="#fffdfd">
          <font>
@@ -56,6 +63,9 @@
                </image>
             </ImageView>
          </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </JFXButton>
       <JFXTextField focusColor="#009688" labelFloat="true" layoutX="67.0" layoutY="178.0" prefHeight="36.0" prefWidth="278.0" promptText="Username" />
       <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="28.0" layoutY="187.0" pickOnBounds="true" preserveRatio="true">
@@ -73,6 +83,9 @@
          <font>
             <Font size="14.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </JFXButton>
       <JFXCheckBox checkedColor="#009688" layoutX="56.0" layoutY="297.0" text="Remember Me" />
    </children>

@@ -15,5 +15,6 @@ public interface SaleService extends IBaseService<Sale> {
 	Service<List<Sale>> findAllFinalizedSales(EventHandler<WorkerStateEvent> onSucess, EventHandler<WorkerStateEvent> beforeStart);
 	Service<Long> getTotalSales(EventHandler<WorkerStateEvent> onSucess, EventHandler<WorkerStateEvent> beforeStart);
 	Service<List<Sale>> findSaleByMonth(Calendar date, EventHandler<WorkerStateEvent> onSucess, EventHandler<WorkerStateEvent> beforeStart);
-	Service<Long> getTotalSalesByMonth(Calendar date, EventHandler<WorkerStateEvent> onSucess, EventHandler<WorkerStateEvent> beforeStart);
+	Service<Long> getTotalSalesByMonthService(Calendar date, EventHandler<WorkerStateEvent> onSucess, EventHandler<WorkerStateEvent> beforeStart);
+	Long getTotalSalesByMonth(Calendar date);
 }

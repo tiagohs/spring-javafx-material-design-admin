@@ -27,7 +27,7 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 @Controller
-public class ProductNewController implements BaseController {
+public class ProductNewController extends BaseController {
 	
 	public static final String PRODUCT_KEY = "product_key";
 	
@@ -98,17 +98,24 @@ public class ProductNewController implements BaseController {
 	@Autowired
 	private ProductTypeService productTypeService;
 	
-	private Stage productNewStage;
 	private Product product;
 	
 	public <T> void init(Stage stage, HashMap<String, T> parameters) {
-		this.productNewStage = stage;
+		super.init(stage, parameters);
 		
 		fillComboBoxes();
 		checkParameters(parameters);
 		validateTextFields();
 		watchEvents();
 		
+	}
+
+	@Override
+	protected void onClose() {
+		productService.onClose();
+		supplierService.onClose();
+		brandService.onClose();
+		productTypeService.onClose();
 	}
 	
 	private <T> void checkParameters( HashMap<String, T> parameters) {
@@ -161,10 +168,11 @@ public class ProductNewController implements BaseController {
 		WindowsUtils.watchEvents(initialStockTextField, v -> watch());
 	}
 	
+	
 	private void fillComboBoxes() {
-		WindowsUtils.addComboBoxItens(brandComboBox, brandService.findAll());
-		WindowsUtils.addComboBoxItens(productTypeComboBox, productTypeService.findAll());
-		WindowsUtils.addComboBoxItens(supplierComboBox, supplierService.findAll());
+		WindowsUtils.addComboBoxItens(brandComboBox, brandService);
+		WindowsUtils.addComboBoxItens(productTypeComboBox, productTypeService);
+		WindowsUtils.addComboBoxItens(supplierComboBox, supplierService);
 	}
 	
 	private void watch() {
@@ -198,7 +206,7 @@ public class ProductNewController implements BaseController {
 															(ProductType) WindowsUtils.getSelectedComboBoxItem(productTypeComboBox), 
 															null, 
 															null), e -> {
-																WindowsUtils.createDefaultDialog(container, "Sucess", "Product save with sucess.", () -> { productNewStage.close(); });
+																WindowsUtils.createDefaultDialog(container, "Sucess", "Product save with sucess.", () -> { stage.close(); });
 															}, null);
 		} catch (Exception e) {
 			WindowsUtils.createDefaultDialog(container, "Error", "Error saving product, try again.", () -> {});
@@ -207,7 +215,7 @@ public class ProductNewController implements BaseController {
 	
 	@FXML
 	public void onCancel() {
-		productNewStage.close();
+		stage.close();
 	}
 	
 	@FXML

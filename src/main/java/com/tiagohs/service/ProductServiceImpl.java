@@ -8,7 +8,7 @@ import com.tiagohs.model.Product;
 import com.tiagohs.repository.ProductRepository;
 
 @Service("productService")
-public class ProductServiceImpl extends BaseService<Product, JpaRepository<Product,Long>> implements ProductService {
+public class ProductServiceImpl extends BaseCrudService<Product, JpaRepository<Product,Long>> implements ProductService {
 	
 	private ProductRepository productRepository;
 	

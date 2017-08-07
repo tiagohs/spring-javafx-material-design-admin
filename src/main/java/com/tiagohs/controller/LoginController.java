@@ -14,7 +14,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 @Controller
-public class LoginController implements BaseController {
+public class LoginController extends BaseController {
 
 	public static final String PATH_FXML = "/fxml/login.fxml";
 	public static final String TITLE = "Login - stuffs-Admin: Inventory Management";
@@ -26,15 +26,21 @@ public class LoginController implements BaseController {
 	@Autowired
 	private UserService userService;
 	
-	private Stage loginStage;
-	
 	public <T> void init(Stage stage, HashMap<String, T> parameters) {
-		this.loginStage = stage;
+		super.init(stage, parameters);
+	}
+	
+	@Override
+	protected void onClose() {
+		userService.onClose();
 	}
 	
 	@FXML
 	public void onLogin() throws Exception {
-		WindowsUtils.openNewWindow(RootController.PATH_FXML, RootController.TITLE, RootController.PATH_ICON, null, Modality.WINDOW_MODAL);
-		loginStage.close();
+		
+		WindowsUtils.openNewWindow(LoginDialogController.PATH_FXML, LoginDialogController.TITLE, LoginDialogController.PATH_ICON, null, Modality.WINDOW_MODAL);
+		
+		//WindowsUtils.openNewWindow(RootController.PATH_FXML, RootController.TITLE, RootController.PATH_ICON, null, Modality.WINDOW_MODAL);
+		stage.close();
 	}
 }
