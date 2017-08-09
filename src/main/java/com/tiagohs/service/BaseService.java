@@ -29,6 +29,10 @@ public abstract class BaseService {
 		if (beforeStart != null)
 			service.setOnScheduled(beforeStart);
 		
+		service.setOnFailed(e -> {
+			System.out.println("Failed: " + e.getSource().getException());
+		});
+		
 		service.start();
 		
 		services.add(service);

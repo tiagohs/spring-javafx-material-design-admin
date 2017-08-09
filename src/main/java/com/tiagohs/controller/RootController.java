@@ -2,8 +2,10 @@ package com.tiagohs.controller;
 
 import java.util.HashMap;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
+import com.tiagohs.service.UserService;
 import com.tiagohs.util.WindowsUtils;
 
 import javafx.fxml.FXML;
@@ -21,6 +23,9 @@ public class RootController extends BaseController {
 	
 	@FXML
 	private AnchorPane rootPane;
+	
+	@Autowired
+	private UserService userService;
 	
 	public <T> void init(Stage stage, HashMap<String, T> parameters) {
 		super.init(stage, parameters);
@@ -75,9 +80,14 @@ public class RootController extends BaseController {
 	@FXML
 	private void onLogout() throws Exception {
 		
-		//Check
-		
-		WindowsUtils.openNewWindow(LoginController.PATH_FXML, LoginController.TITLE, LoginController.PATH_ICON, null, Modality.WINDOW_MODAL);
+		userService.setUserAsSignOut(e -> {
+			try {
+				WindowsUtils.openNewWindow(LoginController.PATH_FXML, LoginController.TITLE, LoginController.PATH_ICON, null, Modality.WINDOW_MODAL);
+				onClose();
+			} catch (Exception e1) {
+				e1.printStackTrace();
+			}
+		}, null);
 		
 	}
 	

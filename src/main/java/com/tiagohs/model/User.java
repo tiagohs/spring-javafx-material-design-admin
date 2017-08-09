@@ -34,8 +34,8 @@ public class User {
 	@Column(name = "password")
 	private String password;
 	
-	@Column(name = "active")
-	private int active;
+	@Column(name = "is_login")
+	private int isLogin;
 	
 	@ManyToMany(cascade = CascadeType.MERGE)
 	@JoinTable(name = "user_role", 
@@ -75,14 +75,6 @@ public class User {
 		this.roles = roles;
 	}
 
-	public int getActive() {
-		return active;
-	}
-
-	public void setActive(int active) {
-		this.active = active;
-	}
-
 	public String getName() {
 		return name;
 	}
@@ -99,6 +91,14 @@ public class User {
 		this.photoPath = photoPath;
 	}
 	
+	public int getIsLogin() {
+		return isLogin;
+	}
+
+	public void setIsLogin(int isLogin) {
+		this.isLogin = isLogin;
+	}
+
 	@Override
 	public String toString() {
 		return getName();

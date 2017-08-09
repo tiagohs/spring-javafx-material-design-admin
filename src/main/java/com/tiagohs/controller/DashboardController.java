@@ -68,7 +68,7 @@ public class DashboardController extends BaseController {
 	private void configureSalesChart() {
 		SimpleDateFormat month = new SimpleDateFormat("MMM-yyyy");
 		
-		salesChart.getXAxis().setLabel("Month");
+		salesChart.getXAxis().setLabel(getI18N().getString("date.month"));
         
 		XYChart.Series<String, Number> series = new XYChart.Series<String, Number>();
         series.setName("Sales");
