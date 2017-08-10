@@ -53,17 +53,7 @@
                   <Font size="16.0" />
                </font>
             </Label>
-            <JFXComboBox fx:id="languageComboBox" focusColor="#009688" labelFloat="true" layoutX="161.0" layoutY="92.0" prefHeight="25.0" prefWidth="217.0" promptText="Select the default Language">
-      	      <items>
-      	        <FXCollections fx:factory="observableArrayList">
-      	          <String fx:value="English" />
-      	          <String fx:value="Portuguese Brazil" />
-      	        </FXCollections>
-      	      </items>
-      	      <value>
-      		      <String fx:value="English" />
-      		  </value>
-            </JFXComboBox>
+            <JFXComboBox fx:id="languageComboBox" focusColor="#009688" labelFloat="true" layoutX="161.0" layoutY="92.0" prefHeight="25.0" prefWidth="217.0" promptText="Select the default Language" />
          </children>
       </AnchorPane>
    </children>

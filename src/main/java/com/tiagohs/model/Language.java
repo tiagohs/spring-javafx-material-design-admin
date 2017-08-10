@@ -71,7 +71,23 @@ public class Language {
 		this.countryCode = countryCode;
 	}
 	
+	@Override
+	public boolean equals(Object obj) {
+		
+		if (obj instanceof Language) {
+			if (obj != null) {
+				Language language = (Language) obj;
+				return language.getId() == getId();
+			}
+		}
+		
+		return false;
+	}
 	
+	@Override
+	public String toString() {
+		return getLanguageName();
+	}
 	
 	
 }

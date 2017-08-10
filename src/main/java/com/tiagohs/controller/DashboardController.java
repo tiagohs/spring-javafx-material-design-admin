@@ -25,7 +25,7 @@ import javafx.stage.Stage;
 public class DashboardController extends BaseController {
 	
 	public static final String PATH_FXML = "/fxml/dashboard.fxml";
-	public static final String TITLE = "Dashboard - Inventory Management";
+	public static final String DASHBOARD_TITLE_KEY = "dashboard.title";
 	public static final String PATH_ICON = WindowsUtils.ICON_APP_PATH;
 	
 	@FXML

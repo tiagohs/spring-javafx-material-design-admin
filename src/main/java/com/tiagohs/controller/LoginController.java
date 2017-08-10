@@ -22,7 +22,7 @@ import javafx.stage.Stage;
 public class LoginController extends BaseController {
 
 	public static final String PATH_FXML = "/fxml/login.fxml";
-	public static final String TITLE = "Login - stuffs-Admin: Inventory Management";
+	public static final String LOGIN_TITLE_KEY = "login.title";
 	public static final String PATH_ICON = WindowsUtils.ICON_APP_PATH;
 	
 	@FXML
@@ -118,7 +118,7 @@ public class LoginController extends BaseController {
 									user.getPassword(), 
 									e -> {
 										try {
-											WindowsUtils.openNewWindow(RootController.PATH_FXML, RootController.TITLE, RootController.PATH_ICON, null, Modality.WINDOW_MODAL);
+											WindowsUtils.openNewWindow(RootController.PATH_FXML, getWindowTitle(RootController.ROOT_TITLE_KEY), RootController.PATH_ICON, null, Modality.WINDOW_MODAL);
 											stage.close();
 										} catch (Exception e1) {
 											e1.printStackTrace();

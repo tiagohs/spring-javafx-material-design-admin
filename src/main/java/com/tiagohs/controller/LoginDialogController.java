@@ -16,7 +16,7 @@ import javafx.scene.web.WebView;
 public class LoginDialogController extends BaseController {
 	
 	public static final String PATH_FXML = "/fxml/login_dialog.fxml";
-	public static final String TITLE = "Login - Confirmar Informações";
+	public static final String LOGIN_DIALOG_TITLE_KEY = "login_dialog.title";
 	public static final String PATH_ICON = WindowsUtils.ICON_APP_PATH;
 	
 	private static String HTML_STRING = //
@@ -46,6 +46,7 @@ public class LoginDialogController extends BaseController {
 	
 	public <T> void init(javafx.stage.Stage stage, java.util.HashMap<String,T> parameters) {
 		super.init(stage, parameters);
+		
 		System.out.println("indo");
 		// Get WebEngine via WebView
 		

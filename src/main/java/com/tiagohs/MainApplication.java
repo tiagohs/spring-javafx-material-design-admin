@@ -22,6 +22,8 @@ import javafx.stage.Stage;
 @SpringBootApplication
 public class MainApplication extends Application  {
 	
+	
+	
 	public static ConfigurableApplicationContext springContext;
 	public static I18N i18n;
 	public static HostServices hostServices;
@@ -40,7 +42,14 @@ public class MainApplication extends Application  {
     
     private void initI18N() {
     	Language languageDefault = languageService.findDefaultLanguage();
-    	i18n = new I18N(new Locale(languageDefault.getLanguageCode(), languageDefault.getCountryCode()));
+    	
+    	if (languageDefault != null) {
+    		i18n = new I18N(new Locale(languageDefault.getLanguageCode(), languageDefault.getCountryCode()));
+    	} else {
+    		i18n = new I18N(I18N.PORTUGUESE_BRAZILLIAN);
+    	}
+    	
+    	
     }
    
     @Override
@@ -52,9 +61,9 @@ public class MainApplication extends Application  {
     			User user = (User) e.getSource().getValue();
         		
         		if (user == null) {
-        			WindowsUtils.openNewWindow(primaryStage, LoginController.PATH_FXML, LoginController.TITLE, LoginController.PATH_ICON, null);
+        			WindowsUtils.openNewWindow(primaryStage, LoginController.PATH_FXML, i18n.getString(LoginController.LOGIN_TITLE_KEY), LoginController.PATH_ICON, null);
         		} else {
-        			WindowsUtils.openNewWindow(primaryStage, RootController.PATH_FXML, RootController.TITLE, RootController.PATH_ICON, null);
+        			WindowsUtils.openNewWindow(primaryStage, RootController.PATH_FXML, i18n.getString(RootController.ROOT_TITLE_KEY), RootController.PATH_ICON, null);
         		}
     		} catch(Exception ex) {
     			ex.printStackTrace();

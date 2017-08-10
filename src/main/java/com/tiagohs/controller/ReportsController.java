@@ -44,7 +44,7 @@ import net.sf.jasperreports.engine.JasperPrint;
 public class ReportsController extends BaseController{
 
 	public static final String PATH_FXML = "/fxml/reports.fxml";
-	public static final String TITLE = "Reports - Inventory Management";
+	public static final String REPORTS_TITLE_KEY = "reports.title";
 	public static final String PATH_ICON = WindowsUtils.ICON_APP_PATH;
 	
 	@FXML
@@ -188,6 +188,7 @@ public class ReportsController extends BaseController{
 	
 	@Override
 	public <T> void init(Stage stage, HashMap<String, T> parameters) {
+		super.init(stage, parameters);
 		
 		configureLabels();
 		configureTables();
@@ -372,7 +373,7 @@ public class ReportsController extends BaseController{
 				
 				System.out.println(jasperPrint);
 				
-				WindowsUtils.openNewWindow(ReportViewerController.PATH_FXML, ReportViewerController.TITLE, ReportViewerController.PATH_ICON, parameters, Modality.APPLICATION_MODAL);
+				WindowsUtils.openNewWindow(ReportViewerController.PATH_FXML, getWindowTitle(ReportViewerController.REPORT_VIEWER_TITLE_KEY), ReportViewerController.PATH_ICON, parameters, Modality.APPLICATION_MODAL);
 			} catch (Exception e1) {
 				e1.printStackTrace();
 			}

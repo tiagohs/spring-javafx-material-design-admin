@@ -40,7 +40,7 @@ import javafx.stage.Stage;
 public class InventoryController extends BaseController {
 	
 	public static final String PATH_FXML = "/fxml/inventory.fxml";
-	public static final String TITLE = "Inventory - Inventory Management";
+	public static final String INVENTORY_TITLE_KEY = "inventory.title";
 	public static final String PATH_ICON = WindowsUtils.ICON_APP_PATH;
 
 	@FXML
@@ -387,25 +387,25 @@ public class InventoryController extends BaseController {
 	@FXML
 	private void onEditProductTable() throws Exception {
 		ProductTableDTO productTableValue = productsTable.getSelectionModel().selectedItemProperty().get().getValue();
-		TableUtils.editItemFromTable(productsTable, productTableValue.getOriginalProduct(), ProductNewController.PRODUCT_KEY, ProductNewController.PATH_FXML, ProductNewController.TITLE, ProductNewController.PATH_ICON);
+		TableUtils.editItemFromTable(productsTable, productTableValue.getOriginalProduct(), ProductNewController.PRODUCT_KEY, ProductNewController.PATH_FXML, getWindowTitle(ProductNewController.NEW_PRODUCT_TITLE_KEY), ProductNewController.PATH_ICON);
 	}
 	
 	@FXML
 	private void onEditEmployeeTable() throws Exception {
 		EmployeeTableDTO employeeTableValue = employeeTable.getSelectionModel().selectedItemProperty().get().getValue();
-		TableUtils.editItemFromTable(employeeTable, employeeTableValue.getOriginalEmployee(), EmployeeNewController.EMPLOYEE_KEY, EmployeeNewController.PATH_FXML, EmployeeNewController.TITLE, EmployeeNewController.PATH_ICON);
+		TableUtils.editItemFromTable(employeeTable, employeeTableValue.getOriginalEmployee(), EmployeeNewController.EMPLOYEE_KEY, EmployeeNewController.PATH_FXML, getWindowTitle(EmployeeNewController.NEW_EMPLOYEE_TITLE_KEY), EmployeeNewController.PATH_ICON);
 	}
 	
 	@FXML
 	private void onEditSupplierTable() throws Exception {
 		SupplierTableDTO supplierTableValue = supplierTable.getSelectionModel().selectedItemProperty().get().getValue();
-		TableUtils.editItemFromTable(supplierTable, supplierTableValue.getOriginalSupplier(), SupplierNewController.SUPPLIER_KEY, SupplierNewController.PATH_FXML, SupplierNewController.TITLE, SupplierNewController.PATH_ICON);
+		TableUtils.editItemFromTable(supplierTable, supplierTableValue.getOriginalSupplier(), SupplierNewController.SUPPLIER_KEY, SupplierNewController.PATH_FXML, getWindowTitle(SupplierNewController.NEW_SUPPLIER_TITLE_KEY), SupplierNewController.PATH_ICON);
 	}
 	
 	@FXML
 	private void onEditBrandTable() throws Exception {
 		BrandTableDTO brandTableValue = brandTable.getSelectionModel().selectedItemProperty().get().getValue();
-		TableUtils.editItemFromTable(brandTable, brandTableValue.getOriginalBrand(), BrandNewController.BRAND_KEY, BrandNewController.PATH_FXML, BrandNewController.TITLE, BrandNewController.PATH_ICON);
+		TableUtils.editItemFromTable(brandTable, brandTableValue.getOriginalBrand(), BrandNewController.BRAND_KEY, BrandNewController.PATH_FXML, getWindowTitle(BrandNewController.NEW_BRAND_TITLE_KEY), BrandNewController.PATH_ICON);
 	}
 	
 	@FXML
@@ -442,21 +442,21 @@ public class InventoryController extends BaseController {
 	
 	@FXML
 	public void onNewProduct() throws Exception {
-		WindowsUtils.openNewWindow(ProductNewController.PATH_FXML, ProductNewController.TITLE, ProductNewController.PATH_ICON, null, Modality.APPLICATION_MODAL);
+		WindowsUtils.openNewWindow(ProductNewController.PATH_FXML, getWindowTitle(ProductNewController.NEW_PRODUCT_TITLE_KEY), ProductNewController.PATH_ICON, null, Modality.APPLICATION_MODAL);
 	}
 	
 	@FXML
 	public void onNewEmployee() throws Exception {
-		WindowsUtils.openNewWindow(EmployeeNewController.PATH_FXML, EmployeeNewController.TITLE, EmployeeNewController.PATH_ICON, null, Modality.APPLICATION_MODAL);
+		WindowsUtils.openNewWindow(EmployeeNewController.PATH_FXML, getWindowTitle(EmployeeNewController.NEW_EMPLOYEE_TITLE_KEY), EmployeeNewController.PATH_ICON, null, Modality.APPLICATION_MODAL);
 	}
 	
 	@FXML
 	public void onNewSupplier() throws Exception {
-		WindowsUtils.openNewWindow(SupplierNewController.PATH_FXML, SupplierNewController.TITLE, SupplierNewController.PATH_ICON, null, Modality.APPLICATION_MODAL);
+		WindowsUtils.openNewWindow(SupplierNewController.PATH_FXML, getWindowTitle(SupplierNewController.NEW_SUPPLIER_TITLE_KEY), SupplierNewController.PATH_ICON, null, Modality.APPLICATION_MODAL);
 	}
 	
 	@FXML
 	public void onNewBrand() throws Exception {
-		WindowsUtils.openNewWindow(BrandNewController.PATH_FXML, BrandNewController.TITLE, BrandNewController.PATH_ICON, null, Modality.APPLICATION_MODAL);
+		WindowsUtils.openNewWindow(BrandNewController.PATH_FXML, getWindowTitle(BrandNewController.NEW_BRAND_TITLE_KEY), BrandNewController.PATH_ICON, null, Modality.APPLICATION_MODAL);
 	}
 }

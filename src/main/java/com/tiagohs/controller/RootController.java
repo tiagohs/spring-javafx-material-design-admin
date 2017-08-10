@@ -18,7 +18,7 @@ import javafx.stage.Stage;
 public class RootController extends BaseController {
 
 	public static final String PATH_FXML = "/fxml/root.fxml";
-	public static final String TITLE = "Inventory Management - stuffs-Admin";
+	public static final String ROOT_TITLE_KEY = "root.title";
 	public static final String PATH_ICON = WindowsUtils.ICON_APP_PATH;
 	
 	@FXML
@@ -69,12 +69,13 @@ public class RootController extends BaseController {
 	
 	@FXML
 	private void onAbout() throws Exception {
-		WindowsUtils.openNewWindow(AboutController.PATH_FXML, AboutController.TITLE, AboutController.PATH_ICON, null, Modality.APPLICATION_MODAL);
+		WindowsUtils.openNewWindow(AboutController.PATH_FXML, getWindowTitle(AboutController.ABOUT_TITLE_KEY), AboutController.PATH_ICON, null, Modality.APPLICATION_MODAL);
 	}
 	
 	@FXML
 	private void onSettings() throws Exception {
-		WindowsUtils.openNewWindow(SettingsController.PATH_FXML, SettingsController.TITLE, SettingsController.PATH_ICON, null, Modality.APPLICATION_MODAL);
+		WindowsUtils.openNewWindow(SettingsController.PATH_FXML, getWindowTitle(SettingsController.SETTINGS_TITLE_KEY), SettingsController.PATH_ICON, null, Modality.WINDOW_MODAL);
+		stage.close();
 	}
 	
 	@FXML
@@ -82,7 +83,7 @@ public class RootController extends BaseController {
 		
 		userService.setUserAsSignOut(e -> {
 			try {
-				WindowsUtils.openNewWindow(LoginController.PATH_FXML, LoginController.TITLE, LoginController.PATH_ICON, null, Modality.WINDOW_MODAL);
+				WindowsUtils.openNewWindow(LoginController.PATH_FXML, getWindowTitle(LoginController.LOGIN_TITLE_KEY), LoginController.PATH_ICON, null, Modality.WINDOW_MODAL);
 				onClose();
 			} catch (Exception e1) {
 				e1.printStackTrace();

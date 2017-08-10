@@ -24,7 +24,7 @@ public class BrandNewController extends BaseController {
 	public static final String BRAND_KEY = "brand_key";
 	
 	public static final String PATH_FXML = "/fxml/new_brand.fxml";
-	public static final String TITLE = "New Brand - Inventory Management";
+	public static final String NEW_BRAND_TITLE_KEY = "new_brand.title";
 	public static final String PATH_ICON = WindowsUtils.ICON_APP_PATH;
 
 	@FXML

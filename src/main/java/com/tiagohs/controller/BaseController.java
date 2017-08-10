@@ -28,5 +28,9 @@ public abstract class BaseController {
 		return i18N;
 	}
 	
+	public String getWindowTitle(String titleKey) {
+		return MainApplication.i18n.getString(titleKey);
+	}
+	
 	protected abstract void onClose();
 }

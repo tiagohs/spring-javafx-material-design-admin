@@ -53,7 +53,7 @@ public class ReportViewerController extends BaseController {
 	public static final String JASPER_PRINT = "jasper_print.key";
 
 	public static final String PATH_FXML = "/fxml/report_viewer.fxml";
-	public static final String TITLE = "Report - Inventory Management";
+	public static final String REPORT_VIEWER_TITLE_KEY = "report_viewer.title";
 	public static final String PATH_ICON = WindowsUtils.ICON_APP_PATH;
 
 	public static final int REPORT_DPI_RESOLUTION = 72;

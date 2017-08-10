@@ -82,7 +82,8 @@ public class WindowsUtils {
 			 FXMLLoader loader = new FXMLLoader();
 			 loader.setLocation(WindowsUtils.class.getResource(url));
 			 loader.setControllerFactory( clazz -> { return MainApplication.springContext.getBean(clazz);});
-			   
+			 loader.setResources(MainApplication.i18n.getBundle());  
+			 
 			 return loader;
 		 } catch (IOException ioException) {
 			 throw new RuntimeException(ioException);
@@ -248,8 +249,7 @@ public class WindowsUtils {
 		});
 	}
 	
-	@SuppressWarnings("rawtypes")
-	public static Object getSelectedComboBoxItem(ComboBox comboBox) {
+	public static <T> T getSelectedComboBoxItem(ComboBox<T> comboBox) {
 		return comboBox.getValue() != null ? comboBox.getValue() : null;
 	}
 	

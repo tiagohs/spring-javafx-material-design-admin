@@ -26,7 +26,7 @@ import javafx.scene.layout.StackPane;
 
 @Controller
 @Scope("prototype")
-public class SaleTableController {
+public class SaleTableController extends BaseController {
 	
 	enum TypeSaleTable { OPEN, ALL, FINALIZED };
 	
@@ -155,7 +155,7 @@ public class SaleTableController {
 	public void onEdiSalesTable() throws Exception {
 		if (salesTable.getSelectionModel().selectedItemProperty().get() != null) {
 			SalesTableDTO salesTableDTO = salesTable.getSelectionModel().selectedItemProperty().get().getValue();
-			TableUtils.editItemFromTable(salesTable, salesTableDTO.getOriginalObject(), SalesNewController.SALE_KEY, SalesNewController.PATH_FXML, SalesNewController.TITLE, SalesNewController.PATH_ICON);
+			TableUtils.editItemFromTable(salesTable, salesTableDTO.getOriginalObject(), SalesNewController.SALE_KEY, SalesNewController.PATH_FXML, getWindowTitle(SalesNewController.NEW_SALE_TITLE_KEY), SalesNewController.PATH_ICON);
 		} 
 	}
 	
@@ -178,6 +178,11 @@ public class SaleTableController {
 	public void onReloadSalesTable() {
 		TableUtils.reloadTable(() -> configureTable());
 		TableUtils.updateEditAndRemoveButtonState(salesTable, salesEditButton, salesRemoveButton);
+	}
+
+	@Override
+	protected void onClose() {
+		saleService.onClose();
 	}
 	
 }

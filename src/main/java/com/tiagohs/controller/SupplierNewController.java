@@ -26,7 +26,7 @@ public class SupplierNewController extends BaseController {
 	public static final String SUPPLIER_KEY = "supplier_key";
 	
 	public static final String PATH_FXML = "/fxml/new_supplier.fxml";
-	public static final String TITLE = "New Supplier - Inventory Management";
+	public static final String NEW_SUPPLIER_TITLE_KEY = "new_supplier.title";
 	public static final String PATH_ICON = WindowsUtils.ICON_APP_PATH;
 	
 	@FXML

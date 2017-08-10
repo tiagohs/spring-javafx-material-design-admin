@@ -30,7 +30,7 @@ import javafx.stage.Stage;
 public class ClientsController extends BaseController {
 
 	public static final String PATH_FXML = "/fxml/clients.fxml";
-	public static final String TITLE = "Clients - Inventory Management";
+	public static final String CLIENTS_TITLE_KEY = "clients.title";
 	public static final String PATH_ICON = WindowsUtils.ICON_APP_PATH;
 	
 	@FXML
@@ -148,7 +148,7 @@ public class ClientsController extends BaseController {
 	@FXML
 	private void onEditTable() throws Exception {
 		ClientTableDTO clientTableDTO = clientsTable.getSelectionModel().selectedItemProperty().get().getValue();
-		TableUtils.editItemFromTable(clientsTable, clientTableDTO.getOriginalClient(), ClientNewController.PRODUCT_KEY, ClientNewController.PATH_FXML, ClientNewController.TITLE, ClientNewController.PATH_ICON);
+		TableUtils.editItemFromTable(clientsTable, clientTableDTO.getOriginalClient(), ClientNewController.PRODUCT_KEY, ClientNewController.PATH_FXML, getWindowTitle(ClientNewController.NEW_CLIENT_TITLE_KEY), ClientNewController.PATH_ICON);
 	}
 	
 	@FXML
@@ -161,6 +161,6 @@ public class ClientsController extends BaseController {
 	
 	@FXML
 	private void onNewClient() throws Exception {
-		WindowsUtils.openNewWindow(ClientNewController.PATH_FXML, ClientNewController.TITLE, ClientNewController.PATH_ICON, null, Modality.APPLICATION_MODAL);
+		WindowsUtils.openNewWindow(ClientNewController.PATH_FXML, getWindowTitle(ClientNewController.NEW_CLIENT_TITLE_KEY), ClientNewController.PATH_ICON, null, Modality.APPLICATION_MODAL);
 	}
 }

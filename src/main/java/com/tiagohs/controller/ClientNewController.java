@@ -33,7 +33,7 @@ public class ClientNewController extends BaseController {
 	
 	public static final String PRODUCT_KEY = "client_key";
 	public static final String PATH_FXML = "/fxml/new_client.fxml";
-	public static final String TITLE = "New Client - Inventory Management";
+	public static final String NEW_CLIENT_TITLE_KEY = "new_client.title";
 	public static final String PATH_ICON = WindowsUtils.ICON_APP_PATH;
 	
 	@FXML
@@ -104,7 +104,6 @@ public class ClientNewController extends BaseController {
 	
 	private Client client;
 	
-	@Override
 	public <T> void init(Stage stage, HashMap<String, T> parameters) {
 		super.init(stage, parameters);
 		
@@ -231,8 +230,8 @@ public class ClientNewController extends BaseController {
 	@SuppressWarnings("unchecked")
 	@FXML
 	public void onSave() {
-		ClientType clientType = (ClientType) WindowsUtils.getSelectedComboBoxItem(countryComboBox);
-		Role roleSelected = (Role) WindowsUtils.getSelectedComboBoxItem(roleComboBox);
+		ClientType clientType = WindowsUtils.getSelectedComboBoxItem(clientTypeComboBox);
+		Role roleSelected = WindowsUtils.getSelectedComboBoxItem(roleComboBox);
 		List<Fone> phones = Arrays.asList(EntityFactory.createPhone(WindowsUtils.getLongFromTextField(cellPhoneTextField)),
 										 EntityFactory.createPhone(WindowsUtils.getLongFromTextField(residentialPhoneTextField)));
 		
@@ -253,7 +252,7 @@ public class ClientNewController extends BaseController {
 													  WindowsUtils.getTextFromTextField(districtTextField), 
 													  WindowsUtils.getTextFromTextField(cityTextField), 
 													  WindowsUtils.getTextFromTextField(stateTextField), 
-													  (String) WindowsUtils.getSelectedComboBoxItem(countryComboBox), 
+													  WindowsUtils.getSelectedComboBoxItem(countryComboBox), 
 													  WindowsUtils.getTextFromTextField(cepTextField));
 			}
 			

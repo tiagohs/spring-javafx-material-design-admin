@@ -38,7 +38,7 @@ public class SalesNewController extends BaseController {
 	
 	public static final String SALE_KEY = "sale_key";
 	public static final String PATH_FXML = "/fxml/new_sale_order.fxml";
-	public static final String TITLE = "New Sale - Inventory Management";
+	public static final String NEW_SALE_TITLE_KEY = "new_sale.title";
 	public static final String PATH_ICON = WindowsUtils.ICON_APP_PATH;
 	
 	@FXML

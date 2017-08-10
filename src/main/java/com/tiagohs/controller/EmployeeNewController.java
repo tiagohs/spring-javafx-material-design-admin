@@ -34,7 +34,7 @@ public class EmployeeNewController extends BaseController {
 	public static final String EMPLOYEE_KEY = "employee_key";
 	
 	public static final String PATH_FXML = "/fxml/new_employee.fxml";
-	public static final String TITLE = "New Employee - Inventory Management";
+	public static final String NEW_EMPLOYEE_TITLE_KEY = "new_employee.title";
 	public static final String PATH_ICON = WindowsUtils.ICON_APP_PATH;
 
 	@FXML

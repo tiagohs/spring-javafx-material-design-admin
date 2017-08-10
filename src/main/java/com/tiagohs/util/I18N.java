@@ -5,11 +5,14 @@ import java.util.ResourceBundle;
 
 public class I18N {
 	
+	public static Locale PORTUGUESE_BRAZILLIAN = new Locale("pt", "BR");
+	public static Locale ENGLISH = new Locale("en", "US");
+	
 	private Locale defaultLocale;
 	private ResourceBundle bundle;
 	
 	public I18N() {
-		this.updateResourceBundle ( updateLocale("pt", "BR") );
+		this.updateResourceBundle ( updateLocale(PORTUGUESE_BRAZILLIAN) );
 	}
 	
 	public I18N(Locale locale) {
@@ -44,8 +47,8 @@ public class I18N {
 		return defaultLocale;
 	}
 
-	public void setDefaultLocale(Locale defaultLocale) {
-		this.defaultLocale = defaultLocale;
+	public void updateDefaultLocale(Locale defaultLocale) {
+		this.updateResourceBundle ( updateLocale(defaultLocale) );
 	}
 
 	public ResourceBundle getBundle() {

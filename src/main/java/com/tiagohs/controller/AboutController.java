@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 public class AboutController extends BaseController {
 	
 	public static final String PATH_FXML = "/fxml/about.fxml";
-	public static final String TITLE = "About Inventory Management";
+	public static final String ABOUT_TITLE_KEY = "about.title";
 	public static final String PATH_ICON = WindowsUtils.ICON_APP_PATH;
 	
 	public static final String FACCEBOOK_URL = "https://www.facebook.com/tiago.henrique.16";
@@ -22,6 +22,7 @@ public class AboutController extends BaseController {
 	public static final String LINKEDIN_URL = "https://br.linkedin.com/in/tiago-henrique-395868b7";
 	public static final String EMAIL_URL = "mailto:tiago.hsilva@al.infnet.edu.br";
 	
+	@Override
 	public <T> void init(Stage stage, HashMap<String, T> parameters) {
 		super.init(stage, parameters);
 	}

@@ -32,7 +32,7 @@ public class ProductNewController extends BaseController {
 	public static final String PRODUCT_KEY = "product_key";
 	
 	public static final String PATH_FXML = "/fxml/new_product.fxml";
-	public static final String TITLE = "New Product - Inventory Management";
+	public static final String NEW_PRODUCT_TITLE_KEY = "new_product.title";
 	public static final String PATH_ICON = WindowsUtils.ICON_APP_PATH;
 	
 	@FXML

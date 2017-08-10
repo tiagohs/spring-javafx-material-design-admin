@@ -16,17 +16,17 @@
             <Image url="@../images/icon.png" />
          </image>
       </ImageView>
-      <Label layoutX="11.0" layoutY="132.0" text="Inventory Management" textFill="#212121">
+      <Label layoutX="11.0" layoutY="132.0" text="%app.name" textFill="#212121">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Label layoutX="45.0" layoutY="157.0" text="stuffs-admin" textFill="#616161">
+      <Label layoutX="45.0" layoutY="157.0" text="%app.repoName" textFill="#616161">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Label layoutX="56.0" layoutY="182.0" text="\@tiagohs" textFill="#212121">
+      <Label layoutX="56.0" layoutY="182.0" text="%app.author" textFill="#212121">
          <font>
             <Font size="16.0" />
          </font>
@@ -92,7 +92,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <Label contentDisplay="CENTER" layoutX="196.0" layoutY="148.0" prefHeight="91.0" prefWidth="206.0" text="stuffs-admin: Inventory Management&#10;Copyright 2017 stuffs-admin Inc. &#10;All rights reserved" textAlignment="CENTER" />
+      <Label contentDisplay="CENTER" layoutX="196.0" layoutY="148.0" prefHeight="91.0" prefWidth="206.0" text="%about.description" textAlignment="CENTER" />
       <JFXButton fx:id="okButton" layoutX="163.0" layoutY="241.0" onAction="#onOk" prefHeight="27.0" prefWidth="90.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Ok" textFill="WHITE">
          <font>
             <Font size="14.0" />

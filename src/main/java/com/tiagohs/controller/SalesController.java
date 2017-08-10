@@ -27,7 +27,7 @@ import javafx.stage.Stage;
 public class SalesController extends BaseController {
 
 	public static final String PATH_FXML = "/fxml/sales.fxml";
-	public static final String TITLE = "Sales - Inventory Management";
+	public static final String SALES_TITLE_KEY = "sales.title";
 	public static final String PATH_ICON = WindowsUtils.ICON_APP_PATH;
 	
 	@FXML
@@ -88,7 +88,7 @@ public class SalesController extends BaseController {
 	
 	@FXML
 	public void onNewSale() throws Exception {
-		WindowsUtils.openNewWindow(SalesNewController.PATH_FXML, SalesNewController.TITLE, SalesNewController.PATH_ICON, null, Modality.APPLICATION_MODAL);
+		WindowsUtils.openNewWindow(SalesNewController.PATH_FXML, getWindowTitle(SalesNewController.NEW_SALE_TITLE_KEY), SalesNewController.PATH_ICON, null, Modality.APPLICATION_MODAL);
 	}
 	
 	
