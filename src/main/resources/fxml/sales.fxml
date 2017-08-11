@@ -8,6 +8,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
@@ -15,17 +16,7 @@
    <children>
       <Pane layoutX="-6.0" layoutY="-6.0" prefHeight="182.0" prefWidth="728.0" style="-fx-background-color: #3F51B5;" styleClass="product-detail-header">
          <children>
-            <Label layoutX="85.0" layoutY="20.0" text="Sales" textFill="#fafafa">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label layoutX="23.0" layoutY="23.0" text="Home /" textFill="#e0e0e0">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Label>
-            <JFXButton alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="295.0" layoutY="54.0" onAction="#onNewSale" prefHeight="75.0" prefWidth="138.0" ripplerFill="#fcfcfc" text="New Sales Order" textAlignment="CENTER" textFill="#fffdfd">
+            <JFXButton alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="282.0" layoutY="54.0" onAction="#onNewSale" prefHeight="75.0" prefWidth="165.0" ripplerFill="#fcfcfc" text="%new_sale.pathTitle" textAlignment="CENTER" textFill="#fffdfd">
                <font>
                   <Font size="14.0" />
                </font>
@@ -44,22 +35,36 @@
       </Pane>
       <TabPane layoutY="127.0" prefHeight="570.0" prefWidth="717.0" tabClosingPolicy="UNAVAILABLE">
          <tabs>
-            <Tab text="ALL">
+            <Tab text="%sales.tabAll">
                <content>
                   <AnchorPane fx:id="allContainer" minHeight="0.0" minWidth="0.0" prefHeight="288.0" prefWidth="558.0" />
                </content>
             </Tab>
-            <Tab text="OPEN">
+            <Tab text="%sales.tabOpen">
                <content>
                   <AnchorPane fx:id="openContainer" minHeight="0.0" minWidth="0.0" prefHeight="288.0" prefWidth="558.0" />
                </content>
             </Tab>
-            <Tab text="FINALIZED">
+            <Tab text="%sales.tabClosed">
                <content>
                   <AnchorPane fx:id="finalizedContainer" minHeight="0.0" minWidth="0.0" prefHeight="288.0" prefWidth="558.0" />
                </content>
             </Tab>
          </tabs>
       </TabPane>
+      <HBox alignment="BASELINE_LEFT" layoutX="23.0" layoutY="23.0" prefHeight="30.0" prefWidth="291.0" spacing="5.0">
+         <children>
+            <Label text="%app.path" textFill="#e0e0e0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label text="%sales.pathTitle" textFill="#fafafa">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
    </children>
 </AnchorPane>
