@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
 <?import com.jfoenix.controls.JFXTextArea?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import java.lang.String?>
@@ -21,7 +22,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane fx:id="container" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tiagohs.controller.SalesNewController">
+<StackPane fx:id="container" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tiagohs.controller.SalesNewController">
    <children>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="617.0" prefWidth="709.0" stylesheets="@../css/application.css">
          <children>
@@ -176,6 +177,8 @@
                               </Label>
                            </children>
                         </HBox>
+                        <JFXDatePicker fx:id="shipmentDateDatePicker" layoutX="19.0" layoutY="126.0" prefHeight="25.0" prefWidth="179.0" promptText="Shipment Date" />
+                        <JFXDatePicker fx:id="issueDateDatePicker" layoutX="205.0" layoutY="126.0" prefHeight="25.0" prefWidth="179.0" promptText="Issue Date" />
                      </children></AnchorPane>
                </content>
             </ScrollPane>

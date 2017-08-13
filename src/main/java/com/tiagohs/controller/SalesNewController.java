@@ -1,8 +1,11 @@
 package com.tiagohs.controller;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -11,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import com.tiagohs.model.Client;
@@ -71,11 +75,11 @@ public class SalesNewController extends BaseController {
 	@FXML
 	private JFXComboBox<String> stateComboBox;
 	
-    /*@FXML
+    @FXML
     private JFXDatePicker shipmentDateDatePicker;
     
     @FXML
-    private JFXDatePicker issueDateDatePicker;*/
+    private JFXDatePicker issueDateDatePicker;
     
 	@FXML
 	private Button saveButton;
@@ -107,8 +111,8 @@ public class SalesNewController extends BaseController {
 		this.items = new ArrayList<>();
 		this.total = 0;
 		
-		/*shipmentDateDatePicker.setDialogParent(container);
-		issueDateDatePicker.setDialogParent(container);*/
+		shipmentDateDatePicker.setDialogParent(container);
+		issueDateDatePicker.setDialogParent(container);
 		
 		saleCode.setText("S" + RandomStringUtils.randomAlphanumeric(5));
 		
@@ -243,8 +247,6 @@ public class SalesNewController extends BaseController {
 	
 	@FXML
 	public void onSave() {
-		Calendar calendar = Calendar.getInstance();
-		calendar.add(Calendar.MONTH, -1);
 		
 		if (sale == null)
 			sale = new Sale();
@@ -257,8 +259,8 @@ public class SalesNewController extends BaseController {
 		try {
 			saleService.save(EntityFactory.createSale(sale, 
 					WindowsUtils.getTextFromLabel(saleCode), 
-					calendar, 
-					calendar, 
+					convertToCalendar(shipmentDateDatePicker.getValue()), 
+					convertToCalendar(issueDateDatePicker.getValue()), 
 					WindowsUtils.getTextFromTextField(referenceTextField), 
 					WindowsUtils.getTextFromTextField(emailTextField), 
 					WindowsUtils.getTextFromTextArea(messageTextArea), 
@@ -277,6 +279,13 @@ public class SalesNewController extends BaseController {
 		}
 		
 	}
+	
+	public static Calendar convertToCalendar(LocalDate localDate) {
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(Date.from(localDate.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant()));
+		
+		return calendar;
+	  }
 	
 	@FXML
 	public void onCancel() {
