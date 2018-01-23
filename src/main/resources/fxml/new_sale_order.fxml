@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<StackPane fx:id="container" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tiagohs.controller.SalesNewController">
+   <children>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="617.0" prefWidth="709.0" stylesheets="@../css/application.css">
+         <children>
+            <Pane layoutX="-10.0" layoutY="-9.0" prefHeight="61.0" prefWidth="728.0" style="-fx-background-color: #3F51B5;" styleClass="product-detail-header">
+               <children>
+                  <JFXButton fx:id="cancelButton" layoutX="505.0" layoutY="20.0" onAction="#onCancel" prefHeight="27.0" prefWidth="90.0" ripplerFill="#7986cb" text="%app.cancel" textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </JFXButton>
+                  <JFXButton fx:id="helpButton" layoutX="597.0" layoutY="20.0" onAction="#onHelp" prefHeight="27.0" prefWidth="90.0" ripplerFill="#7986cb" text="%app.help" textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </JFXButton>
+                  <JFXButton fx:id="saveButton" disable="true" layoutX="408.0" layoutY="20.0" onAction="#onSave" prefHeight="27.0" prefWidth="90.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="%app.save" textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </JFXButton>
+                  <HBox alignment="BASELINE_LEFT" layoutX="23.0" layoutY="23.0" prefHeight="30.0" prefWidth="380.0" spacing="5.0">
+                     <children>
+                        <Label text="%new_sale.path" textFill="#e0e0e0">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <Label text="%new_sale.pathTitle" textFill="#fafafa">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+            </Pane>
+            <ScrollPane layoutX="-6.0" layoutY="52.0" prefHeight="567.0" prefWidth="721.0">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefWidth="718.0">
+                     <children>
+                        <Pane layoutX="23.0" layoutY="47.0" prefHeight="1.0" prefWidth="672.0" style="-fx-background-color: #EEEEEE;" />
+                        <JFXTextField fx:id="emailTextField" accessibleHelp="Auto" focusColor="#009688" labelFloat="true" layoutX="231.0" layoutY="77.0" prefHeight="25.0" prefWidth="283.0" promptText="%app.placeholderEmail" />
+                        <Label fx:id="saleCode" alignment="TOP_RIGHT" layoutX="567.0" layoutY="15.0" prefHeight="30.0" prefWidth="128.0" text="S000001" textFill="#00796b">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <JFXTextField fx:id="phoneTextField" accessibleHelp="Auto" focusColor="#009688" labelFloat="true" layoutX="527.0" layoutY="77.0" prefHeight="25.0" prefWidth="168.0" promptText="%app.placeholderPhone" />
+                        <JFXComboBox fx:id="clientComboBox" focusColor="#009688" labelFloat="true" layoutX="19.0" layoutY="77.0" prefHeight="25.0" prefWidth="199.0" promptText="%app.placeholderClient" />
+                        <JFXTextField fx:id="referenceTextField" accessibleHelp="Auto" focusColor="#009688" labelFloat="true" layoutX="399.0" layoutY="126.0" prefHeight="25.0" prefWidth="182.0" promptText="%app.placeholderReference" />
+                        <JFXButton contentDisplay="GRAPHIC_ONLY" layoutX="171.0" layoutY="122.0" />
+                        <JFXButton contentDisplay="GRAPHIC_ONLY" layoutX="377.0" layoutY="122.0" />
+                        <Pane layoutX="25.0" layoutY="207.0" prefHeight="1.0" prefWidth="672.0" style="-fx-background-color: #EEEEEE;" />
+                        <VBox fx:id="itemsContainer" layoutX="7.0" layoutY="212.0" prefWidth="715.0" />
+                        <Pane fx:id="paneBottomItems" layoutX="7.0" layoutY="217.0" prefHeight="280.0" prefWidth="715.0">
+                           <children>
+                              <JFXButton fx:id="addAnotherItemButton1" layoutX="270.0" layoutY="7.0" onAction="#onAddAnotherItem" prefHeight="39.0" prefWidth="176.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="%new_sale.addAnotherItem" textFill="WHITE">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <graphic>
+                                    <ImageView fitHeight="31.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/plus.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </JFXButton>
+                              <JFXTextArea fx:id="messageTextArea" focusColor="#009688" labelFloat="true" layoutX="14.0" layoutY="74.0" prefHeight="180.0" prefWidth="407.0" promptText="%app.placeholderMessageClient" />
+                              <Pane prefHeight="1.0" prefWidth="260.0" style="-fx-background-color: #EEEEEE;" />
+                              <Pane prefHeight="1.0" prefWidth="260.0" style="-fx-background-color: #EEEEEE;" />
+                              <Pane prefHeight="1.0" prefWidth="260.0" style="-fx-background-color: #EEEEEE;" />
+                              <GridPane layoutX="421.0" layoutY="194.0" prefHeight="60.0" prefWidth="265.0">
+                                <columnConstraints>
+                                  <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                  <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <Label text="%new_sale.totalUnits" textFill="#00796b">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="%new_sale.total" textFill="#00796b" GridPane.rowIndex="1">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="totalLabel" alignment="CENTER_RIGHT" prefHeight="20.0" prefWidth="60.0" text="0" textFill="#616161" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="totalUnitsLabel" alignment="CENTER_RIGHT" prefHeight="20.0" prefWidth="60.0" text="0" textFill="#616161" GridPane.columnIndex="1">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </GridPane>
+                           </children>
+                        </Pane>
+                        <JFXComboBox fx:id="stateComboBox" focusColor="#009688" labelFloat="true" layoutX="586.0" layoutY="126.0" prefHeight="25.0" prefWidth="109.0" promptText="%app.placeholderState">
+                     		<items>
+				      	        <FXCollections fx:factory="observableArrayList">
+					            	<String fx:value="Open" />
+									<String fx:value="Finalized" />
+				            	</FXCollections>
+				      	      </items>
+				            </JFXComboBox>
+                        <HBox alignment="BOTTOM_LEFT" layoutX="21.0" layoutY="15.0" prefHeight="30.0" prefWidth="577.0" spacing="5.0">
+                           <children>
+                              <Label text="%new_sale.orderDetailsTitle" textFill="#212121">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Label>
+                              <Label text="%new_sale.orderDetailsSubtitle" textFill="#616161">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="BOTTOM_LEFT" layoutX="23.0" layoutY="174.0" prefHeight="30.0" prefWidth="577.0" spacing="5.0">
+                           <children>
+                              <Label text="%new_sale.itemsTitle" textFill="#212121">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Label>
+                              <Label text="%new_sale.itemsSubtitle" textFill="#616161">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <JFXDatePicker fx:id="shipmentDateDatePicker" layoutX="19.0" layoutY="126.0" prefHeight="25.0" prefWidth="179.0" promptText="Shipment Date" />
+                        <JFXDatePicker fx:id="issueDateDatePicker" layoutX="205.0" layoutY="126.0" prefHeight="25.0" prefWidth="179.0" promptText="Issue Date" />
+                     </children></AnchorPane>
+               </content>
+            </ScrollPane>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>

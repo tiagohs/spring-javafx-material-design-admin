@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="sales_template" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7b7403dc-960c-4574-93d7-ed48ed865ddf">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="code" class="java.lang.String"/>
+	<field name="shipmentDate" class="java.lang.String"/>
+	<field name="issueDate" class="java.lang.String"/>
+	<field name="client" class="java.lang.String"/>
+	<field name="totalUnits" class="java.lang.String"/>
+	<field name="total" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<rectangle>
+				<reportElement x="-24" y="-22" width="599" height="101" backcolor="#3F51B5" uuid="6ed54709-57d9-4d1f-b15a-7bd9d8c7c806"/>
+				<graphicElement>
+					<pen lineColor="#3F51B5"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="10" y="0" width="334" height="41" forecolor="#FFFFFF" uuid="4b524142-f79a-41e2-a195-bad5f207d246"/>
+				<textElement>
+					<font size="30"/>
+				</textElement>
+				<text><![CDATA[Inventory Management]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="38" width="237" height="41" forecolor="#EBEBEB" uuid="ff24c1b4-8c4e-4232-a149-dd3c6f4b34b6"/>
+				<textElement>
+					<font size="18"/>
+				</textElement>
+				<text><![CDATA[Sales Report]]></text>
+			</staticText>
+			<image>
+				<reportElement x="460" y="0" width="92" height="63" uuid="088f6531-d676-40ed-a6e6-c37de1fded05"/>
+				<imageExpression><![CDATA["D:\\Users\\tisil\\git\\stuffs-admin\\src\\main\\resources\\images\\icon.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="27" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="552" height="20" backcolor="#009688" uuid="841474d7-46ba-4f48-86bd-8678fc861cbb"/>
+				<graphicElement>
+					<pen lineColor="#009688"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="0" width="56" height="20" forecolor="#FFFFFF" uuid="63a9e0de-2bd5-43b8-833d-59c06ad429c0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Code]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="56" y="0" width="105" height="20" forecolor="#FFFFFF" uuid="d9a459ef-248c-4ac1-8100-0985816dcdad"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Shipment Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="161" y="0" width="96" height="20" forecolor="#FFFFFF" uuid="ecd67396-c3af-44f9-a9a4-2f02c6b3221c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Issue Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="257" y="0" width="140" height="20" forecolor="#FFFFFF" uuid="8daaf43b-591a-48d9-bc26-fc106f3983b3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Client Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="397" y="0" width="63" height="20" forecolor="#FFFFFF" uuid="c0740702-1af8-4d3a-bbf9-d620e1729d08"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Total Units]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="460" y="0" width="92" height="20" forecolor="#FFFFFF" uuid="2abfa193-b53b-4955-a00c-1eb626dbaff3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Total (R$)]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="56" height="20" uuid="a76fdfdc-569d-43ef-95e4-73521efebe50"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{code}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="56" y="0" width="105" height="20" uuid="d6daf7cb-5339-4f93-bb19-e9d37302f803"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{shipmentDate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="161" y="0" width="96" height="20" uuid="4ef5743f-6607-41d1-9960-31518bc2d9f7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{issueDate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="257" y="0" width="140" height="20" uuid="8da34328-106a-4ca6-95d0-19b363bb0be7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{client}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="397" y="0" width="63" height="20" uuid="b8fedd1f-992c-47e4-8302-5c7ed9368587"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{totalUnits}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="460" y="0" width="92" height="20" uuid="fdc7cbd8-3c6a-43f0-8ec8-1e9615778f68"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

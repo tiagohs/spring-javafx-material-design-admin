@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+<StackPane fx:id="container" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tiagohs.controller.SettingsController">
+   <children>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="154.0" prefWidth="453.0" stylesheets="@../css/application.css">
+         <children>
+            <Pane layoutX="-10.0" layoutY="-9.0" prefHeight="61.0" prefWidth="472.0" style="-fx-background-color: #3F51B5;" styleClass="product-detail-header">
+               <children>
+                  <Label layoutX="31.0" layoutY="20.0" text="Settings" textFill="#fafafa">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <JFXButton fx:id="cancelButton" layoutX="280.0" layoutY="20.0" onAction="#onCancel" prefHeight="27.0" prefWidth="90.0" ripplerFill="#7986cb" text="Cancel" textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </JFXButton>
+                  <JFXButton fx:id="helpButton" layoutX="372.0" layoutY="20.0" onAction="#onHelp" prefHeight="27.0" prefWidth="92.0" ripplerFill="#7986cb" text="Help" textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </JFXButton>
+                  <JFXButton fx:id="saveButton" disable="true" layoutX="146.0" layoutY="20.0" onAction="#onSave" prefHeight="30.0" prefWidth="127.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Save Changes" textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </JFXButton>
+               </children>
+            </Pane>
+            <Label layoutX="74.0" layoutY="92.0" text="Language" textFill="#616161">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <JFXComboBox fx:id="languageComboBox" focusColor="#009688" labelFloat="true" layoutX="161.0" layoutY="92.0" prefHeight="25.0" prefWidth="217.0" promptText="Select the default Language" />
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>

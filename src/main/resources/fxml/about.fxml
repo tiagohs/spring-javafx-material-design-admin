@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="280.0" prefWidth="416.0" style="-fx-background-color: #FFFFF;" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tiagohs.controller.AboutController">
+   <children>
+      <ImageView fitHeight="91.0" fitWidth="119.0" layoutX="35.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/icon.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="11.0" layoutY="132.0" text="%app.name" textFill="#212121">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="45.0" layoutY="157.0" text="%app.repoName" textFill="#616161">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="56.0" layoutY="182.0" text="%app.author" textFill="#212121">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Pane layoutX="188.0" layoutY="25.0" prefHeight="200.0" prefWidth="1.0" style="-fx-background-color: #EEEEEE;" />
+      <JFXButton fx:id="saveButton" contentDisplay="GRAPHIC_ONLY" layoutX="222.0" layoutY="25.0" onAction="#onFacebook" prefHeight="45.0" prefWidth="45.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="44.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/facebook.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton fx:id="saveButton1" contentDisplay="GRAPHIC_ONLY" layoutX="292.0" layoutY="25.0" onAction="#onGithub" prefHeight="45.0" prefWidth="45.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="44.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/github.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton fx:id="saveButton11" contentDisplay="GRAPHIC_ONLY" layoutX="222.0" layoutY="87.0" onAction="#onLinkedin" prefHeight="45.0" prefWidth="45.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="44.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/linkedin.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton fx:id="saveButton111" contentDisplay="GRAPHIC_ONLY" layoutX="292.0" layoutY="87.0" onAction="#onEmail" prefHeight="45.0" prefWidth="45.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="44.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/gmail.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <Label contentDisplay="CENTER" layoutX="196.0" layoutY="148.0" prefHeight="91.0" prefWidth="206.0" text="%about.description" textAlignment="CENTER" />
+      <JFXButton fx:id="okButton" layoutX="163.0" layoutY="241.0" onAction="#onOk" prefHeight="27.0" prefWidth="90.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Ok" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+   </children>
+</AnchorPane>

@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.validation.RequiredFieldValidator?>
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+<StackPane fx:id="container" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tiagohs.controller.EmployeeNewController">
+   <children>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="608.0" prefWidth="709.0" stylesheets="@../css/application.css">
+         <children>
+            <Pane layoutX="-10.0" layoutY="-9.0" prefHeight="61.0" prefWidth="728.0" style="-fx-background-color: #3F51B5;" styleClass="product-detail-header">
+               <children>
+                  <Label layoutX="113.0" layoutY="20.0" text="New Employee" textFill="#fafafa">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="23.0" layoutY="23.0" text="Employees /" textFill="#e0e0e0">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <JFXButton fx:id="cancelButton" layoutX="505.0" layoutY="20.0" onAction="#onCancel" prefHeight="27.0" prefWidth="90.0" ripplerFill="#7986cb" text="Cancel" textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </JFXButton>
+                  <JFXButton fx:id="helpButton" layoutX="597.0" layoutY="20.0" onAction="#onHelp" prefHeight="27.0" prefWidth="90.0" ripplerFill="#7986cb" text="Help" textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </JFXButton>
+                  <JFXButton fx:id="saveButton" disable="true" layoutX="408.0" layoutY="20.0" onAction="#onSave" prefHeight="27.0" prefWidth="90.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Save" textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </JFXButton>
+               </children>
+            </Pane>
+            <Label layoutX="24.0" layoutY="75.0" text="Employee Details" textFill="#212121">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="183.0" layoutY="79.0" text="Employee Details" textFill="#616161">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Pane layoutX="24.0" layoutY="113.0" prefHeight="1.0" prefWidth="672.0" style="-fx-background-color: #EEEEEE;" />
+            <JFXTextField fx:id="nameTextField" accessibleHelp="Auto" focusColor="#009688" labelFloat="true" layoutX="24.0" layoutY="132.0" prefHeight="25.0" prefWidth="352.0" promptText="Name" />
+            <JFXTextField fx:id="emailTextField" accessibleHelp="Auto" focusColor="#009688" labelFloat="true" layoutX="394.0" layoutY="132.0" prefHeight="25.0" prefWidth="301.0" promptText="Email" />
+            <JFXTextField fx:id="cpfTextField" accessibleHelp="Auto" focusColor="#009688" labelFloat="true" layoutX="24.0" layoutY="185.0" prefHeight="25.0" prefWidth="217.0" promptText="CPF" />
+            <JFXTextField fx:id="residentialPhoneTextField" accessibleHelp="Auto" focusColor="#009688" labelFloat="true" layoutX="287.0" layoutY="185.0" prefHeight="25.0" prefWidth="199.0" promptText="Residential Phone" />
+            <JFXTextField fx:id="cellPhoneTextField" accessibleHelp="Auto" focusColor="#009688" labelFloat="true" layoutX="496.0" layoutY="185.0" prefHeight="25.0" prefWidth="199.0" promptText="Cell Phone" />
+            <Label layoutX="19.0" layoutY="239.0" text="Employee Address" textFill="#212121">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="187.0" layoutY="243.0" text="Employee Address" textFill="#616161">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Pane layoutX="19.0" layoutY="277.0" prefHeight="1.0" prefWidth="672.0" style="-fx-background-color: #EEEEEE;" />
+            <JFXTextField fx:id="cepTextField" accessibleHelp="Auto" focusColor="#009688" labelFloat="true" layoutX="24.0" layoutY="311.0" prefHeight="25.0" prefWidth="155.0" promptText="Zip Code" />
+            <JFXTextField fx:id="streetTextField" accessibleHelp="Auto" focusColor="#009688" labelFloat="true" layoutX="190.0" layoutY="311.0" prefHeight="25.0" prefWidth="430.0" promptText="Street" />
+            <JFXTextField fx:id="numberTextField" accessibleHelp="Auto" focusColor="#009688" labelFloat="true" layoutX="631.0" layoutY="311.0" prefHeight="25.0" prefWidth="60.0" promptText="Number" />
+            <JFXTextField fx:id="complementTextField" accessibleHelp="Auto" focusColor="#009688" labelFloat="true" layoutX="190.0" layoutY="363.0" prefHeight="25.0" prefWidth="502.0" promptText="Complement" />
+            <JFXComboBox fx:id="countryComboBox" focusColor="#009688" labelFloat="true" layoutX="494.0" layoutY="424.0" prefHeight="25.0" prefWidth="199.0" promptText="Select the Country">
+            	<items>
+      	        <FXCollections fx:factory="observableArrayList">
+	            	<String fx:value="Afghanistan" />
+					<String fx:value="Albania" />
+					<String fx:value="Algeria" />
+					<String fx:value="American Samoa" />
+					<String fx:value="Andorra" />
+					<String fx:value="Angola" />
+					<String fx:value="Anguilla" />
+					<String fx:value="Antarctica" />
+					<String fx:value="Antigua and Barbuda" />
+					<String fx:value="Argentina" />
+					<String fx:value="Armenia" />
+					<String fx:value="Aruba" />
+					<String fx:value="Australia" />
+					<String fx:value="Austria" />
+					<String fx:value="Azerbaijan" />
+					<String fx:value="Bahamas" />
+					<String fx:value="Bahrain" />
+					<String fx:value="Bangladesh" />
+					<String fx:value="Barbados" />
+					<String fx:value="Belarus" />
+					<String fx:value="Belgium" />
+					<String fx:value="Belize" />
+					<String fx:value="Benin" />
+					<String fx:value="Bermuda" />
+					<String fx:value="Bhutan" />
+					<String fx:value="Bolivia" />
+					<String fx:value="Bosnia and Herzegovina" />
+					<String fx:value="Botswana" />
+					<String fx:value="Bouvet Island" />
+					<String fx:value="Brazil" />
+					<String fx:value="British Indian Ocean Territory" />
+					<String fx:value="Brunei Darussalam" />
+					<String fx:value="Bulgaria" />
+					<String fx:value="Burkina Faso" />
+					<String fx:value="Burundi" />
+					<String fx:value="Cambodia" />
+					<String fx:value="Cameroon" />
+					<String fx:value="Canada" />
+					<String fx:value="Cape Verde" />
+					<String fx:value="Cayman Islands" />
+					<String fx:value="Central African Republic" />
+					<String fx:value="Chad" />
+					<String fx:value="Chile" />
+					<String fx:value="China" />
+					<String fx:value="Christmas Island" />
+					<String fx:value="Cocos (Keeling Islands)" />
+					<String fx:value="Colombia" />
+					<String fx:value="Comoros" />
+					<String fx:value="Congo" />
+					<String fx:value="Cook Islands" />
+					<String fx:value="Costa Rica" />
+					<String fx:value="Cote D'Ivoire (Ivory Coast)" />
+					<String fx:value="Croatia (Hrvatska" />
+					<String fx:value="Cuba" />
+					<String fx:value="Cyprus" />
+					<String fx:value="Czech Republic" />
+					<String fx:value="Denmark" />
+					<String fx:value="Djibouti" />
+					<String fx:value="Dominica" />
+					<String fx:value="Dominican Republic" />
+					<String fx:value="East Timor" />
+					<String fx:value="Ecuador" />
+					<String fx:value="Egypt" />
+					<String fx:value="El Salvador" />
+					<String fx:value="Equatorial Guinea" />
+					<String fx:value="Eritrea" />
+					<String fx:value="Estonia" />
+					<String fx:value="Ethiopia" />
+					<String fx:value="Falkland Islands (Malvinas)" />
+					<String fx:value="Faroe Islands" />
+					<String fx:value="Fiji" />
+					<String fx:value="Finland" />
+					<String fx:value="France" />
+					<String fx:value="France, Metropolitan" />
+					<String fx:value="French Guiana" />
+					<String fx:value="French Polynesia" />
+					<String fx:value="French Southern Territories" />
+					<String fx:value="Gabon" />
+					<String fx:value="Gambia" />
+					<String fx:value="Georgia" />
+					<String fx:value="Germany" />
+					<String fx:value="Ghana" />
+					<String fx:value="Gibraltar" />
+					<String fx:value="Greece" />
+					<String fx:value="Greenland" />
+					<String fx:value="Grenada" />
+					<String fx:value="Guadeloupe" />
+					<String fx:value="Guam" />
+					<String fx:value="Guatemala" />
+					<String fx:value="Guinea" />
+					<String fx:value="Guinea-Bissau" />
+					<String fx:value="Guyana" />
+					<String fx:value="Haiti" />
+					<String fx:value="Heard and McDonald Islands" />
+					<String fx:value="Honduras" />
+					<String fx:value="Hong Kong" />
+					<String fx:value="Hungary" />
+					<String fx:value="Iceland" />
+					<String fx:value="India" />
+					<String fx:value="Indonesia" />
+					<String fx:value="Iran" />
+					<String fx:value="Iraq" />
+					<String fx:value="Ireland" />
+					<String fx:value="Israel" />
+					<String fx:value="Italy" />
+					<String fx:value="Jamaica" />
+					<String fx:value="Japan" />
+					<String fx:value="Jordan" />
+					<String fx:value="Kazakhstan" />
+					<String fx:value="Kenya" />
+					<String fx:value="Kiribati" />
+					<String fx:value="Korea (North)" />
+					<String fx:value="Korea (South)" />
+					<String fx:value="Kuwait" />
+					<String fx:value="Kyrgyzstan" />
+					<String fx:value="Laos" />
+					<String fx:value="Latvia" />
+					<String fx:value="Lebanon" />
+					<String fx:value="Lesotho" />
+					<String fx:value="Liberia" />
+					<String fx:value="Libya" />
+					<String fx:value="Liechtenstein" />
+					<String fx:value="Lithuania" />
+					<String fx:value="Luxembourg" />
+					<String fx:value="Macau" />
+					<String fx:value="Macedonia" />
+					<String fx:value="Madagascar" />
+					<String fx:value="Malawi" />
+					<String fx:value="Malaysia" />
+					<String fx:value="Maldives" />
+					<String fx:value="Mali" />
+					<String fx:value="Malta" />
+					<String fx:value="Marshall Islands" />
+					<String fx:value="Martinique" />
+					<String fx:value="Mauritania" />
+					<String fx:value="Mauritius" />
+					<String fx:value="Mayotte" />
+					<String fx:value="Mexico" />
+					<String fx:value="Micronesia" />
+					<String fx:value="Moldova" />
+					<String fx:value="Monaco" />
+					<String fx:value="Mongolia" />
+					<String fx:value="Montserrat" />
+					<String fx:value="Morocco" />
+					<String fx:value="Mozambique" />
+					<String fx:value="Myanmar" />
+					<String fx:value="Namibia" />
+					<String fx:value="Nauru" />
+					<String fx:value="Nepal" />
+					<String fx:value="Netherlands Antilles" />
+					<String fx:value="Netherlands" />
+					<String fx:value="New Caledonia" />
+					<String fx:value="New Zealand" />
+					<String fx:value="Nicaragua" />
+					<String fx:value="Niger" />
+					<String fx:value="Nigeria" />
+					<String fx:value="Niue" />
+					<String fx:value="Norfolk Island" />
+					<String fx:value="Northern Mariana Islands" />
+					<String fx:value="Norway" />
+					<String fx:value="Oman" />
+					<String fx:value="Pakistan" />
+					<String fx:value="Palau" />
+					<String fx:value="Panama" />
+					<String fx:value="Papua New Guinea" />
+					<String fx:value="Paraguay" />
+					<String fx:value="Peru" />
+					<String fx:value="Philippines" />
+					<String fx:value="Pitcairn" />
+					<String fx:value="Poland" />
+					<String fx:value="Portugal" />
+					<String fx:value="Puerto Rico" />
+					<String fx:value="Qatar" />
+					<String fx:value="Reunion" />
+					<String fx:value="Romania" />
+					<String fx:value="Russian Federation" />
+					<String fx:value="Rwanda" />
+					<String fx:value="S. Georgia and S. Sandwich Isls." />
+					<String fx:value="Saint Kitts and Nevis" />
+					<String fx:value="Saint Lucia" />
+					<String fx:value="Saint Vincent and The Grenadines" />
+					<String fx:value="Samoa" />
+					<String fx:value="San Marino" />
+					<String fx:value="Sao Tome and Principe" />
+					<String fx:value="Saudi Arabia" />
+					<String fx:value="Senegal" />
+					<String fx:value="Seychelles" />
+					<String fx:value="Sierra Leone" />
+					<String fx:value="Singapore" />
+					<String fx:value="Slovak Republic" />
+					<String fx:value="Slovenia" />
+					<String fx:value="Solomon Islands" />
+					<String fx:value="Somalia" />
+					<String fx:value="South Africa" />
+					<String fx:value="Spain" />
+					<String fx:value="Sri Lanka" />
+					<String fx:value="St. Helena" />
+					<String fx:value="St. Pierre and Miquelon" />
+					<String fx:value="Sudan" />
+					<String fx:value="Suriname" />
+					<String fx:value="Svalbard and Jan Mayen Islands" />
+					<String fx:value="Swaziland" />
+					<String fx:value="Sweden" />
+					<String fx:value="Switzerland" />
+					<String fx:value="Syria" />
+					<String fx:value="Taiwan" />
+					<String fx:value="Tajikistan" />
+					<String fx:value="Tanzania" />
+					<String fx:value="Thailand" />
+					<String fx:value="Togo" />
+					<String fx:value="Tokelau" />
+					<String fx:value="Tonga" />
+					<String fx:value="Trinidad and Tobago" />
+					<String fx:value="Tunisia" />
+					<String fx:value="Turkey" />
+					<String fx:value="Turkmenistan" />
+					<String fx:value="Turks and Caicos Islands" />
+					<String fx:value="Tuvalu" />
+					<String fx:value="US Minor Outlying Islands" />
+					<String fx:value="Uganda" />
+					<String fx:value="Ukraine" />
+					<String fx:value="United Arab Emirates" />
+					<String fx:value="United Kingdom" />
+					<String fx:value="United States" />
+					<String fx:value="Uruguay" />
+					<String fx:value="Uzbekistan" />
+					<String fx:value="Vanuatu" />
+					<String fx:value="Vatican City State (Holy See)" />
+					<String fx:value="Venezuela" />
+					<String fx:value="Viet Nam" />
+					<String fx:value="Virgin Islands (British)" />
+					<String fx:value="Virgin Islands (US)" />
+					<String fx:value="Wallis and Futuna Islands" />
+					<String fx:value="Western Sahara" />
+					<String fx:value="Yemen" />
+					<String fx:value="Yugoslavia" />
+					<String fx:value="Zaire" />
+					<String fx:value="Zambia" />
+					<String fx:value="Zimbabwe" />
+            	</FXCollections>
+      	      </items>
+            </JFXComboBox>
+            <JFXTextField fx:id="districtTextField" accessibleHelp="Auto" focusColor="#009688" labelFloat="true" layoutX="24.0" layoutY="363.0" prefHeight="25.0" prefWidth="155.0" promptText="District">
+               <validators>
+                  <RequiredFieldValidator message="Input Required!" />
+               </validators>
+            </JFXTextField>
+            <Label layoutX="24.0" layoutY="485.0" text="Employee Access" textFill="#212121">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="184.0" layoutY="489.0" text="Employee Access" textFill="#616161">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Pane layoutX="24.0" layoutY="523.0" prefHeight="1.0" prefWidth="672.0" style="-fx-background-color: #EEEEEE;" />
+            <JFXComboBox fx:id="roleComboBox" focusColor="#009688" labelFloat="true" layoutX="476.0" layoutY="546.0" prefHeight="25.0" prefWidth="217.0" promptText="Select the Role " />
+            <JFXTextField fx:id="cityTextField" accessibleHelp="Auto" focusColor="#009688" labelFloat="true" layoutX="24.0" layoutY="424.0" prefHeight="25.0" prefWidth="199.0" promptText="City" />
+            <JFXTextField fx:id="stateTextField" accessibleHelp="Auto" focusColor="#009688" labelFloat="true" layoutX="256.0" layoutY="424.0" prefHeight="25.0" prefWidth="199.0" promptText="State" />
+            <JFXPasswordField fx:id="passwordTextField" focusColor="#009688" labelFloat="true" layoutX="24.0" layoutY="546.0" prefHeight="25.0" prefWidth="199.0" promptText="Password" />
+            <JFXPasswordField fx:id="confirmPasswordTextField" focusColor="#009688" labelFloat="true" layoutX="245.0" layoutY="546.0" prefHeight="25.0" prefWidth="199.0" promptText="Confirm Password" />
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>

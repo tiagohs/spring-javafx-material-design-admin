@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="sales_template" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7b7403dc-960c-4574-93d7-ed48ed865ddf">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="companyName" class="java.lang.String"/>
+	<field name="email" class="java.lang.String"/>
+	<field name="adress" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<rectangle>
+				<reportElement x="-24" y="-22" width="599" height="101" backcolor="#3F51B5" uuid="6ed54709-57d9-4d1f-b15a-7bd9d8c7c806"/>
+				<graphicElement>
+					<pen lineColor="#3F51B5"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="10" y="0" width="334" height="41" forecolor="#FFFFFF" uuid="4b524142-f79a-41e2-a195-bad5f207d246"/>
+				<textElement>
+					<font size="30"/>
+				</textElement>
+				<text><![CDATA[Inventory Management]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="38" width="237" height="41" forecolor="#EBEBEB" uuid="ff24c1b4-8c4e-4232-a149-dd3c6f4b34b6"/>
+				<textElement>
+					<font size="18"/>
+				</textElement>
+				<text><![CDATA[Suppliers Report]]></text>
+			</staticText>
+			<image>
+				<reportElement x="460" y="0" width="92" height="63" uuid="088f6531-d676-40ed-a6e6-c37de1fded05"/>
+				<imageExpression><![CDATA["D:\\Users\\tisil\\git\\stuffs-admin\\src\\main\\resources\\images\\icon.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="27" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="20" backcolor="#009688" uuid="841474d7-46ba-4f48-86bd-8678fc861cbb"/>
+				<graphicElement>
+					<pen lineColor="#009688"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="0" width="185" height="20" forecolor="#FFFFFF" uuid="e88ff1fb-5081-4674-9fff-b28d82268b91"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Company Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="185" y="0" width="159" height="20" forecolor="#FFFFFF" uuid="e295d9e9-a7db-4b54-b110-079d73d5876b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Email]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="344" y="0" width="211" height="20" forecolor="#FFFFFF" uuid="04461a4d-ab2c-4fbf-8e38-299a01095c7f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Adress]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="185" height="20" uuid="d4757316-4260-4da2-a4fd-aab810b58483"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{companyName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="185" y="0" width="159" height="20" uuid="97a5d6de-d670-44d5-9a80-c875e14f71ab"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{email}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="344" y="0" width="211" height="20" uuid="2668489f-bd3e-4f81-8dce-48fe74ff900e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{adress}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

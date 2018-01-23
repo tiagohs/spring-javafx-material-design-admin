@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="409.0" prefWidth="381.0" style="-fx-background-color: #FFFFFF;" stylesheets="@../css/application.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tiagohs.controller.LoginController">
+   <children>
+      <Pane layoutX="-7.0" layoutY="-8.0" prefHeight="72.0" prefWidth="395.0" style="-fx-background-color: #3F51B5;">
+         <children>
+            <Label layoutX="162.0" layoutY="23.0" text="Login" textFill="WHITE">
+               <font>
+                  <Font size="29.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <JFXButton fx:id="facabookButton" alignment="BOTTOM_CENTER" contentDisplay="GRAPHIC_ONLY" layoutX="95.0" layoutY="78.0" prefHeight="49.0" prefWidth="60.0" ripplerFill="#8b9dc3" style="-fx-background-color: #3b5998;" text="Dashboard" textAlignment="CENTER" textFill="#fffdfd">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="39.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/facebook.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton fx:id="googleButton" alignment="BOTTOM_CENTER" contentDisplay="GRAPHIC_ONLY" layoutX="161.0" layoutY="78.0" prefHeight="49.0" prefWidth="49.0" ripplerFill="#ffb9b9" style="-fx-background-color: #ff4343;" text="Dashboard" textAlignment="CENTER" textFill="#fffdfd">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="39.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/google.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton fx:id="twitterButton" alignment="BOTTOM_CENTER" contentDisplay="GRAPHIC_ONLY" layoutX="226.0" layoutY="78.0" prefHeight="43.0" prefWidth="60.0" ripplerFill="#0084b4" style="-fx-background-color: #00b2ff;" text="Dashboard" textAlignment="CENTER" textFill="#fffdfd">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="39.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/twitter.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXTextField fx:id="emailTextField" focusColor="#009688" labelFloat="true" layoutX="67.0" layoutY="178.0" prefHeight="36.0" prefWidth="278.0" promptText="Email" />
+      <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="28.0" layoutY="187.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/person.png" />
+         </image>
+      </ImageView>
+      <JFXTextField fx:id="passwordTextField" focusColor="#009688" labelFloat="true" layoutX="67.0" layoutY="246.0" prefHeight="36.0" prefWidth="278.0" promptText="Password" />
+      <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="28.0" layoutY="254.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/pass.png" />
+         </image>
+      </ImageView>
+      <JFXButton fx:id="loginButton" disable="true" layoutX="67.0" layoutY="343.0" onAction="#onLogin" prefHeight="36.0" prefWidth="278.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="LOGIN" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXCheckBox fx:id="rememberMeCheckBox" checkedColor="#009688" layoutX="56.0" layoutY="306.0" text="Remember Me" />
+      <Label fx:id="errorLabel" alignment="CENTER" layoutX="-1.0" layoutY="137.0" prefHeight="17.0" prefWidth="381.0" text="User does not found, try again." textFill="RED" visible="false">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

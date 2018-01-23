@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+<StackPane fx:id="container" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tiagohs.controller.ProductNewController">
+   <children>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="689.0" prefWidth="709.0" stylesheets="@../css/application.css">
+         <children>
+            <Pane layoutX="-10.0" layoutY="-9.0" prefHeight="61.0" prefWidth="728.0" style="-fx-background-color: #3F51B5;" styleClass="product-detail-header">
+               <children>
+                  <Label layoutX="102.0" layoutY="20.0" text="New Product" textFill="#fafafa">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="23.0" layoutY="23.0" text="Products /" textFill="#e0e0e0">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <JFXButton fx:id="cancelButton" layoutX="505.0" layoutY="20.0" onAction="#onCancel" prefHeight="27.0" prefWidth="90.0" ripplerFill="#7986cb" text="Cancel" textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </JFXButton>
+                  <JFXButton fx:id="helpButton" layoutX="597.0" layoutY="20.0" onAction="#onHelp" prefHeight="27.0" prefWidth="90.0" ripplerFill="#7986cb" text="Help" textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </JFXButton>
+                  <JFXButton fx:id="saveButton" disable="true" layoutX="408.0" layoutY="20.0" onAction="#onSave" prefHeight="27.0" prefWidth="90.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Save" textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </JFXButton>
+               </children>
+            </Pane>
+            <Label layoutX="24.0" layoutY="75.0" text="Product Details" textFill="#212121">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="168.0" layoutY="79.0" text="Product Details" textFill="#616161">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Pane layoutX="24.0" layoutY="113.0" prefHeight="1.0" prefWidth="672.0" style="-fx-background-color: #EEEEEE;" />
+            
+            <JFXTextField fx:id="productNameTextField" focusColor="#009688" labelFloat="true" layoutX="247.0" layoutY="143.0" prefHeight="25.0" prefWidth="427.0" promptText="Product Name" />
+            <JFXTextField fx:id="skuTextField" accessibleHelp="Auto" focusColor="#009688" labelFloat="true" layoutX="25.0" layoutY="143.0" prefHeight="25.0" prefWidth="208.0" promptText="SKU" />
+            <JFXComboBox fx:id="supplierComboBox" focusColor="#009688" labelFloat="true" layoutX="25.0" layoutY="411.0" prefHeight="25.0" prefWidth="189.0" promptText="Select a Supplier" />
+            <JFXTextArea fx:id="descriptionTextArea" focusColor="#009688" labelFloat="true" layoutX="24.0" layoutY="203.0" prefHeight="175.0" prefWidth="658.0" promptText="Product Description" />
+            <JFXComboBox fx:id="productTypeComboBox" focusColor="#009688" labelFloat="true" layoutX="266.0" layoutY="411.0" prefHeight="25.0" prefWidth="189.0" promptText="Select the Product Type" />
+            <JFXComboBox fx:id="brandComboBox" focusColor="#009688" labelFloat="true" layoutX="493.0" layoutY="411.0" prefHeight="25.0" prefWidth="189.0" promptText="Select a Brand" />
+            <Label layoutX="24.0" layoutY="499.0" text="Additional Information" textFill="#212121">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="239.0" layoutY="503.0" text="Product Details" textFill="#616161">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Pane layoutX="24.0" layoutY="537.0" prefHeight="1.0" prefWidth="672.0" style="-fx-background-color: #EEEEEE;" />
+            <JFXTextField fx:id="tagsTextField" focusColor="#009688" labelFloat="true" layoutX="24.0" layoutY="460.0" prefHeight="25.0" prefWidth="658.0" promptText="Tags" />
+            
+            <JFXTextField fx:id="initialCostPriceTextField" focusColor="#009688" labelFloat="true" layoutX="25.0" layoutY="557.0" prefHeight="25.0" prefWidth="189.0" promptText="Initial Cost Price" />
+            
+            <JFXTextField fx:id="buyPriceTextField" focusColor="#009688" labelFloat="true" layoutX="239.0" layoutY="557.0" prefHeight="25.0" prefWidth="189.0" promptText="Buy Price" />
+            <JFXTextField fx:id="wholesalePriceTextField" focusColor="#009688" labelFloat="true" layoutX="458.0" layoutY="557.0" prefHeight="25.0" prefWidth="189.0" promptText="Wholesale Price" />
+            <JFXTextField fx:id="retailPriceTextField" focusColor="#009688" labelFloat="true" layoutX="25.0" layoutY="612.0" prefHeight="25.0" prefWidth="189.0" promptText="Retail Price" />
+            <JFXTextField fx:id="weightTextField" focusColor="#009688" labelFloat="true" layoutX="458.0" layoutY="612.0" prefHeight="25.0" prefWidth="135.0" promptText="Weight" />
+            <JFXComboBox focusColor="#009688" layoutX="599.0" layoutY="612.0" prefHeight="25.0" prefWidth="42.0">
+      	      <items>
+      	        <FXCollections fx:factory="observableArrayList">
+      	          <String fx:value="g" />
+      	          <String fx:value="kg" />
+      	          <String fx:value="lb" />
+      	          <String fx:value="ob" />
+      	        </FXCollections>
+      	      </items>
+      	      <value>
+      		      <String fx:value="g" />
+      		  </value>
+            </JFXComboBox>
+            
+            <JFXTextField fx:id="initialStockTextField" focusColor="#009688" labelFloat="true" layoutX="239.0" layoutY="612.0" prefHeight="25.0" prefWidth="189.0" promptText="Initial Stock On Hand" />
+            
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>

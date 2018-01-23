@@ -1,50 +1,22 @@
-# stuffs-admin
+# stuffs-admin Material Design & JavaFX Desktop: Gerenciamento de Estoque e Vendas
 
 [![Apache License 2](https://img.shields.io/badge/license-ASF2-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0.txt)
-
-
-Pequenos projetos de Admins em diversas linguagens.
-
-##### Os projetos estarão dividos em branchs, logo basta selecionar o branch desejado acima ou clique nos links indicados abaixo:
-
-## stuffs-admin em Java: Sistema de Controle Acadêmico
-[![Build Status](https://travis-ci.org/tiagohs/stuffs-admin.svg?branch=admin-java)](https://travis-ci.org/tiagohs/stuffs-admin)
-##### <i>Em desenvolvimento..</i>
-
-<b>Branch com o código</b>: <a href="https://github.com/tiagohs/stuffs-admin/tree/admin-java">Clique Aqui</a>
-
-<b>Principais técnologias utilizadas:</b>
-
-<ul>
-  <li>Spring Boot</li>
-  <li>Spring Security</li>
-  <li>Hibernate</li>
-  <li>MySQL</li>
-  <li>Thymeleaf</li>
-  <li>Bootstrap 3</li>
-</ul>
-
-## stuffs-admin Material Design & JavaFX Desktop: Gerenciamento de Estoque e Vendas
 [![Build Status](https://travis-ci.org/tiagohs/stuffs-admin.svg?branch=admin-javafx)](https://travis-ci.org/tiagohs/stuffs-admin)
-##### <i>Em desenvolvimento..</i>
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/d113af0da84b4ab9b17b8ffc29c58ecf?branch=admin-javafx)](https://www.codacy.com/app/tiagohs/stuffs-admin?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=tiagohs/stuffs-admin&amp;utm_campaign=Badge_Grade)
 
-<b>Branch com o código</b>: <a href="https://github.com/tiagohs/stuffs-admin/tree/admin-javafx">Clique Aqui</a>
+Aplicação desktop para Gerenciamento de estoque e vendas, nesse projeto utilizo as seguintes técnologias:
+
+&nbsp; | &nbsp; | &nbsp; | &nbsp;
+| --- | --- | --- | --- |
+| <a href="http://docs.oracle.com/javase/8/javase-clienttechnologies.htm">JavaFx</a> | <a href="https://github.com/apache/maven">Maven</a> | <a href="https://github.com/spring-projects/spring-boot">Spring Boot</a> | <a href="https://github.com/spring-projects/spring-data-jpa">Spring Data JPA</a> |
+| <a href="https://github.com/hibernate">Hibernate</a> | <a href="https://www.sqlite.org/">SQLite</a> | <a href="https://github.com/gwenn/sqlite-dialect/">SQLite Dialect</a> | <a href="https://github.com/xerial/sqlite-jdbc">SQLite JDBC</a> |
+| <a href="https://github.com/guigarage/DataFX">DataFX</a> | <a href="https://bintray.com/jerady/maven/FontAwesomeFX/8.15/view">FontAwesomeFX</a> | <a href="https://github.com/jfoenixadmin/JFoenix">JFoenix</a> | <a href="https://github.com/mgrecol/JasperViewerFx">JasperViewerFx</a> |
 
 <p align="center">
-  <img src="https://github.com/tiagohs/stuffs-admin/raw/admin-javafx/screens/inventory.png" width="575" height="442">
+  <img src="https://github.com/tiagohs/stuffs-admin/raw/admin-javafx/screens/inventory.png" width="875" height="742">
 </p>
 
-<b>Principais técnologias utilizadas:</b>
-
-<ul>
-  <li>JavaFX</li>
-  <li>Spring Boot</li>
-  <li>Hibernate</li>
-  <li>SQLite</li>
-  <li>Material Design com JFoenix</li>
-</ul>
-
-### Desenvolvido por:
+### Desenvolvido por: 
 
 Tiago Henrique da Silva - tiago.hsilva@al.infnet.edu.br / tiago.silva.93@hotmail.com
 

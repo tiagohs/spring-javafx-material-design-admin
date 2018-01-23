@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXSpinner?>
+<?import com.jfoenix.controls.JFXTreeTableColumn?>
+<?import com.jfoenix.controls.JFXTreeTableView?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Pagination?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="689.0" prefWidth="709.0" stylesheets="@../css/application.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tiagohs.controller.ReportsController">
+   <children>
+      <Pane layoutX="-6.0" layoutY="-6.0" prefHeight="98.0" prefWidth="728.0" style="-fx-background-color: #3F51B5;" styleClass="product-detail-header">
+         <children>
+            <Label layoutX="85.0" layoutY="20.0" text="Reports" textFill="#fafafa">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="23.0" layoutY="23.0" text="Home /" textFill="#e0e0e0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <TabPane layoutY="42.0" prefHeight="518.0" prefWidth="717.0" tabClosingPolicy="UNAVAILABLE">
+         <tabs>
+            <Tab text="SALES">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="377.0" prefWidth="717.0">
+                     <children>
+                        <Pagination fx:id="salesPagination" layoutX="446.0" layoutY="387.0" maxPageIndicatorCount="5" pageCount="7" prefHeight="65.0" prefWidth="253.0">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></Pagination>
+                        <JFXTreeTableView fx:id="salesTable" layoutX="17.0" layoutY="49.0" prefHeight="332.0" prefWidth="683.0">
+                           <columns>
+                              <JFXTreeTableColumn fx:id="saleCodeColumn" minWidth="77.0" prefWidth="77.0" resizable="false" text="CODE" />
+                              <JFXTreeTableColumn fx:id="saleIssueDateColumn" minWidth="106.0" prefWidth="106.0" resizable="false" text="Issue Date" />
+                              <JFXTreeTableColumn fx:id="saleShipmentDateColumn" minWidth="80.0" prefWidth="125.0" resizable="false" text="Shipment Date" />
+                              <JFXTreeTableColumn fx:id="saleTotalColumn" minWidth="108.0" prefWidth="108.0" resizable="false" text="Total" />
+                              <JFXTreeTableColumn fx:id="saleNumItemsColumn" minWidth="65.0" prefWidth="65.0" resizable="false" text="Nº Items" />
+                              <JFXTreeTableColumn fx:id="saleClientNameColumn" minWidth="101.0" prefWidth="201.0" resizable="false" text="Client Name" />
+                           </columns>
+                        </JFXTreeTableView>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="30.0" layoutX="540.0" layoutY="466.0" stroke="TRANSPARENT" strokeType="INSIDE" width="65.0" />
+                        <JFXButton fx:id="salesReportGenerate" layoutX="59.0" layoutY="15.0" onAction="#salesReport" prefHeight="30.0" prefWidth="88.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Generate" textFill="WHITE">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></JFXButton>
+                        <JFXSpinner fx:id="salesSpinner" layoutX="206.0" layoutY="14.0" visible="false" />
+                        <JFXButton contentDisplay="GRAPHIC_ONLY" layoutX="17.0" layoutY="15.0" onAction="#onReloadSaleTable" prefHeight="30.0" prefWidth="34.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Remove" textFill="WHITE">
+                           <graphic>
+                              <ImageView fitHeight="20.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/reload.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </JFXButton>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="PRODUCTS">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="377.0" prefWidth="717.0">
+                     <children>
+                        <Pagination fx:id="productsPagination" layoutX="446.0" layoutY="362.0" maxPageIndicatorCount="5" pageCount="7" prefHeight="65.0" prefWidth="253.0" />
+                        <JFXTreeTableView fx:id="productsTable" layoutX="17.0" layoutY="49.0" prefHeight="305.0" prefWidth="683.0">
+                           <columns>
+                              <JFXTreeTableColumn fx:id="productSkuColumn" minWidth="77.0" prefWidth="77.0" resizable="false" text="SKU" />
+                              <JFXTreeTableColumn fx:id="productSupplierColumn" minWidth="133" prefWidth="149.0" resizable="false" text="Supplier" />
+                              <JFXTreeTableColumn fx:id="productBuyPriceColumn" minWidth="80.0" resizable="false" text="Buy Price" />
+                              <JFXTreeTableColumn fx:id="productProductTypeColumn" minWidth="115.0" prefWidth="115.0" resizable="false" text="Product Type" />
+                              <JFXTreeTableColumn fx:id="productDescriptionColumn" minWidth="101.0" prefWidth="261.0" resizable="false" text="Description" />
+                           </columns>
+                        </JFXTreeTableView>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="30.0" layoutX="540.0" layoutY="466.0" stroke="TRANSPARENT" strokeType="INSIDE" width="65.0" />
+                        <JFXButton fx:id="productsReportGenerate" layoutX="59.0" layoutY="15.0" onAction="#productsReport" prefHeight="30.0" prefWidth="88.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Generate" textFill="WHITE">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></JFXButton>
+                        <JFXSpinner fx:id="productsSpinner" layoutX="205.0" layoutY="14.0" visible="false" />
+                        <JFXButton contentDisplay="GRAPHIC_ONLY" layoutX="17.0" layoutY="15.0" onAction="#onReloadProductTable" prefHeight="30.0" prefWidth="34.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Remove" textFill="WHITE">
+                           <graphic>
+                              <ImageView fitHeight="20.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/reload.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </JFXButton>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="EMPLOYEES">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="377.0" prefWidth="717.0">
+                     <children>
+                        <Pagination fx:id="employeesPagination" layoutX="446.0" layoutY="362.0" maxPageIndicatorCount="5" pageCount="7" prefHeight="65.0" prefWidth="253.0" />
+                        <JFXTreeTableView fx:id="employeesTable" layoutX="17.0" layoutY="49.0" prefHeight="305.0" prefWidth="683.0">
+                           <columns>
+                              <JFXTreeTableColumn fx:id="employeeNameColumn" minWidth="77.0" prefWidth="147.0" resizable="false" text="Name" />
+                              <JFXTreeTableColumn fx:id="employeeEmailColumn" minWidth="79.0" prefWidth="174.0" resizable="false" text="Email" />
+                              <JFXTreeTableColumn fx:id="employeeCpfColumn" minWidth="0.0" prefWidth="122.0" resizable="false" text="CPF" />
+                              <JFXTreeTableColumn fx:id="productTypeColumn" minWidth="115.0" prefWidth="239.0" resizable="false" text="Tasks" />
+                           </columns>
+                        </JFXTreeTableView>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="30.0" layoutX="540.0" layoutY="466.0" stroke="TRANSPARENT" strokeType="INSIDE" width="65.0" />
+                        <JFXButton fx:id="employeesReportGenerate" layoutX="59.0" layoutY="15.0" onAction="#employeesReport" prefHeight="30.0" prefWidth="88.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Generate" textFill="WHITE">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></JFXButton>
+                        <JFXSpinner fx:id="employeesSpinner" layoutX="212.0" layoutY="14.0" visible="false" />
+                        <JFXButton contentDisplay="GRAPHIC_ONLY" layoutX="17.0" layoutY="15.0" onAction="#onReloadEmployeeTable" prefHeight="30.0" prefWidth="34.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Remove" textFill="WHITE">
+                           <graphic>
+                              <ImageView fitHeight="20.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/reload.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </JFXButton>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="SUPPLIERS">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="377.0" prefWidth="717.0">
+                     <children>
+                        <Pagination fx:id="suppliersPagination" layoutX="446.0" layoutY="362.0" maxPageIndicatorCount="5" pageCount="7" prefHeight="65.0" prefWidth="253.0" />
+                        <JFXTreeTableView fx:id="suppliersTable" layoutX="17.0" layoutY="49.0" prefHeight="305.0" prefWidth="683.0">
+                           <columns>
+                              <JFXTreeTableColumn fx:id="supplierNameColumn" minWidth="77.0" prefWidth="125.0" resizable="false" text="Company Name" />
+                              <JFXTreeTableColumn fx:id="supplierEmailColumn" minWidth="101.0" prefWidth="186.0" resizable="false" text="Email" />
+                              <JFXTreeTableColumn fx:id="supplierAddresColumn" minWidth="80.0" prefWidth="371.0" resizable="false" text="Addres" />
+                           </columns>
+                        </JFXTreeTableView>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="30.0" layoutX="540.0" layoutY="466.0" stroke="TRANSPARENT" strokeType="INSIDE" width="65.0" />
+                        <JFXButton fx:id="supplierReportGenerate" layoutX="59.0" layoutY="15.0" onAction="#suppliersReport" prefHeight="30.0" prefWidth="88.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Generate" textFill="WHITE">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></JFXButton>
+                        <JFXSpinner fx:id="suppliersSpinner" layoutX="204.0" layoutY="14.0" visible="false" />
+                        <JFXButton contentDisplay="GRAPHIC_ONLY" layoutX="17.0" layoutY="15.0" onAction="#onReloadSupplierTable" prefHeight="30.0" prefWidth="34.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Remove" textFill="WHITE">
+                           <graphic>
+                              <ImageView fitHeight="20.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/reload.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </JFXButton>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+         </tabs>
+      </TabPane>
+      <Pane layoutX="12.0" layoutY="566.0" prefHeight="87.0" prefWidth="166.0" style="-fx-background-color: #F44336; -fx-background-radius: 5;">
+         <children>
+            <Label fx:id="totalUserLabel" alignment="CENTER_RIGHT" layoutX="124.0" layoutY="10.0" prefHeight="41.0" prefWidth="37.0" text="34" textFill="WHITE">
+               <font>
+                  <Font size="34.0" />
+               </font>
+            </Label>
+            <Label layoutX="72.0" layoutY="48.0" prefHeight="25.0" prefWidth="104.0" text="User Registers" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="50.0" fitWidth="47.0" layoutX="10.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/persons.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane layoutX="185.0" layoutY="566.0" prefHeight="87.0" prefWidth="166.0" style="-fx-background-color: #9C27B0; -fx-background-radius: 5;">
+         <children>
+            <Label fx:id="totalSaleLabel" alignment="CENTER_RIGHT" layoutX="125.0" layoutY="10.0" prefHeight="41.0" prefWidth="37.0" text="5" textAlignment="RIGHT" textFill="WHITE">
+               <font>
+                  <Font size="34.0" />
+               </font>
+            </Label>
+            <Label layoutX="128.0" layoutY="48.0" prefHeight="25.0" prefWidth="37.0" text="Sales" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="50.0" fitWidth="47.0" layoutX="10.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/sale.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane layoutX="358.0" layoutY="566.0" prefHeight="87.0" prefWidth="166.0" style="-fx-background-color: #4CAF50; -fx-background-radius: 5;">
+         <children>
+            <Label fx:id="totalEmployeeLabel" alignment="CENTER_RIGHT" layoutX="125.0" layoutY="10.0" prefHeight="41.0" prefWidth="37.0" text="40" textFill="WHITE">
+               <font>
+                  <Font size="34.0" />
+               </font>
+            </Label>
+            <Label layoutX="93.0" layoutY="48.0" prefHeight="25.0" prefWidth="71.0" text="Employees" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="50.0" fitWidth="47.0" layoutX="10.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/employee.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane layoutX="531.0" layoutY="566.0" prefHeight="87.0" prefWidth="166.0" style="-fx-background-color: #2196F3; -fx-background-radius: 5;">
+         <children>
+            <Label fx:id="totalSuppliersLabel" alignment="CENTER_RIGHT" layoutX="125.0" layoutY="10.0" prefHeight="41.0" prefWidth="37.0" text="20" textFill="WHITE">
+               <font>
+                  <Font size="34.0" />
+               </font>
+            </Label>
+            <Label layoutX="93.0" layoutY="48.0" prefHeight="25.0" prefWidth="71.0" text="Suppliers" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="50.0" fitWidth="47.0" layoutX="10.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/supplier.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

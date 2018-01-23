@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="595.0" prefWidth="841.0" stylesheets="@../css/application.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tiagohs.controller.ReportViewerController">
+   <children>
+      <Pane layoutX="-9.0" prefHeight="52.0" prefWidth="859.0" style="-fx-background-color: #3F51B5;">
+         <children>
+            <JFXButton fx:id="saveButton" contentDisplay="GRAPHIC_ONLY" layoutX="14.0" layoutY="6.0" prefHeight="40.0" prefWidth="50.0">
+               <graphic>
+                  <ImageView fitHeight="28.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/save.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton fx:id="printerButton" contentDisplay="GRAPHIC_ONLY" layoutX="64.0" layoutY="6.0" prefHeight="40.0" prefWidth="50.0">
+               <graphic>
+                  <ImageView fitHeight="28.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/printer.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton fx:id="fitPageButton" contentDisplay="GRAPHIC_ONLY" layoutX="114.0" layoutY="6.0" prefHeight="40.0" prefWidth="50.0">
+               <graphic>
+                  <ImageView fitHeight="28.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/file.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton fx:id="previousPageButton" contentDisplay="GRAPHIC_ONLY" layoutX="345.0" layoutY="6.0" prefHeight="40.0" prefWidth="50.0">
+               <graphic>
+                  <ImageView fitHeight="28.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/next-left.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton fx:id="firstPageButton" contentDisplay="GRAPHIC_ONLY" layoutX="295.0" layoutY="6.0" prefHeight="40.0" prefWidth="50.0">
+               <graphic>
+                  <ImageView fitHeight="28.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/next-first.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton fx:id="nextPageButton" contentDisplay="GRAPHIC_ONLY" layoutX="458.0" layoutY="6.0" prefHeight="40.0" prefWidth="50.0">
+               <graphic>
+                  <ImageView fitHeight="28.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/next-right.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton fx:id="lastPageButton" contentDisplay="GRAPHIC_ONLY" layoutX="506.0" layoutY="6.0" prefHeight="40.0" prefWidth="50.0">
+               <graphic>
+                  <ImageView fitHeight="28.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/next-last.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton fx:id="moreZoomButton" contentDisplay="GRAPHIC_ONLY" layoutX="754.0" layoutY="6.0" prefHeight="40.0" prefWidth="43.0">
+               <graphic>
+                  <ImageView fitHeight="28.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/plus-clean.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton fx:id="lessZoomButton" contentDisplay="GRAPHIC_ONLY" layoutX="797.0" layoutY="6.0" prefHeight="40.0" prefWidth="39.0">
+               <graphic>
+                  <ImageView fitHeight="28.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/minus-clean.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXComboBox fx:id="zoomComboBox" focusColor="#3f51b5" layoutX="673.0" layoutY="14.0" prefHeight="25.0" prefWidth="74.0" styleClass="combo-box-report" unFocusColor="#3f51b5" />
+            <Label fx:id="pageLabel" layoutX="415.0" layoutY="14.0" text="1 / 1" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <ScrollPane fx:id="containerScrollPane" layoutX="-9.0" layoutY="52.0" prefHeight="543.0" prefWidth="859.0">
+         <content>
+            <VBox fx:id="pageContentVBox" prefHeight="538.0" prefWidth="846.0" />
+         </content></ScrollPane>
+   </children>
+</AnchorPane>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="689.0" prefWidth="709.0" stylesheets="@../css/application.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tiagohs.controller.SalesController">
+   <children>
+      <Pane layoutX="-6.0" layoutY="-6.0" prefHeight="182.0" prefWidth="728.0" style="-fx-background-color: #3F51B5;" styleClass="product-detail-header">
+         <children>
+            <JFXButton alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="282.0" layoutY="54.0" onAction="#onNewSale" prefHeight="75.0" prefWidth="165.0" ripplerFill="#fcfcfc" text="%new_sale.pathTitle" textAlignment="CENTER" textFill="#fffdfd">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="41.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/plus.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+         </children>
+      </Pane>
+      <TabPane layoutY="127.0" prefHeight="570.0" prefWidth="717.0" tabClosingPolicy="UNAVAILABLE">
+         <tabs>
+            <Tab text="%sales.tabAll">
+               <content>
+                  <AnchorPane fx:id="allContainer" minHeight="0.0" minWidth="0.0" prefHeight="288.0" prefWidth="558.0" />
+               </content>
+            </Tab>
+            <Tab text="%sales.tabOpen">
+               <content>
+                  <AnchorPane fx:id="openContainer" minHeight="0.0" minWidth="0.0" prefHeight="288.0" prefWidth="558.0" />
+               </content>
+            </Tab>
+            <Tab text="%sales.tabClosed">
+               <content>
+                  <AnchorPane fx:id="finalizedContainer" minHeight="0.0" minWidth="0.0" prefHeight="288.0" prefWidth="558.0" />
+               </content>
+            </Tab>
+         </tabs>
+      </TabPane>
+      <HBox alignment="BASELINE_LEFT" layoutX="23.0" layoutY="23.0" prefHeight="30.0" prefWidth="291.0" spacing="5.0">
+         <children>
+            <Label text="%app.path" textFill="#e0e0e0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label text="%sales.pathTitle" textFill="#fafafa">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>
