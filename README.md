@@ -1,21 +1,57 @@
-# stuffs-admin Material Design & JavaFX Desktop: Inventory Management
+## Stuffs-Admin - Inventory Management in JavaFX for Desktop with Material Design
 
 [![Apache License 2](https://img.shields.io/badge/license-ASF2-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0.txt)
-[![Build Status](https://travis-ci.org/tiagohs/stuffs-admin.svg?branch=admin-javafx)](https://travis-ci.org/tiagohs/stuffs-admin)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/d113af0da84b4ab9b17b8ffc29c58ecf?branch=admin-javafx)](https://www.codacy.com/app/tiagohs/stuffs-admin?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=tiagohs/stuffs-admin&amp;utm_campaign=Badge_Grade)
 
-Desktop application for Inventory Management with Material Design, build with Spring Boot and JavaFX.
+<p>
+Desktop application for Inventory Management with Material Design, build with Spring Boot, Hibernate and JavaFX.
+</p>
+
+<p align="center">
+  <img src="https://github.com/tiagohs/spring-javafx-material-design-admin/blob/master/screens/apresentation.png" width="750" height="400">
+</p>
+
+### Features
+
+<ul>
+  <li>Internacionalization: Portuguese Brazil or English</li>
+  <li>Basic Authentication with User and Admin roles</li>
+  <li>Clean & Simple Design</li>
+  <li>Well Organized Code</li>
+  <li>Model-View-Controller (MVC) Pattern</li>
+  <li>Beautiful Graphic with animation</li>
+  <li>Reports to save in PDF</li>
+  <li>Easy to customize and for include more features</li>
+  <li>Tables with Search, edit and delete features</li>
+</ul>
 
 ### Tools
 
-&nbsp; | &nbsp; | &nbsp; | &nbsp;
-| --- | --- | --- | --- |
-| <a href="http://docs.oracle.com/javase/8/javase-clienttechnologies.htm">JavaFx</a> | <a href="https://github.com/apache/maven">Maven</a> | <a href="https://github.com/spring-projects/spring-boot">Spring Boot</a> | <a href="https://github.com/spring-projects/spring-data-jpa">Spring Data JPA</a> |
-| <a href="https://github.com/hibernate">Hibernate</a> | <a href="https://www.sqlite.org/">SQLite</a> | <a href="https://github.com/gwenn/sqlite-dialect/">SQLite Dialect</a> | <a href="https://github.com/xerial/sqlite-jdbc">SQLite JDBC</a> |
-| <a href="https://github.com/guigarage/DataFX">DataFX</a> | <a href="https://bintray.com/jerady/maven/FontAwesomeFX/8.15/view">FontAwesomeFX</a> | <a href="https://github.com/jfoenixadmin/JFoenix">JFoenix</a> | <a href="https://github.com/mgrecol/JasperViewerFx">JasperViewerFx</a> |
+<ul>
+  <li><a href="http://docs.oracle.com/javase/8/javase-clienttechnologies.htm">JavaFx</a></li>
+  <li><a href="https://github.com/apache/maven">Maven</a></li>
+  <li><a href="https://github.com/spring-projects/spring-boot">Spring Boot</a></li>
+  <li><a href="https://github.com/spring-projects/spring-data-jpa">Spring Data JPA</a></li>
+  <li><a href="https://github.com/hibernate">Hibernate</a></li>
+  <li><a href="https://www.sqlite.org/">SQLite</a></li>
+  <li><a href="https://github.com/gwenn/sqlite-dialect/">SQLite Dialect</a></li>
+  <li><a href="https://github.com/xerial/sqlite-jdbc">SQLite JDBC</a></li>
+  <li><a href="https://github.com/guigarage/DataFX">DataFX</a></li>
+  <li><a href="https://bintray.com/jerady/maven/FontAwesomeFX/8.15/view">FontAwesomeFX</a></li>
+  <li><a href="https://github.com/jfoenixadmin/JFoenix">JFoenix</a></li>
+  <li><a href="https://github.com/mgrecol/JasperViewerFx">JasperViewerFx</a></li>
+</ul>
+
+## Screens
 
 <p align="center">
-  <img src="https://github.com/tiagohs/stuffs-admin/raw/admin-javafx/screens/inventory.png" width="875" height="742">
+<img src="https://github.com/tiagohs/spring-javafx-material-design-admin/blob/master/screens/painel.png" width="430" height="300"> <img src="https://github.com/tiagohs/spring-javafx-material-design-admin/blob/master/screens/inventory-search.png" width="430" height="300">
+</p>
+<p align="center">
+<img src="https://github.com/tiagohs/spring-javafx-material-design-admin/blob/master/screens/new-employee.png" width="430" height="300"> <img src="https://github.com/tiagohs/spring-javafx-material-design-admin/blob/master/screens/report-pdf.png" width="430" height="300">
+</p>
+<p align="center">
+<img src="https://github.com/tiagohs/spring-javafx-material-design-admin/blob/master/screens/reports.png" width="430" height="300"> <img src="https://github.com/tiagohs/spring-javafx-material-design-admin/blob/master/screens/new-product.png" width="430" height="300">
 </p>
 
 ### Desenvolvido por: 
