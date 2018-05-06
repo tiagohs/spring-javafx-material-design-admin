@@ -4,11 +4,11 @@
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/d113af0da84b4ab9b17b8ffc29c58ecf?branch=admin-javafx)](https://www.codacy.com/app/tiagohs/stuffs-admin?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=tiagohs/stuffs-admin&amp;utm_campaign=Badge_Grade)
 
 <p>
-Desktop application for Inventory Management with Material Design, build with Spring Boot, Hibernate and JavaFX.
+Simple Desktop application for Inventory Management with Material Design, builded with Spring Boot, Hibernate and JavaFX.
 </p>
 
 <p align="center">
-  <img src="https://github.com/tiagohs/spring-javafx-material-design-admin/blob/master/screens/apresentation.png" width="750" height="400">
+  <img src="https://github.com/tiagohs/spring-javafx-material-design-admin/blob/master/screens/apresentation.png" width="650" height="400">
 </p>
 
 ### Features
