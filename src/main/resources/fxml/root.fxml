@@ -9,11 +9,11 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="689.0" prefWidth="843.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tiagohs.controller.RootController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="689.0" prefWidth="843.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tiagohs.controller.RootController">
    <children>
       <Pane layoutX="-7.0" layoutY="-8.0" prefHeight="706.0" prefWidth="140.0" style="-fx-background-color: #3F51B5;">
          <children>
-            <JFXButton alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="6.0" layoutY="136.0" onAction="#onDashboardAction" prefHeight="95.0" prefWidth="131.0" ripplerFill="#7986cb" text="Dashboard" textAlignment="CENTER" textFill="#fffdfd">
+            <JFXButton alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="6.0" layoutY="136.0" onAction="#onDashboardAction" prefHeight="95.0" prefWidth="131.0" ripplerFill="#7986cb" text="%dashboard.pathTitle" textAlignment="CENTER" textFill="#fffdfd">
                <font>
                   <Font size="14.0" />
                </font>
@@ -28,7 +28,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </JFXButton>
-            <JFXButton fx:id="inventoryButton" alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="4.0" layoutY="234.0" onAction="#onInvetoryAction" prefHeight="95.0" prefWidth="131.0" ripplerFill="#7986cb" text="Inventory" textAlignment="CENTER" textFill="#fffdfd">
+            <JFXButton fx:id="inventoryButton" alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="4.0" layoutY="234.0" onAction="#onInvetoryAction" prefHeight="95.0" prefWidth="131.0" ripplerFill="#7986cb" text="%inventory.pathTitle" textAlignment="CENTER" textFill="#fffdfd">
                <font>
                   <Font size="14.0" />
                </font>
@@ -48,7 +48,7 @@
                   <Font size="16.0" />
                </font>
             </Label>
-            <JFXButton alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="4.0" layoutY="331.0" onAction="#onSalesAction" prefHeight="95.0" prefWidth="131.0" ripplerFill="#7986cb" text="Sales" textAlignment="CENTER" textFill="#fffdfd">
+            <JFXButton alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="4.0" layoutY="331.0" onAction="#onSalesAction" prefHeight="95.0" prefWidth="131.0" ripplerFill="#7986cb" text="%sales.pathTitle" textAlignment="CENTER" textFill="#fffdfd">
                <font>
                   <Font size="14.0" />
                </font>
@@ -63,7 +63,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </JFXButton>
-            <JFXButton alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="4.0" layoutY="424.0" onAction="#onClientsAction" prefHeight="95.0" prefWidth="131.0" ripplerFill="#7986cb" text="Clients" textAlignment="CENTER" textFill="#fffdfd">
+            <JFXButton alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="4.0" layoutY="424.0" onAction="#onClientsAction" prefHeight="95.0" prefWidth="131.0" ripplerFill="#7986cb" text="%clients.pathTitle" textAlignment="CENTER" textFill="#fffdfd">
                <font>
                   <Font size="14.0" />
                </font>
@@ -124,7 +124,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </JFXButton>
-            <JFXButton alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="4.0" layoutY="519.0" onAction="#onReportsAction" prefHeight="95.0" prefWidth="131.0" ripplerFill="#7986cb" text="Reports" textAlignment="CENTER" textFill="#fffdfd">
+            <JFXButton alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="4.0" layoutY="519.0" onAction="#onReportsAction" prefHeight="95.0" prefWidth="131.0" ripplerFill="#7986cb" text="%reports.pathTitle" textAlignment="CENTER" textFill="#fffdfd">
                <font>
                   <Font size="14.0" />
                </font>

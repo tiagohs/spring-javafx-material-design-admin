@@ -110,6 +110,11 @@
 			<artifactId>javax.inject</artifactId>
 			<version>1</version>
 		</dependency>
+		<dependency>
+		  <groupId>com.google.firebase</groupId>
+		  <artifactId>firebase-admin</artifactId>
+		  <version>5.9.0</version>
+		</dependency>
 	</dependencies>
 
 	<build>

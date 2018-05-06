@@ -22,12 +22,12 @@
                </cursor></Pagination>
             <JFXTreeTableView fx:id="salesTable" layoutX="17.0" layoutY="47.0" prefHeight="373.0" prefWidth="683.0">
                <columns>
-                  <JFXTreeTableColumn fx:id="salesCodeColumn" minWidth="77.0" prefWidth="92.0" resizable="false" text="CODE" />
-                  <JFXTreeTableColumn fx:id="salesShipmentDateColumn" minWidth="101.0" prefWidth="116.0" resizable="false" text="Shipment Date" />
-                  <JFXTreeTableColumn fx:id="salesIssueDateColumn" minWidth="93.0" prefWidth="113.0" resizable="false" text="Issue Date" />
-                  <JFXTreeTableColumn fx:id="salesClientColumn" minWidth="80.0" prefWidth="151.0" resizable="false" text="Client" />
-                  <JFXTreeTableColumn fx:id="salesTotalUnitsColumn" minWidth="83.0" prefWidth="101.0" resizable="false" text="Total Units" />
-                  <JFXTreeTableColumn fx:id="salesTotalColumn" minWidth="101.0" prefWidth="109.0" resizable="false" text="Total" />
+                  <JFXTreeTableColumn fx:id="salesCodeColumn" minWidth="77.0" prefWidth="92.0" resizable="false" text="%new_sale.table.code" />
+                  <JFXTreeTableColumn fx:id="salesShipmentDateColumn" minWidth="101.0" prefWidth="116.0" resizable="false" text="%new_sale.table.shipmentdate" />
+                  <JFXTreeTableColumn fx:id="salesIssueDateColumn" minWidth="93.0" prefWidth="113.0" resizable="false" text="%new_sale.table.issuedate" />
+                  <JFXTreeTableColumn fx:id="salesClientColumn" minWidth="80.0" prefWidth="151.0" resizable="false" text="%new_sale.table.clientname" />
+                  <JFXTreeTableColumn fx:id="salesTotalUnitsColumn" minWidth="83.0" prefWidth="101.0" resizable="false" text="%new_sale.table.numitems" />
+                  <JFXTreeTableColumn fx:id="salesTotalColumn" minWidth="101.0" prefWidth="109.0" resizable="false" text="%new_sale.table.total" />
                </columns>
             </JFXTreeTableView>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="30.0" layoutX="540.0" layoutY="466.0" stroke="TRANSPARENT" strokeType="INSIDE" width="65.0" />

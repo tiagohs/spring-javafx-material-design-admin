@@ -190,6 +190,11 @@ public class ClientNewController extends BaseController {
 	
 	private void fillComboBoxes() {
 		WindowsUtils.addComboBoxItens(roleComboBox, roleService);
+		WindowsUtils.addComboBoxItens(clientTypeComboBox, 
+				Arrays.asList(
+						new ClientType(1L, "Pessoa"),
+						new ClientType(2L, "Empresa"),
+						new ClientType(3L, "Outros")));
 	}
 	
 	private void watchEvents() {

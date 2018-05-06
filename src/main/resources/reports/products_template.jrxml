@@ -35,7 +35,6 @@
 			</staticText>
 			<image>
 				<reportElement x="460" y="0" width="92" height="63" uuid="088f6531-d676-40ed-a6e6-c37de1fded05"/>
-				<imageExpression><![CDATA["D:\\Users\\tisil\\git\\stuffs-admin\\src\\main\\resources\\images\\icon.png"]]></imageExpression>
 			</image>
 		</band>
 	</title>

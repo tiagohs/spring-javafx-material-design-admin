@@ -38,15 +38,6 @@ public class LoginController extends BaseController {
 	private JFXButton loginButton;
 	
 	@FXML
-	private JFXButton facabookButton;
-	
-	@FXML
-	private JFXButton googleButton;
-	
-	@FXML
-	private JFXButton twitterButton;
-	
-	@FXML
 	private Label errorLabel;
 	
 	@Autowired

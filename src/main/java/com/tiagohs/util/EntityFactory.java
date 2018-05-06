@@ -101,6 +101,10 @@ public class EntityFactory {
 	
 	public static Brand createBrand(Brand brand, String name, String email, String additionalInformation) {
 		
+		if (brand == null) {
+			brand = new Brand();
+		}
+		
 		brand.setName(name);
 		brand.setEmail(email);
 		brand.setAdditionalInformation(additionalInformation);
@@ -117,6 +121,10 @@ public class EntityFactory {
 	public static Sale createSale(Sale sale, String saleCode, Calendar issueDate, Calendar shipmentDate, String reference, String email,
 			String message, String state, int totalUnits, double total, Fone fone, Client cliente, List<Item> items,
 			List<Tag> tags) {
+		
+		if (sale == null) {
+			sale = new Sale();
+		}
 		
 		sale.setSaleCode(saleCode);
 		sale.setIssueDate(issueDate);

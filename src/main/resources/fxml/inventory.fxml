@@ -18,7 +18,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<StackPane fx:id="container" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tiagohs.controller.InventoryController">
+<StackPane fx:id="container" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tiagohs.controller.InventoryController">
    <children>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="689.0" prefWidth="709.0" stylesheets="@../css/application.css">
          <children>
@@ -71,7 +71,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </JFXButton>
-                        <JFXButton alignment="BOTTOM_CENTER" contentDisplay="TOP" onAction="#onNewSupplier" prefHeight="75.0" prefWidth="114.0" ripplerFill="#7986cb" text="%new_brand.pathTitle" textAlignment="CENTER" textFill="#fffdfd">
+                        <JFXButton alignment="BOTTOM_CENTER" contentDisplay="TOP" onAction="#onNewBrand" prefHeight="75.0" prefWidth="114.0" ripplerFill="#7986cb" text="%new_brand.pathTitle" textAlignment="CENTER" textFill="#fffdfd">
                            <font>
                               <Font size="14.0" />
                            </font>
@@ -166,7 +166,7 @@
                                     <JFXTreeTableColumn fx:id="employeeNameColumn" minWidth="77.0" prefWidth="147.0" resizable="false" text="%app.colName" />
                                     <JFXTreeTableColumn fx:id="employeeEmailColumn" minWidth="79.0" prefWidth="174.0" resizable="false" text="%app.colEmail" />
                                     <JFXTreeTableColumn fx:id="employeeCpfColumn" minWidth="0.0" prefWidth="122.0" resizable="false" text="%app.colCpf" />
-                                    <JFXTreeTableColumn fx:id="employeeAdressColumn" minWidth="115.0" prefWidth="239.0" resizable="false" text="%app.colAddress" />
+                                    <JFXTreeTableColumn fx:id="employeeAdressColumn" minWidth="115.0" prefWidth="239.0" resizable="false" text="%app.colProductType" />
                                  </columns>
                               </JFXTreeTableView>
                               <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="30.0" layoutX="464.0" layoutY="477.0" stroke="TRANSPARENT" strokeType="INSIDE" width="65.0" />

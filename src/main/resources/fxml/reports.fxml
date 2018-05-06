@@ -16,7 +16,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="689.0" prefWidth="709.0" stylesheets="@../css/application.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tiagohs.controller.ReportsController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="689.0" prefWidth="709.0" stylesheets="@../css/application.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tiagohs.controller.ReportsController">
    <children>
       <Pane layoutX="-6.0" layoutY="-6.0" prefHeight="98.0" prefWidth="728.0" style="-fx-background-color: #3F51B5;" styleClass="product-detail-header">
          <children>
@@ -34,7 +34,7 @@
       </Pane>
       <TabPane layoutY="42.0" prefHeight="518.0" prefWidth="717.0" tabClosingPolicy="UNAVAILABLE">
          <tabs>
-            <Tab text="SALES">
+            <Tab text="%sales.pathTitle">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="377.0" prefWidth="717.0">
                      <children>
@@ -44,12 +44,12 @@
                            </cursor></Pagination>
                         <JFXTreeTableView fx:id="salesTable" layoutX="17.0" layoutY="49.0" prefHeight="332.0" prefWidth="683.0">
                            <columns>
-                              <JFXTreeTableColumn fx:id="saleCodeColumn" minWidth="77.0" prefWidth="77.0" resizable="false" text="CODE" />
-                              <JFXTreeTableColumn fx:id="saleIssueDateColumn" minWidth="106.0" prefWidth="106.0" resizable="false" text="Issue Date" />
-                              <JFXTreeTableColumn fx:id="saleShipmentDateColumn" minWidth="80.0" prefWidth="125.0" resizable="false" text="Shipment Date" />
-                              <JFXTreeTableColumn fx:id="saleTotalColumn" minWidth="108.0" prefWidth="108.0" resizable="false" text="Total" />
-                              <JFXTreeTableColumn fx:id="saleNumItemsColumn" minWidth="65.0" prefWidth="65.0" resizable="false" text="Nº Items" />
-                              <JFXTreeTableColumn fx:id="saleClientNameColumn" minWidth="101.0" prefWidth="201.0" resizable="false" text="Client Name" />
+                              <JFXTreeTableColumn fx:id="saleCodeColumn" minWidth="77.0" prefWidth="77.0" resizable="false" text="%new_sale.table.code" />
+                              <JFXTreeTableColumn fx:id="saleIssueDateColumn" minWidth="106.0" prefWidth="106.0" resizable="false" text="%new_sale.table.issuedate" />
+                              <JFXTreeTableColumn fx:id="saleShipmentDateColumn" minWidth="80.0" prefWidth="125.0" resizable="false" text="%new_sale.table.shipmentdate" />
+                              <JFXTreeTableColumn fx:id="saleTotalColumn" minWidth="108.0" prefWidth="108.0" resizable="false" text="@%new_sale.table.total" />
+                              <JFXTreeTableColumn fx:id="saleNumItemsColumn" minWidth="65.0" prefWidth="65.0" resizable="false" text="%new_sale.table.numitems" />
+                              <JFXTreeTableColumn fx:id="saleClientNameColumn" minWidth="101.0" prefWidth="201.0" resizable="false" text="%new_sale.table.clientname" />
                            </columns>
                         </JFXTreeTableView>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="30.0" layoutX="540.0" layoutY="466.0" stroke="TRANSPARENT" strokeType="INSIDE" width="65.0" />
@@ -74,18 +74,18 @@
                   </AnchorPane>
                </content>
             </Tab>
-            <Tab text="PRODUCTS">
+            <Tab text="%product.pathTitle">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="377.0" prefWidth="717.0">
                      <children>
                         <Pagination fx:id="productsPagination" layoutX="446.0" layoutY="362.0" maxPageIndicatorCount="5" pageCount="7" prefHeight="65.0" prefWidth="253.0" />
                         <JFXTreeTableView fx:id="productsTable" layoutX="17.0" layoutY="49.0" prefHeight="305.0" prefWidth="683.0">
                            <columns>
-                              <JFXTreeTableColumn fx:id="productSkuColumn" minWidth="77.0" prefWidth="77.0" resizable="false" text="SKU" />
-                              <JFXTreeTableColumn fx:id="productSupplierColumn" minWidth="133" prefWidth="149.0" resizable="false" text="Supplier" />
-                              <JFXTreeTableColumn fx:id="productBuyPriceColumn" minWidth="80.0" resizable="false" text="Buy Price" />
-                              <JFXTreeTableColumn fx:id="productProductTypeColumn" minWidth="115.0" prefWidth="115.0" resizable="false" text="Product Type" />
-                              <JFXTreeTableColumn fx:id="productDescriptionColumn" minWidth="101.0" prefWidth="261.0" resizable="false" text="Description" />
+                              <JFXTreeTableColumn fx:id="productSkuColumn" minWidth="77.0" prefWidth="77.0" resizable="false" text="%app.colSku" />
+                              <JFXTreeTableColumn fx:id="productSupplierColumn" minWidth="133" prefWidth="149.0" resizable="false" text="%app.colSupplier" />
+                              <JFXTreeTableColumn fx:id="productBuyPriceColumn" minWidth="80.0" resizable="false" text="%app.colBuyPrice" />
+                              <JFXTreeTableColumn fx:id="productProductTypeColumn" minWidth="115.0" prefWidth="115.0" resizable="false" text="%app.colProductType" />
+                              <JFXTreeTableColumn fx:id="productDescriptionColumn" minWidth="101.0" prefWidth="261.0" resizable="false" text="%app.colDescription" />
                            </columns>
                         </JFXTreeTableView>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="30.0" layoutX="540.0" layoutY="466.0" stroke="TRANSPARENT" strokeType="INSIDE" width="65.0" />
@@ -110,16 +110,16 @@
                   </AnchorPane>
                </content>
             </Tab>
-            <Tab text="EMPLOYEES">
+            <Tab text="%employee.title">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="377.0" prefWidth="717.0">
                      <children>
                         <Pagination fx:id="employeesPagination" layoutX="446.0" layoutY="362.0" maxPageIndicatorCount="5" pageCount="7" prefHeight="65.0" prefWidth="253.0" />
                         <JFXTreeTableView fx:id="employeesTable" layoutX="17.0" layoutY="49.0" prefHeight="305.0" prefWidth="683.0">
                            <columns>
-                              <JFXTreeTableColumn fx:id="employeeNameColumn" minWidth="77.0" prefWidth="147.0" resizable="false" text="Name" />
-                              <JFXTreeTableColumn fx:id="employeeEmailColumn" minWidth="79.0" prefWidth="174.0" resizable="false" text="Email" />
-                              <JFXTreeTableColumn fx:id="employeeCpfColumn" minWidth="0.0" prefWidth="122.0" resizable="false" text="CPF" />
+                              <JFXTreeTableColumn fx:id="employeeNameColumn" minWidth="77.0" prefWidth="147.0" resizable="false" text="%app.colName" />
+                              <JFXTreeTableColumn fx:id="employeeEmailColumn" minWidth="79.0" prefWidth="174.0" resizable="false" text="%app.colEmail" />
+                              <JFXTreeTableColumn fx:id="employeeCpfColumn" minWidth="0.0" prefWidth="122.0" resizable="false" text="%app.colCpf" />
                               <JFXTreeTableColumn fx:id="productTypeColumn" minWidth="115.0" prefWidth="239.0" resizable="false" text="Tasks" />
                            </columns>
                         </JFXTreeTableView>
@@ -145,20 +145,20 @@
                   </AnchorPane>
                </content>
             </Tab>
-            <Tab text="SUPPLIERS">
+            <Tab text="%supplier.title">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="377.0" prefWidth="717.0">
                      <children>
                         <Pagination fx:id="suppliersPagination" layoutX="446.0" layoutY="362.0" maxPageIndicatorCount="5" pageCount="7" prefHeight="65.0" prefWidth="253.0" />
                         <JFXTreeTableView fx:id="suppliersTable" layoutX="17.0" layoutY="49.0" prefHeight="305.0" prefWidth="683.0">
                            <columns>
-                              <JFXTreeTableColumn fx:id="supplierNameColumn" minWidth="77.0" prefWidth="125.0" resizable="false" text="Company Name" />
-                              <JFXTreeTableColumn fx:id="supplierEmailColumn" minWidth="101.0" prefWidth="186.0" resizable="false" text="Email" />
-                              <JFXTreeTableColumn fx:id="supplierAddresColumn" minWidth="80.0" prefWidth="371.0" resizable="false" text="Addres" />
+                              <JFXTreeTableColumn fx:id="supplierNameColumn" minWidth="77.0" prefWidth="125.0" resizable="false" text="%app.colCompanyName" />
+                              <JFXTreeTableColumn fx:id="supplierEmailColumn" minWidth="101.0" prefWidth="186.0" resizable="false" text="%app.colEmail" />
+                              <JFXTreeTableColumn fx:id="supplierAddresColumn" minWidth="80.0" prefWidth="371.0" resizable="false" text="%app.colAddress" />
                            </columns>
                         </JFXTreeTableView>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="30.0" layoutX="540.0" layoutY="466.0" stroke="TRANSPARENT" strokeType="INSIDE" width="65.0" />
-                        <JFXButton fx:id="supplierReportGenerate" layoutX="59.0" layoutY="15.0" onAction="#suppliersReport" prefHeight="30.0" prefWidth="88.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="Generate" textFill="WHITE">
+                        <JFXButton fx:id="supplierReportGenerate" layoutX="59.0" layoutY="15.0" onAction="#suppliersReport" prefHeight="30.0" prefWidth="88.0" ripplerFill="#4db6ac" style="-fx-background-color: #009688;" text="%app.generate" textFill="WHITE">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor></JFXButton>
@@ -188,7 +188,7 @@
                   <Font size="34.0" />
                </font>
             </Label>
-            <Label layoutX="72.0" layoutY="48.0" prefHeight="25.0" prefWidth="104.0" text="User Registers" textFill="WHITE">
+            <Label alignment="CENTER_RIGHT" layoutX="57.0" layoutY="48.0" prefHeight="25.0" prefWidth="104.0" text="%user.title" textAlignment="RIGHT" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
@@ -207,7 +207,7 @@
                   <Font size="34.0" />
                </font>
             </Label>
-            <Label layoutX="128.0" layoutY="48.0" prefHeight="25.0" prefWidth="37.0" text="Sales" textFill="WHITE">
+            <Label alignment="CENTER_RIGHT" layoutX="61.0" layoutY="48.0" prefHeight="25.0" prefWidth="104.0" text="%sales.pathTitle" textAlignment="RIGHT" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
@@ -226,7 +226,7 @@
                   <Font size="34.0" />
                </font>
             </Label>
-            <Label layoutX="93.0" layoutY="48.0" prefHeight="25.0" prefWidth="71.0" text="Employees" textFill="WHITE">
+            <Label alignment="CENTER_RIGHT" layoutX="50.0" layoutY="48.0" prefHeight="25.0" prefWidth="114.0" text="%employee.title" textAlignment="RIGHT" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
@@ -245,7 +245,7 @@
                   <Font size="34.0" />
                </font>
             </Label>
-            <Label layoutX="93.0" layoutY="48.0" prefHeight="25.0" prefWidth="71.0" text="Suppliers" textFill="WHITE">
+            <Label alignment="CENTER_RIGHT" layoutX="50.0" layoutY="48.0" prefHeight="25.0" prefWidth="114.0" text="%supplier.title" textAlignment="RIGHT" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>

@@ -68,6 +68,7 @@ public class SettingsController extends BaseController {
 	@Override
 	protected void onClose() {
 		languageService.onClose();
+		
 	}
 	
 	@FXML
@@ -77,12 +78,8 @@ public class SettingsController extends BaseController {
 		
 		languageService.changeDefaultLanguage(newLanguage, e -> {
 			
-			try {
-				getI18N().updateDefaultLocale(new Locale(newLanguage.getLanguageCode(), newLanguage.getCountryCode()));
-				WindowsUtils.openNewWindow(RootController.PATH_FXML, getWindowTitle(RootController.ROOT_TITLE_KEY), RootController.PATH_ICON, null, null);
-			} catch (Exception e1) {
-				e1.printStackTrace();
-			}
+			getI18N().updateDefaultLocale(new Locale(newLanguage.getLanguageCode(), newLanguage.getCountryCode()));
+			onOpenRootWindow();
 			
 			stage.close();
 		}, null);
@@ -91,11 +88,20 @@ public class SettingsController extends BaseController {
 	@FXML
 	public void onCancel() {
 		stage.close();
+		onOpenRootWindow();
 	}
 	
 	@FXML
 	public void onHelp() {
 		
+	}
+	
+	private void onOpenRootWindow() {
+		try {
+			WindowsUtils.openNewWindow(RootController.PATH_FXML, getWindowTitle(RootController.ROOT_TITLE_KEY), RootController.PATH_ICON, null, null);
+		} catch (Exception e1) {
+			e1.printStackTrace();
+		}
 	}
 
 

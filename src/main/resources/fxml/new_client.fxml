@@ -397,11 +397,7 @@
             </JFXTextField>
             <JFXComboBox fx:id="clientTypeComboBox" focusColor="#009688" labelFloat="true" layoutX="536.0" layoutY="185.0" prefHeight="25.0" prefWidth="155.0" promptText="Select the Type">
                <items>
-                  <FXCollections fx:factory="observableArrayList">
-                     <String fx:value="Pessoa" />
-                     <String fx:value="Empresa" />
-                     <String fx:value="Outros" />
-                  </FXCollections>
+                  <FXCollections fx:factory="observableArrayList" />
                </items>
             </JFXComboBox>
             <JFXPasswordField fx:id="passwordTextField" focusColor="#009688" labelFloat="true" layoutX="24.0" layoutY="546.0" prefHeight="25.0" prefWidth="199.0" promptText="Password" />

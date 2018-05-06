@@ -143,6 +143,8 @@ public class SalesNewController extends BaseController {
 	private void watchEvents() {
 		WindowsUtils.watchEvents(emailTextField, v -> watch());
 		WindowsUtils.watchEvents(clientComboBox, v -> watch());
+		
+		WindowsUtils.onComboBoxItemSelected(clientComboBox, item -> onSelectClient(item));
 	}
 	
 	private void watch() {
@@ -152,7 +154,17 @@ public class SalesNewController extends BaseController {
 		} else {
 			saveButton.setDisable(true);
 		}
+	}
+	
+	public void onSelectClient(Client client) {
 		
+		if (client != null) {
+			WindowsUtils.setTextInTextField(emailTextField, client.getUser().getEmail());
+			
+			if (!client.getPhones().isEmpty()) {
+				WindowsUtils.setTextInTextField(phoneTextField, client.getPhones().get(0).getNumber());
+			}
+		}
 	}
 	
 	private <T> void checkParameters(HashMap<String, T> parameters) {

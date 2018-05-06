@@ -25,7 +25,7 @@ public class ProductType {
 	
 	@OneToMany(mappedBy = "productType", fetch = FetchType.LAZY)
 	private List<Product> product;
-
+	
 	public long getId() {
 		return id;
 	}

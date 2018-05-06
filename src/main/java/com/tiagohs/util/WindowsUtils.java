@@ -243,13 +243,17 @@ public class WindowsUtils {
 		}, null);
 	}
 	
+	public static <T> void addComboBoxItens(ComboBox<T> comboBox, List<T> items) {
+		comboBox.getItems().addAll(items);
+	}
+	
 	public static <T> void onComboBoxItemSelected(ComboBox<T> comboBox, ComboBoxSelectListener<T> listener) {
 		comboBox.getSelectionModel().selectedItemProperty().addListener( (options, oldValue, newValue) -> {
 			listener.onSelected(newValue);
 		});
 	}
 	
-	public static <T> T getSelectedComboBoxItem(ComboBox<T> comboBox) {
+	public static <U> U getSelectedComboBoxItem(ComboBox<U> comboBox) {
 		return comboBox.getValue() != null ? comboBox.getValue() : null;
 	}
 	

@@ -24,6 +24,15 @@ public class ClientType {
 	
 	@OneToMany(mappedBy = "clientType", fetch = FetchType.LAZY)
 	private List<Client> clients;
+	
+	public ClientType() {
+	}
+
+	public ClientType(long id, String name) {
+		super();
+		this.id = id;
+		this.name = name;
+	}
 
 	public long getId() {
 		return id;
@@ -49,5 +58,9 @@ public class ClientType {
 		this.clients = clients;
 	}
 	
+	@Override
+	public String toString() {
+		return getName();
+	}
 	
 }

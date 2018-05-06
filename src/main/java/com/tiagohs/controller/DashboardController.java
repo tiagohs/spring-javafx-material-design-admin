@@ -71,7 +71,7 @@ public class DashboardController extends BaseController {
 		salesChart.getXAxis().setLabel(getI18N().getString("date.month"));
         
 		XYChart.Series<String, Number> series = new XYChart.Series<String, Number>();
-        series.setName("Sales");
+        series.setName(getI18N().getString("sales.pathTitle"));
         
         List<Calendar> allMonths = new ArrayList<>();
         
@@ -80,7 +80,11 @@ public class DashboardController extends BaseController {
 		} catch (ParseException e1) {
 		}
         
+		
+		
         for (Calendar calendar : allMonths) {
+        	System.out.println(calendar.getTime().toString());
+        	System.out.println(saleService.getTotalSalesByMonth(calendar));
         	series.getData().add(new XYChart.Data(month.format(calendar.getTime()), saleService.getTotalSalesByMonth(calendar)));
         }
         

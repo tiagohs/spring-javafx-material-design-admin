@@ -319,7 +319,7 @@ public class InventoryController extends BaseController {
 			productTableDTO.setSupplier("--");
 		}
 		
-		if (product.getSupplier() != null) {
+		if (product.getProductType() != null) {
 			productTableDTO.setProductType(product.getProductType().getName());
 		} else {
 			productTableDTO.setProductType("--");
