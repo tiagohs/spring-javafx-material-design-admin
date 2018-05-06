@@ -25,6 +25,14 @@ Simple Desktop application for Inventory Management with Material Design, builde
   <li>Tables with Search, edit and delete features</li>
 </ul>
 
+### User Default: <br/>
+
+<p> 
+  <b>Email</b>: admin@admin.com<br/>
+  <b>Password</b>: 123
+  <b>Role</b>: Admin
+</p>
+
 ### Tools
 
 <ul>
