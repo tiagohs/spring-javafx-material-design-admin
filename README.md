@@ -20,7 +20,7 @@ Simple Desktop application for Inventory Management with Material Design, builde
   <li>Well Organized Code</li>
   <li>Model-View-Controller (MVC) Pattern</li>
   <li>Beautiful Graphic with animation</li>
-  <li>Reports to save in PDF</li>
+  <li>Reports to save in PDF with Jasper Reports</li>
   <li>Easy to customize and for include more features</li>
   <li>Tables with Search, edit and delete features</li>
 </ul>
@@ -48,6 +48,7 @@ Simple Desktop application for Inventory Management with Material Design, builde
   <li><a href="https://bintray.com/jerady/maven/FontAwesomeFX/8.15/view">FontAwesomeFX</a></li>
   <li><a href="https://github.com/jfoenixadmin/JFoenix">JFoenix</a></li>
   <li><a href="https://github.com/mgrecol/JasperViewerFx">JasperViewerFx</a></li>
+  <li><a href="https://github.com/TIBCOSoftware/jasperreports">JasperReports</a></li>
 </ul>
 
 ## Screens
