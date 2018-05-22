@@ -54,13 +54,13 @@ Simple Desktop application for Inventory Management with Material Design, builde
 ## Screens
 
 <p align="center">
-<img src="https://github.com/tiagohs/spring-javafx-material-design-admin/blob/master/screens/painel.png" width="430" height="300"> <img src="https://github.com/tiagohs/spring-javafx-material-design-admin/blob/master/screens/inventory-search.png" width="430" height="300">
+<img src="https://github.com/tiagohs/spring-javafx-material-design-admin/blob/master/screens/painel.png" width="430" height="350"> <img src="https://github.com/tiagohs/spring-javafx-material-design-admin/blob/master/screens/inventory-search.png" width="430" height="350">
 </p>
 <p align="center">
-<img src="https://github.com/tiagohs/spring-javafx-material-design-admin/blob/master/screens/new-employee.png" width="430" height="300"> <img src="https://github.com/tiagohs/spring-javafx-material-design-admin/blob/master/screens/report-pdf.png" width="430" height="300">
+<img src="https://github.com/tiagohs/spring-javafx-material-design-admin/blob/master/screens/new-employee.png" width="430" height="350"> <img src="https://github.com/tiagohs/spring-javafx-material-design-admin/blob/master/screens/report-pdf.png" width="430" height="350">
 </p>
 <p align="center">
-<img src="https://github.com/tiagohs/spring-javafx-material-design-admin/blob/master/screens/reports.png" width="430" height="300"> <img src="https://github.com/tiagohs/spring-javafx-material-design-admin/blob/master/screens/new-product.png" width="430" height="300">
+<img src="https://github.com/tiagohs/spring-javafx-material-design-admin/blob/master/screens/reports.png" width="430" height="350"> <img src="https://github.com/tiagohs/spring-javafx-material-design-admin/blob/master/screens/new-product.png" width="430" height="350">
 </p>
 
 ### Desenvolvido por: 
