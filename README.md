@@ -72,6 +72,9 @@ Tiago Henrique da Silva - tiago.hsilva@al.infnet.edu.br / tiago.silva.93@hotmail
 </a>
 <a href="https://br.linkedin.com/in/tiago-henrique-395868b7">
   <img alt="Add me to Linkedin" src="http://image.flaticon.com/icons/svg/34/34405.svg" data-canonical-src="http://image.flaticon.com/icons/svg/34/34405.svg" style="max-width:100%;" height="60" width="60">
+</a>
+<a href="http://tiagohs.net/">
+  <img alt="Site Portfolio" src="https://raw.githubusercontent.com/tiagohs/PopMovies/master/arts/portfolio.png" data-canonical-src="https://raw.githubusercontent.com/tiagohs/PopMovies/master/arts/portfolio.png" style="max-width:100%;" height="60" width="60">
 </a></p>
 
 ## License
