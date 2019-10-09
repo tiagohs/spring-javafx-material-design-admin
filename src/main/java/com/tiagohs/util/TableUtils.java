@@ -69,7 +69,7 @@ public class TableUtils {
         tableView.setRoot(new RecursiveTreeItem<>(FXCollections.observableArrayList(data.subList(fromIndex, toIndex)), RecursiveTreeObject::getChildren));
         
         pagination.setPageCount((data.size() / ROW_PER_PAGE + 1));
-        pagination.setCurrentPageIndex(0);
+        pagination.setCurrentPageIndex(pageIndex);
         
         return new BorderPane();
     }
