@@ -8,7 +8,7 @@ Simple Desktop application for Inventory Management with Material Design, builde
 </p>
 
 <p align="center">
-  <img src="https://github.com/tiagohs/spring-javafx-material-design-admin/blob/master/screens/apresentation.png" width="650" height="400">
+  <img src="https://github.com/tiagohs/spring-javafx-material-design-admin/blob/master/screens/apresentation.png" width="650" height="500">
 </p>
 
 ### Features
